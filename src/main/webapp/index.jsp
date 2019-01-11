@@ -8,20 +8,24 @@
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css">
 </head>
-<script type="text/javascript" src="<%=path%>js/vue.min.js"></script>
+<script src="<%=path%>js/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui@2.4.11/lib/index.js"></script>
 <body>
 <div id="app">
-  <p>{{ message }}</p>
-</div>
-
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+      <p>Try Element</p>
+    </el-dialog>
+  </div>
 </body>
 <script>
 new Vue({
-  el: '#app',
-  data: {
-    message: 'hello world!!!'
-  }
-})
+    el: '#app',
+    data: function() {
+      return { visible: false }
+    }
+  })
 </script>
 </html>
