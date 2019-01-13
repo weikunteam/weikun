@@ -114,7 +114,7 @@ pading:0px;
 				})
 			}
 		}
-	})
+	}) 
 	
 </script>
 </html>
