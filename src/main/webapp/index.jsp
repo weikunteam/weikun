@@ -48,7 +48,7 @@
 $("#login").click(function(){
 	$.ajax({
 	    type:"post",
-	    url:"<%=path%>login/check",
+	    url:"<%=path%>login/check.action",
 	    dataType: 'json',
 	    success:function(data){
 	          alert(data);    

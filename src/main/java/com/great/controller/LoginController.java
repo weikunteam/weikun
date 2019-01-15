@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController {
 
 	
-	@RequestMapping(value="/check",method= RequestMethod.GET)
+	@RequestMapping(value="/check.action",method= RequestMethod.POST)
 	@ResponseBody
 	public String check(){
 		return "11111";
