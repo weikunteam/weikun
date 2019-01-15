@@ -1,120 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
 <% 
 	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";	
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<html>
+<head>
+<meta charset="UTF-8">
 <title>用户登录</title>
-<link rel="stylesheet" href="https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css">
-
-<style>
-body{
-margin:0px;
-pading:0px;
-}
-.el-row {
-    margin-bottom: 20px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-	.login-box {
-		margin-top:1%;
-		margin-left:40%;
-	}
-
-</style>
-
+<link rel='stylesheet' href='css/bootstrap.min.css'> 
+<link rel='stylesheet' href='css/login1.css'>
+<link href="css/font-awesome.min.css" rel="stylesheet" />
+<script src="js/jQuery.js"></script>
 </head>
-<script src="<%=path%>js/vue.min.js"></script>
-<script src="https://unpkg.com/element-ui@2.4.11/lib/index.js"></script>
 <body>
-<img :src=imgsrc id="topimg" :style=mystyle></img>
-<div id="title" style="text-align:center;color:#409EFF">
-<h2 >{{msg}}</h2>
+<img src="img/center.jpg" id="topimg" style="width:100%;"></img>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form class="form-horizontal">
+                <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="请输入手机号">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                    <i class="fa fa-lock"></i>
+                    <!-- <a href="#" class="fa fa-question-circle"></a> -->
+                </div>
+                <div class="form-group">
+                    <!-- <div class="main-checkbox">
+                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                        <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">Remember me</span> -->
+                    <button type="button" class="btn btn-default" id="login">登录</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-default" style="color: #00b4ef;background: #F8F8FF" >注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-<div class="login-box" id="app" >
- <el-row>
-	<el-col :span="8">
-		<el-input id="name"  v-model="name" placeholder="请输入手机号">
-			<div slot="prepend" style="width:40px;text-align:center">手机号</div>
-		</el-input> 
-	</el-col>
- </el-row>
- <el-row>
-	<el-col :span="8">
-		<el-input id="password" v-model="password" type="password" placeholder="请输入密码">
-			<div slot="prepend" style="width:40px;text-align:center">密码</div>
-		</el-input>
-	</el-col>
- </el-row>
- <el-row>
-	<el-col :span="8" style="text-align:center">
-		<el-button id="login" v-on:click="check"  type="primary">登录</el-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<el-button id="login"  >注册</el-button>
-	</el-col>
- </el-row>
-</div> 
 </body>
- 
+
 <script type="text/javascript">
-	new Vue({
-		el : '#topimg',
-		data : {
-			imgsrc : '<%=path%>img/center.jpg',
-			mystyle : 'width:100%;'
-		}
+$("#login").click(function(){
+	$.ajax({
+	    type:"post",
+	    url:"<%=path%>login/check",
+	    dataType: 'json',
+	    success:function(data){
+	          alert(data);    
+	      }
 	});
-	new Vue({
-		el : '#title',
-		data : {
-			msg : '用户登录'
-		}
 	});
-	new Vue({
-		el : '#app',
-		data : {
-			name : '',
-			password : ''
-		},
-		methods : {
-			check : function(event){
-				//获取值
-				var name = this.name;
-				var password = this.password;
-				if(name == '' || password == ''){
-					this.$message({
-						message : '手机号或密码为空！',
-						type : 'error'
-					})
-					return;
-				}
-				$.ajax({
-					url : 'login',
-					type : 'post',
-					data : {
-						name : name,
-						password : password
-					},
-					success : function(data) {
-						var result = data.result;
-						if(result == 'true' || result == true){
-							alert("登录成功");
-						}else {
-							alert("登录失败");
-						}
-					},
-					error : function(data) {
-						alert(data);
-					},
-					dataType : 'json',
-				})
-			}
-		}
-	}) 
-	
+
+
 </script>
 </html>
