@@ -19,19 +19,18 @@
 
 
 	<!-- 配置数据库连接池 -->
-	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@118.25.237.196:1521:ORCL" />
-		<property name="username" value="oracleuser" />
-		<property name="password" value="123456" />
+	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://47.98.170.225:3306/weikun?useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="user" value="weikun" />
+		<property name="password" value="weikun" />
 		 
 	</bean>
 
 	<!-- 配置SqlSessionFactoryBean-->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
-		<property name="mapperLocations" value="classpath:org/great/bean/*.xml" />
+		<property name="mapperLocations" value="classpath:com/great/mapper/*.xml" />
 	</bean>
 
 
@@ -39,19 +38,17 @@
 	<!-- 配置MapperScannerConfigurer -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
  		<property name="sqlSessionFactory" ref="sqlSessionFactory" /> 
-		<property name="basePackage" value="org.great.mapper" />
+		<property name="basePackage" value="com.great.dao" />
 		<!--  <property name="annotationClass" value="org.great.annotation.MyBatisRepository" />
 	 -->
 	 </bean>
 	
 
 	<!-- 开启组件扫描 -->
-	<context:component-scan base-package="org.great" />
+	<context:component-scan base-package="com.great" />
 
    <!-- PECTJ注解 -->
    <aop:aspectj-autoproxy proxy-target-class="true" />
 	
-	<bean id="ChatBizImp" class="org.great.biz.ChatBizImp"></bean>
-	<bean id="UserBizImp" class="org.great.biz.UserBizImp"></bean>
 
 </beans>
