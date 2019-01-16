@@ -48,10 +48,18 @@
 $("#login").click(function(){
 	$.ajax({
 	    type:"post",
-	    url:"<%=path%>login/check.action",
+	    url:"<%=path%>login/login.action",
 	    dataType: 'json',
+	    data :{
+	    	tel:$("#inputEmail3").val(),
+	    	pwd:$("#inputPassword3").val()
+	    },
 	    success:function(data){
-	          alert(data);    
+	          if(data){
+	        	  alert("登陆成功");
+	          }else{
+	        	  alert("登陆失败");
+	          }    
 	      }
 	});
 	});
