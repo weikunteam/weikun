@@ -8,10 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>用户登录</title>
-<link rel='stylesheet' href='css/bootstrap.min.css'> 
-<link rel='stylesheet' href='css/login1.css'>
-<link href="css/font-awesome.min.css" rel="stylesheet" />
-<script src="js/jQuery.js"></script>
+<link rel='stylesheet' href='<%=path%>css/bootstrap.min.css'> 
+<link rel='stylesheet' href='<%=path%>css/login1.css'>
+<link rel='stylesheet' href='<%=path%>css/toastr.min.css'>
+<link href="<%=path%>css/font-awesome.min.css" rel="stylesheet" />
+<script src="<%=path%>js/jQuery.js"></script>
+<script src="<%=path%>js/toastr.min.js"></script>
 </head>
 <body>
 <img src="img/center.jpg" id="topimg" style="width:100%;"></img>
@@ -45,6 +47,19 @@
 </body>
 
 <script type="text/javascript">
+toastr.options = {
+		"closeButton": false, //是否显示关闭按钮
+		"debug": false, //是否使用debug模式
+		"positionClass": "toast-center-center",//弹出窗的位置
+		"showDuration": "300",//显示的动画时间
+		"hideDuration": "1000",//消失的动画时间
+		"timeOut": "5000", //展现时间
+		"extendedTimeOut": "1000",//加长展示时间
+		"showEasing": "swing",//显示时的动画缓冲方式
+		"hideEasing": "linear",//消失时的动画缓冲方式
+		"showMethod": "fadeIn",//显示时的动画方式
+		"hideMethod": "fadeOut" //消失时的动画方式
+		};
 $("#login").click(function(){
 	$.ajax({
 	    type:"post",
@@ -56,9 +71,9 @@ $("#login").click(function(){
 	    },
 	    success:function(data){
 	          if(data){
-	        	  alert("登陆成功");
+	        	  toastr.success('登陆成功');
 	          }else{
-	        	  alert("登陆失败");
+	        	  toastr.error('账户或密码错误');
 	          }    
 	      }
 	});
