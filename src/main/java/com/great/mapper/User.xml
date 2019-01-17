@@ -4,12 +4,13 @@
 <mapper namespace="com.great.dao.UserDao">
 	<!-- 炜炜 -->
 	<!-- 查询雇主信息 -->
-	<select id="login" resultType="int">
-		select count(1) from TB_USER
+	<select id="login" resultType="map">
+		select 
+		uPhone,
+		uPsw
+		from TB_USER
 		where
 		uPhone = #{tel}
-		and
-		uPsw = 	#{pwd}	
 	</select>
 
 	

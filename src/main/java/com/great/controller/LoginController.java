@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.dao.UserDao;
+import com.great.model.ResponseApi;
 import com.great.service.LoginService;
 
 @Controller
@@ -18,7 +19,7 @@ private LoginService loginService;
 	
 	@RequestMapping(value="/login.action",method= RequestMethod.POST)
 	@ResponseBody
-	public boolean login(String tel,String pwd){
+	public ResponseApi login(String tel,String pwd){
 		
 		return loginService.login(tel, pwd);
 	}

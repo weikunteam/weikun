@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!--BootStrap设计的页面支持响应式的 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>用户登录</title>
 <link rel='stylesheet' href='<%=path%>css/bootstrap.min.css'> 
 <link rel='stylesheet' href='<%=path%>css/login1.css'>
@@ -14,12 +16,13 @@
 <link href="<%=path%>css/font-awesome.min.css" rel="stylesheet" />
 <script src="<%=path%>js/jQuery.js"></script>
 <script src="<%=path%>js/toastr.min.js"></script>
+<script src="<%=path%>js/bootstrap.js"></script>
 </head>
 <body>
 <img src="img/center.jpg" id="topimg" style="width:100%;"></img>
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-3 col-md-6">
+        <div class="col-xs-offset-3 col-xs-6">
             <form class="form-horizontal">
                 <span class="heading">用户登录</span>
                 <div class="form-group">
@@ -61,20 +64,38 @@ toastr.options = {
 		"hideMethod": "fadeOut" //消失时的动画方式
 		};
 $("#login").click(function(){
+	var tel = $("#inputEmail3").val();
+	var pwd = $("#inputPassword3").val();	
+	var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+	if(!tel){
+		toastr.error("请输入手机号");	
+		return false;
+	}
+	if(!reg.test(tel)){
+		toastr.error("请输入正确手机号");	
+		return false;
+	}
+	if(!pwd ){
+		toastr.error("请输入密码");	
+		return false;
+	}
+	
 	$.ajax({
 	    type:"post",
 	    url:"<%=path%>login/login.action",
 	    dataType: 'json',
 	    data :{
-	    	tel:$("#inputEmail3").val(),
-	    	pwd:$("#inputPassword3").val()
+	    	tel:tel,
+	    	pwd:pwd
 	    },
 	    success:function(data){
-	          if(data){
-	        	  toastr.success('登陆成功');
-	          }else{
-	        	  toastr.error('账户或密码错误');
-	          }    
+	          if(data.code == '1'){
+	        	  toastr.success(data.msg);
+	          }else if(data.code == '2'){
+	        	  toastr.error(data.msg);
+	          }else if(data.code == '3'){
+	        	  toastr.error(data.msg);
+	          }   
 	      }
 	});
 	});
