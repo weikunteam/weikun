@@ -17,12 +17,13 @@
 <script src="<%=path%>js/jQuery.js"></script>
 <script src="<%=path%>js/toastr.min.js"></script>
 <script src="<%=path%>js/bootstrap.js"></script>
+<script src="<%=path%>js/bootstrap.min.js"></script>
 </head>
 <body>
 <img src="img/center.jpg" id="topimg" style="width:100%;"></img>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
+        <div class="col-xs-12">
             <form class="form-horizontal">
                 <span class="heading">用户登录</span>
                 <div class="form-group">
@@ -40,8 +41,10 @@
                         <label for="checkbox1"></label>
                     </div>
                     <span class="text">Remember me</span> -->
-                    <button type="button" class="btn btn-default" id="login">登录</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-default" style="color: #00b4ef;background: #F8F8FF" >注册</button>
+                    <div class="form-inline">
+                    <button type="button" class="btn btn-default" id="login">登录</button>
+                    <button type="button" class="btn btn-default" style="color: #00b4ef;background: #F8F8FF;margin-left:20%" >注册</button>
+                    </div>
                 </div>
             </form>
         </div>
