@@ -30,6 +30,12 @@ public class ResponseApi {
 		super();
 	}
 	
+	public void setResponseApi(String code, String msg, List<Object> result) {
+		this.code = code;
+		this.msg = msg;
+		this.result=result;
+	}
+	
 	public void setResponseApi(String code, String msg) {
 		this.code = code;
 		this.msg = msg;
