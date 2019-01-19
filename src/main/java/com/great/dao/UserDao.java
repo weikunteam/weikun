@@ -13,7 +13,7 @@ import com.great.model.UserModel;
 public interface UserDao {
 	
 	public Map<String, Object> login(@Param("tel")String tel);
-	
-	//带条件、分页查询客户数据  作者:zekun
-	public ArrayList<UserModel> getUserList(@Param("pageX")String page,@Param("limitX")String limit);
+	public Map<String, Object> getUser(@Param("tel")String tel);
+	public void addUser(@Param("tel")String tel,@Param("psw")String psw);
+
 }

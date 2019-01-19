@@ -10,13 +10,14 @@ import org.apache.tomcat.jni.User;
 import org.springframework.stereotype.Service;
 
 import com.great.dao.UserDao;
+import com.great.dao.UserManagerDao;
 import com.great.model.ResponseApi;
 import com.great.model.UserModel;
 
 @Service
 public class UserManagerService {
 	@Resource
-	private UserDao userDao;
+	private UserManagerDao userManagerDao;
 	@Resource
 	private ResponseApi responseApi;
 	
@@ -34,7 +35,7 @@ public class UserManagerService {
 	
 	public ArrayList<UserModel> getUserList(String page,String limit) {
 		
-		ArrayList <UserModel> userList = userDao.getUserList(page, limit);
+		ArrayList <UserModel> userList = userManagerDao.getUserList(page, limit);
 		System.out.println(userList.size());
 		if (userList!=null) {
 			return userList;

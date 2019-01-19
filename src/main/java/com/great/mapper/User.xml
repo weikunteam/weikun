@@ -4,7 +4,7 @@
 <mapper namespace="com.great.dao.UserDao">
 	<!-- 炜炜 -->
 	<!-- 查询雇主信息 -->
-	<select id="login" resultType="map">
+	<select id="getUser" resultType="map">
 		select 
 		uPhone,
 		uPsw
@@ -12,26 +12,8 @@
 		where
 		uPhone = #{tel}
 	</select>
-	<!-- 	作者:zekun  -->
-	<!--	说明:带条件、分页查询客户信息 -->
-	<select id="getUserList" resultMap="resultListUser">
-		select 
-		userId,
-		uPhone,
-		uPsw
-		from TB_USER  
-		where
-		userId &gt; (#{pageX}-1)*#{limitX} limit #{limitX}
-	</select>
 	
-	<resultMap type="com.great.model.UserModel" id="resultListUser">
-	 	<id column="userId" property="userId"/>
-	 	<result column="uPhone" property="uPhone"/>
-		<result column="uPsw" property="uPsw"/>
-		<result column="uRecommendAmount" property="uRecommendAmount"/>
-		<result column="uRegRecommendPeople" property="uRegRecommendPeople"/>
-		<result column="uRecommendCode" property="uRecommendCode"/>
-		<result column="uLoginState" property="uLoginState"/>
-	 </resultMap>
-	
+	<insert id="addUser">
+	insert into TB_USER (uPhone,uPsw) values (#{tel},#{psw})	
+	</insert>
 </mapper>
