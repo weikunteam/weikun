@@ -21,28 +21,22 @@ public class UserManagerService {
 	@Resource
 	private ResponseApi responseApi;
 	
-/*	public ResponseApi getUserList(String page,String limit) {
+	public ArrayList<UserModel> getUserList(int queryInitCount,int limit) {
 		
-		List<UserModel> userList = userDao.getUserList(page, limit);
-		if (userList!=null) {
-			responseApi.setResponseApi("1", "客户信息查询成功",userList);
-		}else {
-			responseApi.setResponseApi("2", "客户信息查询成功失败");
-		}
-		
-	return responseApi;
-}*/
-	
-	public ArrayList<UserModel> getUserList(String page,String limit) {
-		
-		ArrayList <UserModel> userList = userManagerDao.getUserList(page, limit);
-		System.out.println(userList.size());
-		if (userList!=null) {
+		ArrayList <UserModel> userList = userManagerDao.getUserList(queryInitCount, limit);
+		if (null!=userList && 0!=userList.size()) {
 			return userList;
 		}else {
 			return null;
 		}
-		
 }
+	public String getUserCount() {
+		String userCount=userManagerDao.getUserCount();
+		if(null!=userCount && !"".equals(userCount)) {
+			return userCount;
+		}else {
+			return "0";
+		}
+	}
 
 }

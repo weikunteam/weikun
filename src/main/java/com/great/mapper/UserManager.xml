@@ -3,6 +3,14 @@
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.UserManagerDao">
 	<!-- 	作者:zekun  -->
+	<!--	说明:获取所有客户数量 -->
+	<select id="getUserCount" resultType="String">
+		select 
+		count(*) from 
+		TB_USER
+	</select>
+	
+	<!-- 	作者:zekun  -->
 	<!--	说明:带条件、分页查询客户信息 -->
 	<select id="getUserList" resultMap="resultListUser">
 		select 
@@ -11,7 +19,7 @@
 		uPsw
 		from TB_USER  
 		where
-		userId &gt; (#{pageX}-1)*#{limitX} limit #{limitX}
+		userId &gt; #{queryInitCount} limit #{limit}
 	</select>
 	
 	<resultMap type="com.great.model.UserModel" id="resultListUser">

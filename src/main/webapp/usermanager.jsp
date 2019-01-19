@@ -129,14 +129,39 @@
 				table.render({
 					elem: '#test',
 					url: '<%=path%>userManager/getUserList.action',
-					cols: [
+					cols: [	
 						[{
+							field: 'userId',
+							width: 80,
+							title: '客户id',
+							sort: true
+						},{
 							field: 'uPhone',
 							width: 80,
 							title: '手机号',
 							sort: true
 						}, {
 							field: 'uPsw',
+							width: 80,
+							title: '密码',
+							sort: true
+						}, {
+							field: 'uRecommendAmount',
+							width: 80,
+							title: '密码',
+							sort: true
+						}, {
+							field: 'uRegRecommendPeople',
+							width: 80,
+							title: '密码',
+							sort: true
+						}, {
+							field: 'uRecommendCode',
+							width: 80,
+							title: '密码',
+							sort: true
+						}, {
+							field: 'uLoginState',
 							width: 80,
 							title: '密码',
 							sort: true
