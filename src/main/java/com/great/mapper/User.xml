@@ -4,14 +4,17 @@
 <mapper namespace="com.great.dao.UserDao">
 	<!-- 炜炜 -->
 	<!-- 查询雇主信息 -->
-	<select id="login" resultType="map">
+	<select id="getUser" resultType="map">
 		select 
 		uPhone,
 		uPsw
 		from TB_USER
 		where
 		uPhone = #{tel}
-	</select>
+	</select>	
+	<insert id="addUser">
+	insert into TB_USER (uPhone,uPsw) values (#{tel},#{psw})	
+	</insert>
 
 	
 </mapper>

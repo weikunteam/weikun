@@ -5,10 +5,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.http.ParseException;
 import org.springframework.stereotype.Service;
 
 import com.great.dao.UserDao;
 import com.great.model.ResponseApi;
+import com.great.util.SendCodeUtil;
 @Service
 public class LoginService {
 	@Resource
@@ -18,7 +20,7 @@ public class LoginService {
 	
 	public ResponseApi login(String tel,String pwd) {
 		
-			Map<String, Object> map = userDao.login(tel);
+			Map<String, Object> map = userDao.getUser(tel);
 			if (map!=null) {
 				if (map.get("uPsw").equals(pwd)) {
 					responseApi.setResponseApi("1", "登录成功");
@@ -31,6 +33,41 @@ public class LoginService {
 		
 				
 		return responseApi;
+	}
+	
+	public ResponseApi register(String tel,String pwd,String code,String recommend) {
+		
+		try {
+			if (SendCodeUtil.checkCode(tel, code)) {				
+					userDao.addUser(tel, pwd);
+					responseApi.setResponseApi("2", "注册成功");
+				
+			}else {
+				responseApi.setResponseApi("3", "验证码不正确");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return responseApi;
+	}
+	public void sendCode(String mobile) {
+		try {
+			SendCodeUtil.getCode(mobile);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public boolean checkCode(String mobile,String code) throws ParseException, Exception {
+		return SendCodeUtil.checkCode(mobile, code);
+	}
+	public boolean checkRepeat(String tel){
+		Map<String, Object> map = userDao.getUser(tel);
+		if (map!=null) {//号码已被注册
+			return true;
+		}
+		return false;
 	}
 	
 }
