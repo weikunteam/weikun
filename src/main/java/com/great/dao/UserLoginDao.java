@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.great.model.UserModel;
 
 @Repository
-public interface UserDao {
+public interface UserLoginDao {
 	
 	public Map<String, Object> login(@Param("tel")String tel);
 	public Map<String, Object> getUser(@Param("tel")String tel);

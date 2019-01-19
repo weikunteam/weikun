@@ -8,19 +8,20 @@ import javax.annotation.Resource;
 import org.apache.http.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.great.dao.UserDao;
+
+import com.great.dao.UserLoginDao;
 import com.great.model.ResponseApi;
 import com.great.util.SendCodeUtil;
 @Service
 public class LoginService {
 	@Resource
-	private UserDao userDao;
+	private UserLoginDao userLoginDao;
 	@Resource
 	private ResponseApi responseApi;
 	
 	public ResponseApi login(String tel,String pwd) {
 		
-			Map<String, Object> map = userDao.getUser(tel);
+			Map<String, Object> map = userLoginDao.getUser(tel);
 			if (map!=null) {
 				if (map.get("uPsw").equals(pwd)) {
 					responseApi.setResponseApi("1", "登录成功");
@@ -39,7 +40,7 @@ public class LoginService {
 		
 		try {
 			if (SendCodeUtil.checkCode(tel, code)) {				
-					userDao.addUser(tel, pwd);
+				userLoginDao.addUser(tel, pwd);
 					responseApi.setResponseApi("2", "注册成功");
 				
 			}else {
@@ -63,7 +64,7 @@ public class LoginService {
 		return SendCodeUtil.checkCode(mobile, code);
 	}
 	public boolean checkRepeat(String tel){
-		Map<String, Object> map = userDao.getUser(tel);
+		Map<String, Object> map = userLoginDao.getUser(tel);
 		if (map!=null) {//号码已被注册
 			return true;
 		}
