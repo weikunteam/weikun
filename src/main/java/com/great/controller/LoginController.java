@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.great.dao.UserDao;
+
 import com.great.model.ResponseApi;
 import com.great.service.LoginService;
 
