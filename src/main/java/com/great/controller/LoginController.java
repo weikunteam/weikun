@@ -1,6 +1,7 @@
 package com.great.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +36,9 @@ private ResponseApi responseApi;
 	
 	@RequestMapping(value="/login.action",method= RequestMethod.POST)
 	@ResponseBody
-	public ResponseApi login(String tel,String pwd){
+	public ResponseApi login(String tel,String pwd,HttpServletRequest request){
 		
-		return loginService.login(tel, pwd);
+		return loginService.login(tel, pwd,request);
 	}
 	
 	@RequestMapping(value="/register.action",method= RequestMethod.POST)
@@ -56,9 +57,9 @@ private ResponseApi responseApi;
 	@ResponseBody
 	public ResponseApi checkRepea(String tel){
 		if (loginService.checkRepeat(tel)) {
-			responseApi.setResponseApi("2", "手机号被注册");
+			responseApi.setResponseApi("2", "手机号已注册");
 		}else{
-			responseApi.setResponseApi("1", "手机号未被注册");
+			responseApi.setResponseApi("1", "手机号未注册");
 		}
 		return responseApi;
 	}

@@ -36,7 +36,11 @@
                     <i class="fa fa-lock"></i>
                     <!-- <a href="#" class="fa fa-question-circle"></a> -->
                 </div>
-              
+                <div class="form-group help">
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="请确认密码">
+                    <i class="fa fa-lock"></i>
+                    <!-- <a href="#" class="fa fa-question-circle"></a> -->
+                </div>              
                 <div class="form-group" >                                                                      
                     <div class="form-inline">                    
                     <input type="text" class="form-control" id="code" placeholder="请输入短信验证码" style="width:55%;float:left">
