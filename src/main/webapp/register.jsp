@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-xs-12">
             <form class="form-horizontal">
-                <span class="heading">用户注册</span>
+                <!-- <span class="heading">用户注册</span> -->
                 <div class="form-group">
                     <input type="text" class="form-control" id="inputTel" placeholder="请输入手机号">
                     <i class="fa fa-user"></i>

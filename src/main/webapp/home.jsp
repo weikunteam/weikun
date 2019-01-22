@@ -14,6 +14,7 @@
 <script src="${path}js/toastr.min.js"></script>
 <script src="${path}js/bootstrap.js"></script>
 <script src="${path}js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <style>
 .center-vertical{
 
@@ -370,5 +371,69 @@ transform: translateY(50%);
 $('#myCarousel').carousel({
     interval: 3000
 })
+</script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:"${path}share/share.action",
+			type:"post",
+			data:{
+				"url":location.href.split('#')[0]// 获取页面当前链接
+			},
+			dataType:"json",
+			async: false,
+			success: function(data){
+				 wx.config({
+				    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				    appId:data["appid"], // 必填，公众号的唯一标识
+				    timestamp: data["timestamp"], // 必填，生成签名的时间戳
+				    nonceStr: data["nonceStr"], // 必填，生成签名的随机串
+				    signature: data["signature"],// 必填，签名
+				    jsApiList: ["onMenuShareTimeline"
+				                ,"onMenuShareQQ"
+				                ,"onMenuShareAppMessage"] // 必填，需要使用的JS接口列表
+				});
+ 
+			}
+ 
+		});
+ 
+		wx.ready(function () {
+			//分享到朋友
+			wx.onMenuShareAppMessage({
+	    	    title: '中天商务', // 分享标题
+	    	    desc: '测试分享功能', // 分享描述
+	    	    link: location.href.split('#')[0], // 分享链接
+	    	    imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', // 分享图标
+	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
+	    	    success: function () { 
+	    	       /*  toastr.error("分享成功");	 */
+	    	    },
+	    	    cancel: function () { 
+	    	       /*  toastr.error("未分享!");	 */
+	    	    }
+			});
+			//分享到QQ
+			wx.onMenuShareQQ({
+				title: '中天商务', // 分享标题
+				desc: '测试分享功能', // 分享描述
+				link: location.href.split('#')[0], // 分享链接
+				imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', //  分享图标
+				success: function () {
+					// 用户确认分享后执行的回调函数
+				},
+				cancel: function () {
+					// 用户取消分享后执行的回调函数
+				}
+			});
+			
+		});
+		
+		wx.error(function(res){
+            alert('error')
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        }); 
+		
+	});
 </script>
 </html>
