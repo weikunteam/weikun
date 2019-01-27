@@ -6,8 +6,12 @@
 	<!--	说明:获取所有客户数量 -->
 	<select id="getUserCount" resultType="String">
 		select 
-		count(*) from 
-		TB_USER
+		count(*) 
+		from TB_USER
+		<where>
+		userType=1
+            <if test="name!=null">and uPhone like "%"#{name}"%" </if>
+        </where>
 	</select>
 	
 	<!-- 	作者:zekun  -->
@@ -18,8 +22,11 @@
 		uPhone,
 		uPsw
 		from TB_USER  
-		where
-		userId &gt; #{queryInitCount} limit #{limit}
+		<where>
+		userType=1
+            <if test="name!=null">and uPhone like "%"#{name}"%" </if>
+        </where>
+		limit #{queryInitCount}  , #{limit}
 	</select>
 	
 	<resultMap type="com.great.model.UserModel" id="resultListUser">
@@ -31,4 +38,31 @@
 		<result column="uRecommendCode" property="uRecommendCode"/>
 		<result column="uLoginState" property="uLoginState"/>
 	 </resultMap>
+	 <!-- 	作者:zekun  -->
+	<!--	说明: 删除客户信息 -->
+	<delete id="deleteUserInfo"  parameterType="java.lang.Integer">
+	delete 
+	from TB_USER 
+	where userId=#{deleteUserId}
+	</delete>
+	<!-- 	作者:zekun  -->
+	<!--	说明: 添加单笔客户信息 -->
+	<insert id="addUserInfo" parameterType="com.great.model.UserModel">
+	INSERT INTO 
+	TB_USER
+	(uPhone,uPsw,userType) 
+	values 
+	(#{uPhone},#{uPsw},1)
+	</insert>
+	<!-- 	作者:zekun  -->
+	<!--	说明:验证手机号是否存在 -->
+	<select id="verifyUserPhone" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+		userType=1
+            <if test="userPhone!=null">and uPhone like "%"#{userPhone}"%" </if>
+        </where>
+	</select>
 </mapper>
