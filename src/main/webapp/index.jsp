@@ -17,12 +17,14 @@
 <script src="${path}js/bootstrap.min.js"></script>
 </head>
 <body>
-<img src="${path}img/center.jpg" id="topimg" style="width:100%;"></img>
+<div class="form-group">
+<img src="${path}img/top.jpg" id="topimg" style="width:100%;"></img>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
             <form class="form-horizontal">
-                <span class="heading">用户登录</span>
+                <!-- <span class="heading">用户登录</span> -->
                 <div class="form-group">
                     <input type="email" class="form-control" id="inputEmail3" placeholder="请输入手机号">
                     <i class="fa fa-user"></i>
@@ -90,7 +92,11 @@ $("#login").click(function(){
 	    },
 	    success:function(data){
 	          if(data.code == '1'){
-	        	  window.location.href = "${path}home/gotoHome.action";
+	        	  if("${param.isUserCenter}"==1){
+	        		  window.location.href = "${path}userCenter/gotoUserCenter.action";
+	        	  }else{
+	        		  window.location.href = "${path}xinyidaiHandle.jsp"; 
+	        	  }	        	  
 	          }else if(data.code == '2'){
 	        	  toastr.error(data.msg);
 	          }else if(data.code == '3'){

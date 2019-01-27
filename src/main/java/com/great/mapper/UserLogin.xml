@@ -6,8 +6,12 @@
 		select 
 		uPhone,
 		uPsw,
-		salt
-		from TB_USER
+		salt,
+		uRecommendCode,
+		uRecommendAmount,
+		uRegRecommendPeople,
+		(select count(*) from TB_USER where uRecommendAmount = #{tel}) AS studentNum		
+		from TB_USER 
 		where
 		uPhone = #{tel}
 	</select>
@@ -15,4 +19,6 @@
 	<insert id="addUser">
 	insert into TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt) values (#{tel},#{psw},#{date},#{selfCode},#{salt})	
 	</insert>
+	
+	
 </mapper>

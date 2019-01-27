@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.great.util.PasswordUtil;
 import com.great.util.ShareUtil;
@@ -35,5 +38,20 @@ public class ShareController {
         map.put("appid","wxa8ea59e08c089ec5");//≤‚ ‘ ±–¥À¿
         return map;
     }
+	
+	@RequestMapping(value="/gotoShare.action",method= RequestMethod.GET)
+	public ModelAndView login(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("recommend");
+		return mv;
+	}
+	@RequestMapping(value="/recommend.action",method= RequestMethod.GET)
+	public ModelAndView recommend(HttpServletRequest request){
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> map = (Map<String, Object>) request.getSession().getAttribute("user");
+		mv.setViewName("redirect:/share/gotoShare.action?code="+map.get("uRecommendCode"));
+		return mv;
+	}
+	
 
 }

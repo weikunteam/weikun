@@ -25,10 +25,23 @@ top: 50%;
 transform: translateY(50%);
 
 }
+#topImg{
+display:none;
+position:absolute;
+z-index:2;
+width:100%;
+height:100%;
+background:#000;
+filter:alpha(Opacity=80);
+-moz-opacity:0.5;
+opacity: 0.6;
+}
 </style>
 </head>
 <body>
-
+<div id="topImg">
+<img  src="${path}img/share.jpg" style="width:100%;"  ></img>
+</div>
 <div id="myCarousel" class="carousel slide">
 	<!-- 轮播（Carousel）指标 -->
 	<ol class="carousel-indicators">
@@ -37,7 +50,7 @@ transform: translateY(50%);
 		<li data-target="#myCarousel" data-slide-to="2"></li>
 	</ol>   
 	<!-- 轮播（Carousel）项目 -->
-	<div class="carousel-inner" >
+	<div class="carousel-inner" ">
 		<div class="item active" >
 			<img src="${path}img/ac1.jpg" class="img-responsive" alt="First slide" style="width:100%;">
 		</div>
@@ -95,7 +108,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -123,7 +136,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -151,7 +164,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -179,7 +192,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -207,7 +220,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -239,7 +252,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -267,7 +280,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -295,7 +308,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -323,7 +336,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -351,7 +364,7 @@ transform: translateY(50%);
       <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">分享</a>
+      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -408,9 +421,11 @@ $('#myCarousel').carousel({
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
 	    	    success: function () { 
 	    	       /*  toastr.error("分享成功");	 */
+	    	    	$("#topImg").css("display","none");
 	    	    },
 	    	    cancel: function () { 
 	    	       /*  toastr.error("未分享!");	 */
+	    	    	$("#topImg").css("display","none");
 	    	    }
 			});
 			//分享到QQ
@@ -421,19 +436,67 @@ $('#myCarousel').carousel({
 				imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', //  分享图标
 				success: function () {
 					// 用户确认分享后执行的回调函数
+					$("#topImg").css("display","none");
 				},
 				cancel: function () {
 					// 用户取消分享后执行的回调函数
+					$("#topImg").css("display","none");
 				}
+			});
+			wx.onMenuShareTimeline({
+	    	    title: '中天商务', // 分享标题
+	    	    desc: '测试分享功能', // 分享描述
+	    	    link: location.href.split('#')[0], // 分享链接
+	    	    imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', // 分享图标
+	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
+	    	    success: function () { 
+	    	       /*  toastr.error("分享成功");	 */
+	    	    	$("#topImg").css("display","none");
+	    	    },
+	    	    cancel: function () { 
+	    	       /*  toastr.error("未分享!");	 */
+	    	    	$("#topImg").css("display","none");
+	    	    }
 			});
 			
 		});
 		
 		wx.error(function(res){
-            alert('error')
+            /* alert('error') */
             // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
         }); 
 		
+		$(".shareBtn").on("click",function(){
+			$("#topImg").css("display","block");
+		});
+		$("#topImg").on("click",function(){
+			$("#topImg").css("display","none");
+		});
 	});
+	
+
+	$(document).ready(function(){  
+	                var startX,endX;//声明触摸的两个变量  
+	                var offset = 30;//声明触摸距离的变量  
+	                $('.carousel-inner').on('touchstart',function (e) {  
+	                    startX= e.originalEvent.touches[0].clientX;//当触摸开始时的x坐标；  
+	                });  
+	                $('.carousel-inner').on('touchmove',function (e) {  
+	                    endX = e.originalEvent.touches[0].clientX;//当触摸离开时的x坐标；  
+	                });  
+	                $('.carousel-inner').on('touchend',function (e) {  
+	                    //当触摸完成时进行的事件；  
+	                    var distance = Math.abs(startX - endX);//不论正负，取值为正值；  
+	                    if (distance > offset){  
+	                        if(startX > endX){  
+	                            $('#myCarousel').carousel('next');//当开始的坐标大于结束的坐标时，滑动到下一附图  
+	                        }else{  
+	                            $('#myCarousel').carousel('prev');//当开始的坐标小于结束的坐标时，滑动到上一附图  
+	  
+	                        }  
+	                                  
+	                    }  
+	                });   
+	            }); 
 </script>
 </html>

@@ -21,7 +21,9 @@
 
 </head>
 <body>
-<img src="${path}img/center.jpg" id="topimg" style="width:100%;"></img>
+<div class="form-group">
+<img src="${path}img/top.jpg" id="topimg" style="width:100%;"></img>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
@@ -49,7 +51,7 @@
                     </div>                                                                
                 </div>                                                                                                                                                           
                 <div class="form-group">
-                    <input type="text" class="form-control" id="recommend" placeholder="推荐码(选填)" style="width:60%;">
+                    <input type="text" class="form-control" id="recommend" placeholder="推荐码(选填)" style="width:60%;" value="${param.code}">
                    <!--  <i class="fa fa-lock"></i>  -->                   
                 </div>
                 <div class="form-group">

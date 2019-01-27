@@ -49,7 +49,9 @@
                        /*是所有文件夹，不含子文件夹 
                        /是web项目的根目录
                      --> 
-                   <mvc:mapping path="/home/gotoHome.action" /> 
+                   <mvc:mapping path="/home/gotoHome.action" />
+                   <mvc:mapping path="/share/gotoShare.action" /> 
+                   <mvc:mapping path="/userCenter/gotoUserCenter.action" />
                    <!-- 需排除拦截的地址 -->  
                    <mvc:exclude-mapping path="/js"/>
                    <mvc:exclude-mapping path="/css"/>
