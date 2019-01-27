@@ -4,13 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.ParseException;
 import org.springframework.stereotype.Service;
 
 
 import com.great.dao.UserLoginDao;
 import com.great.model.ResponseApi;
+import com.great.util.DateUtil;
+import com.great.util.PasswordUtil;
 import com.great.util.SendCodeUtil;
 @Service
 public class LoginService {
@@ -19,11 +24,13 @@ public class LoginService {
 	@Resource
 	private ResponseApi responseApi;
 	
-	public ResponseApi login(String tel,String pwd) {
+	public ResponseApi login(String tel,String pwd,HttpServletRequest request) {
 		
 			Map<String, Object> map = userLoginDao.getUser(tel);
 			if (map!=null) {
+				pwd = DigestUtils.sha1Hex(pwd+map.get("salt"));
 				if (map.get("uPsw").equals(pwd)) {
+					request.getSession().setAttribute("user",map);
 					responseApi.setResponseApi("1", "µÇÂ¼³É¹¦");
 				}else {
 					responseApi.setResponseApi("2", "ÃÜÂë´íÎó");
@@ -39,8 +46,13 @@ public class LoginService {
 	public ResponseApi register(String tel,String pwd,String code,String recommend) {
 		
 		try {
-			if (SendCodeUtil.checkCode(tel, code)) {				
-				userLoginDao.addUser(tel, pwd);
+			if (SendCodeUtil.checkCode(tel, code)) {
+				
+				String date = DateUtil.getDateTime();
+				String selfCode = Long.toHexString(Long.parseLong(tel));
+				String salt = PasswordUtil.getNextSalt();
+				pwd = DigestUtils.sha1Hex(pwd+salt);
+				userLoginDao.addUser(tel, pwd,date,selfCode,salt);
 					responseApi.setResponseApi("2", "×¢²á³É¹¦");
 				
 			}else {

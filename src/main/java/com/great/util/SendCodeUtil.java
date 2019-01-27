@@ -31,7 +31,7 @@ private static final String APP_SECRET="34777f3bda4a";
 //随机数
 private static final String NONCE="123456";
 //短信模板ID
-private static final String TEMPLATEID="9734174";
+private static final String TEMPLATEID="9584110";
 //手机号
 //private static final String MOBILE="13888888888";
 //验证码长度，范围4～10，默认为4

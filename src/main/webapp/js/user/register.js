@@ -1,6 +1,7 @@
 $("#register").click(function(){
 	var tel = $("#inputTel").val();
 	var pwd = $("#inputPassword3").val();
+	var confirmPwd = $("#inputPassword4").val();
 	var code = $("#code").val();
 	var recommend = $("#recommend").val();
 	var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
@@ -15,6 +16,10 @@ $("#register").click(function(){
 	}
 	if(!pwd ){
 		toastr.error("请输入密码");	
+		return false;
+	}
+	if(pwd != confirmPwd ){
+		toastr.error("两次密码输入不一致");	
 		return false;
 	}
 	if(!pswReg.test(pwd)){

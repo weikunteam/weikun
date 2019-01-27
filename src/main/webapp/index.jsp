@@ -90,7 +90,7 @@ $("#login").click(function(){
 	    },
 	    success:function(data){
 	          if(data.code == '1'){
-	        	  toastr.success(data.msg);
+	        	  window.location.href = "${path}home/gotoHome.action";
 	          }else if(data.code == '2'){
 	        	  toastr.error(data.msg);
 	          }else if(data.code == '3'){

@@ -2,18 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.UserLoginDao">
-	<!-- 炜炜 -->
-	<!-- 查询雇主信息 -->
 	<select id="getUser" resultType="map">
 		select 
 		uPhone,
-		uPsw
+		uPsw,
+		salt
 		from TB_USER
 		where
 		uPhone = #{tel}
 	</select>
 	
 	<insert id="addUser">
-	insert into TB_USER (uPhone,uPsw) values (#{tel},#{psw})	
+	insert into TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt) values (#{tel},#{psw},#{date},#{selfCode},#{salt})	
 	</insert>
 </mapper>
