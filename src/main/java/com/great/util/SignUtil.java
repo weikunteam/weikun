@@ -8,7 +8,7 @@ import java.util.Formatter;
 public class SignUtil {
 
 	 /**
-     * »ñµÃ·ÖÏíÁ´½ÓµÄÇ©Ãû¡£
+     * è·å¾—åˆ†äº«é“¾æ¥çš„ç­¾åã€‚
      * @param ticket
      * @param nonceStr
      * @param timeStamp
@@ -29,7 +29,7 @@ public class SignUtil {
  
  
  /**
-     * ÑéÖ¤Ç©Ãû¡£
+     * éªŒè¯ç­¾åã€‚
      * 
      * @param signature
      * @param timestamp
@@ -45,7 +45,7 @@ public class SignUtil {
     }
  
  /** 
-     * ½«×Ö½ÚÊı×é×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´® 
+     * å°†å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸² 
      *  
      * @param byteArray 
      * @return 
@@ -58,7 +58,7 @@ public class SignUtil {
         return strDigest;  
     }  
   /** 
-     * ½«×Ö½Ú×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´® 
+     * å°†å­—èŠ‚è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸² 
      *  
      * @param mByte 
      * @return 
@@ -89,7 +89,7 @@ public class SignUtil {
             byte messageDigest[] = digest.digest();  
             // Create Hex String  
             StringBuffer hexString = new StringBuffer();  
-            // ×Ö½ÚÊı×é×ª»»Îª Ê®Áù½øÖÆ Êı  
+            // å­—èŠ‚æ•°ç»„è½¬æ¢ä¸º åå…­è¿›åˆ¶ æ•°  
                 for (int i = 0; i < messageDigest.length; i++) {  
                     String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);  
                     if (shaHex.length() < 2) {  

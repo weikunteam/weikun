@@ -23,18 +23,18 @@ import com.alibaba.fastjson.JSON;
 public class SendCodeUtil {
 	private static final String
     SERVER_URL="https://api.netease.im/sms/sendcode.action";
-//ÍøÒ×ÔÆĞÅ·ÖÅäµÄÕËºÅ£¬ÇëÌæ»»ÄãÔÚ¹ÜÀíºóÌ¨Ó¦ÓÃÏÂÉêÇëµÄAppkey
+//ç½‘æ˜“äº‘ä¿¡åˆ†é…çš„è´¦å·ï¼Œè¯·æ›¿æ¢ä½ åœ¨ç®¡ç†åå°åº”ç”¨ä¸‹ç”³è¯·çš„Appkey
 private static final String
     APP_KEY="1b9aba576e75b28cc30d4a4d1dccc689";
-//ÍøÒ×ÔÆĞÅ·ÖÅäµÄÃÜÔ¿£¬ÇëÌæ»»ÄãÔÚ¹ÜÀíºóÌ¨Ó¦ÓÃÏÂÉêÇëµÄappSecret
+//ç½‘æ˜“äº‘ä¿¡åˆ†é…çš„å¯†é’¥ï¼Œè¯·æ›¿æ¢ä½ åœ¨ç®¡ç†åå°åº”ç”¨ä¸‹ç”³è¯·çš„appSecret
 private static final String APP_SECRET="34777f3bda4a";
-//Ëæ»úÊı
+//éšæœºæ•°
 private static final String NONCE="123456";
-//¶ÌĞÅÄ£°åID
+//çŸ­ä¿¡æ¨¡æ¿ID
 private static final String TEMPLATEID="9584110";
-//ÊÖ»úºÅ
+//æ‰‹æœºå·
 //private static final String MOBILE="13888888888";
-//ÑéÖ¤Âë³¤¶È£¬·¶Î§4¡«10£¬Ä¬ÈÏÎª4
+//éªŒè¯ç é•¿åº¦ï¼ŒèŒƒå›´4ï½10ï¼Œé»˜è®¤ä¸º4
 private static final String CODELEN="6";
 private static final char[] HEXES = {
         '0', '1', '2', '3',
@@ -52,23 +52,23 @@ String curTime = String.valueOf((new Date()).getTime() / 1000L);
 //String NONCE = StringUtils.leftPad(random.nextInt(1000000)+"", 6);
 
 /*
- * ²Î¿¼¼ÆËãCheckSumµÄjava´úÂë£¬ÔÚÉÏÊöÎÄµµµÄ²ÎÊıÁĞ±íÖĞ£¬ÓĞCheckSumµÄ¼ÆËãÎÄµµÊ¾Àı
+ * å‚è€ƒè®¡ç®—CheckSumçš„javaä»£ç ï¼Œåœ¨ä¸Šè¿°æ–‡æ¡£çš„å‚æ•°åˆ—è¡¨ä¸­ï¼Œæœ‰CheckSumçš„è®¡ç®—æ–‡æ¡£ç¤ºä¾‹
  */
 String checkSum = getCheckSum(APP_SECRET, NONCE, curTime);
 
-// ÉèÖÃÇëÇóµÄheader
+// è®¾ç½®è¯·æ±‚çš„header
 httpPost.addHeader("AppKey", APP_KEY);
 httpPost.addHeader("Nonce", NONCE);
 httpPost.addHeader("CurTime", curTime);
 httpPost.addHeader("CheckSum", checkSum);
 httpPost.addHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 
-// ÉèÖÃÇëÇóµÄµÄ²ÎÊı£¬requestBody²ÎÊı
+// è®¾ç½®è¯·æ±‚çš„çš„å‚æ•°ï¼ŒrequestBodyå‚æ•°
 List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 /*
- * 1.Èç¹ûÊÇÄ£°å¶ÌĞÅ£¬Çë×¢Òâ²ÎÊımobileÊÇÓĞsµÄ£¬ÏêÏ¸²ÎÊıÅäÖÃÇë²Î¿¼¡°·¢ËÍÄ£°å¶ÌĞÅÎÄµµ¡±
- * 2.²ÎÊı¸ñÊ½ÊÇjsonArrayµÄ¸ñÊ½£¬ÀıÈç "['13888888888','13666666666']"
- * 3.paramsÊÇ¸ù¾İÄãÄ£°åÀïÃæÓĞ¼¸¸ö²ÎÊı£¬ÄÇÀïÃæµÄ²ÎÊıÒ²ÊÇjsonArray¸ñÊ½
+ * 1.å¦‚æœæ˜¯æ¨¡æ¿çŸ­ä¿¡ï¼Œè¯·æ³¨æ„å‚æ•°mobileæ˜¯æœ‰sçš„ï¼Œè¯¦ç»†å‚æ•°é…ç½®è¯·å‚è€ƒâ€œå‘é€æ¨¡æ¿çŸ­ä¿¡æ–‡æ¡£â€
+ * 2.å‚æ•°æ ¼å¼æ˜¯jsonArrayçš„æ ¼å¼ï¼Œä¾‹å¦‚ "['13888888888','13666666666']"
+ * 3.paramsæ˜¯æ ¹æ®ä½ æ¨¡æ¿é‡Œé¢æœ‰å‡ ä¸ªå‚æ•°ï¼Œé‚£é‡Œé¢çš„å‚æ•°ä¹Ÿæ˜¯jsonArrayæ ¼å¼
  */
 nvps.add(new BasicNameValuePair("templateid", TEMPLATEID));
 nvps.add(new BasicNameValuePair("mobile", mobile));
@@ -76,11 +76,11 @@ nvps.add(new BasicNameValuePair("codeLen", CODELEN));
 
 httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
 
-// Ö´ĞĞÇëÇó
+// æ‰§è¡Œè¯·æ±‚
 HttpResponse response = httpClient.execute(httpPost);
 /*
- * 1.´òÓ¡Ö´ĞĞ½á¹û£¬´òÓ¡½á¹ûÒ»°ã»á200¡¢315¡¢403¡¢404¡¢413¡¢414¡¢500
- * 2.¾ßÌåµÄcodeÓĞÎÊÌâµÄ¿ÉÒÔ²Î¿¼¹ÙÍøµÄCode×´Ì¬±í
+ * 1.æ‰“å°æ‰§è¡Œç»“æœï¼Œæ‰“å°ç»“æœä¸€èˆ¬ä¼š200ã€315ã€403ã€404ã€413ã€414ã€500
+ * 2.å…·ä½“çš„codeæœ‰é—®é¢˜çš„å¯ä»¥å‚è€ƒå®˜ç½‘çš„CodeçŠ¶æ€è¡¨
  */
 String jsonResult = EntityUtils.toString(response.getEntity(), "utf-8");
 System.out.println(jsonResult);
@@ -125,23 +125,23 @@ public static boolean checkCode(String mobile,String code) throws ParseException
 //	String NONCE = StringUtils.leftPad(random.nextInt(1000000)+"", 6);
 
 	/*
-	 * ²Î¿¼¼ÆËãCheckSumµÄjava´úÂë£¬ÔÚÉÏÊöÎÄµµµÄ²ÎÊıÁĞ±íÖĞ£¬ÓĞCheckSumµÄ¼ÆËãÎÄµµÊ¾Àı
+	 * å‚è€ƒè®¡ç®—CheckSumçš„javaä»£ç ï¼Œåœ¨ä¸Šè¿°æ–‡æ¡£çš„å‚æ•°åˆ—è¡¨ä¸­ï¼Œæœ‰CheckSumçš„è®¡ç®—æ–‡æ¡£ç¤ºä¾‹
 	 */
 	String checkSum = getCheckSum(APP_SECRET, NONCE, curTime);
 
-	// ÉèÖÃÇëÇóµÄheader
+	// è®¾ç½®è¯·æ±‚çš„header
 	httpPost.addHeader("AppKey", APP_KEY);
 	httpPost.addHeader("Nonce", NONCE);
 	httpPost.addHeader("CurTime", curTime);
 	httpPost.addHeader("CheckSum", checkSum);
 	httpPost.addHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 
-	// ÉèÖÃÇëÇóµÄµÄ²ÎÊı£¬requestBody²ÎÊı
+	// è®¾ç½®è¯·æ±‚çš„çš„å‚æ•°ï¼ŒrequestBodyå‚æ•°
 	List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 	/*
-	 * 1.Èç¹ûÊÇÄ£°å¶ÌĞÅ£¬Çë×¢Òâ²ÎÊımobileÊÇÓĞsµÄ£¬ÏêÏ¸²ÎÊıÅäÖÃÇë²Î¿¼¡°·¢ËÍÄ£°å¶ÌĞÅÎÄµµ¡±
-	 * 2.²ÎÊı¸ñÊ½ÊÇjsonArrayµÄ¸ñÊ½£¬ÀıÈç "['13888888888','13666666666']"
-	 * 3.paramsÊÇ¸ù¾İÄãÄ£°åÀïÃæÓĞ¼¸¸ö²ÎÊı£¬ÄÇÀïÃæµÄ²ÎÊıÒ²ÊÇjsonArray¸ñÊ½
+	 * 1.å¦‚æœæ˜¯æ¨¡æ¿çŸ­ä¿¡ï¼Œè¯·æ³¨æ„å‚æ•°mobileæ˜¯æœ‰sçš„ï¼Œè¯¦ç»†å‚æ•°é…ç½®è¯·å‚è€ƒâ€œå‘é€æ¨¡æ¿çŸ­ä¿¡æ–‡æ¡£â€
+	 * 2.å‚æ•°æ ¼å¼æ˜¯jsonArrayçš„æ ¼å¼ï¼Œä¾‹å¦‚ "['13888888888','13666666666']"
+	 * 3.paramsæ˜¯æ ¹æ®ä½ æ¨¡æ¿é‡Œé¢æœ‰å‡ ä¸ªå‚æ•°ï¼Œé‚£é‡Œé¢çš„å‚æ•°ä¹Ÿæ˜¯jsonArrayæ ¼å¼
 	 */
 //	nvps.add(new BasicNameValuePair("templateid", TEMPLATEID));
 	nvps.add(new BasicNameValuePair("mobile", mobile));
@@ -149,11 +149,11 @@ public static boolean checkCode(String mobile,String code) throws ParseException
 
 	httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
 
-	// Ö´ĞĞÇëÇó
+	// æ‰§è¡Œè¯·æ±‚
 	HttpResponse response = httpClient.execute(httpPost);
 	/*
-	 * 1.´òÓ¡Ö´ĞĞ½á¹û£¬´òÓ¡½á¹ûÒ»°ã»á200¡¢315¡¢403¡¢404¡¢413¡¢414¡¢500
-	 * 2.¾ßÌåµÄcodeÓĞÎÊÌâµÄ¿ÉÒÔ²Î¿¼¹ÙÍøµÄCode×´Ì¬±í
+	 * 1.æ‰“å°æ‰§è¡Œç»“æœï¼Œæ‰“å°ç»“æœä¸€èˆ¬ä¼š200ã€315ã€403ã€404ã€413ã€414ã€500
+	 * 2.å…·ä½“çš„codeæœ‰é—®é¢˜çš„å¯ä»¥å‚è€ƒå®˜ç½‘çš„CodeçŠ¶æ€è¡¨
 	 */
 	String jsonResult = EntityUtils.toString(response.getEntity(), "utf-8");
 	String resultCode= JSON.parseObject(jsonResult).getString("code");

@@ -31,12 +31,12 @@ public class LoginService {
 				pwd = DigestUtils.sha1Hex(pwd+map.get("salt"));
 				if (map.get("uPsw").equals(pwd)) {
 					request.getSession().setAttribute("user",map);
-					responseApi.setResponseApi("1", "登录成功");
+					responseApi.setResponseApi("1", "鐧诲綍鎴愬姛");
 				}else {
-					responseApi.setResponseApi("2", "密码错误");
+					responseApi.setResponseApi("2", "瀵嗙爜閿欒");
 				}			
 			}else {
-				responseApi.setResponseApi("3", "手机号未注册");
+				responseApi.setResponseApi("3", "鎵嬫満鍙锋湭娉ㄥ唽");
 			}
 		
 				
@@ -53,10 +53,10 @@ public class LoginService {
 				String salt = PasswordUtil.getNextSalt();
 				pwd = DigestUtils.sha1Hex(pwd+salt);
 				userLoginDao.addUser(tel, pwd,date,selfCode,salt);
-					responseApi.setResponseApi("2", "注册成功");
+					responseApi.setResponseApi("2", "娉ㄥ唽鎴愬姛");
 				
 			}else {
-				responseApi.setResponseApi("3", "验证码不正确");
+				responseApi.setResponseApi("3", "楠岃瘉鐮佷笉姝ｇ‘");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -77,7 +77,7 @@ public class LoginService {
 	}
 	public boolean checkRepeat(String tel){
 		Map<String, Object> map = userLoginDao.getUser(tel);
-		if (map!=null) {//号码已被注册
+		if (map!=null) {//鍙风爜宸茶娉ㄥ唽
 			return true;
 		}
 		return false;

@@ -24,18 +24,18 @@ public class ShareController {
     public Map<String, String> share(String url) throws Exception {
         Map<String, String> map = new HashMap<String, String>();
         String jsapi_ticket = ShareUtil.getJsapi();//jsapi_ticket
-        String timestamp = Long.toString(System.currentTimeMillis() / 1000);//Ê±¼ä´Á
+        String timestamp = Long.toString(System.currentTimeMillis() / 1000);//æ—¶é—´æˆ³
         String nonceStr = PasswordUtil.getNextSalt();
         String signature = SignUtil.getSignature(
             jsapi_ticket, nonceStr, timestamp,
-            url);//ÑéÖ¤Ç©Ãû
-        System.out.println("Éú³ÉµÄÇ©Ãû"+signature);
+            url);//éªŒè¯ç­¾å
+        System.out.println("ç”Ÿæˆçš„ç­¾å"+signature);
         map.put("url", url);
         map.put("jsapi_ticket", jsapi_ticket);
         map.put("nonceStr", nonceStr);
         map.put("timestamp", timestamp);
         map.put("signature", signature);
-        map.put("appid","wxa8ea59e08c089ec5");//²âÊÔÊ±Ğ´ËÀ
+        map.put("appid","wxa8ea59e08c089ec5");//æµ‹è¯•æ—¶å†™æ­»
         return map;
     }
 	

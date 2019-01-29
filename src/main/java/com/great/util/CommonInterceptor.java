@@ -8,16 +8,16 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class CommonInterceptor extends HandlerInterceptorAdapter{
 
 	/** 
-     * ÔÚÒµÎñ´¦ÀíÆ÷´¦ÀíÇëÇóÖ®Ç°±»µ÷ÓÃ 
-     * Èç¹û·µ»Øfalse 
-     *     ´Óµ±Ç°µÄÀ¹½ØÆ÷Íù»ØÖ´ĞĞËùÓĞÀ¹½ØÆ÷µÄafterCompletion(),ÔÙÍË³öÀ¹½ØÆ÷Á´
+     * åœ¨ä¸šåŠ¡å¤„ç†å™¨å¤„ç†è¯·æ±‚ä¹‹å‰è¢«è°ƒç”¨ 
+     * å¦‚æœè¿”å›false 
+     *     ä»å½“å‰çš„æ‹¦æˆªå™¨å¾€å›æ‰§è¡Œæ‰€æœ‰æ‹¦æˆªå™¨çš„afterCompletion(),å†é€€å‡ºæ‹¦æˆªå™¨é“¾
      *     
-     * Èç¹û·µ»Øtrue 
-     *    Ö´ĞĞÏÂÒ»¸öÀ¹½ØÆ÷,Ö±µ½ËùÓĞµÄÀ¹½ØÆ÷¶¼Ö´ĞĞÍê±Ï 
-     *    ÔÙÖ´ĞĞ±»À¹½ØµÄController 
-     *    È»ºó½øÈëÀ¹½ØÆ÷Á´, 
-     *    ´Ó×îºóÒ»¸öÀ¹½ØÆ÷Íù»ØÖ´ĞĞËùÓĞµÄpostHandle() 
-     *    ½Ó×ÅÔÙ´Ó×îºóÒ»¸öÀ¹½ØÆ÷Íù»ØÖ´ĞĞËùÓĞµÄafterCompletion() 
+     * å¦‚æœè¿”å›true 
+     *    æ‰§è¡Œä¸‹ä¸€ä¸ªæ‹¦æˆªå™¨,ç›´åˆ°æ‰€æœ‰çš„æ‹¦æˆªå™¨éƒ½æ‰§è¡Œå®Œæ¯• 
+     *    å†æ‰§è¡Œè¢«æ‹¦æˆªçš„Controller 
+     *    ç„¶åè¿›å…¥æ‹¦æˆªå™¨é“¾, 
+     *    ä»æœ€åä¸€ä¸ªæ‹¦æˆªå™¨å¾€å›æ‰§è¡Œæ‰€æœ‰çš„postHandle() 
+     *    æ¥ç€å†ä»æœ€åä¸€ä¸ªæ‹¦æˆªå™¨å¾€å›æ‰§è¡Œæ‰€æœ‰çš„afterCompletion() 
      */  
     @Override  
     public boolean preHandle(HttpServletRequest request,  

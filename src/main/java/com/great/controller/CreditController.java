@@ -30,7 +30,7 @@ public class CreditController {
     	creditService.insertXyd(name, age, sex, houseRadio, houseMonth, warrantyRadio,
     			warrantyMonth, warrantyCount, monthYear, monthNum, loanAmount,
     			 user.get("userId").toString());
-        return new ResponseApi("1", "ÉêÇë³É¹¦");
+        return new ResponseApi("1", "ç”³è¯·æˆåŠŸ");
 
     }
 

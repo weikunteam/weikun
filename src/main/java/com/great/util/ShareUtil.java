@@ -20,16 +20,16 @@ public class ShareUtil {
 			resultStr = EntityUtils.toString(response.getEntity(), "utf-8");
 //			resultStr=HttpUploadFile.getUrlCon(tokenurl);
 			JSONObject objec=JSONObject.parseObject(resultStr);
-			System.out.println("返回结果>>>>>>>>>:"+resultStr);
+			System.out.println("杩斿洖缁撴灉>>>>>>>>>:"+resultStr);
 			if(!StringUtils.isEmpty(objec.getString("access_token"))){
 				resultStr=objec.getString("access_token");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("获取token异常");
+			System.out.println("鑾峰彇token寮傚父");
 		}
-		System.out.println("获取token值为>>>>>>>>:"+resultStr);
+		System.out.println("鑾峰彇token鍊间负>>>>>>>>:"+resultStr);
 		return resultStr;
 	}
 	
@@ -44,14 +44,14 @@ try {
 			HttpResponse response = httpClient.execute(httpPost);
 			resultStr = EntityUtils.toString(response.getEntity(), "utf-8");
 			JSONObject objec=JSONObject.parseObject(resultStr);
-			System.out.println("返回结果>>>>>>>>>:"+resultStr);
+			System.out.println("杩斿洖缁撴灉>>>>>>>>>:"+resultStr);
 			if(objec!=null){
 				resultStr=objec.getString("ticket");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("获取ticket异常");
+			System.out.println("鑾峰彇ticket寮傚父");
 		}
 			return resultStr;
 	}

@@ -57,9 +57,9 @@ private ResponseApi responseApi;
 	@ResponseBody
 	public ResponseApi checkRepea(String tel){
 		if (loginService.checkRepeat(tel)) {
-			responseApi.setResponseApi("2", "ÊÖ»úºÅÒÑ×¢²á");
+			responseApi.setResponseApi("2", "æ‰‹æœºå·å·²æ³¨å†Œ");
 		}else{
-			responseApi.setResponseApi("1", "ÊÖ»úºÅÎ´×¢²á");
+			responseApi.setResponseApi("1", "æ‰‹æœºå·æœªæ³¨å†Œ");
 		}
 		return responseApi;
 	}
