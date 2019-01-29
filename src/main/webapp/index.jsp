@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <!--BootStrap设计的页面支持响应式的 -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!-- <meta name="viewpoint" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 <title>用户登录</title>
 <link rel='stylesheet' href='${path}css/bootstrap.min.css'> 
 <link rel='stylesheet' href='${path}css/login1.css'>
@@ -108,6 +110,19 @@ $("#login").click(function(){
 $("#register").click(function(){
 	 window.location.href = "${path}login/register.action";
 })
+
+$("input,textarea").on("blur",function(){
+    setTimeout(function(){
+        window.scrollTo(0,0);
+    },100)
+}).on('focus',function(){
+    var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    var offsetTop = $(this).offset().top - (clientHeight / 4);
+    setTimeout(function(){
+        window.scrollTo(0,offsetTop);
+    },100)
+})
+
 
 </script>
 </html>
