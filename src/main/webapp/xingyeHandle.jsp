@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <!--BootStrap设计的页面支持响应式的 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>平安新一贷</title>
+<title>兴业消费金融</title>
 <link rel='stylesheet' href='${path}css/bootstrap.min.css'>
 <link rel='stylesheet' href='${path}css/bootstrap-select.css'>  
 <link rel='stylesheet' href='${path}css/form.css'>
@@ -20,8 +20,6 @@
 <script src="${path}js/bootstrap.min.js"></script>
 <script src="${path}js/bootstrap-select.js"></script>
 <script src="${path}js/defaults-zh_CN.min.js"></script>
-<%-- <script src="${path}js/plugins/validate/jquery.validate.min.js"></script>
-<script src="${path}js/plugins/validate/messages_zh.min.js"></script> --%>
 <style type="text/css">
 body{
 background-color:white;
@@ -30,7 +28,7 @@ background-color:white;
 </head>
 <body>
 <div class="container">
-		<h3 class="page-header">平安新一贷<small>产品优势</small></h3>
+		<h3 class="page-header">兴业消费金融<small>产品优势</small></h3>
 		<p><!-- <abbr title="前端CSS框架" class="initialism">BootstrapWeb</abbr>  -->
 		额度高：最高可贷50万<br>
 		利息低：6厘到8厘6<br>
@@ -48,7 +46,7 @@ background-color:white;
                 <div class="form-group">
         		<label  class="col-xs-4 control-label text-center"><font color="#27408B">名字：</font></label>
         		<div class="col-xs-8">
-            	<input type="text" class="form-control" id="name" placeholder="请输入名字">
+            	<input type="text" class="form-control" id="firstname" placeholder="请输入名字">
         		</div>
     			</div>
                 <div class="form-group">
@@ -60,12 +58,12 @@ background-color:white;
     			<div class="form-group">
     			<label  class="col-xs-4 control-label text-center"><font color="#27408B">性别：</font></label>
                 <div class="radio-inline col-xs-3 radio radio-info" >
-				  <input type="radio"  name="sex" value="1" checked />
-				  <label >男</label>
+				  <input type="radio"  name="sex" value="1" checked class=""/>
+				  <label for="sex1">男</label>
 				</div>
 				<div class="radio-inline col-xs-3 radio radio-info text-left">
-				  <input type="radio"  name="sex" value="0" />
-				  <label >女</label>
+				  <input type="radio"  name="sex" value="0" class=""/>
+				  <label for="sex2">女</label>
 				</div>
 				</div>
 				<div class="form-group">
@@ -74,65 +72,39 @@ background-color:white;
                 	<select class="selectpicker " multiple title="请选择" style="text-align:center;" id="property" >
     				<option value="1" >房贷</option>
     				<option value="2" >保单</option>
-    				<option value="3" >公积金</option>                           
+    				<option value="3" >公积金</option>
+    				<option value="4" >社保</option>                           
 					</select>
                 	</div>                  
                 </div>
                 <div class="form-group" style="display:none;" id="house">
-        			<label  class="control-label col-xs-12 text-left" ><font color="red">房贷情况：</font></label>
-        			<div class="form-group">
-        			<div class="radio-inline col-xs-6 radio radio-info" >
-				  	<input type="radio"  name="houseRadio" value="1" checked class=""/>
-				  	<label class="control-label">抵押</label>
-					</div>
-					<div class="radio-inline col-xs-4 radio radio-info">
-				  	<input type="radio"  name="houseRadio" value="0" class=""/>
-				  	<label class="control-label">贷款</label>
-					</div>					
-					<div class="col-xs-6" style="margin-top:5px;"><font color="">已满月数：</font></div>					
-        			<div class="col-xs-5">       			
-            		<input type="text" class="form-control" id="houseMonth" placeholder="单位（月）">
-            		</div>        			
+        			<label  class="col-xs-4 control-label text-center"><font color="#27408B">按揭月数：</font></label>
+        			<div class="col-xs-6">
+            		<input type="text" class="form-control" id="age" placeholder="房贷已按揭月数">
         			</div>
     			</div>
     			<div class="form-group" style="display:none;" id="warranty">
-        			<label  class="control-label col-xs-12 text-left"><font color="red">保单情况：</font></label>
-        			<div class="form-group">
-        			<div class="radio-inline col-xs-6 radio radio-info" >
-				  	<input type="radio"  name="warrantyRadio" value="1" checked class=""/>
-				  	<label >平安</label>
-					</div>
-					<div class="radio-inline col-xs-4 radio radio-info">
-				  	<input type="radio"  name="warrantyRadio" value="0" class=""/>
-				  	<label >非平安</label>
-					</div>					
-					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴月数：</font></div>					
-        			<div class="col-xs-5">       			
-            		<input type="text" class="form-control" id="warrantyMonth" placeholder="单位（月）">
-            		</div>
-            		<div class="col-xs-6" style="margin-top:10px;"><font color="">已缴次数：</font></div>					
-        			<div class="col-xs-5" style="margin-top:5px;">       			
-            		<input type="text" class="form-control" id="warrantyCount" placeholder="单位（次）">
-            		</div>         			
+        			<label  class="col-xs-4 control-label text-center"><font color="#27408B">已缴次数：</font></label>
+        			<div class="col-xs-6">
+            		<input type="text" class="form-control" id="age" placeholder="保单已缴次数">
         			</div>
     			</div>
     			<div class="form-group" style="display:none;" id="money">
-        			<label  class="control-label col-xs-12 text-left"><font color="red">公积金情况：</font></label>
-        			<div class="form-group">					
-					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴年数：</font></div>					
-        			<div class="col-xs-5">       			
-            		<input type="text" class="form-control" id="monthYear" placeholder="单位（年）">
-            		</div>
-            		<div class="col-xs-6" style="margin-top:10px;"><font color="">月缴金额：</font></div>					
-        			<div class="col-xs-5" style="margin-top:5px;">       			
-            		<input type="text" class="form-control" id="monthNum" placeholder="单位（元）">
-            		</div>         			
+        			<label  class="col-xs-4 control-label text-center"><font color="#27408B">已缴年数：</font></label>
+        			<div class="col-xs-6">
+            		<input type="text" class="form-control" id="age" placeholder="公积金已缴年数">
+        			</div>
+    			</div>
+    			<div class="form-group" style="display:none;" id="socialSecurity">
+        			<label  class="col-xs-4 control-label text-center"><font color="#27408B">已缴年数：</font></label>
+        			<div class="col-xs-6">
+            		<input type="text" class="form-control" id="age" placeholder="公积金已缴年数">
         			</div>
     			</div>
     			<div class="form-group">
         		<label  class="col-xs-4 control-label text-center"><font color="#27408B">预贷金额：</font></label>
         		<div class="col-xs-8">
-            	<input type="text" class="form-control" id="loanAmount" placeholder="请输入预贷金额(元)">
+            	<input type="text" class="form-control" id="getMoney" placeholder="请输入预贷金额(元)">
         		</div>
     			</div>
                  <div class="form-group">
@@ -142,7 +114,7 @@ background-color:white;
                     </div> -->
                     <!-- <span class="text">Remember me</span> -->
                    
-                    <button type="button" class="btn btn-info" id="submit">提交</button>
+                    <button type="button" class="btn btn-info" id="login">提交</button>
                     
                 </div> 
             </form>
@@ -167,50 +139,38 @@ toastr.options = {
 		"showMethod": "fadeIn",//显示时的动画方式
 		"hideMethod": "fadeOut" //消失时的动画方式
 		};
-		
-		
-$("#submit").click(function(){
-	var name = $("#name").val();
-	var age = $("#age").val();
-	var sex = $("input[name='sex']:checked").val();
-	var houseRadio = $("input[name='houseRadio']:checked").val();
-	var houseMonth = $("#houseMonth").val();
-	var warrantyRadio = $("input[name='warrantyRadio']:checked").val();
-	var warrantyMonth = $("#warrantyMonth").val();
-	var warrantyCount = $("#warrantyCount").val();
-	var monthYear = $("#monthYear").val();
-	var monthNum = $("#monthNum").val();
-	var loanAmount = $("#loanAmount").val();
-	if(!name){
-		toastr.error("请输入名字");	
+$("#login").click(function(){
+	var tel = $("#inputEmail3").val();
+	var pwd = $("#inputPassword3").val();	
+	var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+	if(!tel){
+		toastr.error("请输入手机号");	
+		return false;
 	}
-	if(!age){
-		toastr.error("请输入年龄");	
+	if(!reg.test(tel)){
+		toastr.error("请输入正确手机号");	
+		return false;
 	}
-	if(!sex){
-		toastr.error("请选择性别");	
+	if(!pwd ){
+		toastr.error("请输入密码");	
+		return false;
 	}
 	
 	$.ajax({
 	    type:"post",
-	    url:"${path}credit/xinyidaiHandle.action",
+	    url:"${path}login/login.action",
 	    dataType: 'json',
 	    data :{
-	    	name:name,
-	    	age:age,
-	    	sex:sex,
-	    	houseRadio:houseRadio,
-	    	houseMonth:houseMonth,
-	    	warrantyRadio:warrantyRadio,
-	    	warrantyMonth:warrantyMonth,
-	    	warrantyCount:warrantyCount,
-	    	monthYear:monthYear,
-	    	monthNum:monthNum,
-			loanAmount:loanAmount
+	    	tel:tel,
+	    	pwd:pwd
 	    },
 	    success:function(data){
-	          if(data.code == '1'){	        	 
-	        		  window.location.href = "${path}home/gotoHome.action"; 	        	         	  
+	          if(data.code == '1'){
+	        	  if("${param.isUserCenter}"==1){
+	        		  window.location.href = "${path}userCenter/gotoUserCenter.action";
+	        	  }else{
+	        		  window.location.href = "${path}home/gotoHome.action"; 
+	        	  }	        	  
 	          }else if(data.code == '2'){
 	        	  toastr.error(data.msg);
 	          }else if(data.code == '3'){
@@ -219,12 +179,16 @@ $("#submit").click(function(){
 	      }
 	});
 	});
+$("#register").click(function(){
+	 window.location.href = "${path}login/register.action";
+})
 /* $('.selectpicker').selectpicker('mobile'); */
 $('.selectpicker').on('changed.bs.select',function(e){
 	var value = $('#property').val();
 	$('#house').css('display','none');
 	$('#warranty').css('display','none');
 	$('#money').css('display','none');
+	$('#socialSecurity').css('display','none');
 	 for(var i=0;i<value.length;i++){
 		if(value[i]=='1'){
 			$('#house').css('display','block');
@@ -232,6 +196,8 @@ $('.selectpicker').on('changed.bs.select',function(e){
 			$('#warranty').css('display','block');
 		}else if(value[i]=='3'){
 			$('#money').css('display','block');
+		}else if(value[i]=='4'){
+			$('#socialSecurity').css('display','block');
 		}
 	} 
 });

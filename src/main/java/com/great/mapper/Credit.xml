@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.CreditDao">
+
+    <insert id="insertXyd">
+        insert into TB_BUS_PAXYD
+        (userId,
+         loanAmount,
+         checkState,
+         applyDate,
+         <if test="housingLoanType !=null and housingLoanType !=''">
+         housingLoanType,
+         </if>
+         <if test="housingLoanTerm!=null and housingLoanTerm !=''">
+         housingLoanTerm,
+         </if>                 
+         <if test="warrantyType !=null and warrantyType !=''">
+         warrantyType,
+         </if> 
+         <if test="warrantyTerm !=null and warrantyTerm !=''">
+         warrantyTerm,
+         </if>         
+         <if test="warrantyCount !=null and warrantyCount !=''">
+         warrantyCount,
+         </if>
+         <if test="accumulationFundTerm !=null and accumulationFundTerm !=''">
+         accumulationFundTerm,
+         </if>
+         <if test="accumulationFundAmount !=null and accumulationFundAmount !=''">
+         accumulationFundAmount
+         </if>
+         )
+        values (#{userId},
+                #{loanAmount},
+                #{checkState},
+                #{applyDate},
+                <if test="housingLoanType !=null and housingLoanType !=''">
+         		#{housingLoanType},
+         		</if> 
+         		<if test="housingLoanTerm !=null and housingLoanTerm !=''">
+         		#{housingLoanTerm},
+         		</if>                 
+                <if test="warrantyType !=null and warrantyType !=''">
+         		#{warrantyType},
+        		</if> 
+        		<if test="warrantyTerm !=null and warrantyTerm !=''">
+         		#{warrantyTerm},
+        		</if>                
+                <if test="warrantyCount !=null and warrantyCount !=''">
+         		#{warrantyCount},
+        		</if>
+                <if test="accumulationFundTerm !=null and accumulationFundTerm !=''">
+         		#{accumulationFundTerm},
+        		</if>
+                <if test="accumulationFundAmount !=null and accumulationFundAmount !=''">
+         		#{accumulationFundAmount}
+        		</if>               
+                )
+    </insert>
+
+
+
+</mapper>

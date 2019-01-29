@@ -95,7 +95,7 @@ $("#login").click(function(){
 	        	  if("${param.isUserCenter}"==1){
 	        		  window.location.href = "${path}userCenter/gotoUserCenter.action";
 	        	  }else{
-	        		  window.location.href = "${path}xinyidaiHandle.jsp"; 
+	        		  window.location.href = "${path}home/gotoHome.action"; 
 	        	  }	        	  
 	          }else if(data.code == '2'){
 	        	  toastr.error(data.msg);

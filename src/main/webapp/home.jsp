@@ -92,20 +92,20 @@ opacity: 0.6;
 <div class="form-group"> 
 <div class="card" >
 <div class="col-xs-3">
-    <img src="http://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
     </div>
     <div class="col-xs-9">
     <div class="col-xs-8"> 
     <div class="card-body">
     <div style="">
-    <h5 class="card-title">新一贷</h5>
+    <h5 class="card-title">平安新一贷</h5>
     <p class="card-text"><font style="color:red">额度：500-200000</font></p>
     </div>
      </div>
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="${path}xinyidaiHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
       <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
@@ -120,20 +120,20 @@ opacity: 0.6;
 <div class="form-group"> 
 <div class="card" >
 <div class="col-xs-3">
-    <img src="http://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
     </div>
     <div class="col-xs-9">
     <div class="col-xs-8"> 
     <div class="card-body">
     <div style="">
-    <h5 class="card-title">新一贷</h5>
+    <h5 class="card-title">兴业消费金融</h5>
     <p class="card-text"><font style="color:red">额度：500-200000</font></p>
     </div>
      </div>
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="${path}xingyeHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
       <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
@@ -148,20 +148,20 @@ opacity: 0.6;
 <div class="form-group"> 
 <div class="card" >
 <div class="col-xs-3">
-    <img src="http://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
     </div>
     <div class="col-xs-9">
     <div class="col-xs-8"> 
     <div class="card-body">
     <div style="">
-    <h5 class="card-title">新一贷</h5>
+    <h5 class="card-title">中行消费金融</h5>
     <p class="card-text"><font style="color:red">额度：500-200000</font></p>
     </div>
      </div>
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="${path}zhonghangHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
       <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
@@ -176,20 +176,20 @@ opacity: 0.6;
 <div class="form-group"> 
 <div class="card" >
 <div class="col-xs-3">
-    <img src="http://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
     </div>
     <div class="col-xs-9">
     <div class="col-xs-8"> 
     <div class="card-body">
     <div style="">
-    <h5 class="card-title">新一贷</h5>
+    <h5 class="card-title">海尔-玖康</h5>
     <p class="card-text"><font style="color:red">额度：500-200000</font></p>
     </div>
      </div>
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="${path}haierHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
       <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
@@ -204,20 +204,20 @@ opacity: 0.6;
 <div class="form-group">
 <div class="card" >
 <div class="col-xs-3">
-    <img src="http://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="width:100%">
+    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
     </div>
     <div class="col-xs-9">
     <div class="col-xs-8"> 
     <div class="card-body">
     <div style="">
-    <h5 class="card-title">新一贷</h5>
+    <h5 class="card-title">小额贷款</h5>
     <p class="card-text"><font style="color:red">额度：500-200000</font></p>
     </div>
      </div>
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="${path}smallamountHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
       <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
