@@ -61,7 +61,13 @@
                         </div>
                     </li>
                     <li>
-					    <a class="J_menuItem" href="usermanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">测试99999</span></a>
+					    <a class="J_menuItem" href="usermanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">客户管理</span></a>
+					</li>
+					<li>
+					    <a class="J_menuItem" href="salesmanmanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">业务员管理</span></a>
+					</li>
+					<li>
+					    <a class="J_menuItem" href="loanbusmanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">贷款业务管理</span></a>
 					</li>
                     <li>
                         <a href="#">

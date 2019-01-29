@@ -7,16 +7,16 @@ import com.great.model.UserModel;
 
 @Repository
 public interface UserManagerDao {
-	//´øÌõ¼ş¡¢·ÖÒ³²éÑ¯¿Í»§Êı¾İ  ×÷Õß:zekun
+	//å¸¦æ¡ä»¶ã€åˆ†é¡µæŸ¥è¯¢å®¢æˆ·æ•°æ®  ä½œè€…:zekun
 	public ArrayList<UserModel> getUserList(@Param("queryInitCount")int queryInitCount,@Param("limit")int limit,@Param("name")String name) ;
-	//»ñÈ¡¿Í»§ÊıÁ¿ ×÷Õß:zekun
+	//è·å–å®¢æˆ·æ•°é‡ ä½œè€…:zekun
 	public String getUserCount(@Param("name")String name);
-	//±à¼­¿Í»§ĞÅÏ¢ ×÷Õß:zekun
+	//ç¼–è¾‘å®¢æˆ·ä¿¡æ¯ ä½œè€…:zekun
 	public void editUserInfo(UserModel editUserInfo) ;
-	//É¾³ı¿Í»§ĞÅÏ¢ ×÷Õß:zekun
+	//åˆ é™¤å®¢æˆ·ä¿¡æ¯ ä½œè€…:zekun
 	public void deleteUserInfo(int deleteUserId) ;
-	//±à¼­¿Í»§ĞÅÏ¢£¨µ¥±Ê£© ×÷Õß:zekun
+	//ç¼–è¾‘å®¢æˆ·ä¿¡æ¯ï¼ˆå•ç¬”ï¼‰ ä½œè€…:zekun
 	public void addUserInfo(UserModel addUserInfo) ;
-	//ÑéÖ¤ÊÖ»úºÅÎ¨Ò»ĞÔ
+	//éªŒè¯æ‰‹æœºå·å”¯ä¸€æ€§
 	public String verifyUserPhone(@Param("userPhone")String userPhone);
 }

@@ -118,7 +118,7 @@
 	<form class="layui-form layui-form-pane1" id="form1" name="form1"
 		style="display: none;">
 		<br />
-		<%-- action="<%=path%>userManager/editUserInfo.action"  method="post" --%>
+		<%-- action="<%=path%>salesManManager/editUserInfo.action"  method="post" --%>
 		<div class="layui-form-item" style="display: none">
 			<label class="layui-form-label">id</label>
 			<div class="layui-input-inline">
@@ -157,7 +157,7 @@
 	<form class="layui-form layui-form-pane1" id="form2" name="form2"
 		style="display: none;">
 		<br />
-		<%-- action="<%=path%>userManager/editUserInfo.action"  method="post" --%>
+		<%-- action="<%=path%>salesManManager/editUserInfo.action"  method="post" --%>
 		<div class="layui-form-item" style="display: none">
 			<label class="layui-form-label">id</label>
 			<div class="layui-input-inline">
@@ -215,6 +215,7 @@
 	<!-- 	<script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script> -->
 	<script id="barDemo" type="text/html">
+			<a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="statistics">个人业务统计</a>
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
@@ -229,7 +230,7 @@
 				//table 渲染初始化
 				table.render({
 					elem: '#test',
-					url: '<%=path%>userManager/getUserList.action',
+					url: '<%=path%>salesManManager/getSalesManList.action',
 					toolbar: '#toolbarDemo',
 					cellMinWidth: 150,
 					cols: [	
@@ -299,9 +300,9 @@
 			                layer.confirm('真的删除行么', function (index) {
 								console.log(obj);
 			                    $.ajax({
-			                        url: "<%=path%>userManager/deleteUserInfo.action",
+			                        url: "<%=path%>salesManManager/deleteSalesManInfo.action",
 			                        type: "POST",
-			                        data: {deleteUserId:obj.data.userId},
+			                        data: {deleteSalesManId:obj.data.userId},
 			                        success: function (msg) {
 			                            //var json = JSON.parse(msg);
 			                            var returnCode = msg.returnCode;
@@ -336,7 +337,7 @@
 						
  			           form.on('submit(demo11)', function(massage) {
  			               $.ajax({
- 			                   url:'<%=path%>userManager/editUserInfo.action',
+ 			                   url:'<%=path%>salesManManager/editSalesManInfo.action',
  			                   type:'POST',
  			                   data:{
  			                	   userId:massage.field.userId,
@@ -383,7 +384,7 @@
 							where : {
 								name : demoReload //向后台传递的参数
 							},                     
-							url : '<%=path%>userManager/getUserList.action'//后台做模糊搜索接口路径                        
+							url : '<%=path%>salesManManager/getSalesManList.action'//后台做模糊搜索接口路径                        
 							,
 							method : 'get'
 						});
@@ -446,7 +447,7 @@
 					//form.render(); //拖拽上传	
 					upload.render({
 						elem: "#" + idRandom,
-						url: '<%=path%>userManager/uploadImg.action',
+						url: '<%=path%>salesManManager/uploadImg.action',
 						accept: 'file',
 						size:9000,
 						done: function(data) {
@@ -484,7 +485,7 @@
 					
 	 			           form.on('submit(demo12)', function(massage) {
 	 			               $.ajax({
-	 			                   url:'<%=path%>userManager/addUserInfo.action',
+	 			                   url:'<%=path%>salesManManager/addSalesManInfo.action',
 	 			                   type:'POST',
 	 			                   data:{
 	 			                	  /* userId:massage.field.addUserId, */
@@ -508,7 +509,7 @@
 	 			 							where : {
 	 			 								//name : demoReload //向后台传递的参数
 	 			 							},                     
-	 			 							url : '<%=path%>userManager/getUserList.action'//后台做模糊搜索接口路径                        
+	 			 							url : '<%=path%>salesManManager/getSalesManList.action'//后台做模糊搜索接口路径                        
 	 			 							,
 	 			 							method : 'get'
 	 			 						}); 
@@ -528,9 +529,9 @@
     									var code=0;
     						            $.ajax({
     						                type: "get",
-    						                url: '<%=path%>userManager/verifyUserPhone.action',
+    						                url: '<%=path%>salesManManager/verifySalesManPhone.action',
     						                async: false,//同步提交。不设置则默认异步，异步的话，最后执行ajax
-    						                data: {userPhone:$("#addUPhone").val()},
+    						                data: {salesManPhone:$("#addUPhone").val()},
     						                success: function (ev) {
     						                    code = ev.code;
     						                }

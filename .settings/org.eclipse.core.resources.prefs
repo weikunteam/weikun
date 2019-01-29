@@ -1,3 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/great/controller/SalesManManagerController.java=UTF-8
+encoding//src/main/java/com/great/controller/UserManagerController.java=UTF-8
+encoding//src/main/java/com/great/dao/SalesManManagerDao.java=UTF-8
+encoding//src/main/java/com/great/dao/UserManagerDao.java=UTF-8
+encoding//src/main/java/com/great/mapper/SalesManManager.xml=UTF-8
+encoding//src/main/java/com/great/service/SalesManManagerService.java=UTF-8
+encoding//src/main/java/com/great/service/UserManagerService.java=UTF-8
 encoding//src/main/webapp/home.jsp=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8

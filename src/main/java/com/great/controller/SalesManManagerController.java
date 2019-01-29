@@ -21,56 +21,58 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.great.model.LayUITableResponseModel;
 import com.great.model.UserModel;
+import com.great.service.SalesManManagerService;
 import com.great.service.UserManagerService;
 
 @Controller
-@RequestMapping("/userManager")
-public class UserManagerController {
+@RequestMapping("/salesManManager")
+public class SalesManManagerController {
+
 	@Resource
-	private UserManagerService userManagerService;
+	private SalesManManagerService salesManManagerService;
 	
 	//获取客户数据列表
-	@RequestMapping(value="/getUserList.action",method= RequestMethod.GET)
+	@RequestMapping(value="/getSalesManList.action",method= RequestMethod.GET)
 	@ResponseBody
-	public LayUITableResponseModel getUserList(String page,String limit,String name) {
+	public LayUITableResponseModel getSalesManList(String page,String limit,String name) {
 		System.out.println("name"+page);
 		System.out.println("name"+limit);
 		System.out.println("name"+name);
 		int queryInitCount=(Integer.valueOf(page).intValue()-1)*Integer.valueOf(limit).intValue();
-		ArrayList<UserModel> userList=userManagerService.getUserList(queryInitCount, Integer.valueOf(limit).intValue(),name);
-		int userCount= Integer.valueOf(userManagerService.getUserCount(name)).intValue();
-		LayUITableResponseModel layUITableResponseModel=new LayUITableResponseModel(0,"ms",userCount,userList);
+		ArrayList<UserModel> salesManList=salesManManagerService.getSalesManList(queryInitCount, Integer.valueOf(limit).intValue(),name);
+		int salesManCount= Integer.valueOf(salesManManagerService.getSalesManCount(name)).intValue();
+		LayUITableResponseModel layUITableResponseModel=new LayUITableResponseModel(0,"ms",salesManCount,salesManList);
 		return layUITableResponseModel;
 	}
 	
 	//编辑修改客户数据
-	@RequestMapping(value="/editUserInfo.action",method= RequestMethod.POST)
+	@RequestMapping(value="/editSalesManInfo.action",method= RequestMethod.POST)
 	@ResponseBody
-	public Map<String,Object> editUserInfo(UserModel editUserInfo) {
-		userManagerService.editUserInfo(editUserInfo);
+	public Map<String,Object> editSalesManInfo(UserModel editSalesManInfo) {
+		salesManManagerService.editSalesManInfo(editSalesManInfo);
 		Map<String,Object> responseMap=new HashMap<String, Object>();
 		responseMap.put("returnCode", 200);
 		return responseMap;
 	}
 	
 	//删除客户数据
-	@RequestMapping(value="/deleteUserInfo.action",method= RequestMethod.POST)
+	@RequestMapping(value="/deleteSalesManInfo.action",method= RequestMethod.POST)
 	@ResponseBody
-	public Map<String,Object> deleteUserInfo(int deleteUserId) {
-		System.out.println("删除的id-"+deleteUserId);
-		userManagerService.deleteUserInfo(deleteUserId);
+	public Map<String,Object> deleteSalesManInfo(int deleteSalesManId) {
+		System.out.println("删除的id-"+deleteSalesManId);
+		salesManManagerService.deleteSalesManInfo(deleteSalesManId);
 		Map<String,Object> responseMap=new HashMap<String, Object>();
 		responseMap.put("returnCode", 200);
 		return responseMap;
 	}
 	
 	//添加客户数据（单笔）
-	@RequestMapping(value="/addUserInfo.action",method= RequestMethod.POST)
+	@RequestMapping(value="/addSalesManInfo.action",method= RequestMethod.POST)
 	@ResponseBody
-	public Map<String,Object> addUserInfo(UserModel addUserInfo) {
-		System.out.println("---"+addUserInfo.getuPhone());
-		System.out.println("---"+addUserInfo.getuPsw());
-		userManagerService.addUserInfo(addUserInfo);
+	public Map<String,Object> addSalesManInfo(UserModel addSalesManInfo) {
+		System.out.println("---"+addSalesManInfo.getuPhone());
+		System.out.println("---"+addSalesManInfo.getuPsw());
+		salesManManagerService.addSalesManInfo(addSalesManInfo);
 		//int userCount= Integer.valueOf(userManagerService.getUserCount(null)).intValue();
 		Map<String,Object> responseMap=new HashMap<String, Object>();
 		responseMap.put("returnCode", 200);
@@ -157,14 +159,15 @@ public class UserManagerController {
 	}
 	
 	//获取客户数据列表
-	@RequestMapping(value="/verifyUserPhone.action",method= RequestMethod.GET)
+	@RequestMapping(value="/verifySalesManPhone.action",method= RequestMethod.GET)
 	@ResponseBody
-	public Map<String,Object> verifyUserPhone(String userPhone) {
-		System.out.println("userPhone"+userPhone);
-		String existCode=userManagerService.verifyUserPhone(userPhone);
+	public Map<String,Object> verifySalesManPhone(String salesManPhone) {
+		System.out.println("salesManPhone"+salesManPhone);
+		String existCode=salesManManagerService.verifySalesManPhone(salesManPhone);
 		Map<String,Object> responseMap=new HashMap<String, Object>();
 		System.out.println("----"+existCode);
 		responseMap.put("code", existCode);
 		return responseMap;
 	}
+
 }

@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.great.dao.UserManagerDao">
+<mapper namespace="com.great.dao.SalesManManagerDao">
 	<!-- 	作者:zekun  -->
 	<!--	说明:获取所有客户数量 -->
-	<select id="getUserCount" resultType="String">
+	<select id="getSalesManCount" resultType="String">
 		select 
 		count(*) 
 		from TB_USER
 		<where>
-		userType=1
+		userType=2
             <if test="name!=null">and uPhone like "%"#{name}"%" </if>
         </where>
 	</select>
 	
 	<!-- 	作者:zekun  -->
 	<!--	说明:带条件、分页查询客户信息 -->
-	<select id="getUserList" resultMap="resultListUser">
+	<select id="getSalesManList" resultMap="resultListSalesMan">
 		select 
 		userId,
 		uPhone,
 		uPsw
 		from TB_USER  
 		<where>
-		userType=1
+		userType=2
             <if test="name!=null">and uPhone like "%"#{name}"%" </if>
         </where>
 		limit #{queryInitCount}  , #{limit}
 	</select>
 	
-	<resultMap type="com.great.model.UserModel" id="resultListUser">
+	<resultMap type="com.great.model.UserModel" id="resultListSalesMan">
 	 	<id column="userId" property="userId"/>
 	 	<result column="uPhone" property="uPhone"/>
 		<result column="uPsw" property="uPsw"/>
@@ -40,23 +40,23 @@
 	 </resultMap>
 	 <!-- 	作者:zekun  -->
 	<!--	说明: 删除客户信息 -->
-	<delete id="deleteUserInfo"  parameterType="java.lang.Integer">
+	<delete id="deleteSalesManInfo"  parameterType="java.lang.Integer">
 	delete 
 	from TB_USER 
-	where userId=#{deleteUserId}
+	where userId=#{deleteSalesManId}
 	</delete>
 	<!-- 	作者:zekun  -->
 	<!--	说明: 添加单笔客户信息 -->
-	<insert id="addUserInfo" parameterType="com.great.model.UserModel">
+	<insert id="addSalesManInfo" parameterType="com.great.model.UserModel">
 	INSERT INTO 
 	TB_USER
 	(uPhone,uPsw,userType) 
 	values 
-	(#{uPhone},#{uPsw},1)
+	(#{uPhone},#{uPsw},2)
 	</insert>
 	<!-- 	作者:zekun  -->
 	<!--	说明:  编辑客户信息 -->
-	<insert id="editUserInfo" parameterType="com.great.model.UserModel">
+	<insert id="editSalesManInfo" parameterType="com.great.model.UserModel">
 	UPDATE 
 	TB_USER 
 	SET 
@@ -66,13 +66,13 @@
 	</insert>
 	<!-- 	作者:zekun  -->
 	<!--	说明:验证手机号是否存在 -->
-	<select id="verifyUserPhone" resultType="String">
+	<select id="verifySalesManPhone" resultType="String">
 		select 
 		count(*) 
 		from TB_USER
 		<where>
-		userType=1
-            <if test="userPhone!=null">and uPhone like "%"#{userPhone}"%" </if>
+		userType=2
+            <if test="salesManPhone!=null">and uPhone like "%"#{salesManPhone}"%" </if>
         </where>
 	</select>
 </mapper>
