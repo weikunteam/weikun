@@ -83,7 +83,7 @@ background-color:white;
         			<label  class="control-label col-xs-12 text-left" ><font color="red">房贷情况：</font></label>
         			<div class="form-group">
         			<div class="radio-inline col-xs-6 radio radio-info" >
-				  	<input type="radio"  name="houseRadio" value="1" checked class=""/>
+				  	<input type="radio"  name="houseRadio" value="1" class="" id="pledge"/>
 				  	<label class="control-label">抵押</label>
 					</div>
 					<div class="radio-inline col-xs-4 radio radio-info">
@@ -100,7 +100,7 @@ background-color:white;
         			<label  class="control-label col-xs-12 text-left"><font color="red">保单情况：</font></label>
         			<div class="form-group">
         			<div class="radio-inline col-xs-6 radio radio-info" >
-				  	<input type="radio"  name="warrantyRadio" value="1" checked class=""/>
+				  	<input type="radio"  name="warrantyRadio" value="1" class="" id="pingAn"/>
 				  	<label >平安</label>
 					</div>
 					<div class="radio-inline col-xs-4 radio radio-info">
@@ -184,13 +184,28 @@ $("#submit").click(function(){
 	var loanAmount = $("#loanAmount").val();
 	if(!name){
 		toastr.error("请输入名字");	
+		return false;
 	}
 	if(!age){
 		toastr.error("请输入年龄");	
+		return false;
 	}
 	if(!sex){
 		toastr.error("请选择性别");	
+		return false;
 	}
+	if(houseRadio&&!houseMonth){
+		toastr.error("请输入房贷已满月数");
+		return false;
+	}
+	if(warrantyRadio&&!warrantyMonth){
+		toastr.error("请输入保单已缴月数");
+		return false;
+	}
+	if(warrantyRadio&&!warrantyCount){
+		toastr.error("请输入保单已缴次数");
+		return false;
+	}	
 	
 	$.ajax({
 	    type:"post",
@@ -226,10 +241,14 @@ $('.selectpicker').on('changed.bs.select',function(e){
 	$('#house').css('display','none');
 	$('#warranty').css('display','none');
 	$('#money').css('display','none');
+	$("#pledge").removeAttr("checked");
+	$("#pingAn").removeAttr("checked");
 	 for(var i=0;i<value.length;i++){
 		if(value[i]=='1'){
+			$("#pledge").attr("checked","checked");
 			$('#house').css('display','block');
 		}else if(value[i]=='2'){
+			$("#pingAn").attr("checked","checked");
 			$('#warranty').css('display','block');
 		}else if(value[i]=='3'){
 			$('#money').css('display','block');

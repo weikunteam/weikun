@@ -6,7 +6,9 @@
     <insert id="insertXyd">
         insert into TB_BUS_PAXYD
         (userId
+        <if test="loanAmount !=null and loanAmount !=''">
          ,loanAmount
+         </if>       
          ,checkState
          ,applyDate
          <if test="housingLoanType !=null and housingLoanType !=''">
@@ -32,7 +34,9 @@
          </if>
          )
         values (#{userId}
-                ,#{loanAmount}
+        		<if test="loanAmount !=null and loanAmount !=''">
+         		,#{loanAmount}
+         		</if>               
                 ,#{checkState}
                 ,#{applyDate}
                 <if test="housingLoanType !=null and housingLoanType !=''">
