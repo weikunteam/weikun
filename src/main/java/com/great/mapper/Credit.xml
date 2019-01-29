@@ -5,56 +5,56 @@
 
     <insert id="insertXyd">
         insert into TB_BUS_PAXYD
-        (userId,
-         loanAmount,
-         checkState,
-         applyDate,
+        (userId
+         ,loanAmount
+         ,checkState
+         ,applyDate
          <if test="housingLoanType !=null and housingLoanType !=''">
-         housingLoanType,
+         ,housingLoanType
          </if>
          <if test="housingLoanTerm!=null and housingLoanTerm !=''">
-         housingLoanTerm,
+         ,housingLoanTerm
          </if>                 
          <if test="warrantyType !=null and warrantyType !=''">
-         warrantyType,
+         ,warrantyType
          </if> 
          <if test="warrantyTerm !=null and warrantyTerm !=''">
-         warrantyTerm,
+         ,warrantyTerm
          </if>         
          <if test="warrantyCount !=null and warrantyCount !=''">
-         warrantyCount,
+         ,warrantyCount
          </if>
          <if test="accumulationFundTerm !=null and accumulationFundTerm !=''">
-         accumulationFundTerm,
+         ,accumulationFundTerm
          </if>
          <if test="accumulationFundAmount !=null and accumulationFundAmount !=''">
-         accumulationFundAmount
+         ,accumulationFundAmount
          </if>
          )
-        values (#{userId},
-                #{loanAmount},
-                #{checkState},
-                #{applyDate},
+        values (#{userId}
+                ,#{loanAmount}
+                ,#{checkState}
+                ,#{applyDate}
                 <if test="housingLoanType !=null and housingLoanType !=''">
-         		#{housingLoanType},
+         		,#{housingLoanType}
          		</if> 
          		<if test="housingLoanTerm !=null and housingLoanTerm !=''">
-         		#{housingLoanTerm},
+         		,#{housingLoanTerm}
          		</if>                 
                 <if test="warrantyType !=null and warrantyType !=''">
-         		#{warrantyType},
+         		,#{warrantyType}
         		</if> 
         		<if test="warrantyTerm !=null and warrantyTerm !=''">
-         		#{warrantyTerm},
+         		,#{warrantyTerm}
         		</if>                
                 <if test="warrantyCount !=null and warrantyCount !=''">
-         		#{warrantyCount},
+         		,#{warrantyCount}
         		</if>
                 <if test="accumulationFundTerm !=null and accumulationFundTerm !=''">
-         		#{accumulationFundTerm},
+         		,#{accumulationFundTerm}
         		</if>
                 <if test="accumulationFundAmount !=null and accumulationFundAmount !=''">
-         		#{accumulationFundAmount}
+         		,#{accumulationFundAmount}
         		</if>               
                 )
     </insert>

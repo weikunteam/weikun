@@ -17,10 +17,10 @@ public class CreditService {
     private CreditDao creditDao;
 
     public void insertXyd(String name, String age, String sex, String houseRadio, String houseMonth,
-                          String warrantyRadio, String warrantyMonth, String warrantyCount, String monthYear,
-                          String monthNum, String loanAmount, String userId) {
+                          String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
+                          String moneyNum, String loanAmount, String userId) {
         creditDao.insertXyd(userId, loanAmount, "0", DateUtil.getDateTime(),
-                houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, monthYear, monthNum);
+                houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum);
     }
 
 }

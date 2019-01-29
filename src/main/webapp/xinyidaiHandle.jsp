@@ -119,13 +119,13 @@ background-color:white;
     			<div class="form-group" style="display:none;" id="money">
         			<label  class="control-label col-xs-12 text-left"><font color="red">公积金情况：</font></label>
         			<div class="form-group">					
-					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴年数：</font></div>					
+					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴月数：</font></div>					
         			<div class="col-xs-5">       			
-            		<input type="text" class="form-control" id="monthYear" placeholder="单位（年）">
+            		<input type="text" class="form-control" id="moneyYear" placeholder="单位（月）">
             		</div>
             		<div class="col-xs-6" style="margin-top:10px;"><font color="">月缴金额：</font></div>					
         			<div class="col-xs-5" style="margin-top:5px;">       			
-            		<input type="text" class="form-control" id="monthNum" placeholder="单位（元）">
+            		<input type="text" class="form-control" id="moneyNum" placeholder="单位（元）">
             		</div>         			
         			</div>
     			</div>
@@ -178,8 +178,8 @@ $("#submit").click(function(){
 	var warrantyRadio = $("input[name='warrantyRadio']:checked").val();
 	var warrantyMonth = $("#warrantyMonth").val();
 	var warrantyCount = $("#warrantyCount").val();
-	var monthYear = $("#monthYear").val();
-	var monthNum = $("#monthNum").val();
+	var moneyYear = $("#moneyYear").val();
+	var moneyNum = $("#moneyNum").val();
 	var loanAmount = $("#loanAmount").val();
 	if(!name){
 		toastr.error("请输入名字");	
@@ -204,8 +204,8 @@ $("#submit").click(function(){
 	    	warrantyRadio:warrantyRadio,
 	    	warrantyMonth:warrantyMonth,
 	    	warrantyCount:warrantyCount,
-	    	monthYear:monthYear,
-	    	monthNum:monthNum,
+	    	moneyYear:moneyYear,
+	    	moneyNum:moneyNum,
 			loanAmount:loanAmount
 	    },
 	    success:function(data){
