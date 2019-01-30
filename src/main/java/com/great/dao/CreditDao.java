@@ -11,5 +11,6 @@ public interface CreditDao {
                           @Param("housingLoanType") String housingLoanType, @Param("housingLoanTerm") String housingLoanTerm,
                           @Param("warrantyType") String warrantyType, @Param("warrantyTerm") String warrantyTerm,
                           @Param("warrantyCount") String warrantyCount, @Param("accumulationFundTerm") String accumulationFundTerm,
-                          @Param("accumulationFundAmount") String accumulationFundAmount);
+                          @Param("accumulationFundAmount") String accumulationFundAmount,@Param("name")String name,
+                          @Param("age") int age,@Param("sex")int sex);
 }

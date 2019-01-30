@@ -23,7 +23,7 @@ public class CreditController {
     @SuppressWarnings("unchecked")
 	@RequestMapping(value="/xinyidaiHandle",method= RequestMethod.POST)
     @ResponseBody
-    public ResponseApi xydHandle(String name, String age, String sex, String houseRadio, String houseMonth,
+    public ResponseApi xydHandle(String name, int age, int sex, String houseRadio, String houseMonth,
                                  String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
                                  String moneyNum, String loanAmount,HttpServletRequest request) {
     	Map<String, Object> user = (Map<String, Object>) request.getSession().getAttribute("user");

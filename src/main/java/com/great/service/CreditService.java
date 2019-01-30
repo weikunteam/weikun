@@ -16,11 +16,12 @@ public class CreditService {
     @Resource
     private CreditDao creditDao;
 
-    public void insertXyd(String name, String age, String sex, String houseRadio, String houseMonth,
+    public void insertXyd(String name, int age, int sex, String houseRadio, String houseMonth,
                           String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
                           String moneyNum, String loanAmount, String userId) {
         creditDao.insertXyd(userId, loanAmount, "0", DateUtil.getDateTime(),
-                houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum);
+                houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum
+                , name, age, sex);
     }
 
 }

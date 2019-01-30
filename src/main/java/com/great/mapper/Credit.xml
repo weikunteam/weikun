@@ -6,6 +6,9 @@
     <insert id="insertXyd">
         insert into TB_BUS_PAXYD
         (userId
+        ,name
+        ,age
+        ,sex
         <if test="loanAmount !=null and loanAmount !=''">
          ,loanAmount
          </if>       
@@ -34,6 +37,9 @@
          </if>
          )
         values (#{userId}
+                ,#{name}
+                ,#{age}
+                ,#{sex}
         		<if test="loanAmount !=null and loanAmount !=''">
          		,#{loanAmount}
          		</if>               
