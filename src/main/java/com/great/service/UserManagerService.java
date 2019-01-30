@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.tomcat.jni.User;
 import org.springframework.stereotype.Service;
 
 import com.great.dao.UserManagerDao;
