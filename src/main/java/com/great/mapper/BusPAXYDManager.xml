@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.BusPAXYDManagerDao">
+	<!-- 	作者:zekun  -->
+	<!--	说明:获取所有"平安新一代"业务数据总数量 -->
+	<select id="getBusPAXYDCount" resultType="String">
+		select 
+		count(*) 
+		from TB_BUS_PAXYD
+		<where>
+		userId 
+		IN 
+		(select userId from TB_USER 
+		where 
+		userType=2 
+		<if test="name!=null">and uPhone like "%"#{name}"%"</if>
+		)
+        </where>
+	</select>
+	
+	<!-- 	作者:zekun  -->
+	<!--	说明:带条件、分页查询"平安新一代"业务数据信息 -->
+	<select id="getBusPAXYDList" resultMap="resultListBusPAXYD">
+		select 
+		*
+		from TB_BUS_PAXYD  
+		<where>
+		userId 
+		IN 
+		(select userId from TB_USER 
+		where 
+		userType=2 
+		<if test="name!=null">and uPhone like "%"#{name}"%"</if>
+		)
+        </where>
+		limit #{queryInitCount}  , #{limit}
+	</select>
+	
+	<resultMap type="com.great.model.BusPAXYDModel"  id="resultListBusPAXYD">
+	 	<id column="PAXYDBusId" property="PAXYDBusId"/>
+	 	<result column="userId" property="userId" />
+		<result column="salesManId" property="salesManId"/>
+		<result column="loanAmount" property="loanAmount"/>
+		<result column="loanTerm" property="loanTerm"/>
+		<result column="accrualType" property="accrualType"/>
+		<result column="accrualRate" property="accrualRate"/>
+		<result column="checkState" property="checkState"/>
+		<result column="applyDate" property="applyDate"/>
+		<result column="loanStartDate" property="loanStartDate"/>
+		<result column="loanEndDate" property="loanEndDate"/>
+		<result column="housingLoanType" property="housingLoanType"/>
+		<result column="housingLoanTerm" property="housingLoanTerm"/>
+		<result column="warrantyType" property="warrantyType"/>
+		<result column="warrantyTerm" property="warrantyTerm"/>
+		<result column="warrantyCount" property="warrantyCount"/>
+		<result column="accumulationFundAddress" property="accumulationFundAddress"/>
+		<result column="accumulationFundTerm" property="accumulationFundTerm"/>
+		<result column="accumulationFundAmount" property="accumulationFundAmount"/>
+		<result column="name" property="name"/>
+		<result column="sex" property="sex"/>
+		<result column="applicantTel" property="applicantTel"/>
+	 	<association property="userModel" column="userId"  javaType="com.great.model.UserModel"  select="com.great.dao.SalesManManagerDao.querySalesManById"/>
+	 </resultMap>
+	 
+</mapper>

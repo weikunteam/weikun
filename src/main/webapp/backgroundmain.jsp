@@ -66,10 +66,22 @@
 					<li>
 					    <a class="J_menuItem" href="salesmanmanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">业务员管理</span></a>
 					</li>
-					<li>
-					    <a class="J_menuItem" href="loanbusmanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">贷款业务管理</span></a>
-					</li>
-                    <li>
+				<li>
+				        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">贷款业务管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+					<ul class="nav nav-second-level">
+						<li>
+							<a class="J_menuItem" href="busPAXYDmanager.jsp" data-index="0">平安新一贷款业务</a>
+						</li>
+						<li>
+							<a class="J_menuItem" href="index_v1.html" data-index="0">建行科技金融</a>
+						</li>
+					</ul>
+				</li>
+<!-- 				<li>
                         <a href="#">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
@@ -380,7 +392,7 @@
                             <li><a class="J_menuItem" href="form_builder.html">表单构建器</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>

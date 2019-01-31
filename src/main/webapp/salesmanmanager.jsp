@@ -22,6 +22,35 @@
 <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+<style>
+.layui-table-tool-temp {
+	padding-right: 140px;
+}
+
+.layui-table-tool-self {
+	position: absolute;
+	right: 17px;
+	top: 10px;
+	margin-top: 10px;
+}
+
+.layui-table-tool .layui-inline[lay-event] {
+	position: relative;
+	width: 38px;
+	height: 38px;
+	padding: 5px;
+	line-height: 26px;
+	margin-right: 10px;
+	text-align: center;
+	color: #333; /* //#333 */
+	border: 1px solid #ccc;
+	cursor: pointer;
+	-webkit-transition: .5s all;
+	transition: .5s all;
+	background-color: #5FB878;
+}
+</style>
 </head>
 <body class="gray-bg">
 	<div class="row  border-bottom white-bg dashboard-header">
@@ -196,20 +225,23 @@
 	<!-- <table class="layui-hide" id="test"></table> -->
 	<!-- layUI javascrip部分 -->
 	<script id="toolbarDemo" type="text/html">
-			<div class="layui-btn-container"></div>
-			<br/>
-			<br/>
-			<div class="demoTable" >
-			    <button class="layui-btn layui-btn-danger " id="daoru"><label style="font-weight: bold;font-size: 12px;">批量导入数据<label/></button>
-				<button class="layui-btn" id="addUser"><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
-				<span style="float:right;">
+			<div class="layui-btn-container">
+				<div>
+			    <button class="layui-btn layui-btn-danger " id="daoru" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">批量导入数据<label/></button>
+				<button class="layui-btn" id="addUser" style="margin-top: 10px;><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
+				</div>
+				<span style="float:left;">
 						<label style="font-weight: bold;font-size: 15px;">搜索ID：<label/>
 						<div class="layui-inline" >
 							<input name="condition_id" class="layui-input" id="condition_id" placeholder="请输入客户ID"autocomplete="off">
 						</div>
-						<button class="layui-btn" id="searchBtn" data-type="reload"><label style="font-weight: bold;font-size: 12px;">搜索<label/></button>
+						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;>
+							<label style="font-weight: bold;font-size: 12px;">搜索<label/>
+						</button>
 				</span>
 			</div>
+			<br/>
+			<br/>
 			<br/>
 	</script>
 	<!-- 	<script src="js/jquery.min.js"></script>
@@ -232,9 +264,35 @@
 					elem: '#test',
 					url: '<%=path%>salesManManager/getSalesManList.action',
 					toolbar: '#toolbarDemo',
+					even:true,
 					cellMinWidth: 150,
 					cols: [	
 						[{
+							field: 'uPhone',
+							title: '手机号',
+							sort: true
+						}, {
+							field: 'uPsw',
+							title: '密码',
+							sort: true
+						},{
+							field: 'uRecommendAmount',
+							title: '应得推荐金额',
+							sort: true
+						}, {
+							field: 'uRegRecommendPeople',
+							title: '注册推广人',
+							sort: true
+						}, {
+							field: 'uRecommendCode',
+							title: '推广码',
+							sort: true
+						}, {
+							field: 'uLoginState',
+							title: '登录状态',
+							sort: true
+						}, {
+							//隐藏 的 “列名”
 							field: 'userId',
 							title: '客户id',
 							sort: true,
@@ -243,30 +301,6 @@
 							type: 'space',
 							style: 'display:none;'
 						},{
-							field: 'uPhone',
-							title: '手机号',
-							sort: true
-						}, {
-							field: 'uPsw',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uRecommendAmount',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uRegRecommendPeople',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uRecommendCode',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uLoginState',
-							title: '密码',
-							sort: true
-						}, {
 							fixed: 'right',
 							title: '操作',
 							toolbar: '#barDemo',
@@ -278,7 +312,7 @@
 						
 						$('th').css({'font-weight' : 'bold','font-size':'20px'});//'background-color' : '#008B8B','color' : '#fff',
 						//$('tr').css({'background-color': '#009688', 'color': '#fff'});
-						var that = this.elem.next();
+/* 						var that = this.elem.next();
 						res.data.forEach(function(item, index) {
 							//console.log(item.empName);item表示每列显示的数据             
 							if (index % 2 == 0) {
@@ -286,7 +320,7 @@
 							} else {
 								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#F2F2F2");
 							}
-						});
+						}); */
 					},
 					page : true
 				});
@@ -309,6 +343,7 @@
 			                            if (returnCode == 200) {
 			                                //删除这一行
 			                                obj.del();
+			                                $(".layui-laypage-btn").click(); 
 			                                //关闭弹框
 			                                layer.close(index);
 			                                layer.msg("删除成功", {icon: 6});

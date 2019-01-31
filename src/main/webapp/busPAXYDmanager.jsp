@@ -22,6 +22,31 @@
 <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+<style>
+
+.layui-table-tool-self {
+	position: absolute;
+	right: 17px;
+	top: 10px;
+	margin-top: 10px;
+}
+
+.layui-table-tool .layui-inline[lay-event] {
+	position: relative;
+	width: 38px;
+	height: 38px;
+	padding: 5px;
+	line-height: 26px;
+	margin-right: 10px;
+	text-align: center;
+	color: #333; /* //#333 */
+	border: 1px solid #ccc;
+	cursor: pointer;
+	-webkit-transition: .5s all;
+	transition: .5s all;
+	background-color: #5FB878;
+}
+</style>
 </head>
 <body class="gray-bg">
 	<div class="row  border-bottom white-bg dashboard-header">
@@ -105,8 +130,7 @@
 					<div class="ibox-content">
 						<!-- layUI Table组件内容 -->
 
-						<table lay-filter="test" class="layui-hide" id="test"
-							lay-skin="row"></table>
+						<table lay-filter="test" class="layui-hide" id="test" lay-skin="row"></table>
 
 					</div>
 				</div>
@@ -196,28 +220,77 @@
 	<!-- <table class="layui-hide" id="test"></table> -->
 	<!-- layUI javascrip部分 -->
 	<script id="toolbarDemo" type="text/html">
-			<div class="layui-btn-container"></div>
-			<br/>
-			<br/>
-			<div class="demoTable" >
-			    <button class="layui-btn layui-btn-danger " id="daoru"><label style="font-weight: bold;font-size: 12px;">批量导入数据<label/></button>
-				<button class="layui-btn" id="addUser"><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
-				<span style="float:right;">
-						<label style="font-weight: bold;font-size: 15px;">搜索ID：<label/>
+			<div class="layui-btn-container">
+				<div>
+			    <button class="layui-btn layui-btn-danger " id="daoru" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">批量导入数据<label/></button>
+				<button class="layui-btn" id="addUser" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
+				</div>
+				<span style="float:left;">
+						<label style="font-weight: bold;font-size: 15px;">搜索贷款人：<label/>
 						<div class="layui-inline" >
-							<input name="condition_id" class="layui-input" id="condition_id" placeholder="请输入客户ID"autocomplete="off">
+							<input name="condition_id" class="layui-input" id="condition_id" placeholder="请输入贷款人名字"autocomplete="off">
 						</div>
-						<button class="layui-btn" id="searchBtn" data-type="reload"><label style="font-weight: bold;font-size: 12px;">搜索<label/></button>
+						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;">
+							<label style="font-weight: bold;font-size: 12px;">搜索<label/>
+						</button>
 				</span>
 			</div>
 			<br/>
+			<br/>
+			<br/>
 	</script>
+	
 	<!-- 	<script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script> -->
 	<script id="barDemo" type="text/html">
+
+    {{#  if(d.checkState ==0){ }}
+			<a class="layui-btn layui-btn-normal layui-btn-xs check" lay-event="check">未审核</a>
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    {{# }if(d.checkState ==1) { }}
+			<a class="layui-btn layui-btn-xs check" lay-event="check">已审核</a>
+			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    {{#  } }}
 	</script>
+		<!-- 类型在Table上的 “显示转换” -->
+	<script id="housingLoanType" type="text/html">
+    {{#  if(d.housingLoanType ==0){ }}
+			按揭
+    {{# }if(d.housingLoanType ==1) { }}
+			抵押
+    {{#  } }}
+	</script>
+	<script id="warrantyType" type="text/html">
+	{{#  if(d.warrantyType ==0){ }}
+			平安保单
+    {{# }if(d.warrantyType ==1) { }}
+			非平安保单
+	{{#  } }}
+	</script>
+	<script id="warrantyTerm" type="text/html">
+	<span>{{d.warrantyTerm}}</span>
+	<em>月</em>
+	</script>
+	<script id="loanTerm" type="text/html">
+		{{#  if(d.accrualType ==0){ }}
+				<span>{{d.loanTerm}}</span>
+				<em>月</em>
+    	{{# }if(d.accrualType ==1) { }}
+				<span>{{d.loanTerm}}</span>
+				<em>年</em>
+		{{#  } }}
+	</script>
+	<script id="sex" type="text/html">
+		{{#  if(d.sex ==0){ }}
+				女
+    	{{# }if(d.sex ==1) { }}
+				男
+		{{#  } }}
+
+	</script>
+
 	<script src="layui.js" charset="utf-8"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 
@@ -229,45 +302,122 @@
 				//table 渲染初始化
 				table.render({
 					elem: '#test',
-					url: '<%=path%>userManager/getUserList.action',
+					url: '<%=path%>PAXYDBusManager/getBusPAXYDList.action',
 					toolbar: '#toolbarDemo',
+					even: true,
 					cellMinWidth: 150,
 					cols: [	
+						[{align: 'center', title: '贷款人信息', colspan: 4},
+						 {align: 'center', title: '申请贷款详情', colspan: 4},
+						 {align: 'center', title: '房贷详情', colspan: 2},
+						 {align: 'center', title: '保单详情', colspan: 3},
+						 {align: 'center', title: '公积金详情', colspan: 3}],
 						[{
-							field: 'userId',
-							title: '客户id',
-							sort: true,
+							field: 'uPhone',
+							title: '注册人手机号',
+							sort: true
+						}, {
+							field: 'name',
+							title: '贷款人姓名',
+							sort: true
+						},{
+							field: 'sex',
+							title: '贷款人性别',
+							templet:'#sex',
+							sort: true
+						},{
+							field: 'applicantTel',
+							title: '贷款人手机号',
+							sort: true
+						}, {
+							field: 'loanAmount',
+							title: '贷款金额',
+							sort: true
+						}, {
+							field: 'loanTerm',
+							title: '贷款期限',
+							templet:'#loanTerm',
+							sort: true
+						}, {
+							field: 'accrualRate',
+							title: '利率',
+							sort: true
+						}, {
+							field: 'applyDate',
+							title: '业务申请日期',
+							sort: true
+						}, {
+							field: 'housingLoanType',
+							title: '房贷类型',
+							templet:'#housingLoanType',
+							sort: true
+						}, {
+							field: 'housingLoanTerm',
+							title: '房贷期限',
+							sort: true
+						}, {
+							field: 'warrantyType',
+							title: '保单类型',
+							templet:'#warrantyType',
+							sort: true
+						}, {
+							field: 'warrantyTerm',
+							title: '保单期限',
+							templet:'#warrantyTerm',
+							sort: true
+						}, {
+							field: 'warrantyCount',
+							title: '保单次数',
+							sort: true
+						}, {
+							field: 'accumulationFundAddress',
+							title: '公积金缴纳地址',
+							sort: true
+						}, {
+							field: 'accumulationFundTerm',
+							title: '公积金缴纳期限（月份）',
+							sort: true
+						}, {
+							field: 'accumulationFundAmount',
+							title: '公积金缴纳金额',
+							sort: true
+						}, {
+							//隐藏的“列名”========================
+							field: 'PAXYDBusId',
+							title: '平安新一贷业务id',
+ 							minWidth: '0%',
+							width: '0%',
+							type: 'space',
+							style: 'display:none;', 
+							sort: true
+						}, {
+							field: 'salesManId',
+							title: '业务员id',
+ 							minWidth: '0%',
+							width: '0%',
+							type: 'space',
+							style: 'display:none;', 
+							sort: true
+						}, {
+							field: 'accrualType',
+							title: '利息分期类型',
 							minWidth: '0%',
 							width: '0%',
 							type: 'space',
-							style: 'display:none;'
+							style: 'display:none;',
+							sort: true
+						}, {
+							field: 'checkState',
+							title: '审核状态',
+							minWidth: '0%',
+							width: '0%',
+							type: 'space',
+							style: 'display:none;',
+							sort: true
 						},{
-							field: 'uPhone',
-							title: '手机号',
-							sort: true
-						}, {
-							field: 'uPsw',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uRecommendAmount',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uRegRecommendPeople',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uRecommendCode',
-							title: '密码',
-							sort: true
-						}, {
-							field: 'uLoginState',
-							title: '密码',
-							sort: true
-						}, {
 							fixed: 'right',
 							title: '操作',
+							width: '20%',
 							toolbar: '#barDemo',
 						}]
 					],
@@ -277,25 +427,43 @@
 						
 						$('th').css({'font-weight' : 'bold','font-size':'20px'});//'background-color' : '#008B8B','color' : '#fff',
 						//$('tr').css({'background-color': '#009688', 'color': '#fff'});
-						var that = this.elem.next();
+  						var that = this.elem.next();
 						res.data.forEach(function(item, index) {
-							//console.log(item.empName);item表示每列显示的数据             
+							console.log(item);//item表示每列显示的数据             
 							if (index % 2 == 0) {
 								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#FFFFFF");
 							} else {
 								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#F2F2F2");
 							}
-						});
+						});  
 					},
 					page : true
 				});
 				
-				//监听行工具事件（编辑、删除 行数据）
+				//监听行工具事件（审核、删除、编辑 行数据）
 				table.on('tool(test)', function(obj) {
 					var data = obj.data;
 					console.log(obj);
-					//删除客户信息
-					if (obj.event === 'del') {
+					// 审核业务
+					 if (obj.event === 'check') {
+						console.log("审核");
+						//获取工具栏按钮dom
+						var index = $('.check').index(this);
+						var dom = $('.check').eq(index);
+						
+						obj.update({
+							checkTpye:1
+						});
+						//工具栏样式更新
+						if(data.checkTpye == 1){
+						dom.removeClass().addClass('layui-btn normal layui-btn-xs check')
+						dom.html('未审核')
+						}else{
+						dom.removeClass().addClass('layui-btn primary layui-btn-xs check')
+						dom.html('已审核')
+						}
+				   // 删除业务信息
+					}else if (obj.event === 'del') {
 			                layer.confirm('真的删除行么', function (index) {
 								console.log(obj);
 			                    $.ajax({
@@ -321,9 +489,10 @@
 			                
 					// 编辑客户信息
 					} else if (obj.event === 'edit') {
-						$("#userId").val(data.userId);
+/* 						$("#userId").val(data.userId);
 			            $("#uPhone").val(data.uPhone);
-			            $("#uPsw").val(data.uPsw);
+			            $("#uPsw").val(data.uPsw); */
+			            console.log(obj.data);
 						//编辑客户信息 弹出层
  						layer.open({       
 					        title:'编辑客户信息',
@@ -519,6 +688,7 @@
 	 			               })
 	 			              return false;
 	 			           })
+	 			     
 					
 				}); 
 								//编辑弹出层 的表单验证
@@ -543,6 +713,8 @@
 								});
 			
 
+			
+			
 		</script>
 
 	<!-- H+ javascrip部分 -->

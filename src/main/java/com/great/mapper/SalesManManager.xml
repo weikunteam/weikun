@@ -9,7 +9,8 @@
 		count(*) 
 		from TB_USER
 		<where>
-		userType=2
+		userType=2 and
+		delState=0
             <if test="name!=null">and uPhone like "%"#{name}"%" </if>
         </where>
 	</select>
@@ -23,7 +24,8 @@
 		uPsw
 		from TB_USER  
 		<where>
-		userType=2
+		userType=2 and
+		delState=0
             <if test="name!=null">and uPhone like "%"#{name}"%" </if>
         </where>
 		limit #{queryInitCount}  , #{limit}
@@ -40,11 +42,13 @@
 	 </resultMap>
 	 <!-- 	作者:zekun  -->
 	<!--	说明: 删除客户信息 -->
-	<delete id="deleteSalesManInfo"  parameterType="java.lang.Integer">
-	delete 
-	from TB_USER 
+	<insert id="deleteSalesManInfo"  parameterType="java.lang.Integer">
+	UPDATE 
+	TB_USER 
+	SET 
+	delState = 1
 	where userId=#{deleteSalesManId}
-	</delete>
+	</insert>
 	<!-- 	作者:zekun  -->
 	<!--	说明: 添加单笔客户信息 -->
 	<insert id="addSalesManInfo" parameterType="com.great.model.UserModel">
@@ -71,8 +75,22 @@
 		count(*) 
 		from TB_USER
 		<where>
-		userType=2
+		userType=2 and
+		delState=0
             <if test="salesManPhone!=null">and uPhone like "%"#{salesManPhone}"%" </if>
+        </where>
+	</select>
+	
+		<!-- 	作者:zekun  -->
+	<!--	说明:通过userId查询客户 -->
+ 	<select id="querySalesManById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
+		select 
+		* 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0 and 
+        userId = #{userId} 
         </where>
 	</select>
 </mapper>
