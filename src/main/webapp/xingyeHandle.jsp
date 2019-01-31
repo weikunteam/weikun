@@ -130,7 +130,7 @@ background-color:white;
 toastr.options = {
 		"closeButton": false, //是否显示关闭按钮
 		"debug": false, //是否使用debug模式
-		"positionClass": "toast-center-center-xs",//弹出窗的位置
+		"positionClass": "toast-center-centertwo-xs",//弹出窗的位置
 		"showDuration": "300",//显示的动画时间
 		"hideDuration": "1000",//消失的动画时间
 		"timeOut": "5000", //展现时间

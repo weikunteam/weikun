@@ -52,6 +52,12 @@ background-color:white;
             	<input type="text" class="form-control" id="name" placeholder="请输入名字">
         		</div>
     			</div>
+				<div class="form-group">
+					<label  class="col-xs-4 control-label text-center"><font color="#27408B">手机号：</font></label>
+					<div class="col-xs-8">
+						<input type="text" class="form-control" id="tel" placeholder="请输入手机号">
+					</div>
+				</div>
                 <div class="form-group">
         		<label  class="col-xs-4 control-label text-center"><font color="#27408B">年龄：</font></label>
         		<div class="col-xs-8">
@@ -158,7 +164,7 @@ background-color:white;
 toastr.options = {
 		"closeButton": false, //是否显示关闭按钮
 		"debug": false, //是否使用debug模式
-		"positionClass": "toast-center-center-xs",//弹出窗的位置
+		"positionClass": "toast-center-centertwo-xs",//弹出窗的位置
 		"showDuration": "300",//显示的动画时间
 		"hideDuration": "1000",//消失的动画时间
 		"timeOut": "5000", //展现时间
@@ -172,6 +178,7 @@ toastr.options = {
 		
 $("#submit").click(function(){
 	var name = $("#name").val();
+	var tel = $("#tel").val();
 	var age = $("#age").val();
 	var sex = $("input[name='sex']:checked").val();
 	var houseRadio = $("input[name='houseRadio']:checked").val();
@@ -182,8 +189,17 @@ $("#submit").click(function(){
 	var moneyYear = $("#moneyYear").val();
 	var moneyNum = $("#moneyNum").val();
 	var loanAmount = $("#loanAmount").val();
+	var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
 	if(!name){
 		toastr.error("请输入名字");	
+		return false;
+	}
+	if(!tel){
+		toastr.error("请输入手机号");
+		return false;
+	}
+	if(!reg.test(tel)){
+		toastr.error("手机号输入不正确");
 		return false;
 	}
 	if(!age){
@@ -213,6 +229,7 @@ $("#submit").click(function(){
 	    dataType: 'json',
 	    data :{
 	    	name:name,
+			tel:tel,
 	    	age:age,
 	    	sex:sex,
 	    	houseRadio:houseRadio,

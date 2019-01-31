@@ -7,6 +7,7 @@
         insert into TB_BUS_PAXYD
         (userId
         ,name
+        ,applicantTel
         ,age
         ,sex
         <if test="loanAmount !=null and loanAmount !=''">
@@ -38,6 +39,7 @@
          )
         values (#{userId}
                 ,#{name}
+                ,#{tel}
                 ,#{age}
                 ,#{sex}
         		<if test="loanAmount !=null and loanAmount !=''">

@@ -8,7 +8,7 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 <title>业务办理</title>
-<link rel='stylesheet' href='${path}css/bootstrap.min.css'> 
+<link rel='stylesheet' href='${path}css/bootstrap.css'>
 <link rel='stylesheet' href='${path}css/toastr.min.css'>
 <link href="${path}css/font-awesome.min.css" rel="stylesheet" />
 <script src="${path}js/jQuery.js"></script>
@@ -37,6 +37,7 @@ filter:alpha(Opacity=80);
 -moz-opacity:0.5;
 opacity: 0.6;
 }
+
 </style>
 </head>
 <body>
@@ -51,7 +52,7 @@ opacity: 0.6;
 		<li data-target="#myCarousel" data-slide-to="2"></li>
 	</ol>   
 	<!-- 轮播（Carousel）项目 -->
-	<div class="carousel-inner" ">
+	<div class="carousel-inner" >
 		<div class="item active" >
 			<img src="${path}img/ac1.jpg" class="img-responsive" alt="First slide" style="width:100%;">
 		</div>
@@ -76,8 +77,8 @@ opacity: 0.6;
 <div class="row">
 <div class="col-xs-12"> -->
 <div class="form-group"> 
-<ul id="myTab" class="nav nav-pills" role="tablist" style="text-align:center">
-    <li class="active" style="width:49.6%"><a href="#bulletin" role="tab" data-toggle="pill">贷款</a></li>
+<ul id="myTab" class="nav nav-pills" role="tablist" style="text-align:center;">
+    <li class="active" style="width:49.6%;"><a href="#bulletin" role="tab" data-toggle="pill">贷款</a></li>
     <li style="width:49.6%"><a href="#rule" role="tab" data-toggle="pill">信用卡</a></li>
 </ul>
 </div>
@@ -106,10 +107,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="${path}xinyidaiHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
+      <a href="${path}xinyidaiHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -134,10 +135,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="${path}xingyeHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
+      <a href="${path}xingyeHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -162,10 +163,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="${path}zhonghangHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
+      <a href="${path}zhonghangHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -190,10 +191,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="${path}haierHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">咨询</a>
+      <a href="${path}haierHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -218,10 +219,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="${path}smallamountHandle.jsp" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -250,10 +251,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -278,10 +279,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -306,10 +307,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -334,10 +335,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>
@@ -362,10 +363,10 @@ opacity: 0.6;
      </div>
      <div class="col-xs-1">
      <div class="form-group">  
-      <a href="#" class="btn btn-primary" style="padding-top:20%;padding-bottom:20%;">申请</a>
+      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
       </div>
       <div class="form-group">  
-      <a href="#" class="btn btn-primary shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
+      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
       </div>
       </div>
     </div>

@@ -25,11 +25,11 @@ public class CreditController {
     @ResponseBody
     public ResponseApi xydHandle(String name, int age, int sex, String houseRadio, String houseMonth,
                                  String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
-                                 String moneyNum, String loanAmount,HttpServletRequest request) {
+                                 String moneyNum, String loanAmount,HttpServletRequest request,String tel) {
     	Map<String, Object> user = (Map<String, Object>) request.getSession().getAttribute("user");
     	creditService.insertXyd(name, age, sex, houseRadio, houseMonth, warrantyRadio,
     			warrantyMonth, warrantyCount, moneyYear, moneyNum, loanAmount,
-    			 user.get("userId").toString());
+    			 user.get("userId").toString(),tel);
         return new ResponseApi("1", "申请成功");
 
     }

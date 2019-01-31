@@ -18,10 +18,10 @@ public class CreditService {
 
     public void insertXyd(String name, int age, int sex, String houseRadio, String houseMonth,
                           String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
-                          String moneyNum, String loanAmount, String userId) {
+                          String moneyNum, String loanAmount, String userId,String tel) {
         creditDao.insertXyd(userId, loanAmount, "0", DateUtil.getDateTime(),
                 houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum
-                , name, age, sex);
+                , name, age, sex,tel);
     }
 
 }
