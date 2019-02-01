@@ -93,7 +93,7 @@ background-color:white;
 				  	<label class="control-label">抵押</label>
 					</div>
 					<div class="radio-inline col-xs-4 radio radio-info">
-				  	<input type="radio"  name="houseRadio" value="0" class=""/>
+				  	<input type="radio"  name="houseRadio" value="0" class="" id="houseLoan"/>
 				  	<label class="control-label">贷款</label>
 					</div>					
 					<div class="col-xs-6" style="margin-top:5px;"><font color="">已满月数：</font></div>					
@@ -110,7 +110,7 @@ background-color:white;
 				  	<label >平安</label>
 					</div>
 					<div class="radio-inline col-xs-4 radio radio-info">
-				  	<input type="radio"  name="warrantyRadio" value="0" class=""/>
+				  	<input type="radio"  name="warrantyRadio" value="0" class="" id="notPingAn"/>
 				  	<label >非平安</label>
 					</div>					
 					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴月数：</font></div>					
@@ -164,7 +164,7 @@ background-color:white;
 toastr.options = {
 		"closeButton": false, //是否显示关闭按钮
 		"debug": false, //是否使用debug模式
-		"positionClass": "toast-center-centertwo-xs",//弹出窗的位置
+		"positionClass": "toast-center-center-xs",//弹出窗的位置
 		"showDuration": "300",//显示的动画时间
 		"hideDuration": "1000",//消失的动画时间
 		"timeOut": "5000", //展现时间
@@ -258,14 +258,17 @@ $('.selectpicker').on('changed.bs.select',function(e){
 	$('#house').css('display','none');
 	$('#warranty').css('display','none');
 	$('#money').css('display','none');
-	$("#pledge").removeAttr("checked");
-	$("#pingAn").removeAttr("checked");
+	$("#pledge").prop("checked",false);
+	$("#houseLoan").prop("checked",false);
+	$("#pingAn").prop("checked",false);
+	$("#notPingAn").prop("checked",false);
+	alert($("input[name='houseRadio']:checked").val());
 	 for(var i=0;i<value.length;i++){
 		if(value[i]=='1'){
-			$("#pledge").attr("checked","checked");
+			$("#pledge").prop("checked","checked");
 			$('#house').css('display','block');
 		}else if(value[i]=='2'){
-			$("#pingAn").attr("checked","checked");
+			$("#pingAn").prop("checked","checked");
 			$('#warranty').css('display','block');
 		}else if(value[i]=='3'){
 			$('#money').css('display','block');
