@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.SalesManManagerDao">
-	<!-- 	作者:zekun  -->
-	<!--	说明:获取所有客户数量 -->
+      <!-- 作者：czk -->
+      <!-- 说明：获取所有业务员数量 -->
 	<select id="getSalesManCount" resultType="String">
 		select 
 		count(*) 
@@ -14,9 +14,8 @@
             <if test="name!=null">and uPhone like "%"#{name}"%" </if>
         </where>
 	</select>
-	
-	<!-- 	作者:zekun  -->
-	<!--	说明:带条件、分页查询客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：带条件、分页查询业务员信息 -->
 	<select id="getSalesManList" resultMap="resultListSalesMan">
 		select 
 		userId,
@@ -40,8 +39,8 @@
 		<result column="uRecommendCode" property="uRecommendCode"/>
 		<result column="uLoginState" property="uLoginState"/>
 	 </resultMap>
-	 <!-- 	作者:zekun  -->
-	<!--	说明: 删除客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：删除业务员信息 -->
 	<insert id="deleteSalesManInfo"  parameterType="java.lang.Integer">
 	UPDATE 
 	TB_USER 
@@ -49,8 +48,8 @@
 	delState = 1
 	where userId=#{deleteSalesManId}
 	</insert>
-	<!-- 	作者:zekun  -->
-	<!--	说明: 添加单笔客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：添加单笔业务员信息 -->
 	<insert id="addSalesManInfo" parameterType="com.great.model.UserModel">
 	INSERT INTO 
 	TB_USER
@@ -58,8 +57,8 @@
 	values 
 	(#{uPhone},#{uPsw},2)
 	</insert>
-	<!-- 	作者:zekun  -->
-	<!--	说明:  编辑客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：编辑业务员信息 -->
 	<insert id="editSalesManInfo" parameterType="com.great.model.UserModel">
 	UPDATE 
 	TB_USER 
@@ -68,8 +67,8 @@
 	WHERE 
 	userId = #{userId}
 	</insert>
-	<!-- 	作者:zekun  -->
-	<!--	说明:验证手机号是否存在 -->
+      <!-- 作者：czk -->
+      <!-- 说明：验证手机号是否存在 -->
 	<select id="verifySalesManPhone" resultType="String">
 		select 
 		count(*) 
@@ -80,9 +79,8 @@
             <if test="salesManPhone!=null">and uPhone like "%"#{salesManPhone}"%" </if>
         </where>
 	</select>
-	
-		<!-- 	作者:zekun  -->
-	<!--	说明:通过userId查询客户 -->
+      <!-- 作者：czk -->
+      <!-- 说明：通过userId获取业务员信息 -->
  	<select id="querySalesManById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
 		select 
 		* 

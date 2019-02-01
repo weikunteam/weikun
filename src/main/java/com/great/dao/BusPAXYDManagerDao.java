@@ -10,9 +10,9 @@ import com.great.model.BusPAXYDModel;
 @Repository
 public interface BusPAXYDManagerDao {
 
-	//´øÌõ¼ş¡¢·ÖÒ³²éÑ¯"Æ½°²ĞÂÒ»´ú"ÒµÎñÊı¾İ  ×÷Õß:zekun
+	//å¸¦æ¡ä»¶ã€åˆ†é¡µæŸ¥è¯¢"å¹³å®‰æ–°ä¸€ä»£"ä¸šåŠ¡æ•°æ®  ä½œè€…:zekun
 	public ArrayList<BusPAXYDModel> getBusPAXYDList(@Param("queryInitCount")int queryInitCount,@Param("limit")int limit,@Param("name")String name) ;
-	//»ñÈ¡"Æ½°²ĞÂÒ»´ú"ÒµÎñÊı¾İ×ÜÊıÁ¿ ×÷Õß:zekun
+	//è·å–"å¹³å®‰æ–°ä¸€ä»£"ä¸šåŠ¡æ•°æ®æ€»æ•°é‡ ä½œè€…:zekun
 	public String getBusPAXYDCount(@Param("name")String name);
 
 }

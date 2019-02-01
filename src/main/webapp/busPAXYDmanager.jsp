@@ -22,30 +22,8 @@
 <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+<link href="css/otherCSS.css" rel="stylesheet">
 <style>
-
-.layui-table-tool-self {
-	position: absolute;
-	right: 17px;
-	top: 10px;
-	margin-top: 10px;
-}
-
-.layui-table-tool .layui-inline[lay-event] {
-	position: relative;
-	width: 38px;
-	height: 38px;
-	padding: 5px;
-	line-height: 26px;
-	margin-right: 10px;
-	text-align: center;
-	color: #333; /* //#333 */
-	border: 1px solid #ccc;
-	cursor: pointer;
-	-webkit-transition: .5s all;
-	transition: .5s all;
-	background-color: #5FB878;
-}
 </style>
 </head>
 <body class="gray-bg">
@@ -222,15 +200,15 @@
 	<script id="toolbarDemo" type="text/html">
 			<div class="layui-btn-container">
 				<div>
-			    <button class="layui-btn layui-btn-danger " id="daoru" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">批量导入数据<label/></button>
-				<button class="layui-btn" id="addUser" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
+			    <button class="layui-btn layui-btn-normal " id="daoru" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">批量导入数据<label/></button>
+				<button class="layui-btn layui-btn-normal" id="addUser" style="margin-top: 10px;"><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
 				</div>
 				<span style="float:left;">
 						<label style="font-weight: bold;font-size: 15px;">搜索贷款人：<label/>
 						<div class="layui-inline" >
 							<input name="condition_id" class="layui-input" id="condition_id" placeholder="请输入贷款人名字"autocomplete="off">
 						</div>
-						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;">
+						<button class="layui-btn layui-btn-normal" id="searchBtn" data-type="reload" style="margin-top: 10px;">
 							<label style="font-weight: bold;font-size: 12px;">搜索<label/>
 						</button>
 				</span>
@@ -245,11 +223,11 @@
 	<script id="barDemo" type="text/html">
 
     {{#  if(d.checkState ==0){ }}
-			<a class="layui-btn layui-btn-normal layui-btn-xs check" lay-event="check">未审核</a>
+			<a class="layui-btn layui-btn-xs check" lay-event="check" style="background-color: #E9686B">未审核</a>
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     {{# }if(d.checkState ==1) { }}
-			<a class="layui-btn layui-btn-xs check" lay-event="check">已审核</a>
+			<a class="layui-btn layui-btn-xs check" lay-event="check" style="background-color: #09BB07">已审核</a>
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     {{#  } }}
@@ -299,8 +277,10 @@
 			layui.use('table', function() {
 				var table = layui.table;
 				var form = layui.form;
+				var loadingPage=layer.msg("数据加载中，请稍后...");
 				//table 渲染初始化
 				table.render({
+					id:'testId',
 					elem: '#test',
 					url: '<%=path%>PAXYDBusManager/getBusPAXYDList.action',
 					toolbar: '#toolbarDemo',
@@ -427,7 +407,7 @@
 						
 						$('th').css({'font-weight' : 'bold','font-size':'20px'});//'background-color' : '#008B8B','color' : '#fff',
 						//$('tr').css({'background-color': '#009688', 'color': '#fff'});
-  						var that = this.elem.next();
+/*   						var that = this.elem.next();
 						res.data.forEach(function(item, index) {
 							console.log(item);//item表示每列显示的数据             
 							if (index % 2 == 0) {
@@ -435,10 +415,30 @@
 							} else {
 								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#F2F2F2");
 							}
-						});  
+						});   */
+						layer.close(loadingPage);
 					},
 					page : true
 				});
+				/*  						$(tr).bind("click",function(){
+					console.log("******");
+				console.log($("this").attr('data-index')); 
+				});  */
+
+/*  						$(td).click(function(){
+					console.log("******");
+				//console.log($("this").attr('data-index'));
+
+			});  */
+/* 
+					var $mylist = $("#test").next('.layui-table-view').find('table.layui-table');
+				$mylist.dblclick(function(event){
+					alert($(event.target).closest("tr")[0].outerHTML)
+				});  */
+
+					
+				
+				
 				
 				//监听行工具事件（审核、删除、编辑 行数据）
 				table.on('tool(test)', function(obj) {
@@ -460,6 +460,8 @@
 						dom.html('未审核')
 						}else{
 						dom.removeClass().addClass('layui-btn primary layui-btn-xs check')
+						//$('.layui-btn primary layui-btn-xs check').attr("style","background-color: #09BB07;");
+						dom.attr("style","background-color: #09BB07;");
 						dom.html('已审核')
 						}
 				   // 删除业务信息
@@ -537,6 +539,33 @@
  						 //setFormValue(obj,data);
 					}
 				});
+				
+				  //监听行单击事件（单击事件为：rowDouble）
+				 
+				  table.on('row(test)', function(obj){
+					var flag=0;
+				    var data = obj.data;
+				    $(this).attr("isClick","1");
+				    console.log("点击属性---"+$(this).attr("isClick"));
+				    var trList=$(this).parent().children();
+				    console.log($(this).parent().children());
+				    console.log("当前行的---"+$(this).attr("data-index"));
+				   for(i=0;i<trList.length;i++){
+					   if(i%2 == 0){
+						   trList[i].setAttribute("initBackgroundColor", "#FFFFFF");
+					   }else{
+						   trList[i].setAttribute("initBackgroundColor","#F2F2F2");
+					   }
+					   console.log("遍历"+i+"行---"+trList[i].getAttribute("isClick"));
+					   console.log("原本bc颜色"+trList[i].getAttribute("initBackgroundColor"));
+					   if(trList[i].getAttribute("isClick")!=null){
+						   trList[i].setAttribute("isClick",null);
+						   trList[i].style.backgroundColor=""+trList[i].getAttribute("initBackgroundColor");
+					   }
+				   }
+				   //$(this).attr("isClick","1");
+				   $(this).css("background-color", "#B0C4DE");
+				  }); 
 				
 				// 上方工具按钮监听 （批量导入、单挑数据添加、条件搜索）
 				// 条件搜索
@@ -713,8 +742,16 @@
 								});
 			
 
-			
-			
+			//DOM 操作获取外联样式
+		    function getRealStyle(obj, styleName) {
+		        var realStyle = null;
+		        if(obj.currentStyle) {
+		            realStyle = obj.currentStyle[styleName];
+		        } else if(window.getComputedStyle) {
+		            realStyle = window.getComputedStyle(obj, null)[styleName];
+		        }
+		        return realStyle;
+		    }
 		</script>
 
 	<!-- H+ javascrip部分 -->

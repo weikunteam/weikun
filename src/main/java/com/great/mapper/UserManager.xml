@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.UserManagerDao">
-	<!-- 	作者:zekun  -->
-	<!--	说明:获取所有客户数量 -->
+      <!-- 作者：czk -->
+      <!-- 说明：获取所有客户数量 -->
 	<select id="getUserCount" resultType="String">
 		select 
 		count(*) 
@@ -14,9 +14,8 @@
             <if test="name!=null">and uPhone like "%"#{name}"%" </if>
         </where>
 	</select>
-	
-	<!-- 	作者:zekun  -->
-	<!--	说明:带条件、分页查询客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：带条件、分页查询客户信息 -->
 	<select id="getUserList" resultMap="resultListUser">
 		select 
 		*
@@ -38,8 +37,8 @@
 		<result column="uRecommendCode" property="uRecommendCode"/>
 		<result column="uLoginState" property="uLoginState"/>
 	 </resultMap>
-	 <!-- 	作者:zekun  -->
-	<!--	说明: 删除客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：删除客户信息 -->
 	<insert id="deleteUserInfo"  parameterType="java.lang.Integer">
 	UPDATE 
 	TB_USER 
@@ -47,8 +46,8 @@
 	delState = 1
 	where userId=#{deleteUserId}
 	</insert>
-	<!-- 	作者:zekun  -->
-	<!--	说明: 添加单笔客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：添加单笔客户信息 -->
 	<insert id="addUserInfo" parameterType="com.great.model.UserModel">
 	INSERT INTO 
 	TB_USER
@@ -56,8 +55,8 @@
 	values 
 	(#{uPhone},#{uPsw},1)
 	</insert>
-	<!-- 	作者:zekun  -->
-	<!--	说明:  编辑客户信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：编辑客户信息 -->
 	<insert id="editUserInfo" parameterType="com.great.model.UserModel">
 	UPDATE 
 	TB_USER 
@@ -66,8 +65,8 @@
 	WHERE 
 	userId = #{userId}
 	</insert>
-	<!-- 	作者:zekun  -->
-	<!--	说明:验证手机号是否存在 -->
+      <!-- 作者：czk -->
+      <!-- 说明：验证手机号是否存在 -->
 	<select id="verifyUserPhone" resultType="String">
 		select 
 		count(*) 
@@ -78,8 +77,8 @@
             <if test="userPhone!=null">and uPhone like "%"#{userPhone}"%" </if>
         </where>
 	</select>
-	<!-- 	作者:zekun  -->
-	<!--	说明:通过userId查询客户 -->
+      <!-- 作者：czk -->
+      <!-- 说明：通过userId获取客户信息 -->
  	<select id="queryUserById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
 		select 
 		* 

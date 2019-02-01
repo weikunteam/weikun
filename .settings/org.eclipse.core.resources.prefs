@@ -1,10 +1,16 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/great/controller/BusPAXYDManagerController.java=UTF-8
 encoding//src/main/java/com/great/controller/SalesManManagerController.java=UTF-8
 encoding//src/main/java/com/great/controller/UserManagerController.java=UTF-8
+encoding//src/main/java/com/great/dao/BusPAXYDManagerDao.java=UTF-8
 encoding//src/main/java/com/great/dao/SalesManManagerDao.java=UTF-8
 encoding//src/main/java/com/great/dao/UserManagerDao.java=UTF-8
+encoding//src/main/java/com/great/mapper/BusPAXYDManager.xml=UTF-8
 encoding//src/main/java/com/great/mapper/SalesManManager.xml=UTF-8
+encoding//src/main/java/com/great/mapper/UserManager.xml=UTF-8
+encoding//src/main/java/com/great/service/BusPAXYDManagerService.java=UTF-8
 encoding//src/main/java/com/great/service/SalesManManagerService.java=UTF-8
 encoding//src/main/java/com/great/service/UserManagerService.java=UTF-8
 encoding//src/main/webapp/home.jsp=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
+encoding/<project>=UTF-8

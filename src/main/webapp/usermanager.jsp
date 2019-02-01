@@ -22,33 +22,8 @@
 <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+<link href="css/otherCSS.css" rel="stylesheet">
 <style>
-.layui-table-tool-temp {
-	padding-right: 140px;
-}
-
-.layui-table-tool-self {
-	position: absolute;
-	right: 17px;
-	top: 10px;
-	margin-top: 10px;
-}
-
-.layui-table-tool .layui-inline[lay-event] {
-	position: relative;
-	width: 38px;
-	height: 38px;
-	padding: 5px;
-	line-height: 26px;
-	margin-right: 10px;
-	text-align: center;
-	color: #333; /* //#333 */
-	border: 1px solid #ccc;
-	cursor: pointer;
-	-webkit-transition: .5s all;
-	transition: .5s all;
-	background-color: #5FB878;
-}
 </style>
 </head>
 <body class="gray-bg">
@@ -257,6 +232,7 @@
 			layui.use('table', function() {
 				var table = layui.table;
 				var form = layui.form;
+				var loadingPage=layer.msg("数据加载中，请稍后...");
 				//table 渲染初始化
 				table.render({
 					elem: '#test',
@@ -310,7 +286,7 @@
 						
 						$('th').css({'font-weight' : 'bold','font-size':'20px'});//'background-color' : '#008B8B','color' : '#fff',
 						//$('tr').css({'background-color': '#009688', 'color': '#fff'});
- 						var that = this.elem.next();
+/*  						var that = this.elem.next();
 						res.data.forEach(function(item, index) {
 							//console.log(item.empName);item表示每列显示的数据             
 							if (index % 2 == 0) {
@@ -318,7 +294,8 @@
 							} else {
 								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#F2F2F2");
 							}
-						}); 
+						});  */
+						layer.close(loadingPage);
 					},
 					page : true
 				});

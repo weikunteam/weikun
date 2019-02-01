@@ -4,6 +4,8 @@
   <artifactId>OfficialAccounts</artifactId>
   <version>0.0.1-SNAPSHOT</version>
    <properties>
+   <!-- 编码UTF-8 -->
+   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- spring版本号 -->
 		<spring.version>4.3.3.RELEASE</spring.version>
 	<!-- 	<spring.version>4.0.2.RELEASE</spring.version> -->

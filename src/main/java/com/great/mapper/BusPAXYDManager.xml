@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 <mapper namespace="com.great.dao.BusPAXYDManagerDao">
-	<!-- 	作者:zekun  -->
-	<!--	说明:获取所有"平安新一代"业务数据总数量 -->
+      <!-- 作者：czk -->
+      <!-- 说明：获取所有"平安新一代"业务数据总数量 -->
 	<select id="getBusPAXYDCount" resultType="String">
 		select 
 		count(*) 
@@ -18,9 +18,8 @@
 		)
         </where>
 	</select>
-	
-	<!-- 	作者:zekun  -->
-	<!--	说明:带条件、分页查询"平安新一代"业务数据信息 -->
+      <!-- 作者：czk -->
+      <!-- 说明：带条件、分页查询"平安新一代"业务数据信息 -->
 	<select id="getBusPAXYDList" resultMap="resultListBusPAXYD">
 		select 
 		*

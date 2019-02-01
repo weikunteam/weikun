@@ -23,7 +23,7 @@ public class BusPAXYDManagerController {
 	@Resource
 	private BusPAXYDManagerService busPAXYDManagerService;
 	
-	//»ñÈ¡"Æ½°²ĞÂÒ»´ú"ÒµÎñÊı¾İÁĞ±í
+	//è·å–"å¹³å®‰æ–°ä¸€ä»£"ä¸šåŠ¡æ•°æ®åˆ—è¡¨
 	@RequestMapping(value="/getBusPAXYDList.action",method= RequestMethod.GET)
 	@ResponseBody
 	public LayUITableResponseModel getBusPAXYDList(String page,String limit,String name) {
@@ -33,7 +33,7 @@ public class BusPAXYDManagerController {
 		int queryInitCount=(Integer.valueOf(page).intValue()-1)*Integer.valueOf(limit).intValue();
 		ArrayList<BusPAXYDModel> allBusPAXYDList=busPAXYDManagerService.getBusPAXYDList(queryInitCount, Integer.valueOf(limit).intValue(),name);
 		int busPAXYDCount= Integer.valueOf(busPAXYDManagerService.getBusPAXYDCount(name)).intValue();
-		//×é×°Ç°¶ËTable×Ö¶Î
+		//ç»„è£…å‰ç«¯Tableå­—æ®µ
 		ArrayList<Map<String,Object>> busPAXYDList=new ArrayList<>();
 		for(int i=0;i<allBusPAXYDList.size();i++) {
 			Map<String,Object> filedMap=new HashMap<String, Object>();
