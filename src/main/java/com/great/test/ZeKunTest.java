@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.great.test;
 
 import java.util.ArrayList;
@@ -10,8 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import com.great.model.BusPAXYDModel;
 import com.great.model.PermissionModel;
 import com.great.model.UserModel;
 import com.great.service.BackLoginService;
@@ -55,7 +52,7 @@ public class ZeKunTest {
 		}
 	}
 }
-=======
+
 //package com.great.test;
 //
 //import java.util.ArrayList;
@@ -88,4 +85,3 @@ public class ZeKunTest {
 //	}
 //
 //}
->>>>>>> 8d4ddc6216d32c9972c20f0565db382840259b96
