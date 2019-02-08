@@ -34,7 +34,7 @@ public class BusPAXYDManagerController {
 		ArrayList<BusPAXYDModel> allBusPAXYDList=busPAXYDManagerService.getBusPAXYDList(queryInitCount, Integer.valueOf(limit).intValue(),name);
 		int busPAXYDCount= Integer.valueOf(busPAXYDManagerService.getBusPAXYDCount(name)).intValue();
 		//组装前端Table字段
-		ArrayList<Map<String,Object>> busPAXYDList=new ArrayList<>();
+		ArrayList<Map<String,Object>> busPAXYDList=new ArrayList<Map<String,Object>>();
 		for(int i=0;i<allBusPAXYDList.size();i++) {
 			Map<String,Object> filedMap=new HashMap<String, Object>();
 			BusPAXYDModel busPAXYDModel=allBusPAXYDList.get(i);

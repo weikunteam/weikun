@@ -2,7 +2,6 @@ package com.great.dao;
 
 import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
-import org.apache.tomcat.jni.User;
 import org.springframework.stereotype.Repository;
 import com.great.model.UserModel;
 
