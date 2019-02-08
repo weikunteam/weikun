@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.BackLoginDao">
+		<!-- 作者：czk -->
+	 	<!-- 通过id查询后台用户信息,包括角色信息和角色的权限信息 -->
+	 <select id="getUserBackGroundInfo" parameterType="java.lang.String" resultMap="userBackGroundInfoMap">
+	 	select * from TB_USER where uBackGroundAccount = #{uBackGroundAccount}
+	 </select>
+	 
+	 <!-- 后台用户的resultMap -->
+	 <resultMap type="com.great.model.UserModel" id="userBackGroundInfoMap">
+	 	<collection property="roleList" column="userId" javaType="java.util.List" select="selectRoleList" />
+	 </resultMap>
+	 
+	 <select id="selectRoleList" resultMap="roleMap" parameterType="java.lang.Integer">
+	 	select * from TB_ROLE where roleId in (select roleId from TB_RELATION_USER_ROLE where userId = #{id})
+	 </select>
+	 
+	 <!-- 角色的resultMap -->
+	 <resultMap type="com.great.model.RoleModel" id="roleMap">
+	 	<collection property="permissionList" column="roleId" javaType="java.util.List" select="getPermissionList" />
+	 </resultMap>
+	 
+	 <select id="getPermissionList" parameterType="java.lang.String" resultType="com.great.model.PermissionModel">
+	 	select * from TB_PERMISSION where permissionId in (select permissionId from TB_RELATION_ROLE_PERMISSION where roleId = #{id})
+	 </select>
+	     <!-- 作者：czk -->
+      	<!-- 说明：验证手机号是否存在 -->
+	<select id="checkAccount" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+            <if test="uBackGroundAccount!=null">uBackGroundAccount = #{uBackGroundAccount} </if>
+        </where>
+	</select>
+</mapper>

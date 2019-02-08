@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% 
 	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";	
 %>
@@ -20,10 +21,10 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="<%=path%>css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=path%>css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="<%=path%>css/animate.min.css" rel="stylesheet">
+    <link href="<%=path%>css/style.min862f.css?v=4.1.0" rel="stylesheet">
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -53,19 +54,67 @@
                                 <li><a class="J_menuItem" href="mailbox.html">信箱</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">安全退出</a>
+                                <li><a href="backlogin.jsp">安全退出</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="logo-element">H+
                         </div>
                     </li>
+                    
+                 <c:forEach var="permission" items="${permissionList}" varStatus="num">
+	                <c:if test="${permission.pId==0}">
+	                <!--  没有子集的菜单 -->
+	                 <c:if test="${permission.ownChild==0}">
+	                 	<li>
+					    <a class="J_menuItem"  href="<%=path%>${permission.pUrl}">
+					    <i class="fa fa-columns"></i> 
+					    <span class="nav-label">${permission.permissionName}</span>
+					    </a>
+						</li>
+	                 </c:if>
+	                 <c:if test="${permission.ownChild==1}">
+	                 	<li>
+				        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label"> ${permission.permissionName}</span>
+                            <span class="fa arrow"></span>
+                        </a>
+	                    <ul class="nav nav-second-level" id="menu${num.index}">
+	                    <c:forEach var="permissionP" items="${permissionList}" >
+		                     <c:if test="${permission.permissionId==permissionP.pId}" >
+								<li>
+									<a class="J_menuItem" href="<%=path%>${permissionP.pUrl}" data-index="0">${permissionP.permissionName}</a>
+								</li>
+	                         </c:if>
+	                    </c:forEach>
+	                    </ul>
+	                	</li>
+	                 </c:if>
+                	</c:if>
+                </c:forEach>
+                    
                     <li>
-					    <a class="J_menuItem" href="usermanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">客户管理</span></a>
+					    <a class="J_menuItem"  href="<%=path%>/usermanager.jsp">
+					    <i class="fa fa-columns"></i> 
+					    <span class="nav-label">=============</span>
+					    </a>
 					</li>
+                    
+                    <li>
+					    <a class="J_menuItem"  href="<%=path%>/usermanager.jsp">
+					    <i class="fa fa-columns"></i> 
+					    <span class="nav-label">客户管理</span>
+					    </a>
+					</li>
+					
 					<li>
-					    <a class="J_menuItem" href="salesmanmanager.jsp"><i class="fa fa-columns"></i> <span class="nav-label">业务员管理</span></a>
+					    <a class="J_menuItem" href="<%=path%>/salesmanmanager.jsp">
+					    <i class="fa fa-columns"></i> 
+					    <span class="nav-label">业务员管理</span>
+					    </a>
 					</li>
+					
 				<li>
 				        <a href="#">
                             <i class="fa fa-home"></i>
@@ -81,6 +130,7 @@
 						</li>
 					</ul>
 				</li>
+			 </ul>
 <!-- 				<li>
                         <a href="#">
                             <i class="fa fa-home"></i>
@@ -394,7 +444,7 @@
                         </ul>
                     </li> -->
 
-                </ul>
+               
             </div>
         </nav>
         <!--左侧导航结束-->
@@ -520,7 +570,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+                <a href="backlogin.jsp" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v148b2.html?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>
@@ -941,13 +991,13 @@
         </div>
     </div>
   
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="js/plugins/layer/layer.min.js"></script>
-    <script src="js/hplus.min.js?v=4.1.0"></script>
-    <script type="text/javascript" src="js/contabs.min.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <script src="<%=path%>js/jquery.min.js?v=2.1.4"></script>
+    <script src="<%=path%>js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="<%=path%>js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<%=path%>js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="<%=path%>js/plugins/layer/layer.min.js"></script>
+    <script src="<%=path%>js/hplus.min.js?v=4.1.0"></script>
+    <script type="text/javascript" src="<%=path%>js/contabs.min.js"></script>
+    <script src="<%=path%>js/plugins/pace/pace.min.js"></script>
   </body>
 </html>

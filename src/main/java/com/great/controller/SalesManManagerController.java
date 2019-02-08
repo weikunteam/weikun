@@ -158,7 +158,7 @@ public class SalesManManagerController {
 		return responseMap;
 	}
 	
-	//获取客户数据列表
+	//校验客户数据列表
 	@RequestMapping(value="/verifySalesManPhone.action",method= RequestMethod.GET)
 	@ResponseBody
 	public Map<String,Object> verifySalesManPhone(String salesManPhone) {

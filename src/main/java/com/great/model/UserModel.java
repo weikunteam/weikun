@@ -1,7 +1,7 @@
 package com.great.model;
 
 import java.math.BigDecimal;
-
+import java.util.ArrayList;
 import org.omg.CORBA.PRIVATE_MEMBER;
 
 public class UserModel {
@@ -13,6 +13,8 @@ public class UserModel {
 	private String uRegRecommendPeople;
 	private String uRecommendCode;
 	private String uLoginState;
+	
+	private ArrayList<RoleModel> roleList;//多个角色链表
 	
 	public UserModel() {
 		
@@ -72,6 +74,14 @@ public class UserModel {
 
 	public void setuLoginState(String uLoginState) {
 		this.uLoginState = uLoginState;
+	}
+
+	public ArrayList<RoleModel> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(ArrayList<RoleModel> roleList) {
+		this.roleList = roleList;
 	}
 	
 
