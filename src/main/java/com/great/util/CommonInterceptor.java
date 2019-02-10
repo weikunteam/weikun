@@ -24,7 +24,6 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
             HttpServletResponse response, Object handler) throws Exception {
     	String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";	
     	request.setAttribute("path", path);
-    	
 				return true;            
        
         

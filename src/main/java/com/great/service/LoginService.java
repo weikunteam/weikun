@@ -43,18 +43,17 @@ public class LoginService {
 		return responseApi;
 	}
 	
-	public ResponseApi register(String tel,String pwd,String code,String recommend) {
+	public ResponseApi register(String tel,String pwd,String code,String recommendCode) {
 		
 		try {
 			if (SendCodeUtil.checkCode(tel, code)) {
-				
 				String date = DateUtil.getDateTime();
 				String selfCode = Long.toHexString(Long.parseLong(tel));
 				String salt = PasswordUtil.getNextSalt();
 				pwd = DigestUtils.sha1Hex(pwd+salt);
-				userLoginDao.addUser(tel, pwd,date,selfCode,salt);
+				String recommendPeople = userLoginDao.getRecommendpeople(recommendCode);
+				userLoginDao.addUser(tel, pwd,date,selfCode,salt,recommendPeople);
 					responseApi.setResponseApi("2", "注册成功");
-				
 			}else {
 				responseApi.setResponseApi("3", "验证码不正确");
 			}

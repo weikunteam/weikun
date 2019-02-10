@@ -77,6 +77,7 @@ $("#register").click(function(){
 	    },
 	    success:function(data){
 	          if(data.code == '1'){
+				  settime(obj);
 	        	  $.ajax({
 	        		    type:"post",
 	        		    url:path+"login/sendCode.action",
@@ -86,7 +87,6 @@ $("#register").click(function(){
 	        		    	tel:tel
 	        		    }
 	        		});
-	        	  settime(obj);
 	          }else if(data.code == '2'){
 	        	  toastr.error(data.msg);
 	          } 

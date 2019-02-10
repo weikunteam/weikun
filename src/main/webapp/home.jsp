@@ -8,14 +8,19 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 <title>业务办理</title>
+
 <link rel='stylesheet' href='${path}css/bootstrap.css'>
 <link rel='stylesheet' href='${path}css/toastr.min.css'>
 <link href="${path}css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${path}css/cardstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="${path}css/introductionstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="${path}css/rankstyle.css" rel="stylesheet" type="text/css"/>
 <script src="${path}js/jQuery.js"></script>
 <script src="${path}js/toastr.min.js"></script>
 <script src="${path}js/bootstrap.js"></script>
 <script src="${path}js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="${path}js/introductiontab.js"></script>
 <style>
 .center-vertical{
 
@@ -78,8 +83,10 @@ opacity: 0.6;
 <div class="col-xs-12"> -->
 <div class="form-group"> 
 <ul id="myTab" class="nav nav-pills" role="tablist" style="text-align:center;">
-    <li class="active" style="width:49.6%;"><a href="#bulletin" role="tab" data-toggle="pill">贷款</a></li>
-    <li style="width:49.6%"><a href="#rule" role="tab" data-toggle="pill">信用卡</a></li>
+    <li class="active" style="width:24.5%;"><a href="#bulletin" role="tab" data-toggle="pill" ><small>贷款</small></a></li>
+    <li style="width:24.5%"><a href="#rule" role="tab" data-toggle="pill"><small>信用卡</small></a></li>
+    <li style="width:24.5%"><a href="#rank" role="tab" data-toggle="pill"><small>明星经理</small></a></li>
+    <li style="width:24.5%"><a href="#introduction" role="tab" data-toggle="pill"><small>公司简介</small></a></li>
 </ul>
 </div>
 <!-- </div>
@@ -91,294 +98,472 @@ opacity: 0.6;
 <div class="container-fluid">
 <div class="row">
 <div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
+    <div class="aui-show-box">
+        <div class="aui-flex">
+            <div class="aui-sml-img">
+                <img src="${path}img/logo.jpg" alt="">
+            </div>
+            <div class="aui-flex-box">
+                <h3><font size="4px">平安新一贷</font></h3>
+            </div>
+        </div>
+        <div class="aui-flex">
+            <div class="aui-text-one">
+                <h2>50000</h2>
+                <p>可贷额度(元)</p>
+            </div>
+            <div class="aui-flex-box">
+                <h4>即刻到账</h4>
+                <h5>千元日费用0.1元</h5>
+            </div>
+            <div class="aui-text-two">
+                <a href="${path}xinyidaiHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">平安新一贷</h5>
-    <p class="card-text"><font style="color:red">额度：500-200000</font></p>
+    <div class="aui-show-box">
+        <div class="aui-flex">
+            <div class="aui-sml-img">
+                <img src="${path}img/logo.jpg" alt="">
+            </div>
+            <div class="aui-flex-box">
+                <h3><font size="4px">兴业消费金融</font></h3>
+            </div>
+        </div>
+        <div class="aui-flex">
+            <div class="aui-text-one">
+                <h2>50000</h2>
+                <p>可贷额度(元)</p>
+            </div>
+            <div class="aui-flex-box">
+                <h4>即刻到账</h4>
+                <h5>千元日费用0.1元</h5>
+            </div>
+            <div class="aui-text-two">
+                <a href="${path}xinyeHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+            </div>
+        </div>
     </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="${path}xinyidaiHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
+    <div class="aui-show-box">
+    <div class="aui-flex">
+        <div class="aui-sml-img">
+            <img src="${path}img/logo.jpg" alt="">
+        </div>
+        <div class="aui-flex-box">
+            <h3><font size="4px">中行消费金融</font></h3>
+        </div>
     </div>
+    <div class="aui-flex">
+        <div class="aui-text-one">
+            <h2>50000</h2>
+            <p>可贷额度(元)</p>
+        </div>
+        <div class="aui-flex-box">
+            <h4>即刻到账</h4>
+            <h5>千元日费用0.1元</h5>
+        </div>
+        <div class="aui-text-two">
+            <a href="${path}zhonghangHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+            <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+        </div>
     </div>
-    </div>
+</div>
+    <div class="aui-show-box">
+        <div class="aui-flex">
+            <div class="aui-sml-img">
+                <img src="${path}img/logo.jpg" alt="">
+            </div>
+            <div class="aui-flex-box">
+                <h3><font size="4px">海尔-玖康</font></h3>
+            </div>
+        </div>
+        <div class="aui-flex">
+            <div class="aui-text-one">
+                <h2>50000</h2>
+                <p>可贷额度(元)</p>
+            </div>
+            <div class="aui-flex-box">
+                <h4>即刻到账</h4>
+                <h5>千元日费用0.1元</h5>
+            </div>
+            <div class="aui-text-two">
+                <a href="${path}haierHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+            </div>
+        </div>
     </div>
 
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">兴业消费金融</h5>
-    <p class="card-text"><font style="color:red">额度：500-200000</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="${path}xingyeHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
+    <div class="aui-show-box">
+        <div class="aui-flex">
+            <div class="aui-sml-img">
+                <img src="${path}img/logo.jpg" alt="">
+            </div>
+            <div class="aui-flex-box">
+                <h3><font size="4px">小额贷款</font></h3>
+            </div>
+        </div>
+        <div class="aui-flex">
+            <div class="aui-text-one">
+                <h2>50000</h2>
+                <p>可贷额度(元)</p>
+            </div>
+            <div class="aui-flex-box">
+                <h4>即刻到账</h4>
+                <h5>千元日费用0.1元</h5>
+            </div>
+            <div class="aui-text-two">
+                <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+            </div>
+        </div>
     </div>
 
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">中行消费金融</h5>
-    <p class="card-text"><font style="color:red">额度：500-200000</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="${path}zhonghangHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">海尔-玖康</h5>
-    <p class="card-text"><font style="color:red">额度：500-200000</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="${path}haierHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">咨询</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-     
-<div class="col-xs-12">
-<div class="form-group">
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/logo.jpg" alt="Card image" style="width:100%">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">小额贷款</h5>
-    <p class="card-text"><font style="color:red">额度：500-200000</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
     </div>
   </div>
 </div>
 </div>
     <div class="tab-pane fade" id="rule"><div class="container-fluid">
-<div class="row">
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3" >
-    <img src="${path}img/招商银行.gif" alt="Card image"  style="width:150%;margin-top:20%;">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">招商银行信用卡</h5>
-    <p class="card-text"><font style="color:red">通过率：65%</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
+    <div class="row">
+    <div class="col-xs-12">
+        <div class="aui-show-box">
+            <div class="aui-flex">
+                <div class="aui-sml-img">
+                    <img src="${path}img/招商银行.gif" alt="">
+                </div>
+                <div class="aui-flex-box">
+                    <h3><font size="4px">招商银行信用卡</font></h3>
+                </div>
+            </div>
+            <div class="aui-flex">
+                <div class="aui-text-one">
+                    <h2>65%</h2>
+                    <p>通过率</p>
+                </div>
+                <div class="aui-flex-box">
+                    <h4>极速批卡</h4>
+                    <h5>成功核卡返现2%</h5>
+                </div>
+                <div class="aui-text-two">
+                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+                </div>
+            </div>
+        </div>
+        <div class="aui-show-box">
+            <div class="aui-flex">
+                <div class="aui-sml-img">
+                    <img src="${path}img/兴业银行.gif" alt="">
+                </div>
+                <div class="aui-flex-box">
+                    <h3><font size="4px">兴业银行信用卡</font></h3>
+                </div>
+            </div>
+            <div class="aui-flex">
+                <div class="aui-text-one">
+                    <h2>55%</h2>
+                    <p>通过率</p>
+                </div>
+                <div class="aui-flex-box">
+                    <h4>极速批卡</h4>
+                    <h5>成功核卡返现2%</h5>
+                </div>
+                <div class="aui-text-two">
+                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+                </div>
+            </div>
+        </div>
+        <div class="aui-show-box">
+            <div class="aui-flex">
+                <div class="aui-sml-img">
+                    <img src="${path}img/民生银行.gif" alt="">
+                </div>
+                <div class="aui-flex-box">
+                    <h3><font size="4px">民生银行信用卡</font></h3>
+                </div>
+            </div>
+            <div class="aui-flex">
+                <div class="aui-text-one">
+                    <h2>45%</h2>
+                    <p>通过率</p>
+                </div>
+                <div class="aui-flex-box">
+                    <h4>极速批卡</h4>
+                    <h5>成功核卡返现2%</h5>
+                </div>
+                <div class="aui-text-two">
+                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+                </div>
+            </div>
+        </div>
+        <div class="aui-show-box">
+            <div class="aui-flex">
+                <div class="aui-sml-img">
+                    <img src="${path}img/平安银行.gif" alt="">
+                </div>
+                <div class="aui-flex-box">
+                    <h3><font size="4px">平安银行信用卡</font></h3>
+                </div>
+            </div>
+            <div class="aui-flex">
+                <div class="aui-text-one">
+                    <h2>55%</h2>
+                    <p>通过率</p>
+                </div>
+                <div class="aui-flex-box">
+                    <h4>极速批卡</h4>
+                    <h5>成功核卡返现2%</h5>
+                </div>
+                <div class="aui-text-two">
+                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+                </div>
+            </div>
+        </div>
+        <div class="aui-show-box">
+            <div class="aui-flex">
+                <div class="aui-sml-img">
+                    <img src="${path}img/中信银行.gif" alt="">
+                </div>
+                <div class="aui-flex-box">
+                    <h3><font size="4px">中信银行信用卡</font></h3>
+                </div>
+            </div>
+            <div class="aui-flex">
+                <div class="aui-text-one">
+                    <h2>15%</h2>
+                    <p>通过率</p>
+                </div>
+                <div class="aui-flex-box">
+                    <h4>极速批卡</h4>
+                    <h5>成功核卡返现2%</h5>
+                </div>
+                <div class="aui-text-two">
+                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
+                </div>
+            </div>
+        </div>
 
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3 ">
-    <img src="${path}img/兴业银行.gif" alt="Card image" style="width:150%;margin-top:20%;">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">兴业银行信用卡</h5>
-    <p class="card-text"><font style="color:red">通过率：55%</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/民生银行.gif" alt="Card image" style="width:150%;margin-top:20%;">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">民生银行信用卡</h5>
-    <p class="card-text"><font style="color:red">通过率：65%</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    
-<div class="col-xs-12">
-<div class="form-group"> 
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/平安银行.gif" alt="Card image" style="width:150%;margin-top:20%;">
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">平安银行信用卡</h5>
-    <p class="card-text"><font style="color:red">通过率：30%</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-     
-<div class="col-xs-12">
-<div class="form-group">
-<div class="card" >
-<div class="col-xs-3">
-    <img src="${path}img/中信银行.gif" alt="Card image" style="width:150%;margin-top:20%;" >
-    </div>
-    <div class="col-xs-9">
-    <div class="col-xs-8"> 
-    <div class="card-body">
-    <div style="">
-    <h5 class="card-title">中信银行信用卡</h5>
-    <p class="card-text"><font style="color:red">通过率：15%</font></p>
-    </div>
-     </div>
-     </div>
-     <div class="col-xs-1">
-     <div class="form-group">  
-      <a href="#" class="btn btn-info" style="padding-top:20%;padding-bottom:20%;">申请</a>
-      </div>
-      <div class="form-group">  
-      <a href="#" class="btn btn-info shareBtn" style="padding-top:20%;padding-bottom:20%;" id="shareBtn">分享</a>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
     </div>
   </div>
 </div>
 </div>
-<!--     <div class="tab-pane fade" id="forum">论坛内容面板</div>
-    <div class="tab-pane fade" id="security">安全内容面板</div>
-    <div class="tab-pane fade" id="welfare">公益内容面板</div> -->
+     <div class="tab-pane fade" id="introduction"><section class="aui-flexView">
+    <%--<header class="aui-navBar aui-navBar-fixed b-line">
+        <div class="aui-center">
+            <span class="aui-center-title">公司信息</span>
+        </div>
+    </header>--%>
+    <section class="aui-scrollView">
+        <div class="aui-flex">
+            <div class="aui-com-img">
+                <img src="images/logo-com.png" alt="">
+            </div>
+            <div class="aui-flex-box">
+                <h2>百度网络</h2>
+                <h3>
+                    <span><i class="fa fa-flag"style="color: #5bc0de;"></i>&nbsp;民营公司</span>
+                    <span><i class="fa fa-users"style="color: #5bc0de;"></i>&nbsp;10000人以上</span>
+                </h3>
+                <h3>
+                    <span><i class="fa fa-building" style="color: #5bc0de;font-size: 11px;"></i>&nbsp;互联网电子商务 计算机软件</span>
+
+                </h3>
+            </div>
+        </div>
+        <div class="aui-slide-list">
+            <ul class="aui-slide-item-list">
+                <li class="aui-slide-item-item">
+                    <a href="javascript:;">
+                        <img src="images/com-img-001.png" alt="">
+                    </a>
+                </li>
+                <li class="aui-slide-item-item">
+                    <a href="javascript:;">
+                        <img src="images/com-img-002.png" alt="">
+                    </a>
+                </li>
+                <li class="aui-slide-item-item">
+                    <a href="javascript:;">
+                        <img src="images/com-img-003.png" alt="">
+                    </a>
+                </li>
+                <li class="aui-slide-item-item">
+                    <a href="javascript:;">
+                        <img src="images/com-img-001.png" alt="">
+                    </a>
+                </li>
+                <li class="aui-slide-item-item">
+                    <a href="javascript:;">
+                        <img src="images/com-img-002.png" alt="">
+                    </a>
+                </li>
+                <li class="aui-slide-item-item">
+                    <a href="javascript:;">
+                        <img src="images/com-img-003.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="aui-flex">
+            <div class="aui-flex-box">
+                <h4>北京海淀区上地十街10号百度大厦</h4>
+            </div>
+            <div class="aui-arrow"></div>
+        </div>
+        <div class="divHeight"></div>
+
+        <div class="aui-tab" data-ydui-tab>
+            <%--<ul class="tab-nav b-line">
+                <li class="tab-nav-item tab-active" style="text-decoration:none">
+                    <a href="javascript:;">
+                        <span>公司介绍</span>
+                    </a>
+                </li>
+                <li class="tab-nav-item">
+                    <a href="javascript:;" style="text-decoration:none">
+                        <span>所在职位</span>
+                    </a>
+                </li>
+            </ul>--%>
+            <div class="tab-panel">
+                <div class="tab-panel-item tab-active">
+                    <div class="aui-com-text">
+                        <p>百度（纳斯达克：BIDU），全球最大的中文搜索引擎、最大的中文网站。1999年底,身在美国硅谷的李彦宏看到了中国互联网及中文搜索引擎服务的巨大发展潜力，抱着技术改变世界的梦想，他毅然辞掉硅谷的高薪工作，携搜索引擎专利技术，于 2000年1月1日在中关村创建了百度公司。</p>
+                        <p>“百度”二字,来自于八百年前南宋词人辛弃疾的一句词：众里寻他千百度。这句话描述了词人对理想的执着追求。</p>
+                        <p>百度拥有数万名研发工程师，这是中国乃至全球最为优秀的技术团队。这支队伍掌握着世界上最为先进的搜索引擎技术，使百度成为中国掌握世界尖端科学核心技术的中国高科技企业，也使中国成为美国、俄罗斯、和韩国之外，全球仅有的4个拥有搜索引擎核心技术的国家之一。</p>
+                        <p>从创立之初，百度便将“让人们最平等便捷地获取信息，找到所求”作为自己的使命，成立以来，公司秉承“用户至上”的理念，不断坚持技术创新，致力于为用户提供“简单可依赖”的互联网搜索产品及服务，其中包括:以网络搜索为主的功能性搜索;以贴吧为主的社区搜索，针对各区域、行业所需的垂直搜索;以及门户频道、IM等，全面覆盖了中文网络世界所有的搜索需求。根据第三方权威数据，在中国，百度PC端和移动端市场份额总量达73.5%，覆盖了中国97.5%的网民，拥有6亿用户，日均响应搜索60亿次。</p>
+
+                    </div>
+
+                </div>
+                <%--<div class="tab-panel-item">
+                    <a href="javascript:;" class="aui-flex b-line">
+                        <div class="aui-flex-box">
+                            <h5>前端开发工程师 </h5>
+                            <h6>15k-25k /上海 / 经验3-5年 </h6>
+                        </div>
+                        <div class="aui-right-text">
+                            <h2>15k-25k/月</h2>
+                            <h3>今天</h3>
+                        </div>
+                    </a>
+
+                </div>--%>
+            </div>
+        </div>
+
+    </section>
+</section>
+     </div>
+    <div class="tab-pane fade" id="rank"><section class="aui-flexView">
+        <%--<header class="aui-navBar aui-navBar-fixed">
+            &lt;%&ndash;<a href="javascript:;" class="aui-navBar-item">
+                <i class="icon icon-return"></i>
+            </a>&ndash;%&gt;
+            <div class="aui-center">
+                <span class="aui-center-title" style="font-size: 15px"><strong>本周之星</strong></span>
+            </div>
+            &lt;%&ndash;<a href="javascript:;" class="aui-navBar-item">
+                <i class="icon icon-sys"></i>
+            </a>&ndash;%&gt;
+        </header>--%>
+        <section class="aui-scrollView">
+            <div class="aui-tab" data-ydui-tab>
+                <div class="tab-panel">
+                    <div class="tab-panel-item tab-active">
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-author-user">
+                                <img src="${path}images/vip-001.png" alt="">
+                            </div>
+                            <div class="aui-album-img">
+                                <img src="${path}images/user-logo-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h2>小岗村的村长 <em>业务员</em></h2>
+                                <h3>周阅读量33万</h3>
+                                <p>坐标杭州、上海、北京微信号:yyossom 加好友时请备注公司和职位以及来意、欢迎交流~</p>
+                            </div>
+                            <div class="aui-album-button aui-album-button-add">
+                                <button>联系ta</button>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-author-user">
+                                <img src="${path}images/vip-002.png" alt="">
+                            </div>
+                            <div class="aui-album-img">
+                                <img src="${path}images/user-logo-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h2>小梅同志 <em>业务员</em></h2>
+                                <h3>周阅读量33万</h3>
+                                <p>坐标杭州、上海、北京微信号:yyossom 加好友时请备注公司和职位以及来意、欢迎交流~</p>
+                            </div>
+                            <div class="aui-album-button aui-album-button-add">
+                                <button>联系ta</button>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-author-user">
+                                <img src="${path}images/vip-003.png" alt="">
+                            </div>
+                            <div class="aui-album-img">
+                                <img src="${path}images/user-logo-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h2>流浪者 <em>业务员</em></h2>
+                                <h3>周阅读量33万</h3>
+                                <p>坐标杭州、上海、北京微信号:yyossom 加好友时请备注公司和职位以及来意、欢迎交流~</p>
+                            </div>
+                            <div class="aui-album-button aui-album-button-add">
+                                <button>联系ta</button>
+                            </div>
+                        </a>
+
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-author-user">
+                                <img src="${path}images/vip-004.png" alt="">
+                            </div>
+                            <div class="aui-album-img">
+                                <img src="${path}images/user-logo-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h2>凌驾者 <em>业务员</em></h2>
+                                <h3>周阅读量33万</h3>
+                                <p>坐标杭州、上海、北京微信号:yyossom 加好友时请备注公司和职位以及来意、欢迎交流~</p>
+                            </div>
+                            <div class="aui-album-button aui-album-button-add">
+                                <button>联系ta</button>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-author-user">
+                                <img src="${path}images/vip-005.png" alt="">
+                            </div>
+                            <div class="aui-album-img">
+                                <img src="${path}images/user-logo-004.png" alt="">
+                            </div>
+                            <div class="aui-flex-box">
+                                <h2>宝来驾驶者 <em>业务员</em></h2>
+                                <h3>周阅读量33万</h3>
+                                <p>坐标杭州、上海、北京微信号:yyossom 加好友时请备注公司和职位以及来意、欢迎交流~</p>
+                            </div>
+                            <div class="aui-album-button aui-album-button-add">
+                                <button>联系ta</button>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section></div>
+    <!--<div class="tab-pane fade" id="welfare">公益内容面板</div> -->
 </div>
 
 </body>

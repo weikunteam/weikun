@@ -54,6 +54,7 @@
 </body>
 
 <script type="text/javascript">
+
 toastr.options = {
 		"closeButton": false, //是否显示关闭按钮
 		"debug": false, //是否使用debug模式
@@ -83,7 +84,7 @@ $("#login").click(function(){
 		toastr.error("请输入密码");	
 		return false;
 	}
-	
+
 	$.ajax({
 	    type:"post",
 	    url:"${path}login/login.action",
@@ -97,13 +98,13 @@ $("#login").click(function(){
 	        	  if("${param.isUserCenter}"==1){
 	        		  window.location.href = "${path}userCenter/gotoUserCenter.action";
 	        	  }else{
-	        		  window.location.href = "${path}home/gotoHome.action"; 
-	        	  }	        	  
+	        		  window.location.href = "${path}home/gotoHome.action";
+	        	  }
 	          }else if(data.code == '2'){
 	        	  toastr.error(data.msg);
 	          }else if(data.code == '3'){
 	        	  toastr.error(data.msg);
-	          }   
+	          }
 	      }
 	});
 	});

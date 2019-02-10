@@ -18,8 +18,15 @@
 	</select>
 	
 	<insert id="addUser">
-	insert into TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt) values (#{tel},#{psw},#{date},#{selfCode},#{salt})	
+	insert into
+	  TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt,uRegRecommendPeople)
+	 values
+	        (#{tel},#{psw},#{date},#{selfCode},#{salt},#{recommendPeople})
 	</insert>
+
+	<select id="getRecommendpeople" resultType="string">
+		select uPhone from TB_USER where uRecommendCode = #{code}
+	</select>
 	
 	
 </mapper>

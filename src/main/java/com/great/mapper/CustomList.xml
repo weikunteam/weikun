@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.CustomListDao">
+    <select id="listCustom" resultType="map">
+        select DISTINCT
+            t1.userId,
+            t1.uPhone,
+            t1.uPsw,
+            t1.salt,
+            t1.uRecommendCode,
+            t1.uRecommendAmount,
+            t1.uRegRecommendPeople,
+            t1.registerTime
+        from TB_USER t1 inner join TB_BUS_PAXYD t2 on t1.userId = t2.userId
+        where t1.uRegRecommendPeople = #{tel}
+
+    </select>
+
+
+
+</mapper>

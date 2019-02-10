@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="${path}css/default.css">
 <link href="${path}css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
 <link href="${path}css/site.css" rel="stylesheet" type="text/css" />
+    <link href="${path}css/usercenterstyle.css" rel="stylesheet" type="text/css"/>
 <script src="${path}js/jQuery.js"></script>
 <script src="${path}js/toastr.min.js"></script>
 <script src="${path}js/bootstrap.js"></script>
@@ -50,9 +51,9 @@ opacity: 0.6;
     background: #FFFACD;
     padding: 0px;
 }
-.form-horizontal{
+/*.form-horizontal{
 background-color:#white;
-}
+}*/
 body{
 background-color:#F5F5F5;
 }
@@ -61,18 +62,216 @@ background-color:#F5F5F5;
 	
 	background: -webkit-linear-gradient(#BBFFFF, #00BFFF); /* Safari 5.1 - 6.0 */
 
-    background: -o-linear-gradient(#BBFFFF, #00BFFF)); /* Opera 11.1 - 12.0 */
+    background: -o-linear-gradient(#BBFFFF, #00BFFF); /* Opera 11.1 - 12.0 */
 
-    background: -moz-linear-gradient(#BBFFFF, #00BFFF)); /* Firefox 3.6 - 15 */
+    background: -moz-linear-gradient(#BBFFFF, #00BFFF); /* Firefox 3.6 - 15 */
 
-    background: linear-gradient(#BBFFFF, #00BFFF)); /* 标准的语法（必须放在最后） */
+    background: linear-gradient(#BBFFFF, #00BFFF); /* 标准的语法（必须放在最后） */
     text-align: center;
 }
 </style>
 </head>
 <body>
+<section class="aui-flexView">
+    <header class="aui-navBar aui-navBar-fixed">
+        <%--<a href="javascript:;" class="aui-navBar-item">
+            <i class="icon icon-return"></i>签到赚金币
+        </a>--%>
+        <div class="aui-center">
+            <span class="aui-center-title"></span>
+        </div>
+        <a href="javascript:;" class="aui-navBar-item">
+            <i class="icon icon-set"></i>
+            <%--<i class="icon icon-new"></i>--%>
+        </a>
+    </header>
+    <section class="aui-scrollView">
+        <div class="aui-tour-content"></div>
+        <div class="aui-tour-box">
+            <div class="aui-tour-box-item">
+                <div class="aui-tour-layout">
+                    <div class="aui-flex">
+                        <div class="aui-flex-user">
+                            <img src="${path}img/a5.jpg" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            <h3 style="font-size: 16px">您好， ${user.uPhone}</h3>
+                            <div class="aui-flex-org">
+                                <i class="icon icon-vip"></i>普通会员
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-palace aui-palace-one b-line">
+                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
+                            <c:if test="${user.uRegRecommendPeople != null }">
+                            <div class="aui-palace-grid-icon" style="margin-left: 0px;">
+                                <span>
+                                    ${user.uRegRecommendPeople}
+                                </span>
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>推荐导师</h2>
+                            </div>
+                            </c:if>
+                            <c:if test="${user.uRegRecommendPeople == null }">
+                                <div class="aui-palace-grid-icon">
+                                <span>
+                                        平台
+                                </span>
+                                </div>
+                                <div class="aui-palace-grid-text">
+                                    <h2>推荐导师</h2>
+                                </div>
+                            </c:if>
+                        </a>
 
-<div class="form-group" id="blue-bg">
+
+                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
+                            <div class="aui-palace-grid-icon">
+                                <span>
+                                    <c:if test="${user.studentNum != null }">${user.studentNum}</c:if>
+				                    <c:if test="${user.studentNum == null }">0</c:if>
+                                </span>
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>徒弟人数</h2>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
+                            <div class="aui-palace-grid-icon">
+                                <span><font color="red" >
+                                <c:if test="${user.uRecommendAmount != null }">${user.uRecommendAmount}</c:if>
+                                <c:if test="${user.uRecommendAmount == null }">0</c:if>
+                                </font></span>
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>账户余额(元)</h2>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="aui-flex aui-flex-news">
+                        <%--<div class="aui-flex-icon">
+                            <i class="icon icon-news"></i>
+                        </div>--%>
+                        <%--<div class="aui-flex-box">
+                            <p>您有 <em>8888元新用户大礼包</em>尚未领取</p>
+                        </div>--%>
+                        <%--<div class="aui-flex-arrow"></div>--%>
+                    </div>
+                </div>
+                <%--<div class="aui-tour-layout aui-tour-layout-pad">
+
+                    <div class="aui-palace aui-palace-two">
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="images/icon-head-001.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>待支付</h2>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="images/icon-head-002.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>待出行</h2>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="images/icon-head-003.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>待点评</h2>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="images/icon-head-004.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>全部订单</h2>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>--%>
+                <div class="aui-tour-layout aui-tour-layout-pad">
+
+                    <div class="aui-palace aui-palace-two">
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="${path}images/icon-head-005.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>我要提现</h2>
+                            </div>
+                        </a>
+                        <a href="${path}customList/gotoCustomList.action" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="${path}images/icon-head-006.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>客户列表</h2>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="${path}images/icon-head-007.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>我的业务</h2>
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-palace-grid">
+                            <div class="aui-palace-grid-icon">
+                                <img src="${path}images/icon-head-008.png" alt="">
+                            </div>
+                            <div class="aui-palace-grid-text">
+                                <h2>全部钱包</h2>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="aui-tour-layout">
+
+                    <div class="aui-tour-news">
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-box-head">个人信息</div>
+                            <div class="aui-flex-box aui-flex-box-right">
+                                <%--旅客、地址、银行卡--%>
+                            </div>
+                        </a>
+                        <%--<a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-box-head">我的点评</div>
+                            <div class="aui-flex-box aui-flex-box-right">
+                                图片、文字
+                            </div>
+                        </a>--%>
+                        <%--<a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-box-head">已办业务</div>
+                            <div class="aui-flex-box aui-flex-box-right">
+                            </div>
+                        </a>--%>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-box-head">帮助中心</div>
+                            <div class="aui-flex-box aui-flex-box-right">
+                            </div>
+                        </a>
+                        <a href="javascript:;" class="aui-flex b-line">
+                            <div class="aui-flex-box-head">意见反馈</div>
+                            <div class="aui-flex-box aui-flex-box-right">
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<%--<div class="form-group" id="blue-bg">
 <img src="${path}img/a5.jpg" style="width:25%;margin-top:5%" class="img-circle img-thumbnail"></img>
 <div class="form-group" style="margin-top:2%">
 <label class="control-label" style="font-size:120%"><font style="color:white;">
@@ -132,9 +331,9 @@ background-color:#F5F5F5;
 <div class="col-xs-6" >
 <a href="http://www.baidu.com" style="text-decoration:none">
 <div class="form-group" >
-<img src="${path}img/people.jpg" style="width:20%"></img>
+<img src="${path}img/people.jpg" style="width:15%"></img>
 </div>
-<font  size="3px" color="black">客户列表</font>
+<font  size="2px" color="black">客户列表</font>
 </a>
 </div>
 
@@ -142,9 +341,9 @@ background-color:#F5F5F5;
 <div class="col-xs-6" >
 <a href="http://www.baidu.com" style="text-decoration:none">
 <div class="form-group" >
-<img src="${path}img/withdraw.jpg" style="width:20%" ></img>
+<img src="${path}img/withdraw.jpg" style="width:15%;" ></img>
 </div>
-<font  size="3px" color="black">我要提现</font>
+<font  size="2px" color="black" style="margin-top: 2px;">我要提现</font>
 </a>
 </div>
 
@@ -166,7 +365,7 @@ background-color:#F5F5F5;
         <div class="col-xs-12" style="text-align:center;">
           <ul class="demo1" >
             <li class="news-item">              
-                  <%-- <td><img src="${path}img/a3.jpg" width="60" class="img-circle" /></td> --%>
+                  &lt;%&ndash; <td><img src="${path}img/a3.jpg" width="60" class="img-circle" /></td> &ndash;%&gt;
                   	<font color="#828282">中天商务公众号上线啦</font>                                 
             </li>
             <li class="news-item">
@@ -179,7 +378,7 @@ background-color:#F5F5F5;
     <div class="panel-footer">
     </div>
   </div>
-</div> 
+</div> --%>
 
  
 

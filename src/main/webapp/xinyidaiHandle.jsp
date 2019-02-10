@@ -27,10 +27,40 @@
 body{
 background-color:white;
 }
+.form-horizontal .form-control:focus{
+	background: #e0e0e0;
+	box-shadow: none;
+	outline: 0 none;
+}
+.form-horizontal .form-control{
+	box-shadow: none;
+	padding: 0 20px 0 30px;
+	transition: all 0.3s ease 0s;
+}
+.form-horizontal .form-group i{
+	position: absolute;
+	top: 10px;
+	left: 25px;
+	font-size: 17px;
+	color: #c8c8c8;
+	transition : all 0.5s ease 0s;
+}
+.form-horizontal .form-control:focus + i{
+	color: #00b4ef;
+}
+.form-horizontal .fa-question-circle{
+	display: inline-block;
+	position: absolute;
+	top: 12px;
+	right: 60px;
+	font-size: 20px;
+	color: #808080;
+	transition: all 0.5s ease 0s;
+}
 </style>
 </head>
 <body>
-<div class="container">
+<%--<div class="container">
 		<h3 class="page-header">平安新一贷<small>产品优势</small></h3>
 		<p><!-- <abbr title="前端CSS框架" class="initialism">BootstrapWeb</abbr>  -->
 		额度高：最高可贷50万<br>
@@ -40,32 +70,64 @@ background-color:white;
 		时效承诺：3-5个工作日、资料齐全最快一天放款<br>
 		周期长：可自由选择12/24/36个月还款期限，优良职业最长可达48个月
 		</p>
+	</div>--%>
+<div id="myCarousel" class="carousel slide">
+	<!-- 轮播（Carousel）指标 -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner" >
+		<div class="item active" >
+			<img src="${path}img/ac1.jpg" class="img-responsive" alt="First slide" style="width:100%;">
+		</div>
+		<div class="item">
+			<img src="${path}img/ac1.jpg" class="img-responsive" alt="Second slide" style="width:100%;">
+		</div>
+		<div class="item">
+			<img src="${path}img/ac1.jpg" class="img-responsive" alt="Third slide" style="width:100%;">
+		</div>
 	</div>
+	<!-- 轮播（Carousel）导航 -->
+	<!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a> -->
+</div>
 <div class="container-fluid" style="margin-top:5%">
     <div class="row" >
         <div class="col-xs-12">
             <form class="form-horizontal">
                 <!-- <span class="heading">用户登录</span> -->
-                <div class="form-group">
-        		<label  class="col-xs-4 control-label text-center"><font color="#27408B">名字：</font></label>
-        		<div class="col-xs-8">
+                <div class="form-group" style="margin-bottom: 5px;">
+        		<label  class="col-xs-4 control-label text-right"><font color="#27408B">名字：</font></label>
+        		<div class="col-xs-8 ">
             	<input type="text" class="form-control" id="name" placeholder="请输入名字">
+					<i class="fa fa-user" aria-hidden="true"></i>
         		</div>
     			</div>
-				<div class="form-group">
-					<label  class="col-xs-4 control-label text-center"><font color="#27408B">手机号：</font></label>
+				<div class="form-group" style="margin-bottom: 5px;">
+					<label  class="col-xs-4 control-label text-right"><font color="#27408B">手机号：</font></label>
 					<div class="col-xs-8">
 						<input type="text" class="form-control" id="tel" placeholder="请输入手机号">
+						<i class="fa fa-mobile" aria-hidden="true" style="font-size: 23px;top: 8px;left: 26px;"></i>
 					</div>
 				</div>
-                <div class="form-group">
-        		<label  class="col-xs-4 control-label text-center"><font color="#27408B">年龄：</font></label>
+                <div class="form-group" style="margin-bottom: 5px;">
+        		<label  class="col-xs-4 control-label text-right"><font color="#27408B">年龄：</font></label>
         		<div class="col-xs-8">
             	<input type="text" class="form-control" id="age" placeholder="请输入年龄">
+					<i class="fa fa-users" aria-hidden="true" style="font-size: 13px;top: 12px;left: 24px;"></i>
         		</div>
     			</div>
-    			<div class="form-group">
-    			<label  class="col-xs-4 control-label text-center"><font color="#27408B">性别：</font></label>
+    			<div class="form-group" style="margin-bottom: 5px;">
+    			<label  class="col-xs-4 control-label text-right"><font color="#27408B">性别：</font></label>
                 <div class="radio-inline col-xs-3 radio radio-info" >
 				  <input type="radio"  name="sex" value="1" checked />
 				  <label >男</label>
@@ -75,8 +137,8 @@ background-color:white;
 				  <label >女</label>
 				</div>
 				</div>
-				<div class="form-group">
-                	<label  class="col-xs-4 control-label text-center"><font color="#27408B">资质：</font></label>
+				<div class="form-group" style="margin-bottom: 5px;">
+                	<label  class="col-xs-4 control-label text-right"><font color="#27408B">资质：</font></label>
                 	<div class="col-xs-6">
                 	<select class="selectpicker " multiple title="请选择" style="text-align:center;" id="property" >
     				<option value="1" >房贷</option>
@@ -85,7 +147,7 @@ background-color:white;
 					</select>
                 	</div>                  
                 </div>
-                <div class="form-group" style="display:none;" id="house">
+                <div class="form-group" style="display:none; margin-bottom: 5px;" id="house">
         			<label  class="control-label col-xs-12 text-left" ><font color="red">房贷情况：</font></label>
         			<div class="form-group">
         			<div class="radio-inline col-xs-6 radio radio-info" >
@@ -102,7 +164,7 @@ background-color:white;
             		</div>        			
         			</div>
     			</div>
-    			<div class="form-group" style="display:none;" id="warranty">
+    			<div class="form-group" style="display:none; margin-bottom: 5px;" id="warranty">
         			<label  class="control-label col-xs-12 text-left"><font color="red">保单情况：</font></label>
         			<div class="form-group">
         			<div class="radio-inline col-xs-6 radio radio-info" >
@@ -113,7 +175,7 @@ background-color:white;
 				  	<input type="radio"  name="warrantyRadio" value="0" class="" id="notPingAn"/>
 				  	<label >非平安</label>
 					</div>					
-					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴月数：</font></div>					
+					<div class="col-xs-6" style="margin-top:5px; margin-bottom: 5px;"><font color="">已缴月数：</font></div>
         			<div class="col-xs-5">       			
             		<input type="text" class="form-control" id="warrantyMonth" placeholder="单位（月）">
             		</div>
@@ -123,9 +185,9 @@ background-color:white;
             		</div>         			
         			</div>
     			</div>
-    			<div class="form-group" style="display:none;" id="money">
+    			<div class="form-group" style="display:none; margin-bottom: 5px;" id="money">
         			<label  class="control-label col-xs-12 text-left"><font color="red">公积金情况：</font></label>
-        			<div class="form-group">					
+        			<div class="form-group">
 					<div class="col-xs-6" style="margin-top:5px;"><font color="">已缴月数：</font></div>					
         			<div class="col-xs-5">       			
             		<input type="text" class="form-control" id="moneyYear" placeholder="单位（月）">
@@ -136,10 +198,11 @@ background-color:white;
             		</div>         			
         			</div>
     			</div>
-    			<div class="form-group">
-        		<label  class="col-xs-4 control-label text-center"><font color="#27408B">预贷金额：</font></label>
+    			<div class="form-group" >
+        		<label  class="col-xs-4 control-label text-right"><font color="#27408B">预贷金额：</font></label>
         		<div class="col-xs-8">
             	<input type="text" class="form-control" id="loanAmount" placeholder="请输入预贷金额(元)">
+					<i class="fa fa-money" aria-hidden="true" style="font-size: 13px;top: 12px;left: 24px;"></i>
         		</div>
     			</div>
                  <div class="form-group">
@@ -262,7 +325,6 @@ $('.selectpicker').on('changed.bs.select',function(e){
 	$("#houseLoan").prop("checked",false);
 	$("#pingAn").prop("checked",false);
 	$("#notPingAn").prop("checked",false);
-	alert($("input[name='houseRadio']:checked").val());
 	 for(var i=0;i<value.length;i++){
 		if(value[i]=='1'){
 			$("#pledge").prop("checked","checked");
@@ -276,7 +338,7 @@ $('.selectpicker').on('changed.bs.select',function(e){
 	} 
 });
 $(".selectpicker").selectpicker({
-	width:"auto",
+	width:"110%",
 });
 
 
@@ -290,6 +352,32 @@ $("input,textarea").on("blur",function(){
     setTimeout(function(){
         window.scrollTo(0,offsetTop);
     },100)
-})
+});
+$('#myCarousel').carousel({
+	interval: 3000
+});
+$(document).ready(function(){
+	var startX,endX;//声明触摸的两个变量
+	var offset = 30;//声明触摸距离的变量
+	$('.carousel-inner').on('touchstart',function (e) {
+		startX= e.originalEvent.touches[0].clientX;//当触摸开始时的x坐标；
+	});
+	$('.carousel-inner').on('touchmove',function (e) {
+		endX = e.originalEvent.touches[0].clientX;//当触摸离开时的x坐标；
+	});
+	$('.carousel-inner').on('touchend',function (e) {
+		//当触摸完成时进行的事件；
+		var distance = Math.abs(startX - endX);//不论正负，取值为正值；
+		if (distance > offset){
+			if(startX > endX){
+				$('#myCarousel').carousel('next');//当开始的坐标大于结束的坐标时，滑动到下一附图
+			}else{
+				$('#myCarousel').carousel('prev');//当开始的坐标小于结束的坐标时，滑动到上一附图
+
+			}
+
+		}
+	});
+});
 </script>
 </html>
