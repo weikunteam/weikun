@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.RankDao">
+    <select id="listRank" resultType="map">
+        select
+            b.salesManId,
+            u.userName,
+            COUNT(1) AS num,
+            u.uPhone
+        from TB_BUS_PAXYD b
+                 inner join TB_USER u on u.userId = b.salesManId
+        GROUP BY b.salesManId
+        ORDER BY num DESC
+        LIMIT 5
+
+    </select>
+
+
+
+
+
+</mapper>

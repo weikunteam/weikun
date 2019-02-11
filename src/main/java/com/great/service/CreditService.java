@@ -21,7 +21,7 @@ public class CreditService {
                           String moneyNum, String loanAmount, String userId,String tel,String type) {
         creditDao.insertCredit(userId, loanAmount, "0", DateUtil.getDateTime(),
                 houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum
-                , name, age, sex,tel,type);
+                , name, age, sex,tel,type,creditDao.getSalesManId(userId));
     }
 
 

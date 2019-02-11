@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -476,23 +477,40 @@ opacity: 0.6;
             <div class="aui-tab" data-ydui-tab>
                 <div class="tab-panel">
                     <div class="tab-panel-item tab-active">
-                        <a href="javascript:;" class="aui-flex b-line">
-                            <div class="aui-author-user">
-                                <img src="${path}images/vip-001.png" alt="">
-                            </div>
-                            <div class="aui-album-img">
-                                <img src="${path}images/user-logo-004.png" alt="">
-                            </div>
-                            <div class="aui-flex-box">
-                                <h2>小岗村的村长 <em>业务员</em></h2>
-                                <h3>周阅读量33万</h3>
-                                <p>坐标杭州、上海、北京微信号:yyossom 加好友时请备注公司和职位以及来意、欢迎交流~</p>
-                            </div>
-                            <div class="aui-album-button aui-album-button-add">
-                                <button>联系ta</button>
-                            </div>
-                        </a>
-                        <a href="javascript:;" class="aui-flex b-line">
+                        <c:forEach items="${listRank}" var="rank" varStatus="status">
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-author-user">
+                                    <c:if test="${status.index==0}">
+                                        <img src="${path}images/vip-001.png" alt="">
+                                    </c:if>
+                                    <c:if test="${status.index==1}">
+                                        <img src="${path}images/vip-002.png" alt="">
+                                    </c:if>
+                                    <c:if test="${status.index==2}">
+                                        <img src="${path}images/vip-003.png" alt="">
+                                    </c:if>
+                                    <c:if test="${status.index==3}">
+                                        <img src="${path}images/vip-004.png" alt="">
+                                    </c:if>
+                                    <c:if test="${status.index==4}">
+                                        <img src="${path}images/vip-005.png" alt="">
+                                    </c:if>
+                                </div>
+                                <div class="aui-album-img">
+                                    <img src="${path}images/user-logo-004.png" alt="">
+                                </div>
+                                <div class="aui-flex-box">
+                                    <h2><font size="3px">${rank.userName}</font> <em>业务员</em></h2>
+                                    <h3><font size="2px">总业务量</font> <font color="#dc143c" size="2px">${rank.num}</font></h3>
+                                    <p><font size="2px">联系电话：${rank.uPhone}</font></p>
+                                </div>
+                                <%--<div class="aui-album-button aui-album-button-add">
+                                    <button>联系ta</button>
+                                </div>--%>
+                            </a>
+                        </c:forEach>
+
+                        <%--<a href="javascript:;" class="aui-flex b-line">
                             <div class="aui-author-user">
                                 <img src="${path}images/vip-002.png" alt="">
                             </div>
@@ -556,7 +574,7 @@ opacity: 0.6;
                             <div class="aui-album-button aui-album-button-add">
                                 <button>联系ta</button>
                             </div>
-                        </a>
+                        </a>--%>
                     </div>
 
                 </div>

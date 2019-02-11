@@ -11,6 +11,7 @@
         ,age
         ,sex
         ,type
+        ,salesManId
         <if test="loanAmount !=null and loanAmount !=''">
          ,loanAmount
          </if>       
@@ -44,6 +45,7 @@
                 ,#{age}
                 ,#{sex}
                 ,#{type}
+                ,#{salesManId}
         		<if test="loanAmount !=null and loanAmount !=''">
          		,#{loanAmount}
          		</if>               
@@ -74,5 +76,11 @@
     </insert>
 
 
+    <select id="getSalesManId" resultType="int">
+    select userId from TB_USER
+    where userType = 2
+    and delState = 0
+    and userId = (select userId from TB_USER where uPhone = #{uRegRecommendPeople})
+    </select>
 
 </mapper>
