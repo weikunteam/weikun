@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.SystemManagerDao">
+
+	<select id="getRole"  parameterType="java.lang.Integer"  resultMap="permissionMapByRoleId">
+	 	select * from TB_ROLE where roleId = #{roleId}
+	 </select>
+	
+<!-- 	<select id="getPermissionListById" parameterType="java.lang.Integer" resultType="org.great.entity.PermissionBean">
+	 	select * from TB_PERMISSION where permissionId in (select permissionId from TB_RELATION_ROLE_PERMISSION where roleId = #{id})
+	 </select> -->
+	
+	<resultMap type="com.great.model.RoleModel"  id="permissionMapByRoleId">
+	 	<collection property="permissionList" column="roleId" javaType="java.util.List" select="getPermissionList" />
+	 </resultMap>
+	
+	 <!-- 通过id查询后台用户信息,包括角色信息和角色的权限信息 -->
+	 <select id="getAllRole"  resultMap="permissionMap">
+	 	select * from TB_ROLE 
+	 </select>
+	 
+	 <!-- 角色的resultMap -->
+	 <resultMap type="com.great.model.RoleModel" id="permissionMap">
+	 	<id column="roleId" property="roleId"/>
+	 	<collection property="userList" column="roleId"  javaType="java.util.List" select="getUserList" />	
+	 	<collection property="permissionList" column="roleId"  javaType="java.util.List" select="getPermissionList" />
+	 </resultMap>
+	
+	<select id="getUserList" parameterType="java.lang.Integer" resultType="com.great.model.UserModel">
+	 	select * from TB_USER where userId in (select userId from TB_RELATION_USER_ROLE where roleId = #{id})
+	 </select>
+	 
+	 <select id="getPermissionList" parameterType="java.lang.Integer" resultType="com.great.model.PermissionModel">
+	 	select * from TB_PERMISSION where permissionId in (select permissionId from TB_RELATION_ROLE_PERMISSION where roleId = #{id})
+	 </select>
+	
+	<select id="getAllPermission"  parameterType="java.lang.Integer"  resultType="com.great.model.PermissionModel">
+	 	select * from TB_PERMISSION 
+	 </select>
+	
+	<update id="updateRole" parameterType="com.great.model.RoleModel" >
+	update TB_ROLE set roleName = #{roleName} ,roleDetails = #{roleDetails} where roleId = #{roleId}
+	</update>
+	
+	<insert id="addRole" parameterType="com.great.model.RoleModel" >
+	insert into TB_ROLE(roleId, roleName, roleDetails )values(SEQ_ROLE.nextval , #{roleName}, #{roleDetails} )
+	</insert>
+	
+	<delete id="deleteRole" parameterType="com.great.model.RoleModel" >
+	delete from TB_ROLE where roleId=#{roleId}
+	</delete>
+	
+	<delete id="deleteRolePermission" parameterType="java.lang.String" >
+	delete from TB_RELATION_ROLE_PERMISSION where roleId= #{roleId}
+	</delete>
+	
+	<insert id="setRolePermission" parameterType="java.lang.String" >
+	insert into TB_RELATION_ROLE_PERMISSION(roleId, permissionId)values(#{roleId} , #{permissionId})
+	</insert>
+	
+</mapper>

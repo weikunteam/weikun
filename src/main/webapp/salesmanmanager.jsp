@@ -443,10 +443,38 @@
 						shade: 0, //不显示遮罩	      ,
 						yes: function() { //提交	    	  	
 							console.log("点击下载模板----");
-							var iframe = $("<iframe></iframe>");
-							iframe.attr("src", default_config.downUrl);
-							iframe.css("display", "none");
-							$("#" + idRandom).append(iframe);
+
+							window.location='<%=path%>salesManManager/downloadTemplet.action';
+	                           
+		                           setTimeout(function(){
+		                                layer.closeAll();//关闭所有的弹出层
+		                                layer.msg("模板下载成功！", {icon: 6});
+		                           }, 1000);
+<%-- 	 			               $.ajax({
+	 			                   url:'<%=path%>salesManManager/downloadTemplet.action',
+	 			                   type:'GET',
+	 			                   data:{},
+	 			                   dataType:'json',
+	 			                   success:function (msg) {
+	 			                       var returnCode = msg.returnCode;//取得返回数据（Sting类型的字符串）的信息进行取值判断
+	 			                       console.log("yyyy");
+	 			                       if(returnCode==200){
+	 			                           layer.closeAll('loading');
+	 			                           layer.load(2);
+	 			                           layer.msg("模板下载成功！", {icon: 6});
+	 			                           setTimeout(function(){
+	 			                                layer.closeAll();//关闭所有的弹出层
+	 			                           }, 1000);
+	 			                       }else{
+	 			                           layer.msg("1111", {icon: 5});
+	 			                       }
+	 			                   }
+	 			               });
+	 			              return false; --%>
+	 			             /* 							var iframe = $("<iframe></iframe>");
+								iframe.attr("src", default_config.downUrl);
+								iframe.css("display", "none");
+								$("#" + idRandom).append(iframe); */
 						},
 					});
 					

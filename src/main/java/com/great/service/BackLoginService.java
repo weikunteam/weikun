@@ -17,6 +17,15 @@ public class BackLoginService {
 	}
 	
 	
+	public Boolean backLoginIsSuccess(String uBackGroundAccount, String uBackGroundPsw) {
+		String existCode=backLoginDao.backLoginIsSuccess(uBackGroundAccount, uBackGroundPsw);
+		if(existCode.equals("0")) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
 	public String checkAccount(String uBackGroundAccount) {
 		String existCode=backLoginDao.checkAccount(uBackGroundAccount);
 		if(existCode.equals("0")) {
