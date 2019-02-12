@@ -123,7 +123,7 @@ background-color:white;
         		<label  class="col-xs-4 control-label text-right"><font color="#27408B">年龄：</font></label>
         		<div class="col-xs-8">
             	<input type="text" class="form-control" id="age" placeholder="请输入年龄">
-					<i class="fa fa-users" aria-hidden="true" style="font-size: 13px;top: 12px;left: 24px;"></i>
+					<i class="fa fa-calculator" aria-hidden="true" style="font-size: 13px;top: 12px;"></i>
         		</div>
     			</div>
     			<div class="form-group" style="margin-bottom: 5px;">

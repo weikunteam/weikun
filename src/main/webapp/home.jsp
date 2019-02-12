@@ -362,23 +362,23 @@ opacity: 0.6;
     <section class="aui-scrollView">
         <div class="aui-flex">
             <div class="aui-com-img">
-                <img src="images/logo-com.png" alt="">
+                <img src="${path}images/p1.png" alt="">
             </div>
             <div class="aui-flex-box">
-                <h2>百度网络</h2>
+                <h2>中天金融</h2>
                 <h3>
                     <span><i class="fa fa-flag"style="color: #5bc0de;"></i>&nbsp;民营公司</span>
-                    <span><i class="fa fa-users"style="color: #5bc0de;"></i>&nbsp;10000人以上</span>
+                    <span><i class="fa fa-users"style="color: #5bc0de;"></i>&nbsp;100人以上</span>
                 </h3>
                 <h3>
-                    <span><i class="fa fa-building" style="color: #5bc0de;font-size: 11px;"></i>&nbsp;互联网电子商务 计算机软件</span>
+                    <span><i class="fa fa-building" style="color: #5bc0de;font-size: 11px;"></i>&nbsp;金融</span>
 
                 </h3>
             </div>
         </div>
         <div class="aui-slide-list">
             <ul class="aui-slide-item-list">
-                <li class="aui-slide-item-item">
+                <%--<li class="aui-slide-item-item">
                     <a href="javascript:;">
                         <img src="images/com-img-001.png" alt="">
                     </a>
@@ -392,27 +392,27 @@ opacity: 0.6;
                     <a href="javascript:;">
                         <img src="images/com-img-003.png" alt="">
                     </a>
-                </li>
+                </li>--%>
                 <li class="aui-slide-item-item">
                     <a href="javascript:;">
-                        <img src="images/com-img-001.png" alt="">
+                        <img src="${path}images/p2.png" alt="">
                     </a>
                 </li>
                 <li class="aui-slide-item-item">
                     <a href="javascript:;">
-                        <img src="images/com-img-002.png" alt="">
+                        <img src="${path}images/p1.png" alt="">
                     </a>
                 </li>
                 <li class="aui-slide-item-item">
                     <a href="javascript:;">
-                        <img src="images/com-img-003.png" alt="">
+                        <img src="${path}images/p3.png" alt="">
                     </a>
                 </li>
             </ul>
         </div>
         <div class="aui-flex">
             <div class="aui-flex-box">
-                <h4>北京海淀区上地十街10号百度大厦</h4>
+                <h4>泉州市洛江区首富商城E座中天商务咨询有限公司</h4>
             </div>
             <div class="aui-arrow"></div>
         </div>
@@ -434,10 +434,10 @@ opacity: 0.6;
             <div class="tab-panel">
                 <div class="tab-panel-item tab-active">
                     <div class="aui-com-text">
-                        <p>百度（纳斯达克：BIDU），全球最大的中文搜索引擎、最大的中文网站。1999年底,身在美国硅谷的李彦宏看到了中国互联网及中文搜索引擎服务的巨大发展潜力，抱着技术改变世界的梦想，他毅然辞掉硅谷的高薪工作，携搜索引擎专利技术，于 2000年1月1日在中关村创建了百度公司。</p>
-                        <p>“百度”二字,来自于八百年前南宋词人辛弃疾的一句词：众里寻他千百度。这句话描述了词人对理想的执着追求。</p>
-                        <p>百度拥有数万名研发工程师，这是中国乃至全球最为优秀的技术团队。这支队伍掌握着世界上最为先进的搜索引擎技术，使百度成为中国掌握世界尖端科学核心技术的中国高科技企业，也使中国成为美国、俄罗斯、和韩国之外，全球仅有的4个拥有搜索引擎核心技术的国家之一。</p>
-                        <p>从创立之初，百度便将“让人们最平等便捷地获取信息，找到所求”作为自己的使命，成立以来，公司秉承“用户至上”的理念，不断坚持技术创新，致力于为用户提供“简单可依赖”的互联网搜索产品及服务，其中包括:以网络搜索为主的功能性搜索;以贴吧为主的社区搜索，针对各区域、行业所需的垂直搜索;以及门户频道、IM等，全面覆盖了中文网络世界所有的搜索需求。根据第三方权威数据，在中国，百度PC端和移动端市场份额总量达73.5%，覆盖了中国97.5%的网民，拥有6亿用户，日均响应搜索60亿次。</p>
+                        <p>21世纪，是一个开创新金融的时代，是一个财富多元化分配的时代，中天商务咨询有限公司（中天金融）创办于2011年，总部坐落在风景优美的泉州洛阳桥之畔，公司团队成员曾任银行信贷部等知名金融机构高管，在金融领领域具有丰富管理经验。中天金融整合众多金融服务机构，并成为兴业银行、平安银行、中国银行非常重要的渠道合作方。随着业务的扩展，跟泉州泉城房产公司等其他房产中介有着紧密的合作关系。</p>
+                        <p>中天金融的发展宗旨是以“成为中国有影响力的家庭生活金融服务平台”为愿景，在商户端，配套定制化金融产品，助力企业业绩增长；在客户端，为居于家庭生活不同阶段的消费者提供金融服务，提前达至品质生活，让幸福变得简单。 更以创新的金融服务模式为中小企业及个人解决融资问题。让企业不在成长中夭折，让企业的未来更加辉煌</p>
+                        <p>现公司规模有三家分公司，分别在泉州市洛江区中心、城东中骏世界城、南安溪美，全体成全有50人。阔步未来。中天金融，架起融资的桥梁，为财富保驾护航。在未来，中天金融必将成为专业为中小企业及个人融资的重要渠道。加入我们公司，有一种智慧，让我们任凭风雨，运筹帷幄。有一种精神，让我们同舟共济</p>
+                        <p>从创立之初，百度便将“让人们最平等便捷地获取信息，找到所求”作为自己的使命，成立以来，公司秉承“用户至上”的理念，不断坚持技术创新，致力于为用户提供“简单可依赖”的互联网搜索产品及服务，其中包括:以网络搜索为主的功能性搜索;以贴吧为主的社区搜索，针对各区域、行业所需的垂直搜索;以及门户频道、IM等，全面覆盖了中文网络世界所有的搜索需求。根据第三方权威数据，在中国，百度PC端和移动端市场份额总量达73.5%，覆盖了中国97.5%的网民，拥有6亿用户，日均响应搜索60亿次</p>
 
                     </div>
 

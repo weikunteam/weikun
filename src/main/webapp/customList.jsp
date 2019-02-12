@@ -21,9 +21,9 @@
 <body>
 <section class="aui-flexView">
     <header class="aui-navBar aui-navBar-fixed">
-        <a href="javascript:;" class="aui-navBar-item">
+        <%--<a href="javascript:;" class="aui-navBar-item">
             <i class="icon icon-return"></i>
-        </a>
+        </a>--%>
         <div class="aui-center">
             <div class="aui-search-box">
                 <i class="icon icon-search"></i>
@@ -36,7 +36,7 @@
     </header>
     <section class="aui-scrollView">
         <div class="aui-tab" data-ydui-tab>
-            <ul class="tab-nav">
+            <%--<ul class="tab-nav">
                 <li class="tab-nav-item tab-active">
                     <a href="javascript:;">
                         <span>贷款</span>
@@ -47,17 +47,17 @@
                         <span>信用卡</span>
                     </a>
                 </li>
-                <%--<li class="tab-nav-item">
+                &lt;%&ndash;<li class="tab-nav-item">
                     <a href="javascript:;">
                         <span>牌照代办</span>
                     </a>
-                </li>--%>
-                <%--<li class="tab-nav-item">
+                </li>&ndash;%&gt;
+                &lt;%&ndash;<li class="tab-nav-item">
                     <a href="javascript:;">
                         <span>牌照求购</span>
                     </a>
-                </li>--%>
-            </ul>
+                </li>&ndash;%&gt;
+            </ul>--%>
             <div class="divHeight"></div>
             <div class="tab-panel">
                 <div class="tab-panel-item tab-active">

@@ -6,10 +6,11 @@
         select
             b.salesManId,
             u.userName,
-            COUNT(1) AS num,
+            sum(b.loanAmount) AS num,
             u.uPhone
         from TB_BUS_PAXYD b
                  inner join TB_USER u on u.userId = b.salesManId
+        where b.checkState = 2
         GROUP BY b.salesManId
         ORDER BY num DESC
         LIMIT 5
