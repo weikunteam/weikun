@@ -5,9 +5,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -169,5 +173,34 @@ public class SalesManManagerController {
 		responseMap.put("code", existCode);
 		return responseMap;
 	}
+	
+    @RequestMapping(value = "/downloadTemplet.action",method= RequestMethod.GET)
+	@ResponseBody //,method= RequestMethod.POST
+	public void downloadTemplet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+			FileInputStream ips = null;
+			
+			String filePath = "D:\\SourceTree\\Git仓库\\OfficialAccounts\\target\\classes\\templet\\TB_USER.xlsx";
+			File file = new File(filePath);
+			String fileName = file.getName();
+			
+			ips = new FileInputStream(file);
+			
+			response.setHeader("Content-disposition",
+					"attachment;filename=" + new String(fileName.getBytes("gb2312"), "ISO8859-1"));// 设置文件头编码格式
+			response.setContentType("APPLICATION/OCTET-STREAM;charset=UTF-8");// 设置类型
+			response.setHeader("Cache-Control", "no-cache");// 设置头
+			response.setDateHeader("Expires", 0);// 设置日期头
+			
+			response.getOutputStream();
+			
+			int len = 0;
+			byte[] buffer = new byte[1024 * 10];
+			while ((len = ips.read(buffer)) != -1) {
+				response.getOutputStream().write(buffer, 0, len);
+			}
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+			System.out.println("end===");
+	}
 }

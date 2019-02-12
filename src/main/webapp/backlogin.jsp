@@ -56,6 +56,7 @@
                 <div class="form-group">
                     <input type="password"  id="uBackGroundPsw"  name="uBackGroundPsw"  class="form-control" placeholder="密码" required="" lay-verify="required">
                 </div>
+                <a href="<%=path%>systemAction/getRoleList.action">555</a>
                 <button lay-submit=""   id="backLogin" lay-filter="backLogin" class="layui-btn  layui-btn-submit block full-width m-b">登 录</button>
 					<!-- class="layui-btn  layui-btn-submit "  -->
 <!-- class="btn layui-btn  layui-btn-submit  block full-width m-b" -->

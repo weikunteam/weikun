@@ -36,11 +36,14 @@ public class BackLoginController {
 		System.out.println(uBackGroundPsw);
 		ModelAndView mav=new ModelAndView();
 		
-		if (uBackGroundAccount.equals("chenzekun") && uBackGroundPsw.equals("123456")) {
+		Boolean isLoginSuccess=backLoginService.backLoginIsSuccess(uBackGroundAccount, uBackGroundPsw);
+		
+		if (isLoginSuccess) {
 			System.out.println("success");
-			UserModel userModel=backLoginService.getUserBackGroundInfo("chenzekun");
+			UserModel userModel=backLoginService.getUserBackGroundInfo(uBackGroundAccount);
 			
 			ArrayList<PermissionModel> perList = userModel.getRoleList().get(0).getPermissionList();
+			
 			for (int i = 0; i < perList.size(); i++) {
 				if (perList.get(i).getpId() == 0) {
 					perList.get(i).setOwnChild(0);
@@ -56,7 +59,6 @@ public class BackLoginController {
 			session.setAttribute("backGroundUser", userModel);
 			request.setAttribute("permissionList", userModel.getRoleList().get(0).getPermissionList());
 			mav.setViewName("backgroundmain");
-			
 			
 			//responseApi.setResponseApi("1", "登录成功");
 		} else {

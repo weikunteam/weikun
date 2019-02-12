@@ -25,8 +25,21 @@
 	 <select id="getPermissionList" parameterType="java.lang.String" resultType="com.great.model.PermissionModel">
 	 	select * from TB_PERMISSION where permissionId in (select permissionId from TB_RELATION_ROLE_PERMISSION where roleId = #{id})
 	 </select>
-	     <!-- 作者：czk -->
-      	<!-- 说明：验证手机号是否存在 -->
+	 
+	 <!-- 作者：czk -->
+     <!-- 说明：登录判断 -->
+	<select id="backLoginIsSuccess" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+            <if test="uBackGroundAccount!=null">uBackGroundAccount = #{uBackGroundAccount} AND</if>
+            <if test="uBackGroundPsw!=null">uBackGroundPsw = #{uBackGroundPsw} </if>
+        </where>
+	</select>
+	 
+	  <!-- 作者：czk -->
+      <!-- 说明：验证手机号是否存在 -->
 	<select id="checkAccount" resultType="String">
 		select 
 		count(*) 
