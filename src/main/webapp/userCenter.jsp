@@ -200,7 +200,7 @@ background-color:#F5F5F5;
                 <div class="aui-tour-layout aui-tour-layout-pad">
 
                     <div class="aui-palace aui-palace-two">
-                        <a href="javascript:;" class="aui-palace-grid">
+                        <a href="javascript:;" class="aui-palace-grid"style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-005.png" alt="">
                             </div>
@@ -208,7 +208,7 @@ background-color:#F5F5F5;
                                 <h2>我要提现</h2>
                             </div>
                         </a>
-                        <a href="${path}customList/gotoCustomList.action" class="aui-palace-grid">
+                        <a href="${path}customList/gotoCustomList.action" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-006.png" alt="">
                             </div>
@@ -216,7 +216,7 @@ background-color:#F5F5F5;
                                 <h2>客户列表</h2>
                             </div>
                         </a>
-                        <a href="javascript:;" class="aui-palace-grid">
+                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-007.png" alt="">
                             </div>
@@ -224,7 +224,7 @@ background-color:#F5F5F5;
                                 <h2>我的业务</h2>
                             </div>
                         </a>
-                        <a href="javascript:;" class="aui-palace-grid">
+                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-008.png" alt="">
                             </div>
@@ -238,7 +238,7 @@ background-color:#F5F5F5;
                 <div class="aui-tour-layout">
 
                     <div class="aui-tour-news">
-                        <a href="javascript:;" class="aui-flex b-line">
+                        <a href="${path}userCenter/gotoPeople.action" class="aui-flex b-line" style="text-decoration:none">
                             <div class="aui-flex-box-head">个人信息</div>
                             <div class="aui-flex-box aui-flex-box-right">
                                 <%--旅客、地址、银行卡--%>
@@ -255,12 +255,12 @@ background-color:#F5F5F5;
                             <div class="aui-flex-box aui-flex-box-right">
                             </div>
                         </a>--%>
-                        <a href="javascript:;" class="aui-flex b-line">
+                        <a href="javascript:;" class="aui-flex b-line" style="text-decoration:none">
                             <div class="aui-flex-box-head">帮助中心</div>
                             <div class="aui-flex-box aui-flex-box-right">
                             </div>
                         </a>
-                        <a href="javascript:;" class="aui-flex b-line">
+                        <a href="javascript:;" class="aui-flex b-line" style="text-decoration:none">
                             <div class="aui-flex-box-head">意见反馈</div>
                             <div class="aui-flex-box aui-flex-box-right">
                             </div>
