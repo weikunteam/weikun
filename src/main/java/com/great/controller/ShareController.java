@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+import javax.ejb.ConcurrentAccessTimeoutException;
 import javax.servlet.http.HttpServletRequest;
 
+import com.great.dao.ShareDao;
+import com.sun.javafx.collections.MappingChange;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,11 +23,23 @@ import com.great.util.SignUtil;
 @RequestMapping("/share")
 public class ShareController {
 
+    @Resource
+    private ShareDao shareDao;
+
 	@RequestMapping(value="/share.action",method= RequestMethod.POST)
 	@ResponseBody
     public Map<String, String> share(String url) throws Exception {
         Map<String, String> map = new HashMap<String, String>();
-        String jsapi_ticket = ShareUtil.getJsapi();//jsapi_ticket
+        String jsapi_ticket="";
+        Map<String,Object> timeMap = shareDao.getLastJsApi();
+        Long ConcurrentTime = System.currentTimeMillis();
+        if ((ConcurrentTime-(Long.parseLong(timeMap.get("timestamp").toString())))>7000000){
+            jsapi_ticket = ShareUtil.getJsapi();//jsapi_ticket
+            shareDao.update(ConcurrentTime.toString(), jsapi_ticket);
+        }else {
+            jsapi_ticket = timeMap.get("jsapi").toString();
+        }
+
         String timestamp = Long.toString(System.currentTimeMillis() / 1000);//时间戳
         String nonceStr = PasswordUtil.getNextSalt();
         String signature = SignUtil.getSignature(
