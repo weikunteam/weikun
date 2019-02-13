@@ -80,7 +80,7 @@ background-color:#F5F5F5;
         <div class="aui-center">
             <span class="aui-center-title"></span>
         </div>
-        <a href="javascript:;" class="aui-navBar-item">
+        <a href="${path}userCenter/gotoExit.action" class="aui-navBar-item">
             <i class="icon icon-set"></i>
             <%--<i class="icon icon-new"></i>--%>
         </a>
@@ -103,17 +103,17 @@ background-color:#F5F5F5;
                     </div>
                     <div class="aui-palace aui-palace-one b-line">
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
-                            <c:if test="${user.uRegRecommendPeople != null }">
+                            <c:if test="${people.uRegRecommendPeople != null }">
                             <div class="aui-palace-grid-icon" style="margin-left: 0px;">
                                 <span>
-                                    ${user.uRegRecommendPeople}
+                                    ${people.uRegRecommendPeople}
                                 </span>
                             </div>
                             <div class="aui-palace-grid-text">
                                 <h2>推荐导师</h2>
                             </div>
                             </c:if>
-                            <c:if test="${user.uRegRecommendPeople == null }">
+                            <c:if test="${people.uRegRecommendPeople == null }">
                                 <div class="aui-palace-grid-icon">
                                 <span>
                                         平台
@@ -129,8 +129,8 @@ background-color:#F5F5F5;
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <span>
-                                    <c:if test="${user.studentNum != null }">${user.studentNum}</c:if>
-				                    <c:if test="${user.studentNum == null }">0</c:if>
+                                    <c:if test="${people.studentNum != null }">${people.studentNum}</c:if>
+				                    <c:if test="${people.studentNum == null }">0</c:if>
                                 </span>
                             </div>
                             <div class="aui-palace-grid-text">
@@ -140,8 +140,8 @@ background-color:#F5F5F5;
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <span><font color="red" >
-                                <c:if test="${user.uRecommendAmount != null }">${user.uRecommendAmount}</c:if>
-                                <c:if test="${user.uRecommendAmount == null }">0</c:if>
+                                <c:if test="${people.uRecommendAmount != null }">${people.uRecommendAmount}</c:if>
+                                <c:if test="${people.uRecommendAmount == null }">0</c:if>
                                 </font></span>
                             </div>
                             <div class="aui-palace-grid-text">

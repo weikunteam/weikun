@@ -24,8 +24,10 @@ public class UserCenterController {
 
 	
 		@RequestMapping(value="/gotoUserCenter.action",method= RequestMethod.GET)
-		public ModelAndView gotoUserCenter(){
+		public ModelAndView gotoUserCenter(HttpServletRequest request){
 			ModelAndView mv = new ModelAndView();
+			String tel = ((Map<String,Object>)request.getSession().getAttribute("user")).get("uPhone").toString();
+			mv.addObject("people",userCenterService.getUser(tel)) ;
 			mv.setViewName("userCenter");
 			return mv;
 		}
@@ -45,6 +47,23 @@ public class UserCenterController {
 			String userId = ((Map<String,Object>)request.getSession().getAttribute("user")).get("userId").toString();
 		userCenterService.updateUser(userName, age, job, userId);
 			return new ResponseApi("1", "更改成功");
+		}
+
+		@RequestMapping(value="/logout.action",method= RequestMethod.GET)
+		public ModelAndView logout(HttpServletRequest request){
+			ModelAndView mv = new ModelAndView();
+			request.getSession().invalidate();
+			mv.setViewName("index");
+			return mv;
+		}
+
+		@RequestMapping(value="/gotoExit.action",method= RequestMethod.GET)
+		public ModelAndView gotoExit(HttpServletRequest request){
+			ModelAndView mv = new ModelAndView();
+			String tel = ((Map<String,Object>)request.getSession().getAttribute("user")).get("uPhone").toString();
+			mv.addObject("people",userCenterService.getUser(tel)) ;
+			mv.setViewName("exit");
+			return mv;
 		}
 	
 }
