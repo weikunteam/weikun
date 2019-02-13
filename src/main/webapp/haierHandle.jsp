@@ -182,7 +182,7 @@
 					<label  class="col-xs-4 control-label text-right"><font color="#27408B">预贷金额：</font></label>
 					<div class="col-xs-8">
 						<input type="text" class="form-control" id="loanAmount" placeholder="请输入预贷金额(元)">
-						<i class="fa fa-money" aria-hidden="true" style="font-size: 13px;top: 12px;left: 24px;"></i>
+						<%--<i class="fa fa-money" aria-hidden="true" style="font-size: 13px;top: 12px;left: 24px;"></i>--%>
 					</div>
 				</div>
 				<div class="form-group">
