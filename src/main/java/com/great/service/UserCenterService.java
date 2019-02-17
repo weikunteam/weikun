@@ -5,6 +5,7 @@ import com.great.dao.UserLoginDao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -20,5 +21,13 @@ public class UserCenterService {
 
     public Map<String,Object> getUser(String tel){
         return  userLoginDao.getUser(tel);
+    }
+
+    public List<Map<String,Object>> listService(String userId){
+     return userCenterDao.listService(userId);
+    }
+
+    public void suggest(String id,String suggestion){
+        userCenterDao.updateSuggestion(id, suggestion);
     }
 }

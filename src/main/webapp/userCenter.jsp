@@ -216,14 +216,26 @@ background-color:#F5F5F5;
                                 <h2>客户列表</h2>
                             </div>
                         </a>
-                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
-                            <div class="aui-palace-grid-icon">
-                                <img src="${path}images/icon-head-007.png" alt="">
-                            </div>
-                            <div class="aui-palace-grid-text">
-                                <h2>我的业务</h2>
-                            </div>
-                        </a>
+                        <c:if test="${people.userType != '2' }">
+                            <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
+                                <div class="aui-palace-grid-icon">
+                                    <img src="${path}images/icon-head-007.png" alt="">
+                                </div>
+                                <div class="aui-palace-grid-text">
+                                    <h2>我的业务</h2>
+                                </div>
+                            </a>
+                        </c:if>
+                        <c:if test="${people.userType == '2' }">
+                            <a href="${path}userCenter/gotoService.action" class="aui-palace-grid" style="text-decoration:none">
+                                <div class="aui-palace-grid-icon">
+                                    <img src="${path}images/icon-head-007.png" alt="">
+                                </div>
+                                <div class="aui-palace-grid-text">
+                                    <h2>经办业务</h2>
+                                </div>
+                            </a>
+                        </c:if>
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-008.png" alt="">

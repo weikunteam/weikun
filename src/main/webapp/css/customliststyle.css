@@ -62,6 +62,16 @@ a {
 }
 
 button {
+    border-radius:5px;
+    color: white !important;
+    background: #00b4ef;
+    border:none;
+    width:90%;
+    margin: 20px auto!important;
+    display:block;
+    height:1.5rem;
+    line-height:2.5rem;
+    font-size:0.85rem;
     outline: 0;
 }
 
