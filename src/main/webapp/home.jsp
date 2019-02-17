@@ -56,18 +56,22 @@ opacity: 0.6;
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		<li data-target="#myCarousel" data-slide-to="1"></li>
 		<li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
 	</ol>   
 	<!-- 轮播（Carousel）项目 -->
 	<div class="carousel-inner" >
 		<div class="item active" >
-			<img src="${path}img/ac1.jpg" class="img-responsive" alt="First slide" style="width:100%;">
+			<img src="${path}img/b1.png" class="img-responsive" alt="First slide" style="width:100%;">
 		</div>
 		<div class="item">
-			<img src="${path}img/ac1.jpg" class="img-responsive" alt="Second slide" style="width:100%;">
+			<img src="${path}img/b2.png" class="img-responsive" alt="Second slide" style="width:100%;">
 		</div>
 		<div class="item">
-			<img src="${path}img/ac1.jpg" class="img-responsive" alt="Third slide" style="width:100%;">
+			<img src="${path}img/b3.png" class="img-responsive" alt="Third slide" style="width:100%;">
 		</div>
+        <div class="item">
+            <img src="${path}img/b4.png" class="img-responsive" alt="Third slide" style="width:100%;">
+        </div>
 	</div>
 	<!-- 轮播（Carousel）导航 -->
 	<!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -102,7 +106,7 @@ opacity: 0.6;
     <div class="aui-show-box">
         <div class="aui-flex">
             <div class="aui-sml-img">
-                <img src="${path}img/logo.jpg" alt="">
+                <img src="${path}images/pingan.png" alt="">
             </div>
             <div class="aui-flex-box">
                 <h3><font size="4px">平安新一贷</font></h3>
@@ -126,7 +130,7 @@ opacity: 0.6;
     <div class="aui-show-box">
         <div class="aui-flex">
             <div class="aui-sml-img">
-                <img src="${path}img/logo.jpg" alt="">
+                <img src="${path}images/xingye.png" alt="">
             </div>
             <div class="aui-flex-box">
                 <h3><font size="4px">兴业消费金融</font></h3>
@@ -142,7 +146,7 @@ opacity: 0.6;
                 <h5>千元日费用0.1元</h5>
             </div>
             <div class="aui-text-two">
-                <a href="${path}xinyeHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                <a href="${path}xingyeHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
             </div>
         </div>
@@ -150,7 +154,7 @@ opacity: 0.6;
     <div class="aui-show-box">
     <div class="aui-flex">
         <div class="aui-sml-img">
-            <img src="${path}img/logo.jpg" alt="">
+            <img src="${path}images/zhongyin.png" alt="">
         </div>
         <div class="aui-flex-box">
             <h3><font size="4px">中行消费金融</font></h3>
@@ -174,7 +178,7 @@ opacity: 0.6;
     <div class="aui-show-box">
         <div class="aui-flex">
             <div class="aui-sml-img">
-                <img src="${path}img/logo.jpg" alt="">
+                <img src="${path}images/haier.png" alt="">
             </div>
             <div class="aui-flex-box">
                 <h3><font size="4px">海尔-玖康</font></h3>
@@ -199,7 +203,7 @@ opacity: 0.6;
     <div class="aui-show-box">
         <div class="aui-flex">
             <div class="aui-sml-img">
-                <img src="${path}img/logo.jpg" alt="">
+                <img src="${path}images/smallamount.png" alt="">
             </div>
             <div class="aui-flex-box">
                 <h3><font size="4px">小额贷款</font></h3>
@@ -215,7 +219,7 @@ opacity: 0.6;
                 <h5>千元日费用0.1元</h5>
             </div>
             <div class="aui-text-two">
-                <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                <a href="${path}smallamount.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
             </div>
         </div>

@@ -116,5 +116,37 @@ public class UserCenterController {
         return new ResponseApi("1", "更改成功");
     }
 
+    @RequestMapping(value = "/gotoMyService.action", method = RequestMethod.GET)
+    public ModelAndView gotoMyService(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        List<Map<String, Object>> list = userCenterService.myService(userId);
+        for (Map<String, Object> mySevice : list) {
+            switch (Integer.parseInt(mySevice.get("type").toString())) {
+                case 1:
+                    mySevice.put("serviceName", "平安新一贷");
+                    break;
+                case 2:
+                    mySevice.put("serviceName", "兴业消费金融");
+                    break;
+                case 3:
+                    mySevice.put("serviceName", "中行消费金融");
+                    break;
+                case 4:
+                    mySevice.put("serviceName", "海尔玖康");
+                    break;
+                case 5:
+                    mySevice.put("serviceName", "小额贷款");
+                    break;
+                default:
+                    break;
+
+            }
+
+        }
+        mv.addObject("listService",list );
+        mv.setViewName("myService");
+        return mv;
+    }
 
 }

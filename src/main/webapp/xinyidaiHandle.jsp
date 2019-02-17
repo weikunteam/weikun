@@ -77,17 +77,21 @@ background-color:white;
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		<li data-target="#myCarousel" data-slide-to="1"></li>
 		<li data-target="#myCarousel" data-slide-to="2"></li>
+		<li data-target="#myCarousel" data-slide-to="3"></li>
 	</ol>
 	<!-- 轮播（Carousel）项目 -->
 	<div class="carousel-inner" >
 		<div class="item active" >
-			<img src="${path}img/ac1.jpg" class="img-responsive" alt="First slide" style="width:100%;">
+			<img src="${path}img/b1.png" class="img-responsive" alt="First slide" style="width:100%;">
 		</div>
 		<div class="item">
-			<img src="${path}img/ac1.jpg" class="img-responsive" alt="Second slide" style="width:100%;">
+			<img src="${path}img/b2.png" class="img-responsive" alt="Second slide" style="width:100%;">
 		</div>
 		<div class="item">
-			<img src="${path}img/ac1.jpg" class="img-responsive" alt="Third slide" style="width:100%;">
+			<img src="${path}img/b3.png" class="img-responsive" alt="Third slide" style="width:100%;">
+		</div>
+		<div class="item">
+			<img src="${path}img/b4.png" class="img-responsive" alt="Third slide" style="width:100%;">
 		</div>
 	</div>
 	<!-- 轮播（Carousel）导航 -->

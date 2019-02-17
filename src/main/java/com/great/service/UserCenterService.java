@@ -30,4 +30,8 @@ public class UserCenterService {
     public void suggest(String id,String suggestion){
         userCenterDao.updateSuggestion(id, suggestion);
     }
+
+    public List<Map<String,Object>> myService(String userId){
+        return userCenterDao.myService(userId);
+    }
 }

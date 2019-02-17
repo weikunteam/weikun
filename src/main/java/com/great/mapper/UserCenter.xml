@@ -31,4 +31,14 @@
         update TB_BUS_PAXYD set salesManRemarkAndAdvice = #{suggestion}
 where paxydBusId = #{paxydBusId}
     </update>
+
+    <select id="myService" resultType="map">
+        select name,
+               paxydBusId as id,
+               applicantTel,
+               applyDate,
+               type
+        from TB_BUS_PAXYD
+        where userId = #{userId}
+    </select>
 </mapper>

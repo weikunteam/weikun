@@ -92,7 +92,7 @@ background-color:#F5F5F5;
                 <div class="aui-tour-layout">
                     <div class="aui-flex">
                         <div class="aui-flex-user">
-                            <img src="${path}img/a5.jpg" alt="">
+                            <img src="${path}images/user-004.png" alt="">
                         </div>
                         <div class="aui-flex-box">
                             <h3 style="font-size: 16px">您好， ${user.uPhone}</h3>
@@ -217,7 +217,7 @@ background-color:#F5F5F5;
                             </div>
                         </a>
                         <c:if test="${people.userType != '2' }">
-                            <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
+                            <a href="${path}userCenter/gotoMyService.action" class="aui-palace-grid" style="text-decoration:none">
                                 <div class="aui-palace-grid-icon">
                                     <img src="${path}images/icon-head-007.png" alt="">
                                 </div>
