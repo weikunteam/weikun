@@ -53,7 +53,6 @@
 </body>
 <script>
     $("#submit").click(function () {
-        alert($("#hidden").val())
         $.ajax({
             type:"post",
             url:"${path}userCenter/suggest.action",

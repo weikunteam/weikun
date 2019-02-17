@@ -1,6 +1,7 @@
 package com.great.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 @Component
@@ -10,9 +11,9 @@ public class ResponseApi {
 	
 	private String msg;
 	
-	private List<Object> result;
+	private List<Map<String,Object>> result;
 	
-	public ResponseApi(String code, String msg, List<Object> result) {
+	public ResponseApi(String code, String msg, List<Map<String,Object>> result) {
 		super();
 		this.code = code;
 		this.msg = msg;
@@ -30,7 +31,7 @@ public class ResponseApi {
 		super();
 	}
 	
-	public void setResponseApi(String code, String msg, List<Object> result) {
+	public void setResponseApi(String code, String msg, List<Map<String,Object>> result) {
 		this.code = code;
 		this.msg = msg;
 		this.result=result;
@@ -57,11 +58,11 @@ public class ResponseApi {
 		this.msg = msg;
 	}
 
-	public List<Object> getResult() {
+	public List<Map<String,Object>> getResult() {
 		return result;
 	}
 
-	public void setResult(List<Object> result) {
+	public void setResult(List<Map<String,Object>> result) {
 		this.result = result;
 	}
 	

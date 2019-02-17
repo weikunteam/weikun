@@ -501,7 +501,7 @@ opacity: 0.6;
                                     </c:if>
                                 </div>
                                 <div class="aui-album-img">
-                                    <img src="${path}images/user-logo-004.png" alt="">
+                                    <img src="${path}images/user-004.png" alt="">
                                 </div>
                                 <div class="aui-flex-box">
                                     <h2><font size="3px">${rank.userName}</font> <em>业务员</em></h2>

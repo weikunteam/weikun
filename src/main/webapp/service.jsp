@@ -24,15 +24,16 @@
         <%--<a href="javascript:;" class="aui-navBar-item">
             <i class="icon icon-return"></i>
         </a>--%>
-        <div class="aui-center">
-            <div class="aui-search-box">
-                <i class="icon icon-search"></i>
-                <input type="text" placeholder="">
+            <div class="aui-center">
+                <div class="aui-search-box">
+                    <i class="icon icon-search"></i>
+                    <input type="text" placeholder="输入手机号搜索" id="searchText">
+                </div>
             </div>
-        </div>
-        <a href="javascript:;" class="aui-navBar-item">
-            <%--<i class="icon icon-eid"></i>--%>
-        </a>
+            <a href="javascript:;void(0)" class="aui-navBar-item" style="color: white" id="search">
+                <%--<i class="icon icon-eid"></i>--%>
+                搜索
+            </a>
     </header>
     <section class="aui-scrollView">
         <div class="aui-tab" data-ydui-tab>
@@ -238,6 +239,43 @@
     $(".suggestion").on("click",function () {
         var id = $(this).data("id");
         window.location.href = "${path}userCenter/gotoSuggestion.action?id="+id;
+    });
+    $("#search").on("click",function () {
+        var searchText = $("#searchText").val();
+        $.ajax({
+            url:"${path}userCenter/search.action",
+            data:{
+                searchText:searchText
+            },
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                $(".tab-active").empty();
+                for(var i=0;i<data.result.length;i++){
+                    $(".tab-active").append("<a href=\"javascript:;\" class=\"aui-flex\">\n" +
+                        "                            <div class=\"aui-flex-box\">\n" +
+                        "                                    <%--<c:if test=\"${custom.}\"></c:if>--%>\n" +
+                        "                                <h2><em>业务类型</em>"+data.result[i].serviceName+"</h2>\n" +
+                        "                                <h3>申请时间: "+data.result[i].applyDate+"</h3>\n" +
+                        "                                <h3>客户姓名: "+data.result[i].name+"</h3>\n" +
+                        "                                <div class=\"aui-list-info\">\n" +
+                        "                                    <span><img src=\"${path}images/tel.png\" alt=\"\"></span>\n" +
+                        "                                    <span>"+data.result[i].applicantTel+"</span>\n" +
+                        "                                </div>\n" +
+                        "                            </div>\n" +
+                        "                                <div class=\"aui-plate-img\">\n" +
+                        "                                <%--<img src=\"${path}img/a3.jpg\" alt=\"\">--%>\n" +
+                        "                                    <button class=\"suggestion\" data-id=\""+data.result[i].id+"\">建议</button>\n" +
+                        "                                </div>\n" +
+                        "                        </a>");
+                }
+
+                $(".suggestion").on("click",function () {
+                    var id = $(this).data("id");
+                    window.location.href = "${path}userCenter/gotoSuggestion.action?id="+id;
+                });
+        }
+        })
     })
 </script>
 </body>

@@ -25,6 +25,9 @@
                type
         from TB_BUS_PAXYD
         where salesManId = #{userId}
+  <if test="searchText !=null and searchText != ''">
+    and applicantTel = #{searchText}
+  </if>
     </select>
 
     <update id="updateSuggestion">

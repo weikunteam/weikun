@@ -24,15 +24,7 @@
         <%--<a href="javascript:;" class="aui-navBar-item">
             <i class="icon icon-return"></i>
         </a>--%>
-        <div class="aui-center">
-            <div class="aui-search-box">
-                <i class="icon icon-search"></i>
-                <input type="text" placeholder="">
-            </div>
-        </div>
-        <a href="javascript:;" class="aui-navBar-item">
-            <%--<i class="icon icon-eid"></i>--%>
-        </a>
+
     </header>
     <section class="aui-scrollView">
         <div class="aui-tab" data-ydui-tab>

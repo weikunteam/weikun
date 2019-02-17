@@ -71,7 +71,7 @@ public class UserCenterController {
     public ModelAndView gotoService(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<Map<String, Object>> list = userCenterService.listService(userId);
+        List<Map<String, Object>> list = userCenterService.listService(userId,"");
         for (Map<String, Object> sevice : list) {
 
             switch (Integer.parseInt(sevice.get("type").toString())) {
@@ -147,6 +147,37 @@ public class UserCenterController {
         mv.addObject("listService",list );
         mv.setViewName("myService");
         return mv;
+    }
+
+    @RequestMapping(value = "/search.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi search(HttpServletRequest request,String searchText) {
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        List<Map<String,Object>> list = userCenterService.listService(userId, searchText);
+        for (Map<String, Object> mySevice : list) {
+            switch (Integer.parseInt(mySevice.get("type").toString())) {
+                case 1:
+                    mySevice.put("serviceName", "平安新一贷");
+                    break;
+                case 2:
+                    mySevice.put("serviceName", "兴业消费金融");
+                    break;
+                case 3:
+                    mySevice.put("serviceName", "中行消费金融");
+                    break;
+                case 4:
+                    mySevice.put("serviceName", "海尔玖康");
+                    break;
+                case 5:
+                    mySevice.put("serviceName", "小额贷款");
+                    break;
+                default:
+                    break;
+
+            }
+
+        }
+        return new ResponseApi("1", "搜索成功", list);
     }
 
 }

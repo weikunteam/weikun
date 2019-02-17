@@ -23,8 +23,8 @@ public class UserCenterService {
         return  userLoginDao.getUser(tel);
     }
 
-    public List<Map<String,Object>> listService(String userId){
-     return userCenterDao.listService(userId);
+    public List<Map<String,Object>> listService(String userId,String searchText){
+     return userCenterDao.listService(userId,searchText);
     }
 
     public void suggest(String id,String suggestion){
