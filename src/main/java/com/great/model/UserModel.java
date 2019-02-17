@@ -6,13 +6,22 @@ import org.omg.CORBA.PRIVATE_MEMBER;
 
 public class UserModel {
 	
-	private int userId;
-	private String uPhone;
-	private String uPsw;
-	private BigDecimal  uRecommendAmount;   
-	private String uRegRecommendPeople;
-	private String uRecommendCode;
-	private String uLoginState;
+	private int userId;//用户id
+	private String uPhone;//手机号
+	private String uPsw;//密码
+	private BigDecimal  uRecommendAmount;//应得推广金额
+	private String uRegRecommendPeople;//注册推广人
+	private String uRecommendCode;//推广码
+	private String uLoginState;//登录状态
+	private String salt;//
+	private String registerTime;//注册时间
+	private String userType;//公众号用户类型 1客户2公司人员
+	private int delState;//用户删除状态 0存在1被删除（假）
+	private String userName;//用户名称
+	private String uBackGroundAccount;//用户后台账号
+	private String uBackGroundPsw;//用户后台密码
+	private int age;//年龄
+	private String job;//工作
 	
 	private ArrayList<RoleModel> roleList;//多个角色链表
 	
@@ -82,6 +91,78 @@ public class UserModel {
 
 	public void setRoleList(ArrayList<RoleModel> roleList) {
 		this.roleList = roleList;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public String getRegisterTime() {
+		return registerTime;
+	}
+
+	public void setRegisterTime(String registerTime) {
+		this.registerTime = registerTime;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public int getDelState() {
+		return delState;
+	}
+
+	public void setDelState(int delState) {
+		this.delState = delState;
+	}
+
+	public String getuBackGroundAccount() {
+		return uBackGroundAccount;
+	}
+
+	public void setuBackGroundAccount(String uBackGroundAccount) {
+		this.uBackGroundAccount = uBackGroundAccount;
+	}
+
+	public String getuBackGroundPsw() {
+		return uBackGroundPsw;
+	}
+
+	public void setuBackGroundPsw(String uBackGroundPsw) {
+		this.uBackGroundPsw = uBackGroundPsw;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
 	}
 	
 

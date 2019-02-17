@@ -2,58 +2,78 @@ package com.great.model;
 
 import java.math.BigDecimal;
 
-public class BusPAXYDModel {
+import org.codehaus.jackson.annotate.JsonProperty;
 
-	private int PAXYDBusId; //'Æ½°²ĞÂÒ»´ûÒµÎñid',
-	private int userId;//'¿Í»§id',
-	private int salesManId; //'ÒµÎñÔ±id',
-	private BigDecimal loanAmount;//'´û¿î½ğ¶î',
-	private int loanTerm;//'´û¿îÆÚÏŞ',
-	private int accrualType;//'ÀûÏ¢·ÖÆÚÀàĞÍ',
-	private BigDecimal accrualRate;//'ÀûÂÊ',
-	private int checkState; //'ÉóºË×´Ì¬',
-	private String applyDate;//'ÒµÎñÉêÇëÈÕÆÚ',
-	private String loanStartDate;//'´û¿î¿ªÊ¼ÈÕÆÚ',
-	private String loanEndDate;// '´û¿î½áÊøÈÕÆÚ',
-	private int housingLoanType;// '·¿´ûÀàĞÍ',
-	private int housingLoanTerm;//'·¿´ûÆÚÏŞ',
-	private int warrantyType;//'±£µ¥ÀàĞÍ',
-	private int warrantyTerm;//'±£µ¥ÆÚÏŞ£¨ÔÂ·İ£©'
-	private int warrantyCount;//'±£µ¥´ÎÊı',
-	private String accumulationFundAddress;//'¹«»ı½ğ½ÉÄÉµØÖ·',
-	private int accumulationFundTerm;//'¹«»ı½ğ½ÉÄÉÆÚÏŞ£¨ÔÂ·İ£©',
-	private BigDecimal accumulationFundAmount;//'¹«»ı½ğ½ÉÄÉ½ğ¶î',
-	private String name;//´û¿îÈËĞÕÃû
-	private int sex;//´û¿îÈËĞÔ±ğ
-	private String applicantTel;//´û¿îÈËÊÖ»úºÅ
+public class BusPAXYDModel {
+	//@JsonProperty("PAXYDBusId")
+	private Integer paxydBusId; //'å¹³å®‰æ–°ä¸€è´·ä¸šåŠ¡id',
+	private Integer userId;//'å®¢æˆ·id',
+	private Integer salesManId; //'å®¢æˆ·ç»ç†å‘˜id',
+	private Integer contractManId;//'ç­¾çº¦ç»ç†id'
+	private BigDecimal loanAmount;//'è´·æ¬¾é‡‘é¢',
+	private Integer loanTerm;//'è´·æ¬¾æœŸé™',
+	private Integer accrualType;//'åˆ©æ¯åˆ†æœŸç±»å‹',
+	private BigDecimal accrualRate;//'åˆ©ç‡',
+	private Integer checkState; //'å®¡æ ¸çŠ¶æ€',
+	private String applyDate;//'ä¸šåŠ¡ç”³è¯·æ—¥æœŸ',
+	private String loanStartDate;//'è´·æ¬¾å¼€å§‹æ—¥æœŸ',
+	private String loanEndDate;// 'è´·æ¬¾ç»“æŸæ—¥æœŸ',
+	private Integer housingLoanType;// 'æˆ¿è´·ç±»å‹',
+	private Integer housingLoanTerm;//'æˆ¿è´·æœŸé™',
+	private Integer warrantyType;//'ä¿å•ç±»å‹',
+	private Integer warrantyTerm;//'ä¿å•æœŸé™ï¼ˆæœˆä»½ï¼‰'
+	private Integer warrantyCount;//'ä¿å•æ¬¡æ•°',
+	private String accumulationFundAddress;//'å…¬ç§¯é‡‘ç¼´çº³åœ°å€',
+	private Integer accumulationFundTerm;//'å…¬ç§¯é‡‘ç¼´çº³æœŸé™ï¼ˆæœˆä»½ï¼‰',
+	private BigDecimal accumulationFundAmount;//'å…¬ç§¯é‡‘ç¼´çº³é‡‘é¢',
+	private Integer ownBusinessLicense;//'æ˜¯å¦æ‹¥æœ‰è¥ä¸šæ‰§ç…§'
+	private String name;//è´·æ¬¾äººå§“å
+	private Integer age;//è´·æ¬¾äººå¹´é¾„
+	private Integer sex;//è´·æ¬¾äººæ€§åˆ«
+	private String applicantTel;//è´·æ¬¾äººæ‰‹æœºå·
+	private String applicantJob;//è´·æ¬¾äººç±»å‹ï¼ˆèŒä¸šï¼‰
+	private String salesManRemarkAndAdvice;// 'å®¢æˆ·ç»ç†ç”³è¯·å¤‡æ³¨ä»¥åŠå»ºè®®'
+	private Integer salesManAdviceProduct;// 'å®¢æˆ·ç»ç†æ„å‘äº§å“ï¼ˆå»ºè®®ï¼‰1æ–°ä¸€è´·2å…´ä¸š3ä¸­è¡Œ4æµ·å°”5å°é¢'
+	private String contractManRemarkAndAdvice;// 'ç­¾çº¦ç»ç†ç”³è¯·å¤‡æ³¨ä»¥åŠå»ºè®®'
+	private Integer contractManAdviceProduct;// 'ç­¾çº¦ç»ç†æ„å‘äº§å“ï¼ˆå»ºè®®ï¼‰1æ–°ä¸€è´·2å…´ä¸š3ä¸­è¡Œ4æµ·å°”5å°é¢'
+	private String applyFailReason;// 'ä¸å¯ç”³è¯·åŸå› '
+	private String applyRefuseReason;// 'ç”³è¯·è¢«æ‹’ç»åŸå› '
+	private Integer type;
 	
-	private UserModel userModel;//¿Í»§¶ÔÏó£¨×¢²áÈË£©
+	
+	private UserModel userModel;//å…¬ä¼—å·å¯¹è±¡ï¼ˆæ³¨å†Œäººï¼‰
 	
 	public BusPAXYDModel() {
 		super();
 	}
 
-	public int getPAXYDBusId() {
-		return PAXYDBusId;
+
+
+	public Integer getPaxydBusId() {
+		return paxydBusId;
 	}
 
-	public void setPAXYDBusId(int pAXYDBusId) {
-		PAXYDBusId = pAXYDBusId;
+
+
+	public void setPaxydBusId(Integer paxydBusId) {
+		this.paxydBusId = paxydBusId;
 	}
 
-	public int getUserId() {
+
+
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
-	public int getSalesManId() {
+	public Integer getSalesManId() {
 		return salesManId;
 	}
 
-	public void setSalesManId(int salesManId) {
+	public void setSalesManId(Integer salesManId) {
 		this.salesManId = salesManId;
 	}
 
@@ -65,19 +85,19 @@ public class BusPAXYDModel {
 		this.loanAmount = loanAmount;
 	}
 
-	public int getLoanTerm() {
+	public Integer getLoanTerm() {
 		return loanTerm;
 	}
 
-	public void setLoanTerm(int loanTerm) {
+	public void setLoanTerm(Integer loanTerm) {
 		this.loanTerm = loanTerm;
 	}
 
-	public int getAccrualType() {
+	public Integer getAccrualType() {
 		return accrualType;
 	}
 
-	public void setAccrualType(int accrualType) {
+	public void setAccrualType(Integer accrualType) {
 		this.accrualType = accrualType;
 	}
 
@@ -89,11 +109,11 @@ public class BusPAXYDModel {
 		this.accrualRate = accrualRate;
 	}
 
-	public int getCheckState() {
+	public Integer getCheckState() {
 		return checkState;
 	}
 
-	public void setCheckState(int checkState) {
+	public void setCheckState(Integer checkState) {
 		this.checkState = checkState;
 	}
 
@@ -121,43 +141,43 @@ public class BusPAXYDModel {
 		this.loanEndDate = loanEndDate;
 	}
 
-	public int getHousingLoanType() {
+	public Integer getHousingLoanType() {
 		return housingLoanType;
 	}
 
-	public void setHousingLoanType(int housingLoanType) {
+	public void setHousingLoanType(Integer housingLoanType) {
 		this.housingLoanType = housingLoanType;
 	}
 
-	public int getHousingLoanTerm() {
+	public Integer getHousingLoanTerm() {
 		return housingLoanTerm;
 	}
 
-	public void setHousingLoanTerm(int housingLoanTerm) {
+	public void setHousingLoanTerm(Integer housingLoanTerm) {
 		this.housingLoanTerm = housingLoanTerm;
 	}
 
-	public int getWarrantyType() {
+	public Integer getWarrantyType() {
 		return warrantyType;
 	}
 
-	public void setWarrantyType(int warrantyType) {
+	public void setWarrantyType(Integer warrantyType) {
 		this.warrantyType = warrantyType;
 	}
 
-	public int getWarrantyTerm() {
+	public Integer getWarrantyTerm() {
 		return warrantyTerm;
 	}
 
-	public void setWarrantyTerm(int warrantyTerm) {
+	public void setWarrantyTerm(Integer warrantyTerm) {
 		this.warrantyTerm = warrantyTerm;
 	}
 
-	public int getWarrantyCount() {
+	public Integer getWarrantyCount() {
 		return warrantyCount;
 	}
 
-	public void setWarrantyCount(int warrantyCount) {
+	public void setWarrantyCount(Integer warrantyCount) {
 		this.warrantyCount = warrantyCount;
 	}
 
@@ -169,11 +189,11 @@ public class BusPAXYDModel {
 		this.accumulationFundAddress = accumulationFundAddress;
 	}
 
-	public int getAccumulationFundTerm() {
+	public Integer getAccumulationFundTerm() {
 		return accumulationFundTerm;
 	}
 
-	public void setAccumulationFundTerm(int accumulationFundTerm) {
+	public void setAccumulationFundTerm(Integer accumulationFundTerm) {
 		this.accumulationFundTerm = accumulationFundTerm;
 	}
 
@@ -201,11 +221,11 @@ public class BusPAXYDModel {
 		this.name = name;
 	}
 
-	public int getSex() {
+	public Integer getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 
@@ -215,6 +235,94 @@ public class BusPAXYDModel {
 
 	public void setApplicantTel(String applicantTel) {
 		this.applicantTel = applicantTel;
+	}
+
+	public Integer getContractManId() {
+		return contractManId;
+	}
+
+	public void setContractManId(Integer contractManId) {
+		this.contractManId = contractManId;
+	}
+
+	public Integer getOwnBusinessLicense() {
+		return ownBusinessLicense;
+	}
+
+	public void setOwnBusinessLicense(Integer ownBusinessLicense) {
+		this.ownBusinessLicense = ownBusinessLicense;
+	}
+
+	public String getApplicantJob() {
+		return applicantJob;
+	}
+
+	public void setApplicantJob(String applicantJob) {
+		this.applicantJob = applicantJob;
+	}
+
+	public String getSalesManRemarkAndAdvice() {
+		return salesManRemarkAndAdvice;
+	}
+
+	public void setSalesManRemarkAndAdvice(String salesManRemarkAndAdvice) {
+		this.salesManRemarkAndAdvice = salesManRemarkAndAdvice;
+	}
+
+	public Integer getSalesManAdviceProduct() {
+		return salesManAdviceProduct;
+	}
+
+	public void setSalesManAdviceProduct(Integer salesManAdviceProduct) {
+		this.salesManAdviceProduct = salesManAdviceProduct;
+	}
+
+	public String getContractManRemarkAndAdvice() {
+		return contractManRemarkAndAdvice;
+	}
+
+	public void setContractManRemarkAndAdvice(String contractManRemarkAndAdvice) {
+		this.contractManRemarkAndAdvice = contractManRemarkAndAdvice;
+	}
+
+	public Integer getContractManAdviceProduct() {
+		return contractManAdviceProduct;
+	}
+
+	public void setContractManAdviceProduct(Integer contractManAdviceProduct) {
+		this.contractManAdviceProduct = contractManAdviceProduct;
+	}
+
+	public String getApplyFailReason() {
+		return applyFailReason;
+	}
+
+	public void setApplyFailReason(String applyFailReason) {
+		this.applyFailReason = applyFailReason;
+	}
+
+	public String getApplyRefuseReason() {
+		return applyRefuseReason;
+	}
+
+	public void setApplyRefuseReason(String applyRefuseReason) {
+		this.applyRefuseReason = applyRefuseReason;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 	

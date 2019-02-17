@@ -40,8 +40,13 @@
                             <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                               <span class="block m-t-xs" style="font-size: 20px;"><strong class="font-bold">${backGroundUser.userName}</strong></span>
+                                <span class="text-muted text-xs block" style="font-size: 25px;">
+                                <c:forEach var="role" items="${backGroundUser.roleList}" varStatus="num">
+                                ${role.roleName}
+                                </c:forEach>
+                                <b class="caret"></b>
+                                </span>
                                 </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -59,6 +64,7 @@
                             </ul>
                         </div>
                         <div class="logo-element">H+
+                        
                         </div>
                     </li>
                     
@@ -123,7 +129,7 @@
                         </a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a class="J_menuItem" href="busPAXYDmanager.jsp" data-index="0">平安新一贷款业务</a>
+							<a class="J_menuItem" href="<%=path %>/busPAXYDmanager.jsp" data-index="0">平安新一贷款业务</a>
 						</li>
 						<li>
 							<a class="J_menuItem" href="index_v1.html" data-index="0">建行科技金融</a>

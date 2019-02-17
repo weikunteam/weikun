@@ -36,6 +36,15 @@
 		<result column="uRegRecommendPeople" property="uRegRecommendPeople"/>
 		<result column="uRecommendCode" property="uRecommendCode"/>
 		<result column="uLoginState" property="uLoginState"/>
+		<result column="salt" property="salt"/>
+		<result column="registerTime" property="registerTime"/>
+		<result column="userType" property="userType"/>
+		<result column="delState" property="delState"/>
+		<result column="userName" property="userName"/>
+		<result column="uBackGroundAccount" property="uBackGroundAccount"/>
+		<result column="uBackGroundPsw" property="uBackGroundPsw"/>
+		<result column="age" property="age"/>
+		<result column="job" property="job"/>
 	 </resultMap>
       <!-- 作者：czk -->
       <!-- 说明：删除客户信息 -->

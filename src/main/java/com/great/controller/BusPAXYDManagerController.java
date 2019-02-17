@@ -38,7 +38,7 @@ public class BusPAXYDManagerController {
 		for(int i=0;i<allBusPAXYDList.size();i++) {
 			Map<String,Object> filedMap=new HashMap<String, Object>();
 			BusPAXYDModel busPAXYDModel=allBusPAXYDList.get(i);
-			filedMap.put("PAXYDBusId", busPAXYDModel.getPAXYDBusId());
+			filedMap.put("PAXYDBusId", busPAXYDModel.getPaxydBusId());
 			filedMap.put("uPhone", busPAXYDModel.getUserModel().getuPhone());
 			filedMap.put("salesManId", busPAXYDModel.getSalesManId());
 			filedMap.put("loanAmount", busPAXYDModel.getLoanAmount());

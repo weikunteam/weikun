@@ -10,6 +10,7 @@
 	 
 	 <!-- 后台用户的resultMap -->
 	 <resultMap type="com.great.model.UserModel" id="userBackGroundInfoMap">
+	 	<id column="userId" property="userId"/>
 	 	<collection property="roleList" column="userId" javaType="java.util.List" select="selectRoleList" />
 	 </resultMap>
 	 

@@ -57,6 +57,7 @@ public class BackLoginController {
 			}
 			
 			session.setAttribute("backGroundUser", userModel);
+			System.out.println("后台用户id"+userModel.getUserId());
 			request.setAttribute("permissionList", userModel.getRoleList().get(0).getPermissionList());
 			mav.setViewName("backgroundmain");
 			

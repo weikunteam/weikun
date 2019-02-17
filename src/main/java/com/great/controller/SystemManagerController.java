@@ -66,7 +66,7 @@ public class SystemManagerController {
 	public @ResponseBody ArrayList<RoleModel> deleteRole(Model model,HttpServletResponse response, RoleModel RoleModel) {
 		
 		//systemManagerService.deleteRolePermission(RoleModel.getRoleId());
-		systemManagerService.deleteRole(RoleModel);
+		//systemManagerService.deleteRole(RoleModel);
 		
 		ArrayList<RoleModel> roleList=systemManagerService.getAllRole();
 		

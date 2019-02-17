@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.CustomerManagerDao">
+      <!-- 作者：czk -->
+      <!-- 说明：获取所有客户数量 -->
+	<select id="getCustomerCount" resultType="String">
+		select 
+		count(*) 
+		from TB_BUS_PAXYD
+		<where>
+            <if test="salesManId!=null">salesManId = #{salesManId} </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">and name like "%"#{condition.name}"%"  </if>
+             <if test="@com.great.util.Ognl@isNotEmpty(condition.applicantTel)">and applicantTel like "%"#{condition.applicantTel}"%"  </if>
+             
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.customerState)">
+            <if test="condition.customerState=='otherCustomerState' ">and checkState !=5 and  checkState !=6 </if>
+            <if test="condition.customerState!='otherCustomerState' "> and checkState =#{condition.customerState}  </if>
+            </if>
+            
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.busSpeed)">
+            <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3  </if>
+            <if test="condition.busSpeed!='otherBusSpeed'">and checkState =#{condition.busSpeed}  </if>
+            </if>
+            
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateStart)">and applyDate &gt;= #{condition.applyDateStart}  </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateEnd)">and applyDate &lt;= #{condition.applyDateEnd}  </if> 
+        </where>
+	</select>
+      <!-- 作者：czk -->
+      <!-- 说明：带条件、分页查询客户信息 -->
+	<select id="getCustomerList" resultMap="resultListCustomerBus">
+		select 
+		*
+		from TB_BUS_PAXYD  
+		<where>
+            <if test="salesManId!=null">salesManId = #{salesManId} </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">and name like "%"#{condition.name}"%"  </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applicantTel)">and applicantTel like "%"#{condition.applicantTel}"%"  </if>
+            
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.customerState)">
+            <if test="condition.customerState=='otherCustomerState' ">and checkState !=5 and checkState !=6 </if>
+            <if test="condition.customerState!='otherCustomerState' "> and checkState =#{condition.customerState}  </if>
+            </if>
+            
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.busSpeed)">
+            <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3  </if>
+            <if test="condition.busSpeed!='otherBusSpeed'">and checkState =#{condition.busSpeed}  </if>
+            </if>
+            
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateStart)">and applyDate &gt;= #{condition.applyDateStart}  </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateEnd)">and applyDate &lt;= #{condition.applyDateEnd}  </if> 
+        </where>
+		limit #{queryInitCount}  , #{limit}
+	</select>
+	
+	<resultMap type="com.great.model.BusPAXYDModel" id="resultListCustomerBus">
+	<id column="paxydBusId" property="paxydBusId"/>
+	<result column="userId" property="userId"/>
+	<result column="salesManId" property="salesManId"/>
+	<result column="contractManId" property="contractManId"/>
+	<result column="loanAmount" property="loanAmount"/>
+	<result column="loanTerm" property="loanTerm"/>
+	<result column="accrualType" property="accrualType"/>
+	<result column="accrualRate" property="accrualRate"/>
+	<result column="checkState" property="checkState"/>
+	<result column="applyDate" property="applyDate"/>
+	<result column="loanStartDate" property="loanStartDate"/>
+	<result column="loanEndDate" property="loanEndDate"/>
+	<result column="housingLoanType" property="housingLoanType"/>
+	<result column="housingLoanTerm" property="housingLoanTerm"/>
+	<result column="warrantyType" property="warrantyType"/>
+	<result column="warrantyTerm" property="warrantyTerm"/>
+	<result column="warrantyCount" property="warrantyCount"/>
+	<result column="accumulationFundAddress" property="accumulationFundAddress"/>
+	<result column="accumulationFundTerm" property="accumulationFundTerm"/>
+	<result column="accumulationFundAmount" property="accumulationFundAmount"/>
+	<result column="ownBusinessLicense" property="ownBusinessLicense"/>
+	<result column="name" property="name"/>
+	<result column="age" property="age"/>
+	<result column="sex" property="sex"/>
+	<result column="applicantTel" property="applicantTel"/>
+	<result column="applicantJob" property="applicantJob"/>
+	<result column="salesManRemarkAndAdvice" property="salesManRemarkAndAdvice"/>
+	<result column="salesManAdviceProduct" property="salesManAdviceProduct"/>
+	<result column="contractManRemarkAndAdvice" property="contractManRemarkAndAdvice"/>
+	<result column="contractManAdviceProduct" property="contractManAdviceProduct"/>
+	<result column="applyFailReason" property="applyFailReason"/>
+	<result column="applyRefuseReason" property="applyRefuseReason"/>
+	<result column="type" property="type"/>
+	<association property="userModel" column="userId"  javaType="com.great.model.UserModel"  select="com.great.dao.UserManagerDao.queryUserById"/>
+	 </resultMap>
+      <!-- 作者：czk -->
+      <!-- 说明：删除客户信息 -->
+	<insert id="deleteUserInfo"  parameterType="java.lang.Integer">
+	UPDATE 
+	TB_USER 
+	SET 
+	delState = 1
+	where userId=#{deleteUserId}
+	</insert>
+	
+      <!-- 作者：czk -->
+      <!-- 说明：添加单笔客户信息 -->
+	<insert id="addCustomerInfo" parameterType="com.great.model.BusPAXYDModel">
+	INSERT INTO 
+	TB_BUS_PAXYD
+	(salesManId,
+	type,applyDate,name,sex,applicantTel,
+	housingLoanType,housingLoanTerm,
+	warrantyType,warrantyTerm,warrantyCount,
+	accumulationFundAddress,accumulationFundTerm,accumulationFundAmount,
+	ownBusinessLicense,
+	salesManAdviceProduct,salesManRemarkAndAdvice,
+	checkState) 
+	
+	values 
+	
+	(#{salesManId},
+	#{type},#{applyDate},#{name},#{sex},#{applicantTel},
+	#{housingLoanType},#{housingLoanTerm},
+	#{warrantyType},#{warrantyTerm},#{warrantyCount},
+	#{accumulationFundAddress},#{accumulationFundTerm},#{accumulationFundAmount},
+	#{ownBusinessLicense},
+	#{salesManAdviceProduct},#{salesManRemarkAndAdvice},
+	#{checkState})
+	</insert>
+	
+      <!-- 作者：czk -->
+      <!-- 说明：编辑客户信息 -->
+	<insert id="editCustomerInfo" parameterType="com.great.model.BusPAXYDModel">
+	UPDATE 
+	TB_BUS_PAXYD 
+	SET 
+	type = #{type},
+	applyDate = #{applyDate},
+	name = #{name},
+	sex = #{sex},
+	applicantJob=#{applicantJob},
+	applicantTel = #{applicantTel},
+	housingLoanType = #{housingLoanType},
+	housingLoanTerm = #{housingLoanTerm},
+	warrantyType = #{warrantyType},
+	warrantyTerm = #{warrantyTerm},
+	warrantyCount = #{warrantyCount},
+	accumulationFundAddress = #{accumulationFundAddress},
+	accumulationFundTerm = #{accumulationFundTerm},
+	accumulationFundAmount = #{accumulationFundAmount},
+	ownBusinessLicense = #{ownBusinessLicense},
+	salesManAdviceProduct = #{salesManAdviceProduct},
+	salesManRemarkAndAdvice = #{salesManRemarkAndAdvice}
+	WHERE 
+	paxydBusId = #{paxydBusId}
+	</insert>
+	   <!-- 作者：czk -->
+      <!-- 说明：编辑客户信息 -->
+	<insert id="callCustomer" parameterType="com.great.model.BusPAXYDModel">
+	UPDATE 
+	TB_BUS_PAXYD 
+	SET 
+	checkState = 6
+	WHERE 
+	paxydBusId = #{paxydBusId}
+	</insert>
+      <!-- 作者：czk -->
+      <!-- 说明：验证手机号是否存在 -->
+	<select id="verifyUserPhone" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+		userType=1 and
+		delState=0
+            <if test="userPhone!=null">and uPhone = #{userPhone}</if>
+        </where>
+	</select>
+      <!-- 作者：czk -->
+      <!-- 说明：通过userId获取客户信息 -->
+ 	<select id="queryUserById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
+		select 
+		* 
+		from TB_USER
+		<where>
+		userType=1 and
+		delState=0 and 
+        userId = #{userId} 
+        </where>
+	</select>
+	
+</mapper>
