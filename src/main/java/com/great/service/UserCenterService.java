@@ -2,6 +2,7 @@ package com.great.service;
 
 import com.great.dao.UserCenterDao;
 import com.great.dao.UserLoginDao;
+import com.great.util.SendCodeUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,5 +34,19 @@ public class UserCenterService {
 
     public List<Map<String,Object>> myService(String userId){
         return userCenterDao.myService(userId);
+    }
+
+    public boolean updateTel(String uPhone,String code,String userId){
+        try {
+            if (SendCodeUtil.checkCode(uPhone, code)){
+                userCenterDao.updateUserTel(userId, uPhone);
+                return true;
+            }else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

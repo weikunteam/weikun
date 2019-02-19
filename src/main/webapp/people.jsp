@@ -11,7 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
     <title>个人信息</title>
     <link href="${path}css/peoplestyle.css" rel="stylesheet" type="text/css"/>
+    <link rel='stylesheet' href='${path}css/toastr.min.css'>
     <script src="${path}js/jQuery.js"></script>
+    <script src="${path}js/toastr.min.js"></script>
 </head>
 <body>
 <section class="aui-flexView">
@@ -59,6 +61,17 @@
                 </div>
             </a>
 
+            <a href="${path}rechangeTel.jsp" class="aui-flex b-line">
+                <div class="aui-sides-form-text">
+                    <h2>手机:</h2>
+                </div>
+                <div class="aui-flex-box">
+                    <label class="cell-right cell-arrow">
+                        <input type="text" class="aui-code-line-input" name="search" value="${people.uPhone}" id="phone1" autocomplete="off" placeholder="" readonly="true"/>
+                    </label>
+                </div>
+            </a>
+
             <%--<a href="javascript:;" class="aui-flex b-line">
                 <div class="aui-sides-form-text">
                     <h2>验&nbsp;证&nbsp;&nbsp;码:</h2>
@@ -82,7 +95,25 @@
         $(".aui-code-line-input").addClear();
 
     });*/
+   toastr.options = {
+       "closeButton": false, //是否显示关闭按钮
+       "debug": false, //是否使用debug模式
+       "positionClass": "toast-center-centertwo-xs",//弹出窗的位置
+       "showDuration": "300",//显示的动画时间
+       "hideDuration": "300",//消失的动画时间
+       "timeOut": "2000", //展现时间
+       "showEasing": "swing",//显示时的动画缓冲方式
+       "hideEasing": "linear",//消失时的动画缓冲方式
+       "showMethod": "fadeIn",//显示时的动画方式
+       "hideMethod": "fadeOut" //消失时的动画方式
+   };
+
    $(".aui-sides-button").on("click",function () {
+       var age = $("#age").val();
+       if (age&&isNaN(age)){
+           toastr.error("请输入正确年龄");
+           return false;
+       }
        $.ajax({
            type:"post",
            url:"${path}userCenter/updateUser.action",
@@ -94,7 +125,10 @@
            },
            success:function(data){
                if(data.code == '1'){
-                   window.location.href = "${path}userCenter/gotoUserCenter.action";
+                   toastr.success(data.msg);
+                   setTimeout(function(){
+                       window.location.href = "${path}userCenter/gotoUserCenter.action";
+                   },2000);
                }else{
                    toastr.error("数据异常，保存失败");
                }

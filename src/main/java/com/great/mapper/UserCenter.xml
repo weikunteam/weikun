@@ -44,4 +44,12 @@ where paxydBusId = #{paxydBusId}
         from TB_BUS_PAXYD
         where userId = #{userId}
     </select>
+
+    <update id="updateUserTel">
+        update TB_USER
+        set
+        uPhone = #{uPhone}
+        where
+        userId = #{userId}
+    </update>
 </mapper>

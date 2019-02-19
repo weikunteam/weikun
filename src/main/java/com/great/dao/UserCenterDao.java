@@ -16,4 +16,6 @@ public interface UserCenterDao {
     public void updateSuggestion(@Param("paxydBusId")String paxydBusId,@Param("suggestion")String suggestion);
 
     public List<Map<String,Object>> myService(@Param("userId")String userId);
+
+    public void updateUserTel(@Param("userId")String userId,@Param("uPhone")String uPhone);
 }

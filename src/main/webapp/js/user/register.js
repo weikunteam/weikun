@@ -26,7 +26,10 @@ $("#register").click(function(){
 		toastr.error("密码格式错误");	
 		return false;
 	}
-	
+	if(!code){
+		toastr.error("请输入验证码");
+		return false;
+	}
 	$.ajax({
 	    type:"post",
 	    url:path+"login/register.action",

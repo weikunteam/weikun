@@ -47,7 +47,7 @@ public class UserCenterController {
     public ResponseApi updateUser(String userName, String age, String job, HttpServletRequest request) {
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
         userCenterService.updateUser(userName, age, job, userId);
-        return new ResponseApi("1", "更改成功");
+        return new ResponseApi("1", "保存成功");
     }
 
     @RequestMapping(value = "/logout.action", method = RequestMethod.GET)
@@ -179,5 +179,13 @@ public class UserCenterController {
         }
         return new ResponseApi("1", "搜索成功", list);
     }
-
+    @RequestMapping(value = "/rechangeTel.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi rechangeTel(String tel,String code,HttpServletRequest request) {
+        String userId = ((Map<String,Object>)(request.getSession().getAttribute("user"))).get("userId").toString();
+        if (userCenterService.updateTel(tel, code, userId)){
+            return new ResponseApi("1", "更改成功");
+        }
+        return new ResponseApi("2", "验证码错误");
+    }
 }
