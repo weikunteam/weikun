@@ -19,20 +19,21 @@
 
     <select id="listService" resultType="map">
         select name,
-               paxydBusId as id,
-               applicantTel,
-               applyDate,
-               type
+        paxydBusId as id,
+        applicantTel,
+        applyDate,
+        type
         from TB_BUS_PAXYD
         where salesManId = #{userId}
-  <if test="searchText !=null and searchText != ''">
-    and applicantTel = #{searchText}
-  </if>
+        <if test="searchText !=null and searchText != ''">
+            and applicantTel = #{searchText}
+        </if>
     </select>
 
     <update id="updateSuggestion">
-        update TB_BUS_PAXYD set salesManRemarkAndAdvice = #{suggestion}
-where paxydBusId = #{paxydBusId}
+        update TB_BUS_PAXYD
+        set salesManRemarkAndAdvice = #{suggestion}
+        where paxydBusId = #{paxydBusId}
     </update>
 
     <select id="myService" resultType="map">
@@ -47,9 +48,13 @@ where paxydBusId = #{paxydBusId}
 
     <update id="updateUserTel">
         update TB_USER
-        set
-        uPhone = #{uPhone}
-        where
-        userId = #{userId}
+        set uPhone = #{uPhone}
+        where userId = #{userId}
     </update>
+
+    <insert id="insertObjection">
+        insert into TB_OBJECTION (userId, objection, submitDate, handleState)
+            value (#{userId}, #{objection}, #{submitDate}, #{handleState})
+
+    </insert>
 </mapper>

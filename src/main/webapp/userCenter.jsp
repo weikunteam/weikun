@@ -272,7 +272,7 @@ background-color:#F5F5F5;
                             <div class="aui-flex-box aui-flex-box-right">
                             </div>
                         </a>
-                        <a href="javascript:;" class="aui-flex b-line" style="text-decoration:none">
+                        <a href="${path}userCenter/gotoObjection.action" class="aui-flex b-line" style="text-decoration:none">
                             <div class="aui-flex-box-head">意见反馈</div>
                             <div class="aui-flex-box aui-flex-box-right">
                             </div>

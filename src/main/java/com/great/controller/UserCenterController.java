@@ -113,7 +113,7 @@ public class UserCenterController {
     @ResponseBody
     public ResponseApi suggest(String id,String suggest) {
         userCenterService.suggest(id, suggest);
-        return new ResponseApi("1", "更改成功");
+        return new ResponseApi("1", "提交成功");
     }
 
     @RequestMapping(value = "/gotoMyService.action", method = RequestMethod.GET)
@@ -187,5 +187,20 @@ public class UserCenterController {
             return new ResponseApi("1", "更改成功");
         }
         return new ResponseApi("2", "验证码错误");
+    }
+
+    @RequestMapping(value = "/objection.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi objection(HttpServletRequest request,String objection) {
+        String userId = ((Map<String,Object>)(request.getSession().getAttribute("user"))).get("userId").toString();
+        userCenterService.insertObjection(userId, objection);
+        return new ResponseApi("1", "提交成功");
+    }
+
+    @RequestMapping(value = "/gotoObjection.action", method = RequestMethod.GET)
+    public ModelAndView gotoObjection() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("objection");
+        return mv;
     }
 }

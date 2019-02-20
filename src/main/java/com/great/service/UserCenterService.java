@@ -2,6 +2,7 @@ package com.great.service;
 
 import com.great.dao.UserCenterDao;
 import com.great.dao.UserLoginDao;
+import com.great.util.DateUtil;
 import com.great.util.SendCodeUtil;
 import org.springframework.stereotype.Service;
 
@@ -16,37 +17,41 @@ public class UserCenterService {
     @Resource
     private UserLoginDao userLoginDao;
 
-    public void updateUser(String userName,String age,String job,String userId){
+    public void updateUser(String userName, String age, String job, String userId) {
         userCenterDao.updateUser(userName, age, job, userId);
     }
 
-    public Map<String,Object> getUser(String tel){
-        return  userLoginDao.getUser(tel);
+    public Map<String, Object> getUser(String tel) {
+        return userLoginDao.getUser(tel);
     }
 
-    public List<Map<String,Object>> listService(String userId,String searchText){
-     return userCenterDao.listService(userId,searchText);
+    public List<Map<String, Object>> listService(String userId, String searchText) {
+        return userCenterDao.listService(userId, searchText);
     }
 
-    public void suggest(String id,String suggestion){
+    public void suggest(String id, String suggestion) {
         userCenterDao.updateSuggestion(id, suggestion);
     }
 
-    public List<Map<String,Object>> myService(String userId){
+    public List<Map<String, Object>> myService(String userId) {
         return userCenterDao.myService(userId);
     }
 
-    public boolean updateTel(String uPhone,String code,String userId){
+    public boolean updateTel(String uPhone, String code, String userId) {
         try {
-            if (SendCodeUtil.checkCode(uPhone, code)){
+            if (SendCodeUtil.checkCode(uPhone, code)) {
                 userCenterDao.updateUserTel(userId, uPhone);
                 return true;
-            }else {
+            } else {
                 return false;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void insertObjection(String userId, String objection) {
+        userCenterDao.insertObjection(userId, objection, DateUtil.getDateTime(), 0);
     }
 }

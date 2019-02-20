@@ -9,13 +9,17 @@ import java.util.Map;
 @Repository
 public interface UserCenterDao {
 
-    public void updateUser(@Param("userName")String userName,@Param("age")String age
-            ,@Param("job")String job,@Param("userId")String userId);
-    public List<Map<String,Object>> listService(@Param("userId")String userId,@Param("searchText")String searchText);
+    public void updateUser(@Param("userName") String userName, @Param("age") String age
+            , @Param("job") String job, @Param("userId") String userId);
 
-    public void updateSuggestion(@Param("paxydBusId")String paxydBusId,@Param("suggestion")String suggestion);
+    public List<Map<String, Object>> listService(@Param("userId") String userId, @Param("searchText") String searchText);
 
-    public List<Map<String,Object>> myService(@Param("userId")String userId);
+    public void updateSuggestion(@Param("paxydBusId") String paxydBusId, @Param("suggestion") String suggestion);
 
-    public void updateUserTel(@Param("userId")String userId,@Param("uPhone")String uPhone);
+    public List<Map<String, Object>> myService(@Param("userId") String userId);
+
+    public void updateUserTel(@Param("userId") String userId, @Param("uPhone") String uPhone);
+
+    public void insertObjection(@Param("userId") String userId, @Param("objection") String objection,
+                                @Param("submitDate") String submitDate, @Param("handleState") Integer handleState);
 }
