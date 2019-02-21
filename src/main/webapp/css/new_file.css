@@ -73,7 +73,7 @@ header span{ color:#fff}
 .assess_nr {width:90%;overflow: hidden;background-color: #fff; margin-left:2.5%; border-radius:5px; background:#ffffff; border:solid 1px #c4c4c4; padding:8px 2.5%}
 .assess_nr textarea {text-align: justify;width: 100%;border: none;font-size: 1.0em;color: #666; }
 
-.submit_button{ position:absolute;  width:20%; margin-left:40%; height:40px; line-height:40px; background: #00b4ef; border-radius:5px; color:#ffff; margin-top:10px; text-align:center; font-size:1em; top:230px;}
+.submit_button{ position:absolute;  width:92%; margin-left:4%; height:40px; line-height:40px; background: #00b4ef; border-radius:5px; color:#ffff; margin-top:10px; text-align:center; font-size:1em; top:230px;}
 
 
 
