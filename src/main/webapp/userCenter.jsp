@@ -104,7 +104,7 @@ background-color:#F5F5F5;
                     <div class="aui-palace aui-palace-one b-line">
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
                             <c:if test="${people.uRegRecommendPeople != null }">
-                            <div class="aui-palace-grid-icon" style="margin-left: 0px;">
+                            <div class="aui-palace-grid-icon1" style="margin-left: 0px;">
                                 <span>
                                     ${people.uRegRecommendPeople}
                                 </span>
@@ -114,7 +114,7 @@ background-color:#F5F5F5;
                             </div>
                             </c:if>
                             <c:if test="${people.uRegRecommendPeople == null }">
-                                <div class="aui-palace-grid-icon">
+                                <div class="aui-palace-grid-icon1">
                                 <span>
                                         平台
                                 </span>
@@ -127,7 +127,7 @@ background-color:#F5F5F5;
 
 
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
-                            <div class="aui-palace-grid-icon">
+                            <div class="aui-palace-grid-icon1">
                                 <span>
                                     <c:if test="${people.studentNum != null }">${people.studentNum}</c:if>
 				                    <c:if test="${people.studentNum == null }">0</c:if>
@@ -138,7 +138,7 @@ background-color:#F5F5F5;
                             </div>
                         </a>
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
-                            <div class="aui-palace-grid-icon">
+                            <div class="aui-palace-grid-icon1">
                                 <span><font color="red" >
                                 <c:if test="${people.uRecommendAmount != null }">${people.uRecommendAmount}</c:if>
                                 <c:if test="${people.uRecommendAmount == null }">0</c:if>

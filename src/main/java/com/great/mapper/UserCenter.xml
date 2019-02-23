@@ -63,4 +63,18 @@
             value (#{userId}, #{card}, #{name}, #{state}, #{amount})
 
     </insert>
+
+    <select id="withdrawList" resultType="com.great.model.WithdrawModel">
+        select
+               id,
+               userId,
+               withdrawCard,
+               withdrawName,
+               reason,
+               amount,
+               withdrawState,
+               applyDate
+        from TB_WITHDRAW
+        where userId = #{userId}
+    </select>
 </mapper>

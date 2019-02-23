@@ -45,7 +45,7 @@
                 <h2>${people.uRecommendAmount}</h2>
             </div>
             <div class="aui-make-bottom" >
-                <i class="icon1 icon-doubt"></i>查看提现记录
+                <i class="icon1 icon-doubt"></i><a href="${path}userCenter/gotoWithdrawList.action" style="color: white">查看提现记录</a>
             </div>
         </div>
         <%--<div class="divHeight"></div>--%>

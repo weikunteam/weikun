@@ -2,6 +2,7 @@ package com.great.controller;
 
 import com.great.dao.UserLoginDao;
 import com.great.model.ResponseApi;
+import com.great.model.WithdrawModel;
 import com.great.service.LoginService;
 import com.great.service.UserCenterService;
 import org.springframework.stereotype.Controller;
@@ -218,5 +219,28 @@ public class UserCenterController {
     public ResponseApi withdraw(String id,String card,String name,String amount) {
         userCenterService.insertWithdraw(id, card, name,amount);
         return new ResponseApi("1", "提交成功");
+    }
+
+    @RequestMapping(value = "/gotoWithdrawList.action", method = RequestMethod.GET)
+    public ModelAndView gotoWithdrawList(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        List<WithdrawModel>  list = userCenterService.listWithdraw(userId);
+        for (WithdrawModel withdraw:list){
+            switch (withdraw.getWithdrawState()){
+                case 0:
+                    withdraw.setState("审核中");
+                    break;
+                case 1:
+                    withdraw.setState("提现成功");
+                    break;
+                case 2:
+                    withdraw.setState("提现失败");
+                    break;
+            }
+        }
+        mv.addObject("listWithdraw",list );
+        mv.setViewName("withdrawList");
+        return mv;
     }
 }

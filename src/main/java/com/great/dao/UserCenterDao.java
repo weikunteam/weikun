@@ -1,5 +1,6 @@
 package com.great.dao;
 
+import com.great.model.WithdrawModel;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -26,4 +27,6 @@ public interface UserCenterDao {
     public void insertWithdraw(@Param("userId") String userId, @Param("card") String card,
                                 @Param("name") String name, @Param("state") Integer state,
                                @Param("amount") String amount);
+
+    List<WithdrawModel> withdrawList(@Param("userId") String userId);
 }

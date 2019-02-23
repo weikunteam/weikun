@@ -360,7 +360,14 @@ a {
 }
 
 .aui-palace-grid-icon {
-    width: 100px !important;
+    width: 40px ;
+    height: 40px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.aui-palace-grid-icon1 {
+    width: 80px !important;
     height: 40px;
     margin: 0 auto;
     text-align: center;

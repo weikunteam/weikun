@@ -2,6 +2,7 @@ package com.great.service;
 
 import com.great.dao.UserCenterDao;
 import com.great.dao.UserLoginDao;
+import com.great.model.WithdrawModel;
 import com.great.util.DateUtil;
 import com.great.util.SendCodeUtil;
 import org.springframework.stereotype.Service;
@@ -58,4 +59,6 @@ public class UserCenterService {
     public void insertWithdraw(String userId,String card,String name,String amount){
         userCenterDao.insertWithdraw(userId, card, name, 0,amount);
     }
+
+    public List<WithdrawModel> listWithdraw(String userId){return userCenterDao.withdrawList(userId);}
 }

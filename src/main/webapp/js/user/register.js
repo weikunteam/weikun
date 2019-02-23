@@ -46,7 +46,7 @@ $("#register").click(function(){
 	        	  setTimeout(function(){
 	        		  window.location.href = path+"login/login.action";	        		  
 	        	  },2000);
-	          }else if(data.code == '3'){
+	          }else{
 	        	  toastr.error(data.msg);
 	          }   
 	      }
