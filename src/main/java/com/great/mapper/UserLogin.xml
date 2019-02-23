@@ -14,8 +14,7 @@
 		userName,
 		age,
 		job,
-		userType,
-		(select count(*) from TB_USER where uRecommendAmount = #{tel}) AS studentNum		
+		userType
 		from TB_USER 
 		where
 		uPhone = #{tel}
@@ -29,8 +28,26 @@
 	</insert>
 
 	<select id="getRecommendpeople" resultType="string">
-		select uPhone from TB_USER where uRecommendCode = #{code}
+		select userId from TB_USER where uRecommendCode = #{code}
 	</select>
-	
+
+	<select id="getUserById" resultType="map">
+		select
+			userId,
+			uPhone,
+			uPsw,
+			salt,
+			uRecommendCode,
+			uRecommendAmount,
+			uRegRecommendPeople,
+			userName,
+			age,
+			job,
+			userType,
+			(select count(*) from TB_USER where uRegRecommendPeople = #{userId}) AS studentNum
+		from TB_USER
+		where
+			userId = #{userId}
+	</select>
 	
 </mapper>

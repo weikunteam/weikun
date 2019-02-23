@@ -236,16 +236,15 @@ background-color:#F5F5F5;
                                 </div>
                             </a>
                         </c:if>
-                        <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
+                        <a href="${path}userCenter/gotoWithdraw.action" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-008.png" alt="">
                             </div>
                             <div class="aui-palace-grid-text">
-                                <h2>全部钱包</h2>
+                                <h2>我要提现</h2>
                             </div>
                         </a>
                     </div>
-
                 </div>
                 <div class="aui-tour-layout">
 

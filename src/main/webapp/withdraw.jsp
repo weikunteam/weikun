@@ -42,7 +42,7 @@
         <div class="aui-make-box">
             <div class="aui-make-box-title">
                 <p style="">余额(元)</p>
-                <h2>10000</h2>
+                <h2>${people.uRecommendAmount}</h2>
             </div>
             <div class="aui-make-bottom" >
                 <i class="icon1 icon-doubt"></i>查看提现记录
@@ -62,7 +62,7 @@
                     </div>
                     <div class="aui-flex-box">
                         <label class="cell-right ">
-                            <input type="text" class="aui-code-line-input" name="search" value="${people.userName}" id="userName" autocomplete="off" placeholder="请输入提现银行卡号"/>
+                            <input type="text" class="aui-code-line-input" name="search" value="" id="card" autocomplete="off" placeholder="请输入提现银行卡号"/>
                         </label>
                     </div>
                 </a>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="aui-flex-box">
                         <label class="cell-right ">
-                            <input type="text" class="aui-code-line-input" name="search" value="${people.userName}" id="userName" autocomplete="off" placeholder="请输入姓名"/>
+                            <input type="text" class="aui-code-line-input" name="search" value="" id="name" autocomplete="off" placeholder="请输入姓名"/>
                         </label>
                     </div>
                 </a>
@@ -87,13 +87,13 @@
                 </div>
                 <div class="aui-flex-box">
                     <label class="cell-right ">
-                        <input type="text" class="aui-code-line-input" name="search" value="${people.userName}" id="userName" autocomplete="off" placeholder="请输入提现金额"/>
+                        <input type="text" class="aui-code-line-input" name="search" value="" id="amount" autocomplete="off" placeholder="请输入提现金额"/>
                     </label>
                 </div>
             </a>
         </div>
         </div>
-        <button class="aui-sides-button">保存</button>
+        <button class="aui-sides-button" id="submit">提交</button>
     </section>
 </section>
 
@@ -103,7 +103,7 @@
     toastr.options = {
         "closeButton": false, //是否显示关闭按钮
         "debug": false, //是否使用debug模式
-        "positionClass": "toast-center-centerthird-xs",//弹出窗的位置
+        "positionClass": "toast-center-centerfour-xs",//弹出窗的位置
         "showDuration": "300",//显示的动画时间
         "hideDuration": "300",//消失的动画时间
         "timeOut": "2000", //展现时间
@@ -113,17 +113,32 @@
         "hideMethod": "fadeOut" //消失时的动画方式
     };
     $("#submit").click(function () {
-        var objection = $("#objection").val();
-        if (!objection){
-            toastr.error("请输入反馈意见");
+        var card = $("#card").val();
+        var name = $("#name").val();
+        var amount = $("#amount").val();
+        var reg = /^([1-9]{1})(\d{12}|\d{18})$/;
+        if (!reg.test(card)){
+            toastr.error("请输入正确银行卡号");
+            return false
+        }
+        // alert(card.match(reg))
+        if (!name){
+            toastr.error("请输入姓名");
+            return false
+        }
+        if (isNaN(amount)){
+            toastr.error("请输入提现金额");
             return false
         }
         $.ajax({
             type:"post",
-            url:"${path}userCenter/objection.action",
+            url:"${path}userCenter/withdraw.action",
             dataType: 'json',
             data :{
-                objection:objection
+                card:card,
+                name:name,
+                amount:amount,
+                id:${people.userId}
             },
             success:function(data){
                     if(data.code==1){

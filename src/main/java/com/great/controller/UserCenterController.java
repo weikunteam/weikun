@@ -27,8 +27,8 @@ public class UserCenterController {
     @RequestMapping(value = "/gotoUserCenter.action", method = RequestMethod.GET)
     public ModelAndView gotoUserCenter(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        String tel = ((Map<String, Object>) request.getSession().getAttribute("user")).get("uPhone").toString();
-        mv.addObject("people", userCenterService.getUser(tel));
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        mv.addObject("people", userCenterService.getUser(userId));
         mv.setViewName("userCenter");
         return mv;
     }
@@ -36,8 +36,8 @@ public class UserCenterController {
     @RequestMapping(value = "/gotoPeople.action", method = RequestMethod.GET)
     public ModelAndView gotoPeople(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        String tel = ((Map<String, Object>) request.getSession().getAttribute("user")).get("uPhone").toString();
-        mv.addObject("people", userCenterService.getUser(tel));
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        mv.addObject("people", userCenterService.getUser(userId));
         mv.setViewName("people");
         return mv;
     }
@@ -61,8 +61,8 @@ public class UserCenterController {
     @RequestMapping(value = "/gotoExit.action", method = RequestMethod.GET)
     public ModelAndView gotoExit(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        String tel = ((Map<String, Object>) request.getSession().getAttribute("user")).get("uPhone").toString();
-        mv.addObject("people", userCenterService.getUser(tel));
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        mv.addObject("people", userCenterService.getUser(userId));
         mv.setViewName("exit");
         return mv;
     }
@@ -202,5 +202,21 @@ public class UserCenterController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("objection");
         return mv;
+    }
+
+    @RequestMapping(value = "/gotoWithdraw.action", method = RequestMethod.GET)
+    public ModelAndView gotoWithdraw(HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView();
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        mv.addObject("people", userCenterService.getUser(userId));
+        mv.setViewName("withdraw");
+        return mv;
+    }
+
+    @RequestMapping(value = "/withdraw.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi withdraw(String id,String card,String name,String amount) {
+        userCenterService.insertWithdraw(id, card, name,amount);
+        return new ResponseApi("1", "提交成功");
     }
 }

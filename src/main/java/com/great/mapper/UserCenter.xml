@@ -57,4 +57,10 @@
             value (#{userId}, #{objection}, #{submitDate}, #{handleState})
 
     </insert>
+
+    <insert id="insertWithdraw">
+        insert into TB_WITHDRAW (userId, withdrawCard, withdrawName, withdrawState,amount)
+            value (#{userId}, #{card}, #{name}, #{state}, #{amount})
+
+    </insert>
 </mapper>

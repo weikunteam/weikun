@@ -17,5 +17,6 @@ public interface UserLoginDao {
 			@Param("date")String date,@Param("selfCode")String selfCode,
 			@Param("salt")String salt,@Param("recommendPeople") String recommendPeople);
 	public String getRecommendpeople(@Param("code")String code);
+	public Map<String, Object> getUserById(@Param("userId")String userId);
 
 }

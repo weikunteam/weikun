@@ -22,4 +22,8 @@ public interface UserCenterDao {
 
     public void insertObjection(@Param("userId") String userId, @Param("objection") String objection,
                                 @Param("submitDate") String submitDate, @Param("handleState") Integer handleState);
+
+    public void insertWithdraw(@Param("userId") String userId, @Param("card") String card,
+                                @Param("name") String name, @Param("state") Integer state,
+                               @Param("amount") String amount);
 }

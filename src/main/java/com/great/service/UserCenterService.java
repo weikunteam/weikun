@@ -21,8 +21,8 @@ public class UserCenterService {
         userCenterDao.updateUser(userName, age, job, userId);
     }
 
-    public Map<String, Object> getUser(String tel) {
-        return userLoginDao.getUser(tel);
+    public Map<String, Object> getUser(String userId) {
+        return userLoginDao.getUserById(userId);
     }
 
     public List<Map<String, Object>> listService(String userId, String searchText) {
@@ -53,5 +53,9 @@ public class UserCenterService {
 
     public void insertObjection(String userId, String objection) {
         userCenterDao.insertObjection(userId, objection, DateUtil.getDateTime(), 0);
+    }
+
+    public void insertWithdraw(String userId,String card,String name,String amount){
+        userCenterDao.insertWithdraw(userId, card, name, 0,amount);
     }
 }

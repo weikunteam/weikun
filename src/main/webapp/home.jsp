@@ -235,10 +235,10 @@ opacity: 0.6;
         <div class="aui-show-box">
             <div class="aui-flex">
                 <div class="aui-sml-img">
-                    <img src="${path}img/招商银行.gif" alt="">
+                    <img src="${path}img/pfyh.jpg" alt="">
                 </div>
                 <div class="aui-flex-box">
-                    <h3><font size="4px">招商银行信用卡</font></h3>
+                    <h3><font size="4px">浦发银行信用卡</font></h3>
                 </div>
             </div>
             <div class="aui-flex">
@@ -259,7 +259,7 @@ opacity: 0.6;
         <div class="aui-show-box">
             <div class="aui-flex">
                 <div class="aui-sml-img">
-                    <img src="${path}img/兴业银行.gif" alt="">
+                    <img src="${path}img/xyyh.jpg" alt="">
                 </div>
                 <div class="aui-flex-box">
                     <h3><font size="4px">兴业银行信用卡</font></h3>
@@ -283,7 +283,7 @@ opacity: 0.6;
         <div class="aui-show-box">
             <div class="aui-flex">
                 <div class="aui-sml-img">
-                    <img src="${path}img/民生银行.gif" alt="">
+                    <img src="${path}img/msyh.jpg" alt="">
                 </div>
                 <div class="aui-flex-box">
                     <h3><font size="4px">民生银行信用卡</font></h3>
@@ -307,7 +307,7 @@ opacity: 0.6;
         <div class="aui-show-box">
             <div class="aui-flex">
                 <div class="aui-sml-img">
-                    <img src="${path}img/平安银行.gif" alt="">
+                    <img src="${path}img/payh.jpg" alt="">
                 </div>
                 <div class="aui-flex-box">
                     <h3><font size="4px">平安银行信用卡</font></h3>
@@ -331,7 +331,7 @@ opacity: 0.6;
         <div class="aui-show-box">
             <div class="aui-flex">
                 <div class="aui-sml-img">
-                    <img src="${path}img/中信银行.gif" alt="">
+                    <img src="${path}img/zxyh.jpg" alt="">
                 </div>
                 <div class="aui-flex-box">
                     <h3><font size="4px">中信银行信用卡</font></h3>
