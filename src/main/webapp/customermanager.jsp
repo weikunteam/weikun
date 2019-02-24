@@ -69,6 +69,13 @@ border-color: #000;
 		style="display: none;">
 		<br />
 		<%-- action="<%=path%>userManager/editUserInfo.action"  method="post" --%>
+		<div class="layui-form-item">
+			<label class="layui-form-label" style="width:280px;"> 
+			<span style="color: red;font-size: 17px;font-weight: bold;">*&nbsp;&nbsp;&nbsp;为必填项</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span style="color: grey;font-size: 17px;font-weight: bold;"><span style="color: blue; font-size: 17px; font-weight: bold;">*</span>
+			&nbsp;&nbsp;&nbsp;为不可编辑项</span>
+			</label>
+		</div>
 		<div class="layui-form-item" style="display: none">
 			<label class="layui-form-label">id</label>
 			<div class="layui-input-inline">
@@ -79,20 +86,35 @@ border-color: #000;
 		<div class="layui-form-item">
 			<div class="layui-inline">
 				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;">业务申请日期：</label>
+					style="width: 150px; font-weight: bold;"><span style="color:blue;font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>业务申请日期：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="editApplyDate" id="editApplyDate" 
 						lay-verify="pass" readonly="readonly" autocomplete="off"
 						class="layui-input">
 				</div>
 			</div>
+
 			<div class="layui-inline">
 				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;">客户意向产品：</label>
+					style="width: 150px; font-weight: bold;">客户意向产品:</label>
 				<div class="layui-input-inline">
-					<input type="text" name="editType" id="editType"  typeCode="" 
-						lay-verify="pass" readonly="readonly" autocomplete="off"
-						class="layui-input">
+					<select name="editType" id="editType" lay-search="" lay-verify="">
+						<option value="">选择产品</option>
+						<option value="1">平安新一贷</option>
+						<option value="2">兴业消费金融</option>
+						<option value="3">中国银行消费金融</option>
+						<option value="4">海尔-玖康</option>
+						<option value="5">小额贷款</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label"
+					style="width: 150px; font-weight: bold;">意向贷款金额:</label>
+				<div class="layui-input-inline">
+					<input type="text" name="editApplicatExpectLoanAccount"
+						id="editApplicatExpectLoanAccount" typeCode=""
+						lay-verify="inputNumber" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 		</div>
@@ -240,7 +262,7 @@ border-color: #000;
 				<div class="layui-input-inline">
 					<textarea name="editSalesManRemarkAndAdvice"
 						id="editSalesManRemarkAndAdvice" lay-search=""  lay-verify=""
-						style="width: 800px; height: 150px;" placeholder="客户经理备注以及建议"
+						style="width: 800px; height: 100px;" placeholder="客户经理备注以及建议"
 						class="layui-textarea"></textarea>
 				</div>
 			</div>
@@ -259,6 +281,11 @@ border-color: #000;
 	<form class="layui-form layui-form-pane1" id="form2" name="form2"
 		style="display: none;">
 		<br />
+		<div class="layui-form-item">
+			<label class="layui-form-label" style="width: 150px;"> <span
+				style="color: red; font-size: 17px; font-weight: bold;">*&nbsp;&nbsp;&nbsp;为必填项</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</label>
+		</div>
 		<div class="layui-form-item">
 			<div class="layui-inline">
 				<label class="layui-form-label" id="validateTelLabel"
@@ -292,11 +319,19 @@ border-color: #000;
 					</select>
 				</div>
 			</div>
+			<div class="layui-inline">
+			<label class="layui-form-label"
+					style="width: 150px; font-weight: bold;">客户期望贷款金额:</label>
+				<div class="layui-input-inline">
+					<input type="text" name="addApplicatExpectLoanAccount" id="addApplicatExpectLoanAccount"
+						lay-verify="inputNumber" autocomplete="off" class="layui-input">
+				</div>
+			</div>
 		</div>
 		<div class="layui-form-item">
 			<div class="layui-inline">
 				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span style="color:red;">*&nbsp;&nbsp;&nbsp;</span>贷款人姓名：</label>
+					style="width: 150px; font-weight: bold;"><span style="color:red;font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>贷款人姓名：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="addName" id="addName"
 						lay-verify="required" autocomplete="off" class="layui-input">
@@ -304,7 +339,7 @@ border-color: #000;
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span style="color:red;">*&nbsp;&nbsp;&nbsp;</span>贷款人性别：</label>
+					style="width: 150px; font-weight: bold;"><span style="color:red;font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>贷款人性别：</label>
 				<div class="layui-input-inline">
 					<select name="addSex" id="addSex" lay-search=""
 						lay-verify="required|pass">
@@ -316,15 +351,15 @@ border-color: #000;
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;">贷款人职业 ：</label>
+					style="width: 150px; font-weight: bold;"><span style="color:red;font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>贷款人职业 ：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="addApplicantJob" id="addApplicantJob"
-						lay-verify="" autocomplete="off" class="layui-input">
+						lay-verify="required" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span style="color:red;">*&nbsp;&nbsp;</span>贷款人手机号：</label>
+					style="width: 150px; font-weight: bold;"><span style="color:red;font-weight: bold;">*&nbsp;&nbsp;</span>贷款人手机号：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="addApplicantTel" id="addApplicantTel"
 						lay-verify="required|tel" autocomplete="off" class="layui-input">
@@ -439,7 +474,7 @@ border-color: #000;
 				<div class="layui-input-inline">
 					<textarea name="addSalesManRemarkAndAdvice"
 						id="addSalesManRemarkAndAdvice" lay-search=""  lay-verify=""
-						style="width: 800px; height: 150px;"  placeholder="客户经理备注以及建议"
+						style="width: 800px; height: 100px;"  placeholder="客户经理备注以及建议"
 						class="layui-textarea"></textarea>
 				</div>
 			</div>
@@ -515,36 +550,36 @@ border-color: #000;
 	<!-- 	<script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script> -->
     <script id="stateBarDemo" type="text/html">
-	{{#  if(d.checkState ==5){ }}
+	{{#  if(d.checkState ==5 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs state"  style="background-color: red">未通知现场签约 </a>
-    {{# }if(d.checkState ==6){ }}
+    {{# }if(d.checkState ==6 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs state"  style="background-color: #09BB07">已通知现场签约 </a>
-    {{# }if(d.checkState !=5 && d.checkState !=6){ }}
+    {{# }if(d.checkState !=5 && d.checkState !=6 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs state"  style="background-color: #1E9FFF">签约经理已接待</a>
     {{#  } }}
 	</script>
 	<script id="speedBarDemo" type="text/html">
-	{{#  if(d.checkState ==0){ }}
+	{{#  if(d.checkState ==0 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">不可申请 </a>
-    {{# }if(d.checkState ==1){ }}
+    {{# }if(d.checkState ==1 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">申请中 </a>
-    {{# }if(d.checkState ==2){ }}
+    {{# }if(d.checkState ==2 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">成功放款 </a>
-    {{# }if(d.checkState ==3){ }}
+    {{# }if(d.checkState ==3 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">申请被拒绝 </a>
-    {{# }if(d.checkState !=0 && d.checkState !=1 && d.checkState !=2 && d.checkState !=3){ }}
+    {{# }if(d.checkState !=0 && d.checkState !=1 && d.checkState !=2 && d.checkState !=3 && d.checkState !=null ){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">未处理 </a>
     {{#  } }}
 	</script>
 	<script id="handleBarDemo" type="text/html">
-	{{#  if(d.checkState ==5){ }}
+	{{#  if(d.checkState ==5 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 			<a class="layui-btn layui-btn-xs callCustomer" lay-event="callCustomer" style="background-color: red">通知客户</a>
-    {{# }if(d.checkState ==6){ }}
+    {{# }if(d.checkState ==6 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-	{{# }if(d.checkState !=5 && d.checkState !=6){ }}
+	{{# }if(d.checkState !=5 && d.checkState !=6 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     {{#  } }}
@@ -570,6 +605,38 @@ border-color: #000;
 				小额贷款
 		{{#  } }}
 	</script>
+	<script id="finalProduct" type="text/html">
+		{{#  if(d.finalProduct ==1){ }}
+				平安新一贷
+    	{{# }if(d.finalProduct ==2) { }}
+				兴业消费金融
+    	{{# }if(d.finalProduct ==3) { }}
+				中国银行消费金融
+    	{{# }if(d.finalProduct ==4) { }}
+				海尔-玖康
+    	{{# }if(d.finalProduct ==5) { }}
+				小额贷款
+		{{#  } }}
+	</script>
+	<script id="salesManAdviceProduct" type="text/html">
+		{{#  if(d.salesManAdviceProduct ==1){ }}
+				平安新一贷
+    	{{# }if(d.salesManAdviceProduct ==2) { }}
+				兴业消费金融
+    	{{# }if(d.salesManAdviceProduct ==3) { }}
+				中国银行消费金融
+    	{{# }if(d.salesManAdviceProduct ==4) { }}
+				海尔-玖康
+    	{{# }if(d.salesManAdviceProduct ==5) { }}
+				小额贷款
+		{{#  } }}
+	</script>
+	<script id="applicatExpectLoanAccount" type="text/html">
+	{{#  if(d.applicatExpectLoanAccount !=null && d.applicatExpectLoanAccount !=""){ }}
+    <span>{{d.applicatExpectLoanAccount}}</span>
+	<em>元</em>
+	{{#  } }}
+	</script>
 	<script id="housingLoanType" type="text/html">
     {{#  if(d.housingLoanType ==0){ }}
 			按揭
@@ -578,7 +645,7 @@ border-color: #000;
     {{#  } }}
 	</script>
 	<script id="housingLoanTerm" type="text/html">
-	{{#  if(d.housingLoanTerm !=null){ }}
+	{{#  if(d.housingLoanTerm !=null && d.housingLoanTerm !=""){ }}
     <span>{{d.housingLoanTerm}}</span>
 	<em>月</em>
 	{{#  } }}
@@ -591,13 +658,13 @@ border-color: #000;
 	{{#  } }}
 	</script>
 	<script id="warrantyTerm" type="text/html">
-		{{#  if(d.warrantyTerm !=null){ }}
+		{{#  if(d.warrantyTerm !=null && d.warrantyTerm !=""){ }}
 		<span>{{d.warrantyTerm}}</span>
 		<em>月</em>
 		{{#  } }}
 	</script>
 	<script id="accumulationFundTerm" type="text/html">
-		{{#  if(d.accumulationFundTerm !=null){ }}
+		{{#  if(d.accumulationFundTerm !=null && d.accumulationFundTerm !=""){ }}
 		<span>{{d.accumulationFundTerm}}</span>
 		<em>月</em>
 		{{#  } }}
@@ -635,95 +702,117 @@ border-color: #000;
 					url: '<%=path%>customerManager/getCustomerList.action?salesManId='+salesManId,
 					toolbar: '#toolbarDemo',
 					even:true,
-					cellMinWidth: 170,
+					//cellMinWidth: 170,
 					cols: [
 						[
-							{align: 'center', title: '贷款人信息', colspan: 6},
+							{align: 'center', title: '贷款人信息', colspan: 7},
+							{align: 'center', title: '放款信息', colspan: 3},
+							{align: 'center', title: '客户经理意向', colspan: 2},
 							{align: 'center', title: '房贷详情', colspan: 2},
 							{align: 'center', title: '保单详情', colspan: 3},
-							{align: 'center', title: '公积金详情', colspan: 4},
-/* 							{align: 'center', title: '营业执照详情', colspan: 1}, */
-							{align: 'center', title: '客户经理意向', colspan: 2}
+							{align: 'center', title: '公积金详情', colspan: 4}
 							],
 						[{
 							field: 'applyDate',
 							title: '业务申请日期',
-							//width: '350px',
+							//minWidth: '166px',
+							width: '165',
 							sort: true
 						}, {
 							field: 'name',
 							title: '贷款人姓名',
-							sort: true 
+							width: '110'
 						}, {
 							field: 'sex',
-							title: '贷款人性别',
+							title: '性别',
 							templet:'#sex',
-							sort: true
+							width: '61'
 						},  {
 							field: 'applicantJob',
-							title: '贷款人职业',
-							//templet:'#sex',
-							sort: true
+							title: '职业',
+							width: '115'
 						},{
 							field: 'applicantTel',
-							title: '贷款人手机号',
-							sort: true
+							title: '手机号',
+							width: '120'
 						}, {
 							field: 'type',
-							title: '客户意向产品',
+							title: '意向产品',
 							templet:'#type',
+							width: '115'
+						}, {
+							field: 'applicatExpectLoanAccount',
+							title: '意向贷款金额',
+							templet:'#applicatExpectLoanAccount',
+							width: '121'
+						}, {
+							field: 'loanStartDate',
+							title: '放款时间',
+							//templet:'#housingLoanType',
+							width: '114',
 							sort: true
+						}, {
+							field: 'finalProduct',
+							title: '最终签约产品',
+							templet:'#finalProduct',
+							width: '123'
+						}, {
+							field: 'loanAmount',
+							title: '放款金额',
+							templet:'#loanAmount',
+							width: '100'
+						},{
+							field: 'salesManAdviceProduct',
+							title: '我建议产品',
+							templet:'#salesManAdviceProduct',
+							width: '152'
+						}, {
+							field: 'salesManRemarkAndAdvice',
+							title: '我的备注',
+							width: '126'
 						}, {
 							field: 'housingLoanType',
 							title: '房贷类型',
 							templet:'#housingLoanType',
-							sort: true
+							width: '91'
 						}, {
 							field: 'housingLoanTerm',
 							title: '房贷期限',
 							templet:'#housingLoanTerm',
-							sort: true
+							width: '92'
 						}, {
 							field: 'warrantyType',
 							title: '保单类型',
 							templet:'#warrantyType',
-							sort: true
+							width: '101'
 						}, {
 							field: 'warrantyTerm',
 							title: '保单期限',
 							templet:'#warrantyTerm',
-							sort: true
+							width: '91'
 						}, {
 							field: 'warrantyCount',
 							title: '保单次数',
-							sort: true
+							width: '100'
 						}, {
 							field: 'accumulationFundAddress',
 							title: '公积金缴纳地址',
-							sort: true
+							width: '136'
 						}, {
 							field: 'accumulationFundTerm',
-							title: '公积金缴纳期限（月份）',
+							title: '公积金缴纳期限(月份）',
 							templet:'#accumulationFundTerm',
-							sort: true
+							width: '190'
 						}, {
 							field: 'accumulationFundAmount',
 							title: '公积金缴纳金额',
-							sort: true
+							width: '136'
 						},  {
 							field: 'ownBusinessLicense',
 							title: '是否有营业执照',
 							templet:'#ownBusinessLicense',
-							sort: true
+							width: '147'
 						},  {
-							field: 'salesManAdviceProduct',
-							title: '客户经理建议产品',
-							sort: true
-						}, {
-							field: 'salesManRemarkAndAdvice',
-							title: '客户经理备注',
-							sort: true
-						}, {
 							//隐藏的“列名”========================
 							field: 'paxydBusId',
 							title: '平安新一贷业务id',
@@ -776,19 +865,8 @@ border-color: #000;
 					//修改表头、表体样式
 					done : function(res, curr, count) {
 						tableList = res.data;
-						
 						$('th').css({'font-weight' : 'bold','font-size':'15px'});//'background-color' : '#008B8B','color' : '#fff',
 						$('.laytable-cell-group').css({'font-weight' : 'bold','font-size':'25px','color':'black'});
-						//$('tr').css({'background-color': '#009688', 'color': '#fff'});
-/*  						var that = this.elem.next();
-						res.data.forEach(function(item, index) {
-							//console.log(item.empName);item表示每列显示的数据             
-							if (index % 2 == 0) {
-								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#FFFFFF");
-							} else {
-								var tr = that.find(".layui-table-box tbody tr[data-index='"+ index + "']").css("background-color", "#F2F2F2");
-							}
-						});  */
 						layer.close(loadingPage);
 					},
 					page : true
@@ -896,19 +974,21 @@ border-color: #000;
 					        content:$("#form1")
 						}); 
 						//给编辑弹出层  赋值
-						var housingLoanTypeSelect = 'dd[lay-value=' + data.housingLoanType + ']';
+						var typeSelect = "dd[lay-value='" + data.type + "']";
+						$('#editType').siblings("div.layui-form-select").find('dl').find(typeSelect).click();
+						var housingLoanTypeSelect = "dd[lay-value='" + data.housingLoanType + "']";
 						$('#editHousingLoanType').siblings("div.layui-form-select").find('dl').find(housingLoanTypeSelect).click();
-						var warrantyTypeSelect = 'dd[lay-value=' + data.warrantyType + ']';
+						var warrantyTypeSelect = "dd[lay-value='" + data.warrantyType + "']";
 						$('#editWarrantyType').siblings("div.layui-form-select").find('dl').find(warrantyTypeSelect).click();
-						var ownBusinessLicenseSelect = 'dd[lay-value=' + data.ownBusinessLicense + ']';
+						var ownBusinessLicenseSelect = "dd[lay-value='" + data.ownBusinessLicense + "']";
 						$('#editOwnBusinessLicense').siblings("div.layui-form-select").find('dl').find(ownBusinessLicenseSelect).click();
-						var sexSelect = 'dd[lay-value=' + data.sex + ']';
+						var sexSelect = "dd[lay-value='" + data.sex + "']";
 						$('#editSex').siblings("div.layui-form-select").find('dl').find(sexSelect).click();
-						var salesManAdviceProductSelect = 'dd[lay-value=' + data.salesManAdviceProduct + ']';
+						var salesManAdviceProductSelect = "dd[lay-value='" + data.salesManAdviceProduct + "']";
 						$('#editSalesManAdviceProduct').siblings("div.layui-form-select").find('dl').find(salesManAdviceProductSelect).click();
 						$('#editPaxydBusId').val(data.paxydBusId);
 						$('#editApplyDate').val(data.applyDate);
-						if(data.type!=null){
+/* 						if(data.type!=null){
 							if(data.type==1){
 								$('#editType').val("平安新一贷");
 							}else if(data.type==2){
@@ -921,10 +1001,12 @@ border-color: #000;
 								$('#editType').val("小额贷款");
 							}
 						}
-						$('#editType').attr("typeCode",""+data.type);
+						$('#editType').attr("typeCode",""+data.type); */
+						
 						$('#editName').val(data.name);
 						$('#editApplicantJob').val(data.applicantJob);
 						$('#editApplicantTel').val(data.applicantTel);
+						$('#editApplicatExpectLoanAccount').val(data.applicatExpectLoanAccount);
 						$('#editHousingLoanTerm').val(data.housingLoanTerm);
 						$('#editWarrantyTerm').val(data.warrantyTerm);
 						$('#editWarrantyCount').val(data.warrantyCount);
@@ -936,12 +1018,13 @@ border-color: #000;
  			           form.on('submit(demo11)', function(massage) {
  			        	  var editData={
  			        			paxydBusId:data.paxydBusId,
- 			        			type:$("#editType").attr("typeCode"),
+ 			        			type:massage.field.editType,//$("#editType").attr("typeCode"),
   			                	applyDate:massage.field.editApplyDate,
   			                	name:massage.field.editName,
   			                	sex:massage.field.editSex,
   			                	applicantJob:massage.field.editApplicantJob,
   			                	applicantTel:massage.field.editApplicantTel,
+  			                	applicatExpectLoanAccount:massage.field.editApplicatExpectLoanAccount,
   			                	housingLoanType:massage.field.editHousingLoanType,
   			                	housingLoanTerm:massage.field.editHousingLoanTerm,
   			                	warrantyType:massage.field.editWarrantyType,
@@ -969,12 +1052,13 @@ border-color: #000;
  			                           setTimeout(function(){
  			                              obj.update({
  			                            	// userId:massage.field.userId,
- 			                            	type:$("#editType").attr("typeCode"),
+ 			                            	type:massage.field.editType,//$("#editType").attr("typeCode"),
  			  			                	applyDate:massage.field.editApplyDate,
  			  			                	name:massage.field.editName,
  			  			                	sex:massage.field.editSex,
  			  			                	applicantJob:massage.field.editApplicantJob,
  			  			                	applicantTel:massage.field.editApplicantTel,
+ 			  			                	applicatExpectLoanAccount:massage.field.editApplicatExpectLoanAccount,
  			  			                	housingLoanType:massage.field.editHousingLoanType,
  			  			                	housingLoanTerm:massage.field.editHousingLoanTerm,
  			  			                	warrantyType:massage.field.editWarrantyType,
@@ -1005,26 +1089,49 @@ border-color: #000;
 				  table.on('row(test)', function(obj){
 					var flag=0;
 				    var data = obj.data;
-				    $(this).attr("isClick","1");
-				    //console.log("点击属性---"+$(this).attr("isClick"));
-				    var trList=$(this).parent().children();
-				    //console.log($(this).parent().children());
-				    //console.log("当前行的---"+$(this).attr("data-index"));
-				   for(i=0;i<trList.length;i++){
+				    //$(this).attr("isClick","1");   
+				    var trDataShowList=$(".layui-table-main").children("table").children('tbody').children('tr');
+				    var trFixedRList=$(".layui-table-fixed-r").children("div").eq(1).children("table").children('tbody').children('tr');
+				    var index=$(this).attr("data-index");
+				    console.log("当前行的---"+$(this).attr("data-index"));
+				    var A;
+				    var X;
+				    for(i=0;i<trFixedRList.length;i++){
+				    	console.log(trFixedRList[i]);
+				    	   if(trFixedRList[i].getAttribute("data-index")==index){
+				    		   trFixedRList[i].setAttribute("isClick",1);
+				    		   X=trFixedRList[i];
+				    		   console.log("匹配了");
+				    	   }
+						   if(i%2 == 0){
+							   trFixedRList[i].setAttribute("initBackgroundColor", "#FFFFFF");//#
+						   }else{
+							   trFixedRList[i].setAttribute("initBackgroundColor","#F2F2F2");
+						   }
+						   if(trFixedRList[i].getAttribute("isClick")!=null){
+							   trFixedRList[i].setAttribute("isClick",null);
+							   trFixedRList[i].style.backgroundColor=""+trFixedRList[i].getAttribute("initBackgroundColor");
+						   }
+				    }
+
+				   for(i=0;i<trDataShowList.length;i++){
+			    	   if(trDataShowList[i].getAttribute("data-index")==index){
+			    		   trDataShowList[i].setAttribute("isClick",1);
+			    		   A=trDataShowList[i];
+			    		   console.log("匹配了");
+			    	   }
 					   if(i%2 == 0){
-						   trList[i].setAttribute("initBackgroundColor", "#FFFFFF");
+						   trDataShowList[i].setAttribute("initBackgroundColor", "#FFFFFF");
 					   }else{
-						   trList[i].setAttribute("initBackgroundColor","#F2F2F2");
+						   trDataShowList[i].setAttribute("initBackgroundColor","#F2F2F2");
 					   }
-					   //console.log("遍历"+i+"行---"+trList[i].getAttribute("isClick"));
-					   //console.log("原本bc颜色"+trList[i].getAttribute("initBackgroundColor"));
-					   if(trList[i].getAttribute("isClick")!=null){
-						   trList[i].setAttribute("isClick",null);
-						   trList[i].style.backgroundColor=""+trList[i].getAttribute("initBackgroundColor");
+					   if(trDataShowList[i].getAttribute("isClick")!=null){
+						   trDataShowList[i].setAttribute("isClick",null);
+						   trDataShowList[i].style.backgroundColor=""+trDataShowList[i].getAttribute("initBackgroundColor");
 					   }
 				   }
-				   //$(this).attr("isClick","1");
-				   $(this).css("background-color", "#B0C4DE");
+				   A.style.backgroundColor="#B0C4DE";
+				   X.style.backgroundColor="#B0C4DE";//layui-table tr  .layui-table[lay-even] tr
 				  }); 
 				
 				// 上方工具按钮监听 （批量导入、单挑数据添加、条件搜索）
@@ -1152,6 +1259,9 @@ border-color: #000;
 				//点击添加单条数据
 				$('body').on('click','#addCustomer',function(){
 					console.log("点击 → 单条数据添加");
+                    //将添加页面数据置空
+                    document.getElementById("form2").reset();
+                    $("#validateResultInfo").empty();
 					//添加单条数据   弹出层
 				    layer.open({       
 					        title:'添加客户信息',
@@ -1170,8 +1280,9 @@ border-color: #000;
 	 				                	//applyDate:massage.field.addApplyDate,
 	 				                	name:massage.field.addName,
 	 				                	sex:massage.field.addSex,
-	 				                	addApplicantJob:massage.field.addAddApplicantJob,
-	 				                	applicantTel:massage.field.addAddApplicantTel,
+	 				                	applicantJob:massage.field.addApplicantJob,
+	 				                	applicantTel:massage.field.addApplicantTel,
+	 				                	applicatExpectLoanAccount:massage.field.addApplicatExpectLoanAccount,
 	 				                	housingLoanType:massage.field.addHousingLoanType,
 	 				                	housingLoanTerm:massage.field.addHousingLoanTerm,
 	 				                	warrantyType:massage.field.addWarrantyType,
@@ -1240,10 +1351,12 @@ border-color: #000;
 					console.log("重置");
 					var select = "dd[lay-value='']";
 					
+					$('#editType').siblings("div.layui-form-select").find('dl').find(select).click();
 					$("#editName").val("");
 					$('#editSex').siblings("div.layui-form-select").find('dl').find(select).click();
 					$("#editApplicantJob").val("");
 					$("#editApplicantTel").val("");
+					$("#editApplicatExpectLoanAccount").val("");
 					$('#editHousingLoanType').siblings("div.layui-form-select").find('dl').find(select).click();
 					$("#editHousingLoanTerm").val("");
 					$('#editWarrantyType').siblings("div.layui-form-select").find('dl').find(select).click();
@@ -1253,7 +1366,7 @@ border-color: #000;
 					$("#editAccumulationFundTerm").val("");
 					$("#editAccumulationFundAmount").val("");
 					$('#editOwnBusinessLicense').siblings("div.layui-form-select").find('dl').find(select).click();
-					$("#editSalesManAdviceProduct").val("");
+					$("#editSalesManAdviceProduct").siblings("div.layui-form-select").find('dl').find(select).click();
 					$("#editSalesManRemarkAndAdvice").val("");
 				}); 
  				

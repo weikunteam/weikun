@@ -32,16 +32,20 @@ public class BusPAXYDModel {
 	private Integer sex;//贷款人性别
 	private String applicantTel;//贷款人手机号
 	private String applicantJob;//贷款人类型（职业）
+	private BigDecimal applicatExpectLoanAccount;//'贷款人期望贷款金额
 	private String salesManRemarkAndAdvice;// '客户经理申请备注以及建议'
 	private Integer salesManAdviceProduct;// '客户经理意向产品（建议）1新一贷2兴业3中行4海尔5小额'
 	private String contractManRemarkAndAdvice;// '签约经理申请备注以及建议'
-	private Integer contractManAdviceProduct;// '签约经理意向产品（建议）1新一贷2兴业3中行4海尔5小额'
+	private Integer finalProduct;// 最终签约产品（建议）1新一贷2兴业3中行4海尔5小额'
 	private String applyFailReason;// '不可申请原因'
 	private String applyRefuseReason;// '申请被拒绝原因'
 	private Integer type;
 	
 	
 	private UserModel userModel;//公众号对象（注册人）
+	private UserModel salesManModel;//客户经理对象
+	private UserModel contractManModel;//签约经理对象
+	private String contractManName;
 	
 	public BusPAXYDModel() {
 		super();
@@ -285,13 +289,21 @@ public class BusPAXYDModel {
 		this.contractManRemarkAndAdvice = contractManRemarkAndAdvice;
 	}
 
-	public Integer getContractManAdviceProduct() {
-		return contractManAdviceProduct;
+
+
+
+
+	public Integer getFinalProduct() {
+		return finalProduct;
 	}
 
-	public void setContractManAdviceProduct(Integer contractManAdviceProduct) {
-		this.contractManAdviceProduct = contractManAdviceProduct;
+
+
+	public void setFinalProduct(Integer finalProduct) {
+		this.finalProduct = finalProduct;
 	}
+
+
 
 	public String getApplyFailReason() {
 		return applyFailReason;
@@ -323,6 +335,54 @@ public class BusPAXYDModel {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+
+
+	public UserModel getSalesManModel() {
+		return salesManModel;
+	}
+
+
+
+	public void setSalesManModel(UserModel salesManModel) {
+		this.salesManModel = salesManModel;
+	}
+
+
+
+	public UserModel getContractManModel() {
+		return contractManModel;
+	}
+
+
+
+	public void setContractManModel(UserModel contractManModel) {
+		this.contractManModel = contractManModel;
+	}
+
+
+
+	public BigDecimal getApplicatExpectLoanAccount() {
+		return applicatExpectLoanAccount;
+	}
+
+
+
+	public void setApplicatExpectLoanAccount(BigDecimal applicatExpectLoanAccount) {
+		this.applicatExpectLoanAccount = applicatExpectLoanAccount;
+	}
+
+
+
+	public String getContractManName() {
+		return contractManName;
+	}
+
+
+
+	public void setContractManName(String contractManName) {
+		this.contractManName = contractManName;
 	}
 
 	

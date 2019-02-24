@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.great.dao.CustomerManagerDao">
+<mapper namespace="com.great.dao.ContractManagerDao">
       <!-- 作者：czk -->
       <!-- 说明：获取所有客户数量 -->
-	<select id="getCustomerCount" resultType="String">
+	<select id="getContractCount" resultType="String">
 		select 
 		count(*) 
 		from TB_BUS_PAXYD
 		<where>
-            <if test="salesManId!=null">salesManId = #{salesManId} </if>
-            <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">and name like "%"#{condition.name}"%"  </if>
+
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.name)"> name like "%"#{condition.name}"%"  </if>
              <if test="@com.great.util.Ognl@isNotEmpty(condition.applicantTel)">and applicantTel like "%"#{condition.applicantTel}"%"  </if>
              
-            <if test="@com.great.util.Ognl@isNotEmpty(condition.customerState)">
-            <if test="condition.customerState=='otherCustomerState' ">and checkState !=5 and  checkState !=6 </if>
+             <if test="@com.great.util.Ognl@isNotEmpty(condition.customerState)">
+            <if test="condition.customerState=='otherCustomerState' ">and checkState !=5 and checkState !=6 </if>
             <if test="condition.customerState!='otherCustomerState' "> and checkState =#{condition.customerState}  </if>
             </if>
-            
+             
             <if test="@com.great.util.Ognl@isNotEmpty(condition.busSpeed)">
             <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3  </if>
             <if test="condition.busSpeed!='otherBusSpeed'">and checkState =#{condition.busSpeed}  </if>
@@ -30,13 +30,12 @@
 	</select>
       <!-- 作者：czk -->
       <!-- 说明：带条件、分页查询客户信息 -->
-	<select id="getCustomerList" resultMap="resultListCustomerBus">
+	<select id="getContractList" resultMap="resultListContractBus">
 		select 
 		*
 		from TB_BUS_PAXYD  
 		<where>
-            <if test="salesManId!=null">salesManId = #{salesManId} </if>
-            <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">and name like "%"#{condition.name}"%"  </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">name like "%"#{condition.name}"%"  </if>
             <if test="@com.great.util.Ognl@isNotEmpty(condition.applicantTel)">and applicantTel like "%"#{condition.applicantTel}"%"  </if>
             
             <if test="@com.great.util.Ognl@isNotEmpty(condition.customerState)">
@@ -56,7 +55,7 @@
 		limit #{queryInitCount}  , #{limit}
 	</select>
 	
-	<resultMap type="com.great.model.BusPAXYDModel" id="resultListCustomerBus">
+	<resultMap type="com.great.model.BusPAXYDModel" id="resultListContractBus">
 	<id column="paxydBusId" property="paxydBusId"/>
 	<result column="userId" property="userId"/>
 	<result column="salesManId" property="salesManId"/>
@@ -91,7 +90,10 @@
 	<result column="applyFailReason" property="applyFailReason"/>
 	<result column="applyRefuseReason" property="applyRefuseReason"/>
 	<result column="type" property="type"/>
-	<association property="userModel" column="userId"  javaType="com.great.model.UserModel"  select="com.great.dao.UserManagerDao.queryUserById"/>
+	<association property="userModel" column="userId"  javaType="com.great.model.UserModel"  select="queryUserById"/>
+	<association property="salesManModel" column="salesManId"  javaType="com.great.model.UserModel"  select="queryManagerById"/>
+	<association property="contractManModel" column="contractManId"  javaType="com.great.model.UserModel"  select="queryManagerById"/>
+	<association property="contractManName" column="contractManId"  javaType="java.lang.String"  select="queryManagerNameById"/>
 	 </resultMap>
       <!-- 作者：czk -->
       <!-- 说明：删除客户信息 -->
@@ -105,36 +107,37 @@
 	
       <!-- 作者：czk -->
       <!-- 说明：添加单笔客户信息 -->
-	<insert id="addCustomerInfo" parameterType="com.great.model.BusPAXYDModel">
+	<insert id="addContractBusInfo" parameterType="com.great.model.BusPAXYDModel">
 	INSERT INTO 
 	TB_BUS_PAXYD
-	(salesManId,
+	(contractManId,
 	type,applyDate,name,sex,applicantTel,applicantJob,applicatExpectLoanAccount,
 	housingLoanType,housingLoanTerm,
 	warrantyType,warrantyTerm,warrantyCount,
 	accumulationFundAddress,accumulationFundTerm,accumulationFundAmount,
 	ownBusinessLicense,
-	salesManAdviceProduct,salesManRemarkAndAdvice,
 	checkState) 
 	
 	values 
 	
-	(#{salesManId},
+	(#{contractManId},
 	#{type},#{applyDate},#{name},#{sex},#{applicantTel},#{applicantJob},#{applicatExpectLoanAccount},
 	#{housingLoanType},#{housingLoanTerm},
 	#{warrantyType},#{warrantyTerm},#{warrantyCount},
 	#{accumulationFundAddress},#{accumulationFundTerm},#{accumulationFundAmount},
 	#{ownBusinessLicense},
-	#{salesManAdviceProduct},#{salesManRemarkAndAdvice},
 	#{checkState})
 	</insert>
 	
       <!-- 作者：czk -->
       <!-- 说明：编辑客户信息 -->
-	<insert id="editCustomerInfo" parameterType="com.great.model.BusPAXYDModel">
+	<insert id="contractBusHandle" parameterType="com.great.model.BusPAXYDModel">
 	UPDATE 
 	TB_BUS_PAXYD 
 	SET 
+	checkState = #{checkState},
+	salesManId = #{salesManId},
+	contractManId = #{contractManId},
 	type = #{type},
 	applyDate = #{applyDate},
 	name = #{name},
@@ -152,20 +155,36 @@
 	accumulationFundAmount = #{accumulationFundAmount},
 	ownBusinessLicense = #{ownBusinessLicense},
 	salesManAdviceProduct = #{salesManAdviceProduct},
-	salesManRemarkAndAdvice = #{salesManRemarkAndAdvice}
-	WHERE 
+	salesManRemarkAndAdvice = #{salesManRemarkAndAdvice},
+	contractManRemarkAndAdvice = #{contractManRemarkAndAdvice},
+	applyFailReason = #{applyFailReason},
+	applyRefuseReason = #{applyRefuseReason},
+	loanStartDate = #{loanStartDate},
+	finalProduct = #{finalProduct},
+	loanAmount = #{loanAmount}
+	WHERE
 	paxydBusId = #{paxydBusId}
 	</insert>
 	   <!-- 作者：czk -->
-      <!-- 说明：编辑客户信息 -->
-	<insert id="callCustomer" parameterType="com.great.model.BusPAXYDModel">
+      <!-- 说明：接待客户 -->
+	<insert id="receiveCustomer" parameterType="com.great.model.BusPAXYDModel">
 	UPDATE 
 	TB_BUS_PAXYD 
 	SET 
-	checkState = 6
+	checkState = 4
 	WHERE 
 	paxydBusId = #{paxydBusId}
 	</insert>
+		<!-- 作者：czk -->
+      <!-- 说明：查询业务 通过id  -->
+ 	<select id="queryBusById"  parameterType="java.lang.Integer"  resultMap="resultListContractBus">
+		select 
+		*
+		from TB_BUS_PAXYD
+		<where>
+		paxydBusId = #{paxydBusId}
+        </where>
+	</select>
       <!-- 作者：czk -->
       <!-- 说明：验证手机号是否存在 -->
 	<select id="verifyUserPhone" resultType="String">
@@ -178,7 +197,7 @@
             <if test="userPhone!=null">and uPhone = #{userPhone}</if>
         </where>
 	</select>
-      <!-- 作者：czk -->
+	  <!-- 作者：czk -->
       <!-- 说明：通过userId获取客户信息 -->
  	<select id="queryUserById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
 		select 
@@ -191,4 +210,28 @@
         </where>
 	</select>
 	
+	<!-- 作者：czk -->
+      <!-- 说明：通过userId获取客户经理、签约经理信息 -->
+ 	<select id="queryManagerById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
+		select 
+		* 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0 and 
+        userId = #{userId} 
+        </where>
+	</select>
+		<!-- 作者：czk -->
+      <!-- 说明：通过userId获取客户经理、签约经理mingzi  -->
+ 	<select id="queryManagerNameById"  parameterType="java.lang.Integer"  resultType="java.lang.String">
+		select 
+		userName
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0 and 
+        userId = #{userId} 
+        </where>
+	</select>
 </mapper>

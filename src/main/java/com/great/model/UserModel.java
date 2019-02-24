@@ -6,7 +6,7 @@ import org.omg.CORBA.PRIVATE_MEMBER;
 
 public class UserModel {
 	
-	private int userId;//用户id
+	private Integer userId;//用户id
 	private String uPhone;//手机号
 	private String uPsw;//密码
 	private BigDecimal  uRecommendAmount;//应得推广金额
@@ -16,11 +16,11 @@ public class UserModel {
 	private String salt;//
 	private String registerTime;//注册时间
 	private String userType;//公众号用户类型 1客户2公司人员
-	private int delState;//用户删除状态 0存在1被删除（假）
+	private Integer delState;//用户删除状态 0存在1被删除（假）
 	private String userName;//用户名称
 	private String uBackGroundAccount;//用户后台账号
 	private String uBackGroundPsw;//用户后台密码
-	private int age;//年龄
+	private Integer age;//年龄
 	private String job;//工作
 	
 	private ArrayList<RoleModel> roleList;//多个角色链表
@@ -29,11 +29,11 @@ public class UserModel {
 		
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -125,11 +125,11 @@ public class UserModel {
 		this.userType = userType;
 	}
 
-	public int getDelState() {
+	public Integer getDelState() {
 		return delState;
 	}
 
-	public void setDelState(int delState) {
+	public void setDelState(Integer delState) {
 		this.delState = delState;
 	}
 
@@ -149,11 +149,11 @@ public class UserModel {
 		this.uBackGroundPsw = uBackGroundPsw;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

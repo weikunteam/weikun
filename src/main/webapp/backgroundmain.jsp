@@ -456,16 +456,16 @@
         <!--左侧导航结束-->
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            <div class="row border-bottom">
+             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+<!--                     <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                         <form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">
                             <div class="form-group">
                                 <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
                             </div>
                         </form>
-                    </div>
-                    <ul class="nav navbar-top-links navbar-right">
+                    </div> -->
+<!--                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                                 <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
@@ -549,9 +549,9 @@
                                 <i class="fa fa-tasks"></i> 主题
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </nav>
-            </div>
+            </div> 
             <div class="row content-tabs">
                 <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
                 </button>
@@ -578,17 +578,16 @@
                 </div>
                 <a href="backlogin.jsp" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
-            <div class="row J_mainContent" id="content-main">
+             <div class="row J_mainContent" id="content-main">
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v148b2.html?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
-            <div class="footer">
-                <div class="pull-right">&copy; 2014-2015 <a href="http://www.zi-han.net/" target="_blank">zihan's blog</a>
-                </div>
-            </div>
+              <div class="footer">
+                <div class="pull-right">&copy; 2014-2015 <a href="" target="_blank">author:chenzekun </a></div>
+            </div>   
         </div>
         <!--右侧部分结束-->
         <!--右侧边栏开始-->
-        <div id="right-sidebar">
+<!--         <div id="right-sidebar">
             <div class="sidebar-container">
 
                 <ul class="nav nav-tabs navs-3">
@@ -854,7 +853,7 @@
                                 <a href="#">
                                     <span class="label label-primary pull-right">NEW</span>
                                     <h4>设计阶段</h4>
-                                    <!--<div class="small pull-right m-t-xs">9小时以后</div>-->
+                                    <div class="small pull-right m-t-xs">9小时以后</div>
                                     项目进度报告(Project Progress Report)
                                     <div class="small">已完成： 22%</div>
                                     <div class="small text-muted m-t-xs">项目截止： 4:00 - 2015.10.01</div>
@@ -901,10 +900,10 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
         <!--右侧边栏结束-->
         <!--mini聊天窗口开始-->
-        <div class="small-chat-box fadeInRight animated">
+<!--         <div class="small-chat-box fadeInRight animated">
 
             <div class="heading" draggable="true">
                 <small class="chat-date pull-right">
@@ -987,14 +986,14 @@
                 </div>
             </div>
 
-        </div>
-        <div id="small-chat">
+        </div> -->
+<!--         <div id="small-chat">
             <span class="badge badge-warning pull-right">5</span>
             <a class="open-small-chat">
                 <i class="fa fa-comments"></i>
 
             </a>
-        </div>
+        </div> -->
     </div>
   
     <script src="<%=path%>js/jquery.min.js?v=2.1.4"></script>
