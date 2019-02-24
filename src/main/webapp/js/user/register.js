@@ -30,6 +30,10 @@ $("#register").click(function(){
 		toastr.error("请输入验证码");
 		return false;
 	}
+	if (!$("#checkbox1").prop("checked")){
+		toastr.error("注册需同意中天商务注册及使用协议");
+		return false;
+	}
 	$.ajax({
 	    type:"post",
 	    url:path+"login/register.action",

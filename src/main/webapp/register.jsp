@@ -56,11 +56,13 @@
                    <!--  <i class="fa fa-lock"></i>  -->                   
                 </div>
                 <div class="form-group">
-                    <!-- <div class="main-checkbox">
+                    <div class="main-checkbox">
                         <input type="checkbox" value="None" id="checkbox1" name="check"/>
                         <label for="checkbox1"></label>
                     </div>
-                    <span class="text">Remember me</span> -->
+                    <span class="text">阅读并同意<a href="${path}protocol.html">《中天商务注册及使用协议》</a></span>
+                </div>
+                <div class="form-group">
                     <div class="form-inline">
                     <button type="button" class="btn btn-default" id="register">注册</button>
                     <button type="button" class="btn btn-default" style="color: #00b4ef;background: #F8F8FF;margin-left:20%" id="login">登录</button>

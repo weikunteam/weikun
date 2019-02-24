@@ -200,7 +200,7 @@ background-color:#F5F5F5;
                 <div class="aui-tour-layout aui-tour-layout-pad">
 
                     <div class="aui-palace aui-palace-two">
-                        <a href="javascript:;" class="aui-palace-grid"style="text-decoration:none">
+                        <a href="${path}userCenter/gotoWithdraw.action" class="aui-palace-grid"style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-005.png" alt="">
                             </div>
@@ -236,12 +236,12 @@ background-color:#F5F5F5;
                                 </div>
                             </a>
                         </c:if>
-                        <a href="${path}userCenter/gotoWithdraw.action" class="aui-palace-grid" style="text-decoration:none">
+                        <a href="javascript:;void(0)" class="aui-palace-grid" style="text-decoration:none">
                             <div class="aui-palace-grid-icon">
                                 <img src="${path}images/icon-head-008.png" alt="">
                             </div>
                             <div class="aui-palace-grid-text">
-                                <h2>我要提现</h2>
+                                <h2>我的资质</h2>
                             </div>
                         </a>
                     </div>
@@ -266,11 +266,11 @@ background-color:#F5F5F5;
                             <div class="aui-flex-box aui-flex-box-right">
                             </div>
                         </a>--%>
-                        <a href="javascript:;" class="aui-flex b-line" style="text-decoration:none">
-                            <div class="aui-flex-box-head">帮助中心</div>
-                            <div class="aui-flex-box aui-flex-box-right">
-                            </div>
-                        </a>
+                        <%--<a href="javascript:;" class="aui-flex b-line" style="text-decoration:none">--%>
+                            <%--<div class="aui-flex-box-head">帮助中心</div>--%>
+                            <%--<div class="aui-flex-box aui-flex-box-right">--%>
+                            <%--</div>--%>
+                        <%--</a>--%>
                         <a href="${path}userCenter/gotoObjection.action" class="aui-flex b-line" style="text-decoration:none">
                             <div class="aui-flex-box-head">意见反馈</div>
                             <div class="aui-flex-box aui-flex-box-right">
