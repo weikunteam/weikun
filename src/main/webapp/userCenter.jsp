@@ -236,14 +236,14 @@ background-color:#F5F5F5;
                                 </div>
                             </a>
                         </c:if>
-                        <a href="javascript:;void(0)" class="aui-palace-grid" style="text-decoration:none">
-                            <div class="aui-palace-grid-icon">
-                                <img src="${path}images/icon-head-008.png" alt="">
-                            </div>
-                            <div class="aui-palace-grid-text">
-                                <h2>我的资质</h2>
-                            </div>
-                        </a>
+                        <%--<a href="javascript:;void(0)" class="aui-palace-grid" style="text-decoration:none">--%>
+                            <%--<div class="aui-palace-grid-icon">--%>
+                                <%--<img src="${path}images/icon-head-008.png" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="aui-palace-grid-text">--%>
+                                <%--<h2>我的资质</h2>--%>
+                            <%--</div>--%>
+                        <%--</a>--%>
                     </div>
                 </div>
                 <div class="aui-tour-layout">

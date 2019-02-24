@@ -326,7 +326,7 @@ $("#submit").click(function(){
 		}
 	}
 	if(loanAmount){
-		if (loanAmount.length>14) {
+		if (loanAmount.length>14||isNaN(loanAmount)) {
 			toastr.error("请输入正确贷款金额");
 			return false;
 		}
