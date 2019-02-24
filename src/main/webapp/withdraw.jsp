@@ -122,13 +122,23 @@
             return false
         }
         // alert(card.match(reg))
-        if (!name){
-            toastr.error("请输入姓名");
-            return false
+        if(!name){
+            toastr.error("请输入名字");
+            return false;
+        }else{
+            if (name.length>10){
+                toastr.error("请输入正确名字");
+                return false;
+            }
         }
         if (isNaN(amount)){
             toastr.error("请输入提现金额");
             return false
+        }else {
+            if (amount.length>14){
+                toastr.error("请输入正确提现金额");
+                return false
+            }
         }
         $.ajax({
             type:"post",

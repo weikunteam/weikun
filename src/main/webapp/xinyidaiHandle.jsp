@@ -257,8 +257,13 @@ $("#submit").click(function(){
 	var loanAmount = $("#loanAmount").val();
 	var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
 	if(!name){
-		toastr.error("请输入名字");	
+		toastr.error("请输入名字");
 		return false;
+	}else{
+		if (name.length>10){
+			toastr.error("请输入正确名字");
+			return false;
+		}
 	}
 	if(!tel){
 		toastr.error("请输入手机号");
@@ -269,25 +274,63 @@ $("#submit").click(function(){
 		return false;
 	}
 	if(!age){
-		toastr.error("请输入年龄");	
+		toastr.error("请输入年龄");
 		return false;
+	}else{
+		if (age.length>4){
+			toastr.error("请输入正确年龄");
+			return false;
+		}
 	}
 	if(!sex){
-		toastr.error("请选择性别");	
+		toastr.error("请选择性别");
 		return false;
 	}
 	if(houseRadio&&!houseMonth){
 		toastr.error("请输入房贷已满月数");
 		return false;
+	}else{
+		if (isNaN(houseMonth)){
+			toastr.error("请输入正确房贷已满月数");
+			return false;
+		}
+		if (houseMonth.length>10){
+			toastr.error("房贷已满月数需小于10位");
+			return false;
+		}
 	}
 	if(warrantyRadio&&!warrantyMonth){
 		toastr.error("请输入保单已缴月数");
 		return false;
+	}else{
+		if (isNaN(warrantyMonth)){
+			toastr.error("请输入正确保单已缴月数");
+			return false;
+		}
+		if (warrantyMonth.length>10){
+			toastr.error("保单已缴月数需小于10位");
+			return false;
+		}
 	}
 	if(warrantyRadio&&!warrantyCount){
 		toastr.error("请输入保单已缴次数");
 		return false;
-	}	
+	}else{
+		if (isNaN(warrantyCount)){
+			toastr.error("请输入正确保单已缴次数");
+			return false;
+		}
+		if (warrantyCount.length>10){
+			toastr.error("保单已缴次数需小于10位");
+			return false;
+		}
+	}
+	if(loanAmount){
+		if (loanAmount.length>14) {
+			toastr.error("请输入正确贷款金额");
+			return false;
+		}
+	}
 	
 	$.ajax({
 	    type:"post",

@@ -13,7 +13,7 @@
         ,type
         ,salesManId
         <if test="loanAmount !=null and loanAmount !=''">
-         ,loanAmount
+         ,applicatExpectLoanAccount
          </if>       
          ,checkState
          ,applyDate

@@ -42,7 +42,7 @@
 
     <section class="assess">
         <div class="assess_nr">
-            <textarea rows="4" placeholder="请您输入反馈意见" id="objection"></textarea>
+            <textarea rows="4" placeholder="请您输入反馈意见(200字内)" id="objection"></textarea>
         </div>
     </section>
 
@@ -71,7 +71,13 @@
         if (!objection){
             toastr.error("请输入反馈意见");
             return false
+        }else {
+            if (objection.length>200) {
+                toastr.error("反馈意见字数超过200");
+                return false;
+            }
         }
+
         $.ajax({
             type:"post",
             url:"${path}userCenter/objection.action",

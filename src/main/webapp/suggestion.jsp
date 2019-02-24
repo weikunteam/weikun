@@ -53,6 +53,13 @@
 </body>
 <script>
     $("#submit").click(function () {
+        var suggest = $("#suggest").val();
+        if(suggest){
+            if (suggest.length>200) {
+                toastr.error("建议字数超过200");
+                return false;
+            }
+        }
         $.ajax({
             type:"post",
             url:"${path}userCenter/suggest.action",
