@@ -28,3 +28,7 @@
 	transition: .5s all;
 	background-color:#5FB878;
 }
+
+.layui-form-select dl {
+	max-height: 200px;
+}

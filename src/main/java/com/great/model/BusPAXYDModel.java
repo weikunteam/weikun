@@ -18,6 +18,7 @@ public class BusPAXYDModel {
 	private String applyDate;//'业务申请日期',
 	private String loanStartDate;//'贷款开始日期',
 	private String loanEndDate;// '贷款结束日期',
+	private String repaymentDate;//每月还款日期
 	private Integer housingLoanType;// '房贷类型',
 	private Integer housingLoanTerm;//'房贷期限',
 	private Integer warrantyType;//'保单类型',
@@ -383,6 +384,18 @@ public class BusPAXYDModel {
 
 	public void setContractManName(String contractManName) {
 		this.contractManName = contractManName;
+	}
+
+
+
+	public String getRepaymentDate() {
+		return repaymentDate;
+	}
+
+
+
+	public void setRepaymentDate(String repaymentDate) {
+		this.repaymentDate = repaymentDate;
 	}
 
 	

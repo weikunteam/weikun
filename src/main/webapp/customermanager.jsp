@@ -523,6 +523,8 @@ border-color: #000;
 								<option value="1">申请中</option>
 								<option value="2">成功放款</option>
 								<option value="3">申请被拒绝</option>
+								<option value="7">贷款未结清</option>
+								<option value="8">贷款已结清</option>
 								<option value="otherBusSpeed">未处理</option>
 							</select>
 						</div>
@@ -536,7 +538,7 @@ border-color: #000;
 						<div class="layui-inline" >
 							<input name="queryApplyDateEnd" class="layui-input my_class_name" id="queryApplyDateEnd" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 						</div>
-						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;">
+						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;margin-left:10px;width:112px;">
 							<label style="font-weight: bold;font-size: 12px;">搜索<label/>
 						</button>
 				</span>
@@ -567,7 +569,11 @@ border-color: #000;
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">成功放款 </a>
     {{# }if(d.checkState ==3 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">申请被拒绝 </a>
-    {{# }if(d.checkState !=0 && d.checkState !=1 && d.checkState !=2 && d.checkState !=3 && d.checkState !=null ){ }}
+    {{# }if(d.checkState ==7  && d.checkState !=null){ }}
+			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">贷款未结清 </a>
+    {{# }if(d.checkState ==8  && d.checkState !=null){ }}
+			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">贷款已结清 </a>
+    {{# }if(d.checkState !=0 && d.checkState !=1 && d.checkState !=2 && d.checkState !=3 && d.checkState !=7 && d.checkState !=8 && d.checkState !=null ){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">未处理 </a>
     {{#  } }}
 	</script>

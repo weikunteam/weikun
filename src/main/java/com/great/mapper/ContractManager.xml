@@ -161,7 +161,8 @@
 	applyRefuseReason = #{applyRefuseReason},
 	loanStartDate = #{loanStartDate},
 	finalProduct = #{finalProduct},
-	loanAmount = #{loanAmount}
+	loanAmount = #{loanAmount},
+	repaymentDate=#{repaymentDate}
 	WHERE
 	paxydBusId = #{paxydBusId}
 	</insert>
@@ -175,6 +176,16 @@
 	WHERE 
 	paxydBusId = #{paxydBusId}
 	</insert>
+			<!-- 作者：czk -->
+      <!-- 说明：查看还款日  -->
+ 	<select id="showAllRepaymentDate"   resultMap="resultListContractBus">
+		select 
+		*
+		from TB_BUS_PAXYD
+<!--  		<where>
+		checkState = 2
+        </where> -->
+	</select>
 		<!-- 作者：czk -->
       <!-- 说明：查询业务 通过id  -->
  	<select id="queryBusById"  parameterType="java.lang.Integer"  resultMap="resultListContractBus">

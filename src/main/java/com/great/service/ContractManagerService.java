@@ -57,6 +57,10 @@ public class ContractManagerService {
 		contractManagerDao.addContractBusInfo(addContractBus);
 	}
 	
+	public ArrayList<BusPAXYDModel> showAllRepaymentDate() {
+		return contractManagerDao.showAllRepaymentDate();
+	}
+	
 	public String verifyUserPhone(String userPhone) {
 		String existCode=contractManagerDao.verifyUserPhone(userPhone);
 		if(existCode.equals("0")) {
