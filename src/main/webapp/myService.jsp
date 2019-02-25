@@ -24,6 +24,16 @@
         <%--<a href="javascript:;" class="aui-navBar-item">
             <i class="icon icon-return"></i>
         </a>--%>
+            <div class="aui-center">
+                <div class="aui-search-box">
+                    <i class="icon icon-search"></i>
+                    <input type="text" placeholder="输入手机号搜索" id="searchText">
+                </div>
+            </div>
+            <a href="javascript:;void(0)" class="aui-navBar-item" style="color: white" id="search">
+                <%--<i class="icon icon-eid"></i>--%>
+                搜索
+            </a>
 
     </header>
     <section class="aui-scrollView">
@@ -50,7 +60,22 @@
                     </a>
                 </li>&ndash;%&gt;
             </ul>--%>
-            <div class="divHeight"></div>
+                <div class="divHeight1">
+                    <div id="divtitle">审核状态：</div>
+                    <select id="blueselect">
+                        <option>全部</option>
+                        <option>提现中</option>
+                        <option>提现成功</option>
+                        <option>提现失败</option>
+                    </select>
+                    <div id="divtitle1">业务类型：</div>
+                    <select id="blueselect1">
+                        <option>全部</option>
+                        <option>提现中</option>
+                        <option>提现成功</option>
+                        <option>提现失败</option>
+                    </select>
+                </div>
             <div class="tab-panel">
                 <div class="tab-panel-item tab-active">
                     <c:forEach var="service"   items="${listService}"   >
@@ -59,6 +84,7 @@
                                     <%--<c:if test="${custom.}"></c:if>--%>
                                 <h2><em>业务类型</em>${service.serviceName}</h2>
                                 <h3>申请时间: ${service.applyDate}</h3>
+                                <h3>审核状态: <em>${service.state}</em></h3>
                             </div>
 
                         </a>

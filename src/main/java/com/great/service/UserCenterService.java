@@ -26,8 +26,8 @@ public class UserCenterService {
         return userLoginDao.getUserById(userId);
     }
 
-    public List<Map<String, Object>> listService(String userId, String searchText) {
-        return userCenterDao.listService(userId, searchText);
+    public List<Map<String, Object>> listService(String userId, String searchText,String state,String type) {
+        return userCenterDao.listService(userId, searchText,state,type);
     }
 
     public void suggest(String id, String suggestion) {

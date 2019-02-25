@@ -22,11 +22,18 @@
         paxydBusId as id,
         applicantTel,
         applyDate,
-        type
+        type,
+        checkState
         from TB_BUS_PAXYD
         where salesManId = #{userId}
         <if test="searchText !=null and searchText != ''">
             and applicantTel = #{searchText}
+        </if>
+        <if test="state !=null and state != ''">
+            and checkState = #{state}
+        </if>
+        <if test="type !=null and type != ''">
+            and type = #{type}
         </if>
     </select>
 
@@ -41,7 +48,8 @@
                paxydBusId as id,
                applicantTel,
                applyDate,
-               type
+               type,
+               checkState
         from TB_BUS_PAXYD
         where userId = #{userId}
     </select>

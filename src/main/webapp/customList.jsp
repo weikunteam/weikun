@@ -24,15 +24,16 @@
         <%--<a href="javascript:;" class="aui-navBar-item">
             <i class="icon icon-return"></i>
         </a>--%>
-        <div class="aui-center">
-            <div class="aui-search-box">
-                <i class="icon icon-search"></i>
-                <input type="text" placeholder="">
+            <div class="aui-center">
+                <div class="aui-search-box">
+                    <i class="icon icon-search"></i>
+                    <input type="text" placeholder="输入手机号搜索" id="searchText">
+                </div>
             </div>
-        </div>
-        <a href="javascript:;" class="aui-navBar-item">
-            <%--<i class="icon icon-eid"></i>--%>
-        </a>
+            <a href="javascript:;void(0)" class="aui-navBar-item" style="color: white" id="search">
+                <%--<i class="icon icon-eid"></i>--%>
+                搜索
+            </a>
     </header>
     <section class="aui-scrollView">
         <div class="aui-tab" data-ydui-tab>
@@ -73,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="aui-plate-img">
-                                <img src="${path}img/a3.jpg" alt="">
+                                <img src="${path}images/user-004.png" alt="">
                             </div>
                         </a>
                     </c:forEach>

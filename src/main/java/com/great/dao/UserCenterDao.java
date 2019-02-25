@@ -13,7 +13,8 @@ public interface UserCenterDao {
     public void updateUser(@Param("userName") String userName, @Param("age") String age
             , @Param("job") String job, @Param("userId") String userId);
 
-    public List<Map<String, Object>> listService(@Param("userId") String userId, @Param("searchText") String searchText);
+    public List<Map<String, Object>> listService(@Param("userId") String userId, @Param("searchText") String searchText
+            , @Param("state") String state, @Param("type") String type);
 
     public void updateSuggestion(@Param("paxydBusId") String paxydBusId, @Param("suggestion") String suggestion);
 
@@ -25,7 +26,7 @@ public interface UserCenterDao {
                                 @Param("submitDate") String submitDate, @Param("handleState") Integer handleState);
 
     public void insertWithdraw(@Param("userId") String userId, @Param("card") String card,
-                                @Param("name") String name, @Param("state") Integer state,
+                               @Param("name") String name, @Param("state") Integer state,
                                @Param("amount") String amount);
 
     List<WithdrawModel> withdrawList(@Param("userId") String userId);

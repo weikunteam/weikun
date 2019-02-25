@@ -72,7 +72,7 @@ public class UserCenterController {
     public ModelAndView gotoService(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<Map<String, Object>> list = userCenterService.listService(userId,"");
+        List<Map<String, Object>> list = userCenterService.listService(userId,"","","");
         for (Map<String, Object> sevice : list) {
 
             switch (Integer.parseInt(sevice.get("type").toString())) {
@@ -93,9 +93,40 @@ public class UserCenterController {
                     break;
                 default:
                     break;
-
             }
-
+        }
+        for (Map<String, Object> sevice : list) {
+            switch (Integer.parseInt(sevice.get("checkState").toString())) {
+                case 0:
+                    sevice.put("state", "不可申请");
+                    break;
+                case 1:
+                    sevice.put("state", "申请中");
+                    break;
+                case 2:
+                    sevice.put("state", "成功放款");
+                    break;
+                case 3:
+                    sevice.put("state", "申请被拒");
+                    break;
+                case 4:
+                    sevice.put("state", "未操作");
+                    break;
+                case 5:
+                    sevice.put("state", "未通知");
+                    break;
+                case 6:
+                    sevice.put("state", "已通知");
+                    break;
+                case 7:
+                    sevice.put("state", "未结算");
+                    break;
+                case 8:
+                    sevice.put("state", "已结算");
+                    break;
+                default:
+                    break;
+            }
         }
         mv.addObject("listService",list );
         mv.setViewName("service");
@@ -141,9 +172,40 @@ public class UserCenterController {
                     break;
                 default:
                     break;
-
             }
-
+        }
+        for (Map<String, Object> mySevice : list) {
+            switch (Integer.parseInt(mySevice.get("checkState").toString())) {
+                case 0:
+                    mySevice.put("state", "不可申请");
+                    break;
+                case 1:
+                    mySevice.put("state", "申请中");
+                    break;
+                case 2:
+                    mySevice.put("state", "成功放款");
+                    break;
+                case 3:
+                    mySevice.put("state", "申请被拒");
+                    break;
+                case 4:
+                    mySevice.put("state", "未操作");
+                    break;
+                case 5:
+                    mySevice.put("state", "未通知");
+                    break;
+                case 6:
+                    mySevice.put("state", "已通知");
+                    break;
+                case 7:
+                    mySevice.put("state", "未结算");
+                    break;
+                case 8:
+                    mySevice.put("state", "已结算");
+                    break;
+                default:
+                    break;
+            }
         }
         mv.addObject("listService",list );
         mv.setViewName("myService");
@@ -152,9 +214,9 @@ public class UserCenterController {
 
     @RequestMapping(value = "/search.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi search(HttpServletRequest request,String searchText) {
+    public ResponseApi search(HttpServletRequest request,String searchText,String state,String type) {
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<Map<String,Object>> list = userCenterService.listService(userId, searchText);
+        List<Map<String,Object>> list = userCenterService.listService(userId, searchText,state,type);
         for (Map<String, Object> mySevice : list) {
             switch (Integer.parseInt(mySevice.get("type").toString())) {
                 case 1:
@@ -176,7 +238,39 @@ public class UserCenterController {
                     break;
 
             }
-
+        }
+        for (Map<String, Object> sevice : list) {
+            switch (Integer.parseInt(sevice.get("checkState").toString())) {
+                case 0:
+                    sevice.put("state", "不可申请");
+                    break;
+                case 1:
+                    sevice.put("state", "申请中");
+                    break;
+                case 2:
+                    sevice.put("state", "成功放款");
+                    break;
+                case 3:
+                    sevice.put("state", "申请被拒");
+                    break;
+                case 4:
+                    sevice.put("state", "未操作");
+                    break;
+                case 5:
+                    sevice.put("state", "未通知");
+                    break;
+                case 6:
+                    sevice.put("state", "已通知");
+                    break;
+                case 7:
+                    sevice.put("state", "未结算");
+                    break;
+                case 8:
+                    sevice.put("state", "已结算");
+                    break;
+                default:
+                    break;
+            }
         }
         return new ResponseApi("1", "搜索成功", list);
     }

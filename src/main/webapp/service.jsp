@@ -24,7 +24,9 @@
         <%--<a href="javascript:;" class="aui-navBar-item">
             <i class="icon icon-return"></i>
         </a>--%>
+
             <div class="aui-center">
+
                 <div class="aui-search-box">
                     <i class="icon icon-search"></i>
                     <input type="text" placeholder="输入手机号搜索" id="searchText">
@@ -59,7 +61,30 @@
                     </a>
                 </li>&ndash;%&gt;
             </ul>--%>
-            <div class="divHeight"></div>
+            <div class="divHeight1">
+                <div id="divtitle">审核状态：</div>
+                <select id="blueselect">
+                    <option value="">全部</option>
+                    <option value="0">不可申请</option>
+                    <option value="1">申请中</option>
+                    <option value="2">成功放款</option>
+                    <option value="3">申请被拒</option>
+                    <option value="4">未操作</option>
+                    <option value="5">未通知</option>
+                    <option value="6">已通知</option>
+                    <option value="7">未结清</option>
+                    <option value="8">已结清</option>
+                </select>
+                <div id="divtitle1">业务类型：</div>
+                <select id="blueselect1">
+                    <option value="">全部</option>
+                    <option value="1">平安新一贷</option>
+                    <option value="2">兴业消费金融</option>
+                    <option value="3">中行消费金融</option>
+                    <option value="4">海尔玖康</option>
+                    <option value="5">小额贷款</option>
+                </select>
+            </div>
             <div class="tab-panel">
                 <div class="tab-panel-item tab-active">
                     <c:forEach var="service"   items="${listService}"   >
@@ -69,6 +94,7 @@
                                 <h2><em>业务类型</em>${service.serviceName}</h2>
                                 <h3>申请时间: ${service.applyDate}</h3>
                                 <h3>客户姓名: ${service.name}</h3>
+                                <h3>审核状态: <em>${service.state}</em></h3>
                                 <div class="aui-list-info">
                                     <span><img src="${path}images/tel.png" alt=""></span>
                                     <span>${service.applicantTel}</span>
@@ -242,10 +268,37 @@
     });
     $("#search").on("click",function () {
         var searchText = $("#searchText").val();
+        var state = $("#blueselect").val();
+        var type = $("#blueselect1").val();
+        search(searchText,state,type);
+    });
+
+    $(".suggestion").on("click",function () {
+        var id = $(this).data("id");
+        window.location.href = "${path}userCenter/gotoSuggestion.action?id="+id;
+    });
+
+    $("#blueselect").change(function () {
+        var searchText = $("#searchText").val();
+        var state = $("#blueselect").val();
+        var type = $("#blueselect1").val();
+        search(searchText,state,type);
+    });
+
+    $("#blueselect1").change(function () {
+        var searchText = $("#searchText").val();
+        var state = $("#blueselect").val();
+        var type = $("#blueselect1").val();
+        search(searchText,state,type);
+    });
+
+    function search(searchText,state,type) {
         $.ajax({
             url:"${path}userCenter/search.action",
             data:{
-                searchText:searchText
+                searchText:searchText,
+                state:state,
+                type:type
             },
             type:"post",
             dataType:"json",
@@ -258,6 +311,7 @@
                         "                                <h2><em>业务类型</em>"+data.result[i].serviceName+"</h2>\n" +
                         "                                <h3>申请时间: "+data.result[i].applyDate+"</h3>\n" +
                         "                                <h3>客户姓名: "+data.result[i].name+"</h3>\n" +
+                        "                                <h3>审核状态: <em>"+data.result[i].state+"</em></h3>\n" +
                         "                                <div class=\"aui-list-info\">\n" +
                         "                                    <span><img src=\"${path}images/tel.png\" alt=\"\"></span>\n" +
                         "                                    <span>"+data.result[i].applicantTel+"</span>\n" +
@@ -270,13 +324,10 @@
                         "                        </a>");
                 }
 
-                $(".suggestion").on("click",function () {
-                    var id = $(this).data("id");
-                    window.location.href = "${path}userCenter/gotoSuggestion.action?id="+id;
-                });
-        }
+
+            }
         })
-    })
+    }
 </script>
 </body>
 </html>

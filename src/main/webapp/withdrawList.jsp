@@ -32,6 +32,13 @@
             <%--<div class="aui-icon-s"><i class="icon icon-sys"></i></div>--%>
             <%--<div>扫一扫</div>--%>
         <%--</a>--%>
+            <div id="divtitle">提现状态：</div>
+            <select id="blueselect">
+                <option>未选择</option>
+                <option>提现中</option>
+                <option>提现成功</option>
+                <option>提现失败</option>
+            </select>
     </header>
     <section class="aui-scrollView">
         <div class="divHeight"></div>

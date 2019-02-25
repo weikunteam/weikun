@@ -177,7 +177,7 @@ a {
 }
 
 .aui-navBar {
-    height: 44px;
+    height: 2.5rem;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -187,6 +187,36 @@ a {
     background: #00b4ef;
 }
 
+#blueselect {
+    background: #fff;
+    text-align: center;
+    border: none;
+    color: #00b4ef;
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 1.5rem;
+    line-height: 1rem;
+    width: 6rem;
+    padding-left: 1rem;
+    position: relative;
+    top:0.5rem;
+    left: 0.5rem;
+}
+
+#divtitle {
+    color: #fff;
+    text-align: center;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    height: 1.5rem;
+    line-height: 1rem;
+    width: 6rem;
+    padding-left: 1rem;
+    position: relative;
+    top:0.75rem;
+    left: 0rem;
+}
 
 .aui-navBar-item {
     height: 44px;

@@ -28,15 +28,15 @@
 <!--内容 star-->
 <section class="aui-flexView">
     <header class="aui-navBar aui-navBar-fixed">
-        <a href="javascript:;" class="aui-navBar-item">
-            <i class="icon icon-return"></i>
-        </a>
+        <%--<a href="javascript:;" class="aui-navBar-item">--%>
+            <%--<i class="icon icon-return"></i>--%>
+        <%--</a>--%>
         <div class="aui-center">
             <span class="aui-center-title">我要提现</span>
         </div>
-        <a href="javascript:;" class="aui-navBar-item">
-            <i class="icon icon-sys"></i>
-        </a>
+        <%--<a href="javascript:;" class="aui-navBar-item">--%>
+            <%--<i class="icon icon-sys"></i>--%>
+        <%--</a>--%>
     </header>
     <section class="aui-scrollView">
         <div class="aui-make-box">
