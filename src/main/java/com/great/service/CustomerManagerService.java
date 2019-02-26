@@ -1,6 +1,8 @@
 package com.great.service;
 
 import java.util.ArrayList;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.great.dao.CustomerManagerDao;
@@ -50,7 +52,9 @@ public class CustomerManagerService {
 	public void addCustomerInfo(BusPAXYDModel addCustomerBus) {
 		customerManagerDao.addCustomerInfo(addCustomerBus);
 	}
-	
+	public Integer userRegisterStatistic(String dateToday) {
+		return customerManagerDao.userRegisterStatistic(dateToday);
+	}
 	public String verifyUserPhone(String userPhone) {
 		String existCode=customerManagerDao.verifyUserPhone(userPhone);
 		if(existCode.equals("0")) {

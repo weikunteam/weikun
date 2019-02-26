@@ -132,12 +132,12 @@ $(function(){
 				 if((parseInt(monthHandle)-month)==(12-1)){
 					 $('#calendar').fullCalendar('next');
 					 showErroInfo();
-					 alert("不可后退");
+					 //alert("不可后退");
 					 return;
 				 }else{
 					 $('#calendar').fullCalendar('prev');
 					 showErroInfo();
-					 alert("不可前进");
+					 //alert("不可前进");
 					 return;
 				 }
 			//点击后退的时候  上个月与本月差值小于0  
@@ -146,14 +146,14 @@ $(function(){
 				 if((parseInt(monthHandle)-month)==(2-12)){
 					 $('#calendar').fullCalendar('prev');
 					 showErroInfo();
-					 alert("不可前进");
+					 //alert("不可前进");
 					 return;
 				 }
 				 //正常点击后退 上个月与本月差值 为-1
 				 if((parseInt(monthHandle)-month)==(-1)){
 					 $('#calendar').fullCalendar('next');
 					 showErroInfo();
-					 alert("不可后退");
+					 //alert("不可后退");
 					 return;
 				 }
 			 }

@@ -1,6 +1,7 @@
 package com.great.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -24,6 +25,8 @@ public interface CustomerManagerDao {
 	public void deleteUserInfo(int deleteUserId) ;
 	//添加客户申办的业务信息（单笔） 作者:zekun
 	public void addCustomerInfo(BusPAXYDModel addCustomerBus) ;
+	//统计公众号每日注册数量
+	public Integer userRegisterStatistic(@Param("dateToday")String dateToday);
 	//验证手机号唯一性
 	public String verifyUserPhone(@Param("userPhone")String userPhone);
 	//通过客户id获取客户对象

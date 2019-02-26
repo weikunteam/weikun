@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.model.BusPAXYDModel;
@@ -128,6 +129,23 @@ public class CustomerManagerController {
 		responseMap.put("returnCode", 200);
 		responseMap.put("returnCode", 200);
 		return responseMap;
+	}
+	
+	//公众号用户注册数量统计
+	@RequestMapping(value="/userRegisterStatistic.action",method= RequestMethod.POST)
+	@ResponseBody
+	public ArrayList<Integer> userRegisterStatistic(@RequestParam(value="dateArray[]") String[] dateArray ) {
+		//System.out.println("userPhone"+userPhone);
+		ArrayList<Integer> dataList = new ArrayList<Integer>();
+		for(int i=0;i<dateArray.length;i++) {
+			System.out.println(dateArray[i]);
+			Integer count=customerManagerService.userRegisterStatistic(dateArray[i]);
+			System.out.println("---"+count);
+			dataList.add(count);
+		}
+		//System.out.println("----"+existCode);
+		//responseMap.put("code", existCode);
+		return dataList;
 	}
 	
 	//验证用户手机号
