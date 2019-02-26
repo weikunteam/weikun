@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface CustomListDao {
 
-    public List<Map<String,Object>> listCustom(@Param("tel") String tel);
+    public List<Map<String,Object>> listCustom(@Param("userId") String userId,@Param("tel") String tel);
 }

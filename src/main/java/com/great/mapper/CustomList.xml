@@ -4,19 +4,22 @@
 <mapper namespace="com.great.dao.CustomListDao">
     <select id="listCustom" resultType="map">
         select DISTINCT
-            t1.userId,
-            t1.uPhone,
-            t1.uPsw,
-            t1.salt,
-            t1.uRecommendCode,
-            t1.uRecommendAmount,
-            t1.uRegRecommendPeople,
-            t1.registerTime
+        t1.userId,
+        t1.uPhone,
+        t1.uPsw,
+        t1.salt,
+        t1.uRecommendCode,
+        t1.uRecommendAmount,
+        t1.uRegRecommendPeople,
+        t1.registerTime,
+        t1.userName
         from TB_USER t1 inner join TB_BUS_PAXYD t2 on t1.userId = t2.userId
-        where t1.uRegRecommendPeople = #{tel}
+        where t1.uRegRecommendPeople = #{userId}
+        <if test="tel !=null and tel != ''">
+           and t1.uPhone = #{tel}
+        </if>
 
     </select>
-
 
 
 </mapper>

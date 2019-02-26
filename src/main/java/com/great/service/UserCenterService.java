@@ -34,8 +34,8 @@ public class UserCenterService {
         userCenterDao.updateSuggestion(id, suggestion);
     }
 
-    public List<Map<String, Object>> myService(String userId) {
-        return userCenterDao.myService(userId);
+    public List<Map<String, Object>> myService(String userId, String searchText,String state,String type) {
+        return userCenterDao.myService(userId, searchText,state,type);
     }
 
     public boolean updateTel(String uPhone, String code, String userId) {
@@ -60,5 +60,5 @@ public class UserCenterService {
         userCenterDao.insertWithdraw(userId, card, name, 0,amount);
     }
 
-    public List<WithdrawModel> listWithdraw(String userId){return userCenterDao.withdrawList(userId);}
+    public List<WithdrawModel> listWithdraw(String userId,String state){return userCenterDao.withdrawList(userId,state);}
 }

@@ -91,6 +91,8 @@
                         setTimeout(function(){
                             window.location.href = "${path}userCenter/gotoUserCenter.action";
                         },2000);
+                    }else {
+                        toastr.error(data.msg);
                     }
             }
         });

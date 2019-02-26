@@ -52,6 +52,15 @@
                checkState
         from TB_BUS_PAXYD
         where userId = #{userId}
+        <if test="searchText !=null and searchText != ''">
+            and applicantTel = #{searchText}
+        </if>
+        <if test="state !=null and state != ''">
+            and checkState = #{state}
+        </if>
+        <if test="type !=null and type != ''">
+            and type = #{type}
+        </if>
     </select>
 
     <update id="updateUserTel">
@@ -84,5 +93,8 @@
                applyDate
         from TB_WITHDRAW
         where userId = #{userId}
+        <if test="state !=null and state != ''">
+            and withdrawState = #{state}
+        </if>
     </select>
 </mapper>

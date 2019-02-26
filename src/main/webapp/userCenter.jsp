@@ -103,17 +103,17 @@ background-color:#F5F5F5;
                     </div>
                     <div class="aui-palace aui-palace-one b-line">
                         <a href="javascript:;" class="aui-palace-grid" style="text-decoration:none">
-                            <c:if test="${people.uRegRecommendPeople != null }">
+                            <c:if test="${uRegRecommendPeople != null and uRegRecommendPeople != ''}">
                             <div class="aui-palace-grid-icon1" style="margin-left: 0px;">
                                 <span>
-                                    ${people.uRegRecommendPeople}
+                                    ${uRegRecommendPeople}
                                 </span>
                             </div>
                             <div class="aui-palace-grid-text">
                                 <h2>推荐导师</h2>
                             </div>
                             </c:if>
-                            <c:if test="${people.uRegRecommendPeople == null }">
+                            <c:if test="${uRegRecommendPeople == null or uRegRecommendPeople == ''}">
                                 <div class="aui-palace-grid-icon1">
                                 <span>
                                         平台

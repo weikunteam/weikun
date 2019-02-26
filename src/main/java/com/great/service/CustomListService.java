@@ -13,7 +13,7 @@ public class CustomListService {
     @Resource
     private CustomListDao customListDao;
 
-    public List<Map<String,Object>> getList(String tel){
-        return  customListDao.listCustom(tel);
+    public List<Map<String,Object>> getList(String userId,String tel){
+        return  customListDao.listCustom(userId,tel);
     }
 }

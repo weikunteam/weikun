@@ -5,6 +5,7 @@ import com.great.model.ResponseApi;
 import com.great.model.WithdrawModel;
 import com.great.service.LoginService;
 import com.great.service.UserCenterService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +30,9 @@ public class UserCenterController {
     public ModelAndView gotoUserCenter(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        mv.addObject("people", userCenterService.getUser(userId));
+        Map<String, Object> map = userCenterService.getUser(userId);
+        mv.addObject("people", map);
+        mv.addObject("uRegRecommendPeople", userCenterService.getUser(map.get("uRegRecommendPeople").toString()));
         mv.setViewName("userCenter");
         return mv;
     }
@@ -72,7 +75,7 @@ public class UserCenterController {
     public ModelAndView gotoService(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<Map<String, Object>> list = userCenterService.listService(userId,"","","");
+        List<Map<String, Object>> list = userCenterService.listService(userId, "", "", "");
         for (Map<String, Object> sevice : list) {
 
             switch (Integer.parseInt(sevice.get("type").toString())) {
@@ -128,7 +131,7 @@ public class UserCenterController {
                     break;
             }
         }
-        mv.addObject("listService",list );
+        mv.addObject("listService", list);
         mv.setViewName("service");
         return mv;
     }
@@ -143,7 +146,7 @@ public class UserCenterController {
 
     @RequestMapping(value = "/suggest.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi suggest(String id,String suggest) {
+    public ResponseApi suggest(String id, String suggest) {
         userCenterService.suggest(id, suggest);
         return new ResponseApi("1", "提交成功");
     }
@@ -152,7 +155,7 @@ public class UserCenterController {
     public ModelAndView gotoMyService(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<Map<String, Object>> list = userCenterService.myService(userId);
+        List<Map<String, Object>> list = userCenterService.myService(userId, "", "", "");
         for (Map<String, Object> mySevice : list) {
             switch (Integer.parseInt(mySevice.get("type").toString())) {
                 case 1:
@@ -207,16 +210,22 @@ public class UserCenterController {
                     break;
             }
         }
-        mv.addObject("listService",list );
+        mv.addObject("listService", list);
         mv.setViewName("myService");
         return mv;
     }
 
     @RequestMapping(value = "/search.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi search(HttpServletRequest request,String searchText,String state,String type) {
+    public ResponseApi search(HttpServletRequest request, String searchText, String state, String type, int flag) {
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<Map<String,Object>> list = userCenterService.listService(userId, searchText,state,type);
+        List<Map<String, Object>> list = null;
+        if (flag == 1) {
+            list = userCenterService.listService(userId, searchText, state, type);
+        } else if (flag == 2) {
+            list = userCenterService.myService(userId, searchText, state, type);
+        }
+
         for (Map<String, Object> mySevice : list) {
             switch (Integer.parseInt(mySevice.get("type").toString())) {
                 case 1:
@@ -274,11 +283,12 @@ public class UserCenterController {
         }
         return new ResponseApi("1", "搜索成功", list);
     }
+
     @RequestMapping(value = "/rechangeTel.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi rechangeTel(String tel,String code,HttpServletRequest request) {
-        String userId = ((Map<String,Object>)(request.getSession().getAttribute("user"))).get("userId").toString();
-        if (userCenterService.updateTel(tel, code, userId)){
+    public ResponseApi rechangeTel(String tel, String code, HttpServletRequest request) {
+        String userId = ((Map<String, Object>) (request.getSession().getAttribute("user"))).get("userId").toString();
+        if (userCenterService.updateTel(tel, code, userId)) {
             return new ResponseApi("1", "更改成功");
         }
         return new ResponseApi("2", "验证码错误");
@@ -286,8 +296,8 @@ public class UserCenterController {
 
     @RequestMapping(value = "/objection.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi objection(HttpServletRequest request,String objection) {
-        String userId = ((Map<String,Object>)(request.getSession().getAttribute("user"))).get("userId").toString();
+    public ResponseApi objection(HttpServletRequest request, String objection) {
+        String userId = ((Map<String, Object>) (request.getSession().getAttribute("user"))).get("userId").toString();
         userCenterService.insertObjection(userId, objection);
         return new ResponseApi("1", "提交成功");
     }
@@ -310,8 +320,8 @@ public class UserCenterController {
 
     @RequestMapping(value = "/withdraw.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi withdraw(String id,String card,String name,String amount) {
-        userCenterService.insertWithdraw(id, card, name,amount);
+    public ResponseApi withdraw(String id, String card, String name, String amount) {
+        userCenterService.insertWithdraw(id, card, name, amount);
         return new ResponseApi("1", "提交成功");
     }
 
@@ -319,9 +329,9 @@ public class UserCenterController {
     public ModelAndView gotoWithdrawList(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<WithdrawModel>  list = userCenterService.listWithdraw(userId);
-        for (WithdrawModel withdraw:list){
-            switch (withdraw.getWithdrawState()){
+        List<WithdrawModel> list = userCenterService.listWithdraw(userId,null);
+        for (WithdrawModel withdraw : list) {
+            switch (withdraw.getWithdrawState()) {
                 case 0:
                     withdraw.setState("审核中");
                     break;
@@ -333,8 +343,30 @@ public class UserCenterController {
                     break;
             }
         }
-        mv.addObject("listWithdraw",list );
+        mv.addObject("listWithdraw", list);
         mv.setViewName("withdrawList");
         return mv;
     }
+
+    @RequestMapping(value = "/searchWithdraw.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi searchWithdraw(HttpServletRequest request, String state) {
+        String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
+        List<WithdrawModel> list = userCenterService.listWithdraw(userId,state);
+        for (WithdrawModel withdraw : list) {
+            switch (withdraw.getWithdrawState()) {
+                case 0:
+                    withdraw.setState("审核中");
+                    break;
+                case 1:
+                    withdraw.setState("提现成功");
+                    break;
+                case 2:
+                    withdraw.setState("提现失败");
+                    break;
+            }
+        }
+        return new ResponseApi("1", "搜索成功", list,null);
+    }
+
 }

@@ -251,7 +251,7 @@ opacity: 0.6;
                     <h5>成功核卡返现2%</h5>
                 </div>
                 <div class="aui-text-two">
-                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="javascript:void(0)" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                     <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
                 </div>
             </div>
@@ -275,7 +275,7 @@ opacity: 0.6;
                     <h5>成功核卡返现2%</h5>
                 </div>
                 <div class="aui-text-two">
-                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="javascript:void(0)" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                     <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
                 </div>
             </div>
@@ -299,7 +299,7 @@ opacity: 0.6;
                     <h5>成功核卡返现2%</h5>
                 </div>
                 <div class="aui-text-two">
-                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="javascript:void(0)" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                     <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
                 </div>
             </div>
@@ -323,7 +323,7 @@ opacity: 0.6;
                     <h5>成功核卡返现2%</h5>
                 </div>
                 <div class="aui-text-two">
-                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="javascript:void(0)" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                     <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
                 </div>
             </div>
@@ -347,7 +347,7 @@ opacity: 0.6;
                     <h5>成功核卡返现2%</h5>
                 </div>
                 <div class="aui-text-two">
-                    <a href="${path}smallamountHandle.jsp" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                    <a href="javascript:void(0)" class="btn btn-info" style="padding-top:0px;padding-bottom:0px;">咨询</a>
                     <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;" id="shareBtn">分享</a>
                 </div>
             </div>

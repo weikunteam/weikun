@@ -11,7 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
     <title>客户建议</title>
     <link href="${path}css/new_file.css" rel="stylesheet" type="text/css"/>
+    <link rel='stylesheet' href='${path}css/toastr.min.css'>
     <script src="${path}js/jQuery.js"></script>
+    <script src="${path}js/toastr.min.js"></script>
 </head>
 <body>
 <!--头部  star-->
@@ -52,6 +54,19 @@
 <!--内容 end-->
 </body>
 <script>
+    toastr.options = {
+        "closeButton": false, //是否显示关闭按钮
+        "debug": false, //是否使用debug模式
+        "positionClass": "toast-center-centerthird-xs",//弹出窗的位置
+        "showDuration": "300",//显示的动画时间
+        "hideDuration": "300",//消失的动画时间
+        "timeOut": "2000", //展现时间
+        "showEasing": "swing",//显示时的动画缓冲方式
+        "hideEasing": "linear",//消失时的动画缓冲方式
+        "showMethod": "fadeIn",//显示时的动画方式
+        "hideMethod": "fadeOut" //消失时的动画方式
+    };
+
     $("#submit").click(function () {
         var suggest = $("#suggest").val();
         if(suggest){
@@ -69,9 +84,14 @@
                 id:$("#hidden").val()
             },
             success:function(data){
-                    if(data.code==1){
+                if(data.code==1){
+                    toastr.success(data.msg);
+                    setTimeout(function(){
                         window.location.href = "${path}userCenter/gotoService.action";
-                    }
+                    },2000);
+                }else {
+                    toastr.error(data.msg);
+                }
             }
         });
     })

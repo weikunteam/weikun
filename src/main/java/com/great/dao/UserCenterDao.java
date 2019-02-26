@@ -18,7 +18,8 @@ public interface UserCenterDao {
 
     public void updateSuggestion(@Param("paxydBusId") String paxydBusId, @Param("suggestion") String suggestion);
 
-    public List<Map<String, Object>> myService(@Param("userId") String userId);
+    public List<Map<String, Object>> myService(@Param("userId") String userId, @Param("searchText") String searchText
+            , @Param("state") String state, @Param("type") String type);
 
     public void updateUserTel(@Param("userId") String userId, @Param("uPhone") String uPhone);
 
@@ -29,5 +30,5 @@ public interface UserCenterDao {
                                @Param("name") String name, @Param("state") Integer state,
                                @Param("amount") String amount);
 
-    List<WithdrawModel> withdrawList(@Param("userId") String userId);
+    List<WithdrawModel> withdrawList(@Param("userId") String userId, @Param("state") String state);
 }

@@ -63,17 +63,25 @@
                 <div class="divHeight1">
                     <div id="divtitle">审核状态：</div>
                     <select id="blueselect">
-                        <option>全部</option>
-                        <option>提现中</option>
-                        <option>提现成功</option>
-                        <option>提现失败</option>
+                        <option value="">全部</option>
+                        <option value="0">不可申请</option>
+                        <option value="1">申请中</option>
+                        <option value="2">成功放款</option>
+                        <option value="3">申请被拒</option>
+                        <option value="4">未操作</option>
+                        <option value="5">未通知</option>
+                        <option value="6">已通知</option>
+                        <option value="7">未结清</option>
+                        <option value="8">已结清</option>
                     </select>
                     <div id="divtitle1">业务类型：</div>
                     <select id="blueselect1">
-                        <option>全部</option>
-                        <option>提现中</option>
-                        <option>提现成功</option>
-                        <option>提现失败</option>
+                        <option value="">全部</option>
+                        <option value="1">平安新一贷</option>
+                        <option value="2">兴业消费金融</option>
+                        <option value="3">中行消费金融</option>
+                        <option value="4">海尔玖康</option>
+                        <option value="5">小额贷款</option>
                     </select>
                 </div>
             <div class="tab-panel">
@@ -105,7 +113,53 @@
     </section>
 </section>
 <script >
+    $("#search").on("click",function () {
+        var searchText = $("#searchText").val();
+        var state = $("#blueselect").val();
+        var type = $("#blueselect1").val();
+        search(searchText,state,type);
+    });
+    $("#blueselect").change(function () {
+        var searchText = $("#searchText").val();
+        var state = $("#blueselect").val();
+        var type = $("#blueselect1").val();
+        search(searchText,state,type);
+    });
 
+    $("#blueselect1").change(function () {
+        var searchText = $("#searchText").val();
+        var state = $("#blueselect").val();
+        var type = $("#blueselect1").val();
+        search(searchText,state,type);
+    });
+    function search(searchText,state,type) {
+        $.ajax({
+            url:"${path}userCenter/search.action",
+            data:{
+                searchText:searchText,
+                state:state,
+                type:type,
+                flag:2
+            },
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                $(".tab-active").empty();
+                for(var i=0;i<data.result.length;i++){
+                    $(".tab-active").append("<a href=\"javascript:;\" class=\"aui-flex\">\n" +
+                        "                            <div class=\"aui-flex-box\">\n" +
+                        "                                    <%--<c:if test=\"${custom.}\"></c:if>--%>\n" +
+                        "                                <h2><em>业务类型</em>"+data.result[i].serviceName+"</h2>\n" +
+                        "                                <h3>申请时间: "+data.result[i].applyDate+"</h3>\n" +
+                        "                                <h3>审核状态: <em>"+data.result[i].state+"</em></h3>\n" +
+                        "                            </div>\n" +
+                        "                        </a>");
+                }
+
+
+            }
+        })
+    }
 </script>
 </body>
 </html>

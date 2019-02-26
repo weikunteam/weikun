@@ -65,8 +65,12 @@
                     <c:forEach var="custom"   items="${customList}"   >
                         <a href="javascript:;" class="aui-flex">
                             <div class="aui-flex-box">
-                                <%--<c:if test="${custom.}"></c:if>--%>
-                                <h2><em>用户名</em>未填写</h2>
+                                <c:if test="${custom.userName == '' or custom.userName == null}">
+                                    <h2><em>用户名</em>未填写</h2>
+                                </c:if>
+                                <c:if test="${custom.userName != '' and custom.userName != null}">
+                                    <h2><em>用户名</em>${custom.userName}</h2>
+                                </c:if>
                                 <h3>注册时间: ${custom.registerTime}</h3>
                                 <div class="aui-list-info">
                                     <span><img src="${path}images/tel.png" alt=""></span>
@@ -81,147 +85,7 @@
                 </div>
 
                 <div class="tab-panel-item">
-                    <%--<a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em style="background:#27aaa4">转让</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>980000</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-001.png" alt=""></span>
-                                <span>188****7887</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                                <span><img src="images/qq.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="${path}img/a3.jpg" alt="">
-                        </div>
-                        &lt;%&ndash;<div class="aui-time">
-                            <em>2小时前</em>
-                        </div>&ndash;%&gt;
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-002.png" alt=""></span>
-                                <span>朱子涛</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/qq.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-002.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-003.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-003.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-004.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-004.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-005.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-005.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-006.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-006.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-003.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-007.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>--%>
+
                 </div>
 
 
@@ -232,5 +96,51 @@
         </div>
     </section>
 </section>
+<script>
+    $("#search").on("click",function () {
+        var searchText = $("#searchText").val();
+        search(searchText);
+    });
+    function search(searchText) {
+        $.ajax({
+            url:"${path}customList/searchCustomer.action",
+            data:{
+                searchText:searchText
+            },
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                $(".tab-active").empty();
+                for(var i=0;i<data.result.length;i++){
+                    var name = data.result[i].userName;
+                    var time = data.result[i].registerTime;
+                    if (name == null){
+                        name = "未填写";
+                    }
+                    if (time == null){
+                        time = "";
+                    }
+                        $(".tab-active").append("<a href=\"javascript:;\" class=\"aui-flex\">\n" +
+                        "                            <div class=\"aui-flex-box\">\n" +
+                        "                                <h2><em>用户名</em>"+name+"</h2>\n" +
+                        "                                <h3>注册时间: "+time+"</h3>\n" +
+                        "                                <div class=\"aui-list-info\">\n" +
+                        "                                    <span><img src=\"${path}images/tel.png\" alt=\"\"></span>\n" +
+                        "                                    <span>"+data.result[i].uPhone+"</span>\n" +
+                        "                                </div>\n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"aui-plate-img\">\n" +
+                        "                                <img src=\"${path}images/user-004.png\" alt=\"\">\n" +
+                        "                            </div>\n" +
+                        "                        </a>");
+
+
+                }
+
+
+            }
+        })
+    }
+</script>
 </body>
 </html>

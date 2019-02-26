@@ -32,7 +32,7 @@
                     <input type="text" placeholder="输入手机号搜索" id="searchText">
                 </div>
             </div>
-            <a href="javascript:;void(0)" class="aui-navBar-item" style="color: white" id="search">
+            <a href="javascript:void(0)" class="aui-navBar-item" style="color: white" id="search">
                 <%--<i class="icon icon-eid"></i>--%>
                 搜索
             </a>
@@ -110,147 +110,7 @@
                 </div>
 
                 <div class="tab-panel-item">
-                    <%--<a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em style="background:#27aaa4">转让</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>980000</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-001.png" alt=""></span>
-                                <span>188****7887</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                                <span><img src="images/qq.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="${path}img/a3.jpg" alt="">
-                        </div>
-                        &lt;%&ndash;<div class="aui-time">
-                            <em>2小时前</em>
-                        </div>&ndash;%&gt;
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-002.png" alt=""></span>
-                                <span>朱子涛</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/qq.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-002.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-003.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-003.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-004.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-004.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-005.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-005.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-006.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-006.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>
-                    <a href="javascript:;" class="aui-flex">
-                        <div class="aui-flex-box">
-                            <h2><em>代办</em>低价转让MT4主标一个无客户投诉</h2>
-                            <h3>监管机构: ASIc</h3>
-                            <h3>出售价格: <em>3000+</em></h3>
-                            <div class="aui-list-info">
-                                <span><img src="images/user-003.png" alt=""></span>
-                                <span>刘明</span>
-                                <span><em>交易者</em></span>
-                                <span><img src="images/tel.png" alt=""></span>
-                                <span><img src="images/wx.png" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="aui-plate-img">
-                            <img src="images/ad-007.png" alt="">
-                        </div>
-                        <div class="aui-time">
-                            <em>2小时前</em>
-                        </div>
-                    </a>--%>
+
                 </div>
 
 
@@ -273,11 +133,6 @@
         search(searchText,state,type);
     });
 
-    $(".suggestion").on("click",function () {
-        var id = $(this).data("id");
-        window.location.href = "${path}userCenter/gotoSuggestion.action?id="+id;
-    });
-
     $("#blueselect").change(function () {
         var searchText = $("#searchText").val();
         var state = $("#blueselect").val();
@@ -298,7 +153,8 @@
             data:{
                 searchText:searchText,
                 state:state,
-                type:type
+                type:type,
+                flag:1
             },
             type:"post",
             dataType:"json",
