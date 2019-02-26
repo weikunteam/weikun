@@ -2,7 +2,9 @@ package com.great.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.Resource;
 
@@ -29,14 +31,62 @@ public class ZeKunTest {
 	@Resource
 	private SystemManagerService systemManagerService;
 	
-/*	@Test	
+	@Test	
 	public void test() {
-		ArrayList<BusPAXYDModel>list=busPAXYDManagerService.getBusPAXYDList(0,10, "183");
-		System.out.println(list);
-		for(int i=0;i<list.size();i++) {
-			System.out.println(list.get(i).getUserModel().getuPhone()+"/"+(i+1));
+		String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date()); 
+		String year = currentDate.split("-")[0];
+		String month = currentDate.split("-")[1];
+		String day = currentDate.split("-")[2];
+//		if(15>) {
+//			System.out.println("*************");
+//		}
+		String newDate = year+"-"+month+"-"+"02";
+		System.out.println("---"+year+"---");
+		System.out.println("---"+month+"---");
+		System.out.println("---"+day+"---");
+		System.out.println("---"+newDate+"---");
+		System.out.println("---"+deleteZero("29")+"---");
+		System.out.println("---"+addZero("01")+"---");
+		System.out.println("---"+(Integer.parseInt(year)+1)+"---");
+	}
+	//@Test
+	public String deleteZero(String test) {
+		//System.out.println("---"+ +"---");
+		if(test!=null && !test.trim().equals("")) {
+			if(firtCharIsOwnZero(test)) {
+				return test.substring(1, 2);
+			}else {
+				return test;
+			}
+		}else {
+			return "";
 		}
-	}*/
+	}
+	
+	public String addZero(String test) {
+		//System.out.println("---"+ +"---");
+		if(test!=null && !test.trim().equals("")) {
+			if(test.length()==1) {//个位数
+				return "0"+test;
+			}
+			return test;
+		}else {
+			return "";
+		}
+	}
+	
+	public boolean firtCharIsOwnZero(String test) {
+		if(test!=null && !test.trim().equals("")) {
+			if(test.substring(0, 1).equals("0")) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		}else {
+			return false;
+		}
+	}
 	
 //	@Test	
 //	public void test() {
@@ -58,19 +108,19 @@ public class ZeKunTest {
 //			}
 //		}
 //	}
-	@Test	
-	public void test() {
-		try {
-			File f = new File("");
-			String filePath = f.getCanonicalPath()+"\\target\\classes\\templet\\TB_USER.xlsx";
-			File file = new File(filePath);
-			String fileName=file.getName();
-			System.out.println(file.length());
-			System.out.println(fileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//	@Test	
+//	public void test() {
+//		try {
+//			File f = new File("");
+//			String filePath = f.getCanonicalPath()+"\\target\\classes\\templet\\TB_USER.xlsx";
+//			File file = new File(filePath);
+//			String fileName=file.getName();
+//			System.out.println(file.length());
+//			System.out.println(fileName);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //		RoleModel roleModel=systemManagerService.getRole(3);
 //		System.out.println(roleModel);
 //		System.out.println("1");
@@ -83,6 +133,6 @@ public class ZeKunTest {
 			
 		}*/
 	}
-}
+
 
 

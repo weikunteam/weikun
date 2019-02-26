@@ -388,6 +388,51 @@ border-color: #000;
 						class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label"
+					style="width: 150px; font-weight: bold;"><span id="flag_InputRepaymentDate"
+					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>每月还款日期：</label>
+				<div class="layui-input-inline" id="editRepaymentDate_Date_LineItem">
+				<select name="editRepaymentDate_Date" id="editRepaymentDate_Date" lay-search=""
+						lay-verify="selectDate">
+						<option value="">选择还款日</option>
+						<option value="01">1</option>
+						<option value="02">2</option>
+						<option value="03">3</option>
+						<option value="04">4</option>
+						<option value="05">5</option>
+						<option value="06">6</option>
+						<option value="07">7</option>
+						<option value="08">8</option>
+						<option value="09">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+					</select>
+					<!-- date -->
+				</div>
+				<div class="layui-input-inline" id="editRepaymentDate_Input_LineItem">
+					<input type="text" name="editRepaymentDate_Input"
+						id="editRepaymentDate_Input" lay-verify="" readonly="readonly"
+						autocomplete="off" class="layui-input">
+				</div>
+			</div>
 		</div>
 		<div class="layui-form-item">
 			<div class="layui-input-block" style="margin-left: 1100px;">
@@ -617,6 +662,8 @@ border-color: #000;
 								<option value="1">申请中</option>
 								<option value="2">成功放款</option>
 								<option value="3">申请被拒绝</option>
+								<option value="7">贷款未结清</option>
+								<option value="8">贷款已结清</option>
 								<option value="otherBusSpeed">未处理</option>
 							</select>
 						</div>
@@ -630,7 +677,7 @@ border-color: #000;
 						<div class="layui-inline" >
 							<input name="queryApplyDateEnd" class="layui-input my_class_name" id="queryApplyDateEnd" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 						</div>
-						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;">
+						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;margin-left:10px;width:112px;">
 							<label style="font-weight: bold;font-size: 12px;">搜索<label/>
 						</button>
 				</span>
@@ -661,7 +708,11 @@ border-color: #000;
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">成功放款 </a>
     {{# }if(d.checkState ==3  && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">申请被拒绝 </a>
-    {{# }if(d.checkState !=0 && d.checkState !=1 && d.checkState !=2 && d.checkState !=3  && d.checkState !=null){ }}
+    {{# }if(d.checkState ==7  && d.checkState !=null){ }}
+			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">贷款未结清 </a>
+    {{# }if(d.checkState ==8  && d.checkState !=null){ }}
+			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">贷款已结清 </a>
+    {{# }if(d.checkState !=0 && d.checkState !=1 && d.checkState !=2 && d.checkState !=3 && d.checkState !=7 && d.checkState !=8  && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs speed"  style="background-color: #0000FF">未处理 </a>
     {{#  } }}
 	</script>
@@ -981,7 +1032,7 @@ border-color: #000;
 						}, {
 							fixed: 'right',
 							title: '可进行操作',
-							width: '8%',
+							width: '9%',
 							toolbar: '#handleBarDemo',
 						}]
 					],
@@ -1185,15 +1236,17 @@ border-color: #000;
 							//将放款金额初始化为"可输入/修改"
 							$("#editLoanAmount").attr("readonly",null); //editable : false
 							//$("#editLoanStartDate").css('editable',false);
-							//将"放款日期" "放款金额" * 号颜色还原（蓝色）
+							//将"放款日期" "放款金额" "每月放款日期" * 号颜色还原（蓝色）
 							$("#flag_InputLoanStartDate").css("color","blue");
 							$("#flag_InputLoanAmount").css("color","blue");
-							//将" 放款日期" "最终签约产品" "放款金额" 表单验证处理
+							$("#flag_InputRepaymentDate").css("color","blue");
+							//将" 放款日期" "最终签约产品" "放款金额"  "每月还款日期"表单验证处理
 							//$("#editLoanStartDate_Date").attr("lay-verify","required|date");
 							//$("#editFinalProduct_Select").attr("lay-verify","selectProduct");
 							$("#editLoanStartDate_Date").attr("lay-verify","");
 							$("#editFinalProduct_Select").attr("lay-verify","");
 							$("#editLoanAmount").attr("lay-verify","");
+							$("#editRepaymentDate_Date").attr("lay-verify","");
 							//required|date
 							if(data.checkState==0){
 								$('#editCurrentCheckState').val("不可申请");
@@ -1216,30 +1269,41 @@ border-color: #000;
 								$("#ApplyFailReason_Item").css('display','none');//隐藏
 								$("#ApplyRefuseReason_Item").css('display','none');//隐藏
 								$("#LoanInfo_Item").css('display','none');//隐藏
-								//放款金额 显示为"下拉框"可选择的.
+								//放款产品  显示为"下拉框"可选择的.
 								$("#editFinalProduct_Input_LineItem").css('display','none');//隐藏
 								$("#editFinalProduct_Select_LineItem").css('display','');//显示  不能用block 会换行
 								// 默认选中第一个“选择操作”
 								var editFinalProductSelect = "dd[lay-value='']";
 								$('#editFinalProduct_Select').siblings("div.layui-form-select").find('dl').find(editFinalProductSelect).click();
-								//放款时间 为layUIdate插件
+								//放款时间 为layUIdate插件 将输入框隐藏
 								$("#editLoanStartDate_Input_LineItem").css('display','none');//隐藏
 								$("#editLoanStartDate_Date_LineItem").css('display','');//显示  不能用block 会换行
 								$('#editLoanStartDate_Date').val("");
+								//每月还款日期 为layUIdate插件 将输入框隐藏
+								$("#editRepaymentDate_Input_LineItem").css('display','none');//隐藏
+								$("#editRepaymentDate_Date_LineItem").css('display','');//显示  不能用block 会换行
+								$('#editRepaymentDate_Date').val("");
 								//将选择“进行流程处理”下拉框 表单验证开启
 								$("#editCheckState").attr("lay-verify","busSpeed");
-								//将"放款日期" "放款金额" * 号颜色变为 必填（红色）
+								//将"放款日期" "放款金额" "每月放款日期" * 号颜色变为 必填（红色）
 								$("#flag_InputLoanStartDate").css("color","red");
 								$("#flag_InputLoanAmount").css("color","red");
-								//将"放款日期" "放款产品" "放款金额" 表单验证开启 或 关闭，在选择流程后进行判断。判断在下面
+								$("#flag_InputRepaymentDate").css("color","red");
+								//将"放款日期" "放款产品" "放款金额" "每月还款日期" 表单验证开启 或 关闭，
+								//在选择流程后进行判断。判断在下面的下拉框value判断。
 
 							}else if(data.checkState==2){
 								$('#editCurrentCheckState').val("成功放款");
 								//显示页面该有的 组件
-								$("#Processing_Item").css('display','none');//隐藏
+								$("#Processing_Item").css('display','block');//隐藏
 								$("#ApplyFailReason_Item").css('display','none');//隐藏
 								$("#ApplyRefuseReason_Item").css('display','none');//隐藏
 								$("#LoanInfo_Item").css('display','block');//显示
+								//进行流程操作 显示下拉框
+								var selectHtml_2="<option value=''>选择操作</option>"
+								+"<option value='7'>贷款未结清</option>"
+								+"<option value='8'>贷款已结清</option>";
+								$("#editCheckState").append(selectHtml_2);
 								//放款产品 显示为"文本框"不可选择的.
 								$("#editFinalProduct_Select_LineItem").css('display','none');//隐藏 
 								$("#editFinalProduct_Input_LineItem").css('display','');//显示 不能用block 会换行
@@ -1248,13 +1312,18 @@ border-color: #000;
 								$("#editLoanStartDate_Date_LineItem").css('display','none');//隐藏 
 								$("#editLoanStartDate_Input_LineItem").css('display','');//显示 不能用block 会换行
 								$('#editLoanStartDate_Input').val(data.loanStartDate);
+								//每月放款日期 未文本框且不可修改
+								$("#editRepaymentDate_Date_LineItem").css('display','none');//隐藏 
+								$("#editRepaymentDate_Input_LineItem").css('display','');//显示 不能用block 会换行
+								$('#editRepaymentDate_Input').val(data.repaymentDate);
 								//将放款金额为"不可输入/修改"
 								$("#editLoanAmount").attr("readonly","readonly");
 								//将选择“进行流程处理”下拉框 表单验证开启
-								$("#editCheckState").attr("lay-verify","");
-								//将" 放款日期" "最终签约产品"表单验证置空
+								$("#editCheckState").attr("lay-verify","busSpeed");
+								//将" 放款日期" "最终签约产品" "每月还款日期"表单验证置空
 								$("#editLoanStartDate_Date").attr("lay-verify","");
 								$("#editFinalProduct_Select").attr("lay-verify","");
+								$("#editRepaymentDate_Date").attr("lay-verify","");
 							}else if(data.checkState==3){
 								$('#editCurrentCheckState').val("申请被拒绝");
 								//显示页面该有的 组件
@@ -1278,16 +1347,81 @@ border-color: #000;
 								$("#LoanInfo_Item").css('display','none');//隐藏
 								//将选择“进行流程处理”下拉框 表单验证开启
 								$("#editCheckState").attr("lay-verify","busSpeed");
+							}else if(data.checkState==7){
+								$('#editCurrentCheckState').val("贷款未结清");
+								//显示页面该有的 组件
+								$("#Processing_Item").css('display','block');//显示
+								$("#ApplyFailReason_Item").css('display','none');//隐藏
+								$("#ApplyRefuseReason_Item").css('display','none');//隐藏
+								$("#LoanInfo_Item").css('display','block');//显示
+								//进行流程操作 显示下拉框
+								var selectHtml_7="<option value=''>选择操作</option>"
+								+"<option value='7'>贷款未结清</option>"
+								+"<option value='8'>贷款已结清</option>";
+								$("#editCheckState").append(selectHtml_7);
+								//放款产品 显示为"文本框"不可选择的.
+								$("#editFinalProduct_Select_LineItem").css('display','none');//隐藏 
+								$("#editFinalProduct_Input_LineItem").css('display','');//显示 不能用block 会换行
+								//$("#editFinalProduct_Input").val(data.finalProduct); 
+								//放款时间 为文本框且不可修改
+								$("#editLoanStartDate_Date_LineItem").css('display','none');//隐藏 
+								$("#editLoanStartDate_Input_LineItem").css('display','');//显示 不能用block 会换行
+								$('#editLoanStartDate_Input').val(data.loanStartDate);
+								//每月放款日期 未文本框且不可修改
+								$("#editRepaymentDate_Date_LineItem").css('display','none');//隐藏 
+								$("#editRepaymentDate_Input_LineItem").css('display','');//显示 不能用block 会换行
+								$('#editRepaymentDate_Input').val(data.repaymentDate);
+								//将放款金额为"不可输入/修改"
+								$("#editLoanAmount").attr("readonly","readonly");
+								//将选择“进行流程处理”下拉框 表单验证开启
+								$("#editCheckState").attr("lay-verify","busSpeed");
+								//将" 放款日期" "最终签约产品" "每月还款日期"表单验证置空
+								$("#editLoanStartDate_Date").attr("lay-verify","");
+								$("#editFinalProduct_Select").attr("lay-verify","");
+								$("#editRepaymentDate_Date").attr("lay-verify","");
+							}else if(data.checkState==8){
+								$('#editCurrentCheckState').val("贷款已结清");
+								//显示页面该有的 组件
+								$("#Processing_Item").css('display','none');//隐藏
+								$("#ApplyFailReason_Item").css('display','none');//隐藏
+								$("#ApplyRefuseReason_Item").css('display','none');//隐藏
+								$("#LoanInfo_Item").css('display','block');//显示
+								//放款产品 显示为"文本框"不可选择的.
+								$("#editFinalProduct_Select_LineItem").css('display','none');//隐藏 
+								$("#editFinalProduct_Input_LineItem").css('display','');//显示 不能用block 会换行
+								//$("#editFinalProduct_Input").val(data.finalProduct); 
+								//放款时间 为文本框且不可修改
+								$("#editLoanStartDate_Date_LineItem").css('display','none');//隐藏 
+								$("#editLoanStartDate_Input_LineItem").css('display','');//显示 不能用block 会换行
+								$('#editLoanStartDate_Input').val(data.loanStartDate);
+								//每月放款日期 未文本框且不可修改
+								$("#editRepaymentDate_Date_LineItem").css('display','none');//隐藏 
+								$("#editRepaymentDate_Input_LineItem").css('display','');//显示 不能用block 会换行
+								$('#editRepaymentDate_Input').val(data.repaymentDate);
+								//将放款金额为"不可输入/修改"
+								$("#editLoanAmount").attr("readonly","readonly");
+								//将选择“进行流程处理”下拉框 表单验证开启
+								$("#editCheckState").attr("lay-verify","busSpeed");
+								//将" 放款日期" "最终签约产品" "每月还款日期"表单验证置空
+								$("#editLoanStartDate_Date").attr("lay-verify","");
+								$("#editFinalProduct_Select").attr("lay-verify","");
+								$("#editRepaymentDate_Date").attr("lay-verify","");
 							}
+						}
 							//渲染下拉框
 							form.render('select');
 						}
 						//"进行流程处理"下拉框的 动态js
+						var editCurrentCheckState=data.checkState;//当前 审核流程状态
 						form.on('select(search_type)', function(data){
+							console.log("=================="+editCurrentCheckState);
 							if(data.value == ""){
 								$("#ApplyFailReason_Item").css('display','none');
 								$("#ApplyRefuseReason_Item").css('display','none');//
 								$("#LoanInfo_Item").css('display','none');//
+								if(editCurrentCheckState==2 || editCurrentCheckState==7 || editCurrentCheckState==8){
+									$("#LoanInfo_Item").css('display','block');//
+								}
 							}else if(data.value == 0){ //不可申请
 						    	//显示“不可申请原因”的输入框
 						    	$("#ApplyFailReason_Item").css('display','block');
@@ -1299,24 +1433,30 @@ border-color: #000;
 						    	$("#LoanInfo_Item").css('display','block');//
 						    	//并隐藏“申请被决绝原因”的输入框
 						    	$("#ApplyRefuseReason_Item").css('display','none');//
-						    	//将"放款日期" "放款产品" "放款金额" 表单验证开启
+						    	//将"放款日期" "放款产品" "放款金额" "每月放款日期"表单验证开启
 								$("#editLoanStartDate_Date").attr("lay-verify","required|date");
 								$("#editFinalProduct_Select").attr("lay-verify","selectProduct");
 								$("#editLoanAmount").attr("lay-verify","required|inputNumber");
+								$("#editRepaymentDate_Date").attr("lay-verify","required|selectDate");
 						    }else if(data.value == 3){//申请被拒绝
 						    	//显示“申请被决绝原因”的输入框
 						    	$("#ApplyRefuseReason_Item").css('display','block');//
 						    	//并隐藏“放款信息”的三个框
 						    	$("#LoanInfo_Item").css('display','none');//
-						    	//将"放款日期" "放款产品" "放款金额" 表单验证关闭
+						    	//将"放款日期" "放款产品" "放款金额" "每月放款日期"表单验证关闭
 								$("#editLoanStartDate_Date").attr("lay-verify","");
 								$("#editFinalProduct_Select").attr("lay-verify","");
 								$("#editLoanAmount").attr("lay-verify","");
+								$("#editRepaymentDate_Date").attr("lay-verify","");
 						    }
 						    //渲染
 						    form.render('select');//里面的select是固定写法 跟过滤器、id无关
 						});
-						
+
+/* 						$('#editRepaymentDate_Date').blur(function(){
+							alert(i+"---"+$('#editRepaymentDate_Date').val());
+							  //layer.msg('登录成功!', {icon: 1,ime:1000,}；
+							}); */
  			           form.on('submit(demo11)', function(massage) {
  			        	   //验证该业务是否被处理 若已被处理、则更新数据。否则进行流程处理
  			        	  var isHandle = busIsHandle(data.paxydBusId,obj,layer,speedDom);
@@ -1326,11 +1466,12 @@ border-color: #000;
  								return false;
  							}
  			        	   console.log("可进行操作哦========================");
- 						  //传入后台的数据 “放款时间”“最终签约产品”"签约进度" 分情况组装
+ 						  //传入后台的数据 “放款时间”“最终签约产品”"签约进度" "每月还款时间"分情况组装
  						  var realData_LoanStartDate;
  						  var realData_FinalProduct;
- 						 var realData_checkState;
- 						  //获取 “放款时间”“最终签约产品” 数据
+ 						  var realData_checkState;
+ 						  var realData_RepaymentDate;
+ 						  //获取 “放款时间”“最终签约产品”"每月还款时间"  数据
  			        	  if(data.checkState!=null){
  			        		 if(data.checkState==0){
  			        			realData_checkState=0;
@@ -1338,14 +1479,26 @@ border-color: #000;
  			        			realData_LoanStartDate=$('#editLoanStartDate_Date').val();
  			        			realData_FinalProduct=$("#editFinalProduct_Select").val();
  			        			realData_checkState=$("#editCheckState").val();
+ 			        			realData_RepaymentDate=$('#editRepaymentDate_Date').val();
  			        		}else if(data.checkState==2){
  			        			realData_LoanStartDate=$('#editLoanStartDate_Input').val();
  			        			realData_FinalProduct=$("#editFinalProduct_Input").attr("typeCode");
- 			        			realData_checkState=2;
+ 			        			realData_checkState=$("#editCheckState").val();
+ 			        			realData_RepaymentDate=$('#editRepaymentDate_Input').val();
  			        		}else if(data.checkState==3){
  			        			realData_checkState=3;
  			        		}else if(data.checkState==4){
  			        			realData_checkState=$("#editCheckState").val();
+ 			        		}else if(data.checkState==7 ){
+ 			        			realData_LoanStartDate=$('#editLoanStartDate_Input').val();
+ 			        			realData_FinalProduct=$("#editFinalProduct_Input").attr("typeCode");
+ 			        			realData_checkState=$("#editCheckState").val();
+ 			        			realData_RepaymentDate=$('#editRepaymentDate_Input').val();
+ 			        		}else if(data.checkState==8){
+ 			        			realData_LoanStartDate=$('#editLoanStartDate_Input').val();
+ 			        			realData_FinalProduct=$("#editFinalProduct_Input").attr("typeCode");
+ 			        			realData_checkState=8;
+ 			        			realData_RepaymentDate=$('#editRepaymentDate_Input').val();
  			        		}
  			        	  }
  			        	  var contractManIdData="${sessionScope.backGroundUser.userId}";
@@ -1387,7 +1540,8 @@ border-color: #000;
   			                	applyRefuseReason:massage.field.editApplyRefuseReason,
   			                	loanStartDate:realData_LoanStartDate,
   			                	finalProduct:realData_FinalProduct,
-  			                	loanAmount:massage.field.editLoanAmount
+  			                	loanAmount:massage.field.editLoanAmount,
+  			                	repaymentDate:realData_RepaymentDate
  			        	  };
  			               $.ajax({
  			                   url:'<%=path%>contractManager/contractBusHandle.action',
@@ -1430,7 +1584,8 @@ border-color: #000;
  			  			                	applyRefuseReason:massage.field.editApplyRefuseReason,
  			  			                	loanStartDate:realData_LoanStartDate,
  			  			                	finalProduct:realData_FinalProduct,
- 			  			                	loanAmount:massage.field.editLoanAmount
+ 			  			                	loanAmount:massage.field.editLoanAmount,
+ 			  			                	repaymentDate:realData_RepaymentDate
  			                                });//修改成功修改表格数据不进行跳转
  			                                
  			                                if(realData_checkState==0){
@@ -1441,6 +1596,10 @@ border-color: #000;
  			                                	speedDom.html('成功放款');
  			                                }else if(realData_checkState==3){
  			                                	speedDom.html('申请被拒绝');
+ 			                                }else if(realData_checkState==7){
+ 			                                	speedDom.html('贷款未结清');
+ 			                                }else if(realData_checkState==8){
+ 			                                	speedDom.html('贷款已结清');
  			                                }
  			                                
  			                                layer.closeAll();//关闭所有的弹出层
@@ -1454,7 +1613,7 @@ border-color: #000;
  			              return false;
  			           })
  						 //setFormValue(obj,data);
-					}
+					//}
 				});
 				
 				  //监听行单击事件（单击事件为：rowDouble）
@@ -1805,6 +1964,13 @@ border-color: #000;
  				 					       return '必须选择相应的流程处理！';
  				 					     }//"^[1[34578]\d{9}]+$"	
     								},
+    								selectDate:function(value){
+    									console.log("流程---"+value);
+    									if(value=="" ){
+    										
+ 				 					       return '必须选择还款日！';
+ 				 					     }//"^[1[34578]\d{9}]+$"	
+    								},
     								selectProduct:function(value){
     									//console.log("流程---"+value);
     									if(value=="" ){
@@ -1822,7 +1988,7 @@ border-color: #000;
 			  laydate = layui.laydate;
 			  $('.my_class_name').each(function(){
 					laydate.render({
-							elem: this       //使用this指向当前元素,不能使用class名, 否则只有第一个有效
+							elem: this //使用this指向当前元素,不能使用class名, 否则只有第一个有效
 					});
 		})
 		});

@@ -26,6 +26,8 @@ public interface ContractManagerDao {
 	public void deleteUserInfo(int deleteUserId) ;
 	//添加客户申办的业务信息（单笔） 作者:zekun
 	public void addContractBusInfo(BusPAXYDModel addContractBus) ;
+	//查看还款日
+	public ArrayList<BusPAXYDModel> showAllRepaymentDate();
 	//验证手机号唯一性
 	public String verifyUserPhone(@Param("userPhone")String userPhone);
 	//通过客户id获取客户对象
