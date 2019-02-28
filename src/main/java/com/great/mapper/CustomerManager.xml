@@ -19,7 +19,7 @@
             </if>
             
             <if test="@com.great.util.Ognl@isNotEmpty(condition.busSpeed)">
-            <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3  </if>
+            <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3 and checkState !=7 and checkState !=8 </if>
             <if test="condition.busSpeed!='otherBusSpeed'">and checkState =#{condition.busSpeed}  </if>
             </if>
             
@@ -45,7 +45,7 @@
             </if>
             
             <if test="@com.great.util.Ognl@isNotEmpty(condition.busSpeed)">
-            <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3  </if>
+            <if test="condition.busSpeed=='otherBusSpeed'">and checkState !=0 and checkState !=1 and checkState !=2 and checkState !=3  and checkState !=7 and checkState !=8</if>
             <if test="condition.busSpeed!='otherBusSpeed'">and checkState =#{condition.busSpeed}  </if>
             </if>
             

@@ -422,7 +422,7 @@ function addrole(){
 
 //确认提交设置的授权
 function setpermission(dataId){
-	alert('AA');
+	//alert('AA');
 	var selectedList=[];
 	var superList=[];
 	var childList=[];
@@ -494,7 +494,7 @@ function setpermission(dataId){
          		 html+="</td></tr>";
          	 }
          	$('#treeSelectBody'). empty().append(html);
-         	
+         	alert("修改成功！");
          },
          error: function (res) {
              console.log(222);

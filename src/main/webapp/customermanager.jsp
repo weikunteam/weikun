@@ -624,6 +624,12 @@ border-color: #000;
 				小额贷款
 		{{#  } }}
 	</script>
+	<script id="loanAmount" type="text/html">
+	{{#  if(d.loanAmount !=null && d.loanAmount !=""){ }}
+    <span>{{d.loanAmount}}</span>
+	<em>元</em>
+	{{#  } }}
+	</script>
 	<script id="salesManAdviceProduct" type="text/html">
 		{{#  if(d.salesManAdviceProduct ==1){ }}
 				平安新一贷
@@ -766,7 +772,7 @@ border-color: #000;
 							field: 'loanAmount',
 							title: '放款金额',
 							templet:'#loanAmount',
-							width: '100'
+							width: '105'
 						},{
 							field: 'salesManAdviceProduct',
 							title: '我建议产品',

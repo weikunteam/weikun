@@ -42,12 +42,10 @@
 	
 </head>
 <body class="gray-bg2">
-<p><%=path %></p>
     <div class="wrapper wrapper-content"  id="statisipDataArea">
 		
         <div id="statisipArea" class="">
             <h3>角色管理</h3>
-            <button id="addRole" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addRoleModal">添加角色</button>
             <table id="treeSelectTable" class="table table-striped table-bordered">
                 <thead>
                     <tr><td>序号</td><td>角色名称</td><td>角色描述</td><td>操作</td></tr>

@@ -56,7 +56,7 @@
 <br>
 <div id="main" style="width: 1500px;height:700px;"></div>
 	<div id="refuseShow" style="display: none">
-		<p id="showErroInfo" style="color:red;font-weight: bold;font-size: 15px;">正在加载数据......请稍后.......</p>
+		<p id="showErroInfo" style="color:red;font-weight: bold;font-size: 15px;">正在加载数据...请稍后...</p>
 	</div>
 </body>
 <script type="text/javascript">

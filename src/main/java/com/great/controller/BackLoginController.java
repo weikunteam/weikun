@@ -42,20 +42,23 @@ public class BackLoginController {
 			System.out.println("success");
 			UserModel userModel=backLoginService.getUserBackGroundInfo(uBackGroundAccount);
 			
-			ArrayList<PermissionModel> perList = userModel.getRoleList().get(0).getPermissionList();
+			ArrayList<PermissionModel> perList = new ArrayList<PermissionModel>();
 			
-			for (int i = 0; i < perList.size(); i++) {
-				if (perList.get(i).getpId() == 0) {
-					perList.get(i).setOwnChild(0);
-					for (int j = 0; j < perList.size(); j++) {
-						if (perList.get(j).getpId() == perList.get(i).getPermissionId()) {
-							perList.get(i).setOwnChild(1);
-							break;
+			if(userModel.getRoleList().size()!=0) {
+				perList = userModel.getRoleList().get(0).getPermissionList();
+				for (int i = 0; i < perList.size(); i++) {
+					if (perList.get(i).getpId() == 0) {
+						perList.get(i).setOwnChild(0);
+						for (int j = 0; j < perList.size(); j++) {
+							if (perList.get(j).getpId() == perList.get(i).getPermissionId()) {
+								perList.get(i).setOwnChild(1);
+								break;
+							}
 						}
 					}
 				}
 			}
-			
+
 			session.setAttribute("backGroundUser", userModel);
 			System.out.println("后台用户id"+userModel.getUserId());
 			request.setAttribute("permissionList", userModel.getRoleList().get(0).getPermissionList());
