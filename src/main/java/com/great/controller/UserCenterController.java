@@ -124,10 +124,10 @@ public class UserCenterController {
                     sevice.put("state", "已通知");
                     break;
                 case 7:
-                    sevice.put("state", "未结算");
+                    sevice.put("state", "未结清");
                     break;
                 case 8:
-                    sevice.put("state", "已结算");
+                    sevice.put("state", "已结清");
                     break;
                 default:
                     break;
@@ -203,10 +203,10 @@ public class UserCenterController {
                     mySevice.put("state", "已通知");
                     break;
                 case 7:
-                    mySevice.put("state", "未结算");
+                    mySevice.put("state", "未结清");
                     break;
                 case 8:
-                    mySevice.put("state", "已结算");
+                    mySevice.put("state", "已结清");
                     break;
                 default:
                     break;
@@ -274,10 +274,10 @@ public class UserCenterController {
                     sevice.put("state", "已通知");
                     break;
                 case 7:
-                    sevice.put("state", "未结算");
+                    sevice.put("state", "未结清");
                     break;
                 case 8:
-                    sevice.put("state", "已结算");
+                    sevice.put("state", "已结清");
                     break;
                 default:
                     break;

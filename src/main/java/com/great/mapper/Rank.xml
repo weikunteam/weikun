@@ -10,7 +10,7 @@
             u.uPhone
         from TB_BUS_PAXYD b
                  inner join TB_USER u on u.userId = b.salesManId
-        where b.checkState = 2
+        where b.checkState in (2,7,8)
         GROUP BY b.salesManId
         ORDER BY num DESC
         LIMIT 5

@@ -35,6 +35,7 @@
         <if test="type !=null and type != ''">
             and type = #{type}
         </if>
+        order by applyDate desc
     </select>
 
     <update id="updateSuggestion">
@@ -61,6 +62,7 @@
         <if test="type !=null and type != ''">
             and type = #{type}
         </if>
+        order by applyDate desc
     </select>
 
     <update id="updateUserTel">

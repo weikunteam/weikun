@@ -106,7 +106,7 @@ background-color:#F5F5F5;
                             <c:if test="${uRegRecommendPeople != null and uRegRecommendPeople != ''}">
                             <div class="aui-palace-grid-icon1" style="margin-left: 0px;">
                                 <span>
-                                    ${uRegRecommendPeople}
+                                    ${uRegRecommendPeople.uPhone}
                                 </span>
                             </div>
                             <div class="aui-palace-grid-text">

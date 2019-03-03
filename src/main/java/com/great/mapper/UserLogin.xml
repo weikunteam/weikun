@@ -22,9 +22,9 @@
 	
 	<insert id="addUser">
 	insert into
-	  TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt,uRegRecommendPeople)
+	  TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt,uRegRecommendPeople,userType)
 	 values
-	        (#{tel},#{psw},#{date},#{selfCode},#{salt},#{recommendPeople})
+	        (#{tel},#{psw},#{date},#{selfCode},#{salt},#{recommendPeople},'1')
 	</insert>
 
 	<select id="getRecommendpeople" resultType="string">

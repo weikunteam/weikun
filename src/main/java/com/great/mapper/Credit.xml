@@ -9,6 +9,7 @@
         ,name
         ,applicantTel
         ,age
+        ,applicantJob
         ,sex
         ,type
         ,salesManId
@@ -43,6 +44,7 @@
                 ,#{name}
                 ,#{tel}
                 ,#{age}
+                ,#{job}
                 ,#{sex}
                 ,#{type}
                 ,#{salesManId}
@@ -80,7 +82,7 @@
     select userId from TB_USER
     where userType = 2
     and delState = 0
-    and userId = (select userId from TB_USER where uPhone = #{uRegRecommendPeople})
+    and userId = (select userId from TB_USER where userId = #{uRegRecommendPeople})
     </select>
 
 </mapper>

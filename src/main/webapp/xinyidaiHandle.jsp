@@ -130,6 +130,13 @@ background-color:white;
 					<i class="fa fa-calculator" aria-hidden="true" style="font-size: 13px;top: 12px;"></i>
         		</div>
     			</div>
+				<div class="form-group" style="margin-bottom: 5px;">
+					<label  class="col-xs-4 control-label text-right"><font color="#27408B">职业：</font></label>
+					<div class="col-xs-8 ">
+						<input type="text" class="form-control" id="job" placeholder="请输入职业">
+						<i class="fa fa-user" aria-hidden="true"></i>
+					</div>
+				</div>
     			<div class="form-group" style="margin-bottom: 5px;">
     			<label  class="col-xs-4 control-label text-right"><font color="#27408B">性别：</font></label>
                 <div class="radio-inline col-xs-3 radio radio-info" >
@@ -246,6 +253,7 @@ $("#submit").click(function(){
 	var name = $("#name").val();
 	var tel = $("#tel").val();
 	var age = $("#age").val();
+	var job = $("#job").val();
 	var sex = $("input[name='sex']:checked").val();
 	var houseRadio = $("input[name='houseRadio']:checked").val();
 	var houseMonth = $("#houseMonth").val();
@@ -279,6 +287,15 @@ $("#submit").click(function(){
 	}else{
 		if (age.length>4){
 			toastr.error("请输入正确年龄");
+			return false;
+		}
+	}
+	if(!job){
+		toastr.error("请输入职业");
+		return false;
+	}else{
+		if (job.length>20){
+			toastr.error("职业描述输入过长");
 			return false;
 		}
 	}
@@ -340,6 +357,7 @@ $("#submit").click(function(){
 	    	name:name,
 			tel:tel,
 	    	age:age,
+			job:job,
 	    	sex:sex,
 	    	houseRadio:houseRadio,
 	    	houseMonth:houseMonth,

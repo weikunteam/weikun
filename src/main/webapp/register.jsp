@@ -65,7 +65,7 @@
                 <div class="form-group">
                     <div class="form-inline">
                     <button type="button" class="btn btn-default" id="register">注册</button>
-                    <button type="button" class="btn btn-default" style="color: #00b4ef;background: #F8F8FF;margin-left:20%" id="login">登录</button>
+                    <button type="button" class="btn btn-default" style="color: #00b4ef;background: #F8F8FF;margin-left:20%" id="login">返回</button>
                     </div>
                 </div>
             </form>

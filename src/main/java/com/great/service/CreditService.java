@@ -16,18 +16,17 @@ public class CreditService {
     @Resource
     private CreditDao creditDao;
 
-    public void insertCredit(String name, int age, int sex, String houseRadio, String houseMonth,
-                          String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
-                          String moneyNum, String loanAmount, String userId,String tel,String type) {
+    public void insertCredit(String name, int age, String job, int sex, String houseRadio, String houseMonth,
+                             String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
+                             String moneyNum, String loanAmount, String userId, String tel, String type) {
         Integer salesManId = creditDao.getSalesManId(userId);
-        if (salesManId==null){
+        if (salesManId == null) {
             salesManId = 0;
         }
         creditDao.insertCredit(userId, loanAmount, "5", DateUtil.getDateTime(),
                 houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum
-                , name, age, sex,tel,type,salesManId);
+                , name, age, job, sex, tel, type, salesManId);
     }
-
 
 
 }
