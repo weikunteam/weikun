@@ -1131,7 +1131,7 @@ border-color: #000;
 								console.log("总页数---"+$(".layui-laypage-last").attr("data-page"));
 								console.log("总条数---"+$(".layui-laypage-count").html());
 								console.log("每页条数---"+$(".layui-laypage-limits").find("option:selected").val() );
-			                    $.ajax({
+<%-- 			                    $.ajax({
 			                        url: "<%=path%>userManager/deleteUserInfo.action",
 			                        type: "POST",
 			                        data: {deleteUserId:obj.data.userId},
@@ -1150,7 +1150,7 @@ border-color: #000;
 			                                layer.msg("删除失败", {icon: 5});
 			                            }
 			                        }
-			                    });
+			                    }); --%>
 			                    return false; 
 			                });
 			                

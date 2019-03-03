@@ -205,7 +205,7 @@
 		<where>
 		userType=1 and
 		delState=0
-            <if test="userPhone!=null">and uPhone = #{userPhone}</if>
+        and uPhone = #{userPhone}
         </where>
 	</select>
 	  <!-- 作者：czk -->

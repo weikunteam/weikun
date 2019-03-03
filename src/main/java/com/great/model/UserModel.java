@@ -24,6 +24,7 @@ public class UserModel {
 	private String job;//工作
 	
 	private ArrayList<RoleModel> roleList;//多个角色链表
+	private RoleModel roleModel;
 	
 	public UserModel() {
 		
@@ -164,6 +165,12 @@ public class UserModel {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	
 
+	public RoleModel getRoleModel() {
+		return roleModel;
+	}
+
+	public void setRoleModel(RoleModel roleModel) {
+		this.roleModel = roleModel;
+	}
 }

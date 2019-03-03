@@ -32,39 +32,12 @@ border-color: #000;
 </style>
 </head>
 <body class="gray-bg">
-<!--  	<div class="wrapper wrapper-content animated fadeInRight">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="ibox float-e-margins">
-					<div class="ibox-title">
-						<h5>我的客户管理</h5>
-						<div class="ibox-tools">
-							<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
-							</a> <a class="dropdown-toggle" data-toggle="dropdown"
-								href="graph_flot.html#"> <i class="fa fa-wrench"></i>
-							</a>
-							<ul class="dropdown-menu dropdown-user">
-								<li><a href="graph_flot.html#">选项1</a></li>
-								<li><a href="graph_flot.html#">选项2</a></li>
-							</ul>
-											                <a class="close-link">
-				                    <i class="fa fa-times"></i>
-				                </a>
-						</div>
-					</div> 
-					<div class="ibox-content"> -->
-						<!-- layUI Table组件内容 -->
+
 
 						<table lay-filter="test" class="layui-hide" id="test"
 							lay-skin="row"></table>
 
-<!-- 					</div>
-				</div>
-			</div>
-
-		</div>
-	</div> -->
-	<!-- 编辑修改 意向客户资质信息 -->
+	<!-- 提现失败理由信息 -->
 	<form class="layui-form layui-form-pane1" id="form1" name="form1"
 		style="display: none;">
 		<br />
@@ -88,7 +61,7 @@ border-color: #000;
 				<label class="layui-form-label"
 					style="width: 150px; font-weight: bold;"><span
 					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>
-					当前业务进度：</label>
+					当前提现状态：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="editCurrentCheckState" id="editCurrentCheckState" style="color:#0000FF;font-weight: bold;font-size: 17px;"
 						readonly="readonly" autocomplete="off" class="layui-input">
@@ -98,10 +71,20 @@ border-color: #000;
 				<label class="layui-form-label"
 					style="width: 150px; font-weight: bold;"><span
 					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>
-					签约经理姓名：</label>
+					提现客户姓名：</label>
 				<div class="layui-input-inline">
 					<input type="text" name="editContractMan" id="editContractMan" placeholder="未填写" 
 						readonly="readonly" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label"
+					style="width: 150px; font-weight: bold;"><span id="flag_InputLoanAmount"
+					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>提现金额:</label>
+				<div class="layui-input-inline">
+					<input type="text" name="editLoanAmount" id="editLoanAmount" readonly="readonly" 
+						typeCode="" lay-verify="" autocomplete="off" placeholder="未填写"
+						class="layui-input">
 				</div>
 			</div>
 		</div>
@@ -115,198 +98,12 @@ border-color: #000;
 						class="layui-input">
 				</div>
 			</div>
-
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;">客户意向产品:</label>
-				<div class="layui-input-inline">
-					<select name="editType" id="editType" lay-search="" lay-verify="">
-						<option value="">选择产品</option>
-						<option value="1">平安新一贷</option>
-						<option value="2">兴业消费金融</option>
-						<option value="3">中国银行消费金融</option>
-						<option value="4">海尔-玖康</option>
-						<option value="5">小额贷款</option>
-					</select>
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;">意向贷款金额:</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editApplicatExpectLoanAccount"
-						id="editApplicatExpectLoanAccount" typeCode=""
-						lay-verify="inputNumber" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">贷款人姓名：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editName" id="editName" 
-						lay-verify="" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">贷款人性别：</label>
-				<div class="layui-input-inline">
-					<select name="editSex" id="editSex" lay-search=""
-						lay-verify="">
-						<option value="">选择性别</option>
-						<option value="0">女</option>
-						<option value="1">男</option>
-					</select>
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;">贷款人职业 ：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editApplicantJob" id="editApplicantJob" lay-verify=""
-						autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">贷款人手机号：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editApplicantTel" id="editApplicantTel"
-						 lay-verify="tel" autocomplete="off"
-						class="layui-input">
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">房贷类型：</label>
-				<div class="layui-input-inline">
-					<select name="editHousingLoanType" id="editHousingLoanType"
-						lay-search="" lay-verify="">
-						<option value="">选择房贷类型</option>
-						<option value="0">按揭</option>
-						<option value="1">抵押</option>
-					</select>
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">房贷期限（月）：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editHousingLoanTerm"
-						id="editHousingLoanTerm"  lay-verify="inputNumber"
-						autocomplete="off" class="layui-input">
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">保单类型：</label>
-				<div class="layui-input-inline">
-					<select name="editWarrantyType" id="editWarrantyType" lay-search=""
-						lay-verify="">
-						<option value="">选择保单类型</option>
-						<option value="0">平安保单</option>
-						<option value="1">非平安保单</option>
-					</select>
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">保单期限（月）：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editWarrantyTerm"
-						id="editWarrantyTerm"  lay-verify="inputNumber"
-						autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">保单次数：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editWarrantyCount" id="editWarrantyCount"
-						 lay-verify="inputNumber" autocomplete="off"
-						class="layui-input">
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">公积金缴纳地址：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editAccumulationFundAddress" id="editAccumulationFundAddress" 
-						lay-verify="" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">公积金缴纳期限(月):</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editAccumulationFundTerm" id="editAccumulationFundTerm" 
-						lay-verify="inputNumber" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">公积金缴纳金额(元):</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editAccumulationFundAmount" id="editAccumulationFundAmount" 
-						lay-verify="inputNumber" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">是否有营业执照：</label>
-				<div class="layui-input-inline">
-					<select name="editOwnBusinessLicense" id="editOwnBusinessLicense" lay-search=""
-						lay-verify="">
-						<option value="">选择是否拥有</option>
-						<option value="0">无</option>
-						<option value="1">有</option>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">客户经理建议产品:</label>
-				<div class="layui-input-inline">
-					<select name="editSalesManAdviceProduct" id="editSalesManAdviceProduct"
-						lay-search="" lay-verify="">
-						<option value="">选择产品</option>
-						<option value="1">平安新一贷</option>
-						<option value="2">兴业消费金融</option>
-						<option value="3">中国银行消费金融</option>
-						<option value="4">海尔-玖康</option>
-						<option value="5">小额贷款</option>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 150px;font-weight: bold;">客户经理备注：</label>
-				<div class="layui-input-inline">
-					<textarea name="editSalesManRemarkAndAdvice"
-						id="editSalesManRemarkAndAdvice" lay-search=""  lay-verify=""
-						style="width: 800px; height: 100px;" placeholder="客户经理备注以及建议"
-						class="layui-textarea"></textarea>
-				</div>
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"> <span
-					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>签约经理备注：</label>
-				<div class="layui-input-inline">
-					<textarea name="editContractManRemarkAndAdvice"
-						id="editContractManRemarkAndAdvice" lay-search="" lay-verify="" readonly="readonly" 
-						style="width: 800px; height: 100px;" placeholder="未填写"
-						class="layui-textarea"></textarea>
-				</div>
-			</div>
 		</div>
 		<div class="layui-form-item" id="ApplyFailReason_Item">
 			<div class="layui-inline">
 				<label class="layui-form-label"
 					style="width: 150px; font-weight: bold;"><span
-					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>不可申请原因：</label>
+					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>提现失败原因：</label>
 				<div class="layui-input-inline">
 					<textarea name="editApplyFailReason" id="editApplyFailReason"
 						lay-search="" lay-verify="" style="width: 800px; height: 100px;"placeholder="未填写" readonly="readonly" 
@@ -326,48 +123,7 @@ border-color: #000;
 				</div>
 			</div>
 		</div>
-		<div class="layui-form-item" id="LoanInfo_Item">
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span id="flag_InputLoanStartDate"
-					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>放款日期：</label>
-				<div class="layui-input-inline" id="editLoanStartDate_Input_LineItem">
-					<input type="text" name="editLoanStartDate_Input" placeholder="未填写" readonly="readonly" 
-						id="editLoanStartDate_Input"   lay-verify=""
-						readonly="readonly" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline"  id="editFinalProduct_Input_LineItem">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span
-					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>最终签约产品：</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editFinalProduct_Input"
-						id="editFinalProduct_Input" typeCode="" lay-verify="" placeholder="未填写" readonly="readonly" 
-						readonly="readonly" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span id="flag_InputLoanAmount"
-					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>放款金额:</label>
-				<div class="layui-input-inline">
-					<input type="text" name="editLoanAmount" id="editLoanAmount" readonly="readonly" 
-						typeCode="" lay-verify="" autocomplete="off" placeholder="未填写"
-						class="layui-input">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label"
-					style="width: 150px; font-weight: bold;"><span id="flag_InputRepaymentDate"
-					style="color: blue; font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>每月还款日期：</label>
-				<div class="layui-input-inline" id="editRepaymentDate_Input_LineItem">
-					<input type="text" name="editRepaymentDate_Input"
-						id="editRepaymentDate_Input" lay-verify="" readonly="readonly" placeholder="未填写"
-						autocomplete="off" class="layui-input">
-				</div>
-			</div>
-		</div>
+	
 		<div class="layui-form-item">
 			<div class="layui-input-block" style="margin-left: 1100px;">
 				<button class="layui-btn  layui-btn-submit " id="demo11"
@@ -678,124 +434,24 @@ border-color: #000;
     {{#  } }}
 	</script>
 	<script id="handleBarDemo" type="text/html">
-	{{#  if(d.checkState ==5 && d.checkState !=null){ }}
+	{{#  if(d.withdrawState ==0&& d.withdrawState !=null){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 			<a class="layui-btn layui-btn-xs callCustomer" lay-event="callCustomer" style="background-color: red">通知客户</a>
-    {{# }if(d.checkState ==6 && d.checkState !=null){ }}
+    {{# }if(d.withdrawState ==6 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-	{{# }if(d.checkState !=5 && d.checkState !=6 && d.checkState !=null){ }}
+	{{# }if(d.withdrawState !=5 && d.checkState !=6 && d.checkState !=null){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     {{#  } }}
 	</script>
 	<!-- 类型在Table上的 “显示转换” -->
-	<script id="sex" type="text/html">
-		{{#  if(d.sex ==0){ }}
-				女
-    	{{# }if(d.sex ==1) { }}
-				男
-		{{#  } }}
-	</script>
-	<script id="type" type="text/html">
-		{{#  if(d.type ==1){ }}
-				平安新一贷
-    	{{# }if(d.type ==2) { }}
-				兴业消费金融
-    	{{# }if(d.type ==3) { }}
-				中国银行消费金融
-    	{{# }if(d.type ==4) { }}
-				海尔-玖康
-    	{{# }if(d.type ==5) { }}
-				小额贷款
-		{{#  } }}
-	</script>
-	<script id="finalProduct" type="text/html">
-		{{#  if(d.finalProduct ==1){ }}
-				平安新一贷
-    	{{# }if(d.finalProduct ==2) { }}
-				兴业消费金融
-    	{{# }if(d.finalProduct ==3) { }}
-				中国银行消费金融
-    	{{# }if(d.finalProduct ==4) { }}
-				海尔-玖康
-    	{{# }if(d.finalProduct ==5) { }}
-				小额贷款
-		{{#  } }}
-	</script>
-	<script id="loanAmount" type="text/html">
-	{{#  if(d.loanAmount !=null && d.loanAmount !=""){ }}
-    <span>{{d.loanAmount}}</span>
+	<script id="amount" type="text/html">
+	{{#  if(d.amount !=null && d.amount !=""){ }}
+    <span>{{d.amount}}</span>
 	<em>元</em>
 	{{#  } }}
-	</script>
-	<script id="salesManAdviceProduct" type="text/html">
-		{{#  if(d.salesManAdviceProduct ==1){ }}
-				平安新一贷
-    	{{# }if(d.salesManAdviceProduct ==2) { }}
-				兴业消费金融
-    	{{# }if(d.salesManAdviceProduct ==3) { }}
-				中国银行消费金融
-    	{{# }if(d.salesManAdviceProduct ==4) { }}
-				海尔-玖康
-    	{{# }if(d.salesManAdviceProduct ==5) { }}
-				小额贷款
-		{{#  } }}
-	</script>
-	<script id="applicatExpectLoanAccount" type="text/html">
-	{{#  if(d.applicatExpectLoanAccount !=null && d.applicatExpectLoanAccount !=""){ }}
-    <span>{{d.applicatExpectLoanAccount}}</span>
-	<em>元</em>
-	{{#  } }}
-	</script>
-	<script id="housingLoanType" type="text/html">
-    {{#  if(d.housingLoanType ==0){ }}
-			按揭
-    {{# }if(d.housingLoanType ==1) { }}
-			抵押
-    {{#  } }}
-	</script>
-	<script id="housingLoanTerm" type="text/html">
-	{{#  if(d.housingLoanTerm !=null && d.housingLoanTerm !=""){ }}
-    <span>{{d.housingLoanTerm}}</span>
-	<em>月</em>
-	{{#  } }}
-	</script>
-	<script id="warrantyType" type="text/html">
-	{{#  if(d.warrantyType ==0){ }}
-			平安保单
-    {{# }if(d.warrantyType ==1) { }}
-			非平安保单
-	{{#  } }}
-	</script>
-	<script id="warrantyTerm" type="text/html">
-		{{#  if(d.warrantyTerm !=null && d.warrantyTerm !=""){ }}
-		<span>{{d.warrantyTerm}}</span>
-		<em>月</em>
-		{{#  } }}
-	</script>
-	<script id="accumulationFundTerm" type="text/html">
-		{{#  if(d.accumulationFundTerm !=null && d.accumulationFundTerm !=""){ }}
-		<span>{{d.accumulationFundTerm}}</span>
-		<em>月</em>
-		{{#  } }}
-	</script>
-	<script id="loanTerm" type="text/html">
-		{{#  if(d.accrualType ==0 && d.accrualType !=null){ }}
-				<span>{{d.loanTerm}}</span>
-				<em>月</em>
-    	{{# }if(d.accrualType ==1 && d.accrualType !=null) { }}
-				<span>{{d.loanTerm}}</span>
-				<em>年</em>
-		{{#  } }}
-	</script>
-	<script id="ownBusinessLicense" type="text/html">
-		{{#  if(d.ownBusinessLicense ==0){ }}
-				无
-    	{{# }if(d.ownBusinessLicense ==1) { }}
-				有
-		{{#  } }}
 	</script>
 	<script src="layui.js" charset="utf-8"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
@@ -816,7 +472,7 @@ border-color: #000;
 					even:true,
 					//cellMinWidth: 170,
 					cols: [
-						[
+/* 						[
 							{align: 'center', title: '贷款人信息', colspan: 7},
 							{align: 'center', title: '放款信息', colspan: 3},
 							{align: 'center', title: '客户经理意向', colspan: 2},
@@ -824,121 +480,30 @@ border-color: #000;
 							{align: 'center', title: '房贷详情', colspan: 2},
 							{align: 'center', title: '保单详情', colspan: 3},
 							{align: 'center', title: '公积金详情', colspan: 4}
-							],
+							], */
 						[{
 							field: 'applyDate',
-							title: '业务申请日期',
+							title: '提现申请日期',
 							//minWidth: '166px',
 							width: '165',
 							sort: true
 						}, {
-							field: 'name',
-							title: '贷款人姓名',
+							field: 'withdrawName',
+							title: '提现人姓名',
 							width: '110'
 						}, {
-							field: 'sex',
-							title: '性别',
-							templet:'#sex',
-							width: '61'
+							field: 'amount',
+							title: '提现金额',
+							templet:'#amount',
+							width: '110'
 						},  {
-							field: 'applicantJob',
-							title: '职业',
+							field: 'withdrawCard',
+							title: '银行卡号',
 							width: '115'
 						},{
-							field: 'applicantTel',
-							title: '手机号',
-							width: '120'
-						}, {
-							field: 'type',
-							title: '意向产品',
-							templet:'#type',
-							width: '115'
-						}, {
-							field: 'applicatExpectLoanAccount',
-							title: '意向贷款金额',
-							templet:'#applicatExpectLoanAccount',
-							width: '121'
-						}, {
-							field: 'loanStartDate',
-							title: '放款时间',
-							//templet:'#housingLoanType',
-							width: '114',
-							sort: true
-						}, {
-							field: 'finalProduct',
-							title: '最终签约产品',
-							templet:'#finalProduct',
-							width: '123'
-						}, {
-							field: 'loanAmount',
-							title: '放款金额',
-							templet:'#loanAmount',
-							width: '105'
-						},{
-							field: 'salesManAdviceProduct',
-							title: '我建议产品',
-							templet:'#salesManAdviceProduct',
-							width: '152'
-						}, {
-							field: 'salesManRemarkAndAdvice',
-							title: '我的备注',
-							width: '126'
-						}, {
-							field: 'contractManName',
-							title: '签约经理姓名',
-							templet:'#contractManName',
-							width: '123'
-						},{
-							field: 'contractManRemarkAndAdvice',
-							title: '签约经理备注',
-							//templet:'#housingLoanType',
-							width: '126'
-						},{
-							field: 'housingLoanType',
-							title: '房贷类型',
-							templet:'#housingLoanType',
-							width: '91'
-						}, {
-							field: 'housingLoanTerm',
-							title: '房贷期限',
-							templet:'#housingLoanTerm',
-							width: '92'
-						}, {
-							field: 'warrantyType',
-							title: '保单类型',
-							templet:'#warrantyType',
-							width: '101'
-						}, {
-							field: 'warrantyTerm',
-							title: '保单期限',
-							templet:'#warrantyTerm',
-							width: '91'
-						}, {
-							field: 'warrantyCount',
-							title: '保单次数',
-							width: '100'
-						}, {
-							field: 'accumulationFundAddress',
-							title: '公积金缴纳地址',
-							width: '136'
-						}, {
-							field: 'accumulationFundTerm',
-							title: '公积金缴纳期限(月份）',
-							templet:'#accumulationFundTerm',
-							width: '190'
-						}, {
-							field: 'accumulationFundAmount',
-							title: '公积金缴纳金额',
-							width: '136'
-						},  {
-							field: 'ownBusinessLicense',
-							title: '是否有营业执照',
-							templet:'#ownBusinessLicense',
-							width: '147'
-						},  {
 							//隐藏的“列名”========================
-							field: 'paxydBusId',
-							title: '平安新一贷业务id',
+							field: 'id',
+							title: '提现id',
  							minWidth: '0%',
 							width: '0%',
 							type: 'space',
@@ -946,39 +511,18 @@ border-color: #000;
 							sort: true
 						}, {
 							field: 'userId',
-							title: '公众号注册人id',
+							title: '体现人id',
  							minWidth: '0%',
 							width: '0%',
 							type: 'space',
 							style: 'display:none;', 
-							sort: true
-						},{
-							field: 'salesManId',
-							title: '客户经理id',
- 							minWidth: '0%',
-							width: '0%',
-							type: 'space',
-							style: 'display:none;', 
-							sort: true
-						}, {
-							field: 'checkState',
-							title: '审核状态',
-							minWidth: '0%',
-							width: '0%',
-							type: 'space',
-							style: 'display:none;',
 							sort: true
 						}, {
 							fixed: 'right',
-							title: '客户状态',
+							title: '提现状态',
 							width: '8%',
 							toolbar: '#stateBarDemo',
-						}, {
-							fixed: 'right',
-							title: '签约进度',
-							width: '7%',
-							toolbar: '#speedBarDemo',
-						}, {
+						},{
 							fixed: 'right',
 							title: '可进行操作',
 							width: '12%',

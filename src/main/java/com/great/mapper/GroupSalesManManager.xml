@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-<mapper namespace="com.great.dao.CustomerManagerDao">
+<mapper namespace="com.great.dao.GroupSalesManManagerDao">
       <!-- 作者：czk -->
       <!-- 说明：获取所有客户数量 -->
 	<select id="getCustomerCount" resultType="String">
@@ -9,7 +9,8 @@
 		count(*) 
 		from TB_BUS_PAXYD
 		<where>
-            <if test="salesManId!=null">salesManId = #{salesManId} </if>
+            <if test="teamLeader!=null and teamLeader!=''">salesManId in(select teamMate from TB_TEAM where teamLeader =  #{teamLeader})</if>
+            <if test="teamMate!=null and teamMate!=''">and salesManId = #{teamMate}</if>
             <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">and name like "%"#{condition.name}"%"  </if>
              <if test="@com.great.util.Ognl@isNotEmpty(condition.applicantTel)">and applicantTel like "%"#{condition.applicantTel}"%"  </if>
              
@@ -35,7 +36,8 @@
 		*
 		from TB_BUS_PAXYD  
 		<where>
-            <if test="salesManId!=null">salesManId = #{salesManId} </if>
+            <if test="teamLeader!=null and teamLeader!=''">salesManId in(select teamMate from TB_TEAM where teamLeader =  #{teamLeader})</if>
+            <if test="teamMate!=null and teamMate!=''">and salesManId = #{teamMate}</if>
             <if test="@com.great.util.Ognl@isNotEmpty(condition.name)">and name like "%"#{condition.name}"%"  </if>
             <if test="@com.great.util.Ognl@isNotEmpty(condition.applicantTel)">and applicantTel like "%"#{condition.applicantTel}"%"  </if>
             
@@ -96,6 +98,18 @@
 	<association property="contractManModel" column="contractManId"  javaType="com.great.model.UserModel"  select="queryManagerById"/>
 	<association property="contractManName" column="contractManId"  javaType="java.lang.String"  select="queryManagerNameById"/>
 	 </resultMap>
+	   <!-- 作者：czk -->
+      <!-- 说明：获取组内成员下拉框列表 -->
+	 <select id="getGroupSalesManSelectList"   parameterType="java.lang.String" resultType="com.great.model.UserModel">
+		select 
+		* 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0 and
+        userId in (select teamMate from TB_TEAM where teamLeader =  #{teamLeader})
+        </where>
+	</select>
       <!-- 作者：czk -->
       <!-- 说明：删除客户信息 -->
 	<insert id="deleteUserInfo"  parameterType="java.lang.Integer">
@@ -228,5 +242,4 @@
         userId = #{userId} 
         </where>
 	</select>
-	
 </mapper>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.great.dao.BackUserManagerDao">
+      <!-- 作者：czk -->
+      <!-- 说明：获取所有业务员数量 -->
+	<select id="getBackUserCount" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0
+            <if test="userName!=null and userName!=''">and userName like "%"#{userName}"%" </if>
+            <if test="uBackGroundAccount!=null and uBackGroundAccount!=''">and uBackGroundAccount like "%"#{uBackGroundAccount}"%" </if>
+        	<if test="roleId!=null and roleId!=''">and userId in(select userId from TB_RELATION_USER_ROLE where roleId = #{roleId}) </if> 
+        </where>
+	</select>
+      <!-- 作者：czk -->
+      <!-- 说明：带条件、分页查询业务员信息 -->
+	<select id="getBackUserList" resultMap="resultListBackUser">
+		select 
+		*
+		from TB_USER  
+		<where>
+		userType=2 and
+		delState=0
+            <if test="userName!=null and userName!=''">and userName like "%"#{userName}"%" </if>
+            <if test="uBackGroundAccount!=null and uBackGroundAccount!=''">and uBackGroundAccount like "%"#{uBackGroundAccount}"%" </if>
+			<if test="roleId!=null and roleId!=''">and userId in(select userId from TB_RELATION_USER_ROLE where roleId = #{roleId}) </if> 
+        </where>
+		limit #{queryInitCount}  , #{limit}
+	</select>
+	
+	<resultMap type="com.great.model.UserModel" id="resultListBackUser">
+	 	<id column="userId" property="userId"/>
+	 	<collection property="roleList" column="userId" javaType="java.util.List" select="selectRoleList" />
+	 </resultMap>
+	 
+	 <select id="selectRoleList" resultType="com.great.model.RoleModel" parameterType="java.lang.Integer">
+	 	select * from TB_ROLE where roleId in (select roleId from TB_RELATION_USER_ROLE where userId = #{id})
+	 </select>
+	 
+	   <!-- 作者：czk -->
+      <!-- 说明：获取角色下拉框的列表 -->
+	 <select id="getRoleSelectList" resultType="com.great.model.RoleModel" >
+	 	select * from TB_ROLE where 1=1
+	 </select>
+	 
+      <!-- 作者：czk -->
+      <!-- 说明：删除业务员信息 -->
+	<insert id="deleteBackUserInfo"  parameterType="java.lang.Integer">
+	UPDATE 
+	TB_USER 
+	SET 
+	delState = 1
+	where userId=#{deleteSalesManId}
+	</insert>
+      <!-- 作者：czk -->
+      <!-- 说明：添加单笔后台用户信息  非客户经理-->
+	<insert id="addBackUserInfo" parameterType="com.great.model.UserModel">
+	INSERT INTO 
+	TB_USER
+	(userName,uBackGroundAccount,uBackGroundPsw,userType,delState) 
+	values 
+	(#{userName},#{uBackGroundAccount},#{uBackGroundPsw},2,0)
+	</insert>
+	      <!-- 作者：czk -->
+      <!-- 说明：添加单笔后台用户信息  客户经理 -->
+	<insert id="addSalesManInfo"  parameterType="java.lang.String">
+	UPDATE 
+	TB_USER 
+	SET 
+	userType = 2,
+	delState = 0,
+	userName = #{userName},
+	uBackGroundAccount = #{uBackGroundAccount},
+	uBackGroundPsw = #{uBackGroundPsw}
+	where uPhone=#{uPhone}
+	</insert>
+	   <!-- 作者：czk -->
+      <!-- 说明：添加单笔后台用户角色 -->
+	<insert id="addBackUserRole" parameterType="java.lang.Integer">
+	INSERT INTO 
+	TB_RELATION_USER_ROLE
+	(userId,roleId) 
+	values 
+	(#{userId},#{roleId})
+	</insert>
+      <!-- 作者：czk -->
+      <!-- 说明：重置密码 -->
+	<insert id="editBackUserInfo" parameterType="com.great.model.UserModel">
+	UPDATE 
+	TB_USER 
+	SET 
+	uBackGroundPsw = '123456'
+	WHERE 
+	userId = #{userId}
+	</insert>
+	  <!-- 作者：czk -->
+      <!-- 说明：查询所有客户经理 -->
+	<select id="queryAllSalesMan"  resultType="com.great.model.UserModel">
+		select 
+		*
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0  and
+		userId in(select userId from TB_RELATION_USER_ROLE where roleId = 4)
+        </where>
+	</select>
+		  <!-- 作者：czk -->
+      <!-- 说明：查询组长下的组员 -->
+	<select id="queryTeamMate" parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
+		select 
+		*
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0  and
+		userId in(select teamMate from TB_TEAM where teamLeader =  #{teamLeader})
+        </where>
+	</select>
+			  <!-- 作者：czk -->
+      <!-- 说明：查询其他组长下的组员 -->
+	<select id="queryOtherTeamMate" parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
+		select 
+		*
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0  and
+		userId in(select teamMate from TB_TEAM where teamLeader !=  #{teamLeader})
+        </where>
+	</select>
+			  <!-- 作者：czk -->
+      <!-- 说明：查询还未分配的组员 -->
+	<select id="queryNotDistribute"  resultType="com.great.model.UserModel">
+		select 
+		*
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0  and
+		userId not in(select teamMate from TB_TEAM ) and
+		userId in(select userId from TB_RELATION_USER_ROLE where roleId = 4)
+        </where>
+	</select>
+		 <!-- 作者：czk -->
+     <!-- 说明: 先将分组表中 把有关组长自己的 组员的数据初始化，删除清空 -->
+	<delete id="clearTeamLeader" parameterType="java.lang.String" > 
+	delete from TB_TEAM where teamLeader =  #{teamLeader}
+	</delete>
+	 <!-- 作者：czk -->
+     <!-- 说明: 先将分组表中 要添加的组员的数据初始化，删除清空 -->
+	<delete id="clearTeamMate" parameterType="java.lang.String" > 
+	delete from TB_TEAM where teamMate =  #{teamMate}
+	</delete>
+		 <!-- 作者：czk -->
+     <!-- 说明: 将组长 组员添加到 分组表 -->
+	<insert id="addTeamMate" parameterType="java.lang.String" >
+	INSERT INTO 
+	TB_TEAM 
+	( teamLeader, teamMate )
+    VALUES
+    ( #{teamLeader}, #{teamMate} )
+	</insert>
+      <!-- 作者：czk -->
+      <!-- 说明：验证手机号是否存在 -->
+	<select id="verifyBackUserPhone" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+		userType=1 and
+		delState=0
+        and uPhone = #{uPhone}
+        </where>
+	</select>
+	      <!-- 作者：czk -->
+      <!-- 说明：验证后台账号是否被注册 -->
+	<select id="verifyBackUserAccount" resultType="String">
+		select 
+		count(*) 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0
+        and uBackGroundAccount = #{uBackGroundAccount}
+        </where>
+	</select>
+      <!-- 作者：czk -->
+      <!-- 说明：通过userId获取业务员信息 -->
+ 	<select id="queryBackUserById"  parameterType="java.lang.Integer"  resultType="com.great.model.UserModel">
+		select 
+		* 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0 and 
+        userId = #{userId} 
+        </where>
+	</select>
+	      <!-- 作者：czk -->
+      <!-- 说明：通过账号获取后台用户信息 -->
+ 	<select id="queryBackUserByAccount"  parameterType="java.lang.String"  resultType="com.great.model.UserModel">
+		select 
+		* 
+		from TB_USER
+		<where>
+		userType=2 and
+		delState=0 and 
+        uBackGroundAccount = #{uBackGroundAccount} 
+        </where>
+	</select>
+</mapper>
