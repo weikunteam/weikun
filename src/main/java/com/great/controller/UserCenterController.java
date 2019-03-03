@@ -32,7 +32,9 @@ public class UserCenterController {
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
         Map<String, Object> map = userCenterService.getUser(userId);
         mv.addObject("people", map);
-        mv.addObject("uRegRecommendPeople", userCenterService.getUser(map.get("uRegRecommendPeople").toString()));
+        if(map.get("uRegRecommendPeople")!=null){
+            mv.addObject("uRegRecommendPeople", userCenterService.getUser(map.get("uRegRecommendPeople").toString()));
+        }
         mv.setViewName("userCenter");
         return mv;
     }
@@ -368,5 +370,7 @@ public class UserCenterController {
         }
         return new ResponseApi("1", "搜索成功", list,null);
     }
+
+
 
 }

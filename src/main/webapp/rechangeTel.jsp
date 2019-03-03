@@ -32,7 +32,7 @@
         <div class="aui-sides-form">
             <a href="javascript:;" class="aui-flex b-line">
                 <div class="aui-sides-form-text">
-                    <h2>手机号码:</h2>
+                    <h2>手机号:</h2>
                 </div>
                 <div class="aui-flex-box">
                     <label class="cell-right">
@@ -43,7 +43,7 @@
 
             <a href="javascript:;" class="aui-flex b-line">
                 <div class="aui-sides-form-text">
-                    <h2>验&nbsp;证&nbsp;&nbsp;码:</h2>
+                    <h2>验证码:</h2>
                 </div>
                 <div class="aui-flex-box">
                     <label class="cell-right ">
@@ -62,11 +62,6 @@
     var path = "${path}";
 </script>
 <script src="${path}js/rechangeTel.js"></script>
-/* $(function() {
-
-$(".aui-code-line-input").addClear();
-
-});*/
 </body>
 
 </html>

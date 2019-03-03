@@ -66,7 +66,7 @@ background-color:#FFFACD;
 <img  src="${path}img/share.jpg" style="width:100%;"  ></img>
 </div>
 <div class="form-group">
-<img src="${path}img/money.jpg" id="topimg" style="width:100%;"></img>
+<img src="${path}img/money.jpg"  style="width:100%;"></img>
 </div>
 <div class="container-fluid">
     <div class="row">
@@ -89,7 +89,7 @@ background-color:#FFFACD;
 				</div>
 				<div class="form-group text-left" >
 				<label class="control-label" style="font-size:80%"><font style="color:red;">
-				2、当您每成功发展1名徒弟即可获得10积分</font></label>
+				2、当您每成功发展1名徒弟即可有机会获得奖励</font></label>
 				</div>
 				<div class="form-group text-left" >
 				<label class="control-label" style="font-size:80%"><font style="color:red;">
@@ -144,7 +144,7 @@ background-color:#FFFACD;
 	    	    title: '中天商务', // 分享标题
 	    	    desc: '测试分享功能', // 分享描述
 	    	    link: location.href.split('#')[0], // 分享链接
-	    	    imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', // 分享图标
+	    	    imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
 	    	    success: function () { 
 	    	       /*  toastr.error("分享成功");	 */
@@ -160,7 +160,7 @@ background-color:#FFFACD;
 				title: '中天商务', // 分享标题
 				desc: '测试分享功能', // 分享描述
 				link: location.href.split('#')[0], // 分享链接
-				imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', //  分享图标
+				imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', //  分享图标
 				success: function () {
 					// 用户确认分享后执行的回调函数
 					$("#topImg").css("display","none");
@@ -174,7 +174,7 @@ background-color:#FFFACD;
 	    	    title: '中天商务', // 分享标题
 	    	    desc: '测试分享功能', // 分享描述
 	    	    link: location.href.split('#')[0], // 分享链接
-	    	    imgUrl: 'http://23t46112h9.iok.la/OfficialAccounts/img/ac1.jpg', // 分享图标
+	    	    imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
 	    	    success: function () { 
 	    	       /*  toastr.error("分享成功");	 */
@@ -189,9 +189,9 @@ background-color:#FFFACD;
 		});
 		
 		wx.error(function(res){
-            /* alert('error') */
+            // alert('error')
             // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-        }); 
+        });
 		
 		$("#shareBtn").on("click",function(){
 			$("#topImg").css("display","block");

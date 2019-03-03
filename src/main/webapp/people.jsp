@@ -90,11 +90,7 @@
 </section>
 
 <script type="text/javascript" charset="utf-8">
-   /* $(function() {
 
-        $(".aui-code-line-input").addClear();
-
-    });*/
    toastr.options = {
        "closeButton": false, //是否显示关闭按钮
        "debug": false, //是否使用debug模式

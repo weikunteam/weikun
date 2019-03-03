@@ -51,12 +51,12 @@ public class ShareController {
         map.put("nonceStr", nonceStr);
         map.put("timestamp", timestamp);
         map.put("signature", signature);
-        map.put("appid","wxa8ea59e08c089ec5");//测试时写死
+        map.put("appid","wxbd637f57bc04981d");//测试时写死
         return map;
     }
 	
 	@RequestMapping(value="/gotoShare.action",method= RequestMethod.GET)
-	public ModelAndView login(){
+	public ModelAndView gotoShare(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("recommend");
 		return mv;

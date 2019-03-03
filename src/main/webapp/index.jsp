@@ -96,7 +96,9 @@ $("#login").click(function(){
 	          if(data.code == '1'){
 	        	  if("${param.isUserCenter}"==1){
 	        		  window.location.href = "${path}userCenter/gotoUserCenter.action";
-	        	  }else{
+	        	  }else if ("${param.isRecommend}"==1){
+                      window.location.href = "${path}share/recommend.action";
+                  }else{
 	        		  window.location.href = "${path}home/gotoHome.action";
 	        	  }
 	          }else if(data.code == '2'){

@@ -9,9 +9,12 @@ import org.apache.http.util.EntityUtils;
 import com.alibaba.fastjson.JSONObject;
 
 public class ShareUtil {
+
+	private final static String appid = "wxbd637f57bc04981d";
+	private final static String appsecret = "7bc40feb9c299c132943fb02d14fbc3f";
 	
 	public static String getaccessToken(){
-		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxa8ea59e08c089ec5&secret=ae5930b011442cca9afcc488a96a5c79";
+		String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+appid+"&secret="+appsecret;
 		String resultStr="";
 		try {
 			DefaultHttpClient httpClient = new DefaultHttpClient();

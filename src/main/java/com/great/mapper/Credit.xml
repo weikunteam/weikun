@@ -76,7 +76,7 @@
     </insert>
 
 
-    <select id="getSalesManId" resultType="int">
+    <select id="getSalesManId" resultType="java.lang.Integer">
     select userId from TB_USER
     where userType = 2
     and delState = 0

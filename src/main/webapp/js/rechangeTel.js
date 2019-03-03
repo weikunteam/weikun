@@ -63,37 +63,37 @@ function settime(obj) { //发送验证码倒计时
 
 }
 
-$("#submit").click(function(){
+$("#submit").click(function () {
     var tel = $("#inputTel").val();
     var code = $("#code").val();
     var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
-    if(!tel){
+    if (!tel) {
         toastr.error("请输入手机号");
         return false;
     }
-    if(!reg.test(tel)){
+    if (!reg.test(tel)) {
         toastr.error("请输入正确手机号");
         return false;
     }
-    if(!code){
+    if (!code) {
         toastr.error("请输入验证码");
         return false;
     }
     $.ajax({
-        type:"post",
-        url:path+"userCenter/rechangeTel.action",
+        type: "post",
+        url: path + "userCenter/rechangeTel.action",
         dataType: 'json',
-        data :{
-            tel:tel,
-            code:code
+        data: {
+            tel: tel,
+            code: code
         },
-        success:function(data){
-            if(data.code == '1'){
+        success: function (data) {
+            if (data.code == '1') {
                 toastr.success(data.msg);
-                setTimeout(function(){
-                    window.location.href = path+"userCenter/gotoPeople.action";
-                },2000);
-            }else if(data.code == '2'){
+                setTimeout(function () {
+                    window.location.href = path + "userCenter/gotoPeople.action";
+                }, 2000);
+            } else if (data.code == '2') {
                 toastr.error(data.msg);
             }
         }

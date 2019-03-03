@@ -14,5 +14,5 @@ public interface CreditDao {
                           @Param("accumulationFundAmount") String accumulationFundAmount,@Param("name")String name,
                           @Param("age") int age,@Param("sex")int sex,@Param("tel")String tel,@Param("type") String type
                           ,@Param("salesManId") int salesManId);
-    public int getSalesManId(@Param("uRegRecommendPeople")String uRegRecommendPeople);
+    public Integer getSalesManId(@Param("uRegRecommendPeople")String uRegRecommendPeople);
 }

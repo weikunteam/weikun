@@ -19,9 +19,13 @@ public class CreditService {
     public void insertCredit(String name, int age, int sex, String houseRadio, String houseMonth,
                           String warrantyRadio, String warrantyMonth, String warrantyCount, String moneyYear,
                           String moneyNum, String loanAmount, String userId,String tel,String type) {
-        creditDao.insertCredit(userId, loanAmount, "0", DateUtil.getDateTime(),
+        Integer salesManId = creditDao.getSalesManId(userId);
+        if (salesManId==null){
+            salesManId = 0;
+        }
+        creditDao.insertCredit(userId, loanAmount, "5", DateUtil.getDateTime(),
                 houseRadio, houseMonth, warrantyRadio, warrantyMonth, warrantyCount, moneyYear, moneyNum
-                , name, age, sex,tel,type,creditDao.getSalesManId(userId));
+                , name, age, sex,tel,type,salesManId);
     }
 
 

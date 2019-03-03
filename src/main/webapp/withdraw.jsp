@@ -62,7 +62,7 @@
                     </div>
                     <div class="aui-flex-box">
                         <label class="cell-right ">
-                            <input type="text" class="aui-code-line-input" name="search" value="" id="card" autocomplete="off" placeholder="请输入提现银行卡号"/>
+                            <input type="text" class="aui-code-line-input" name="search" value="" id="card" autocomplete="off" placeholder="请输入银行卡号"/>
                         </label>
                     </div>
                 </a>
@@ -159,6 +159,18 @@
                     }
             }
         });
+    })
+
+    $("input,textarea").on("blur",function(){
+        setTimeout(function(){
+            window.scrollTo(0,0);
+        },100)
+    }).on('focus',function(){
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        var offsetTop = $(this).offset().top - (clientHeight / 4);
+        setTimeout(function(){
+            window.scrollTo(0,offsetTop);
+        },100)
     })
 </script>
 </html>
