@@ -73,8 +73,8 @@
   function initEcharts(){
 	// 基于准备好的dom，初始化echarts实例
 	  var myChart = echarts.init(document.getElementById('main'));
-	  var base = +new Date(2018, 11, 01);//月份减1的 正常是 01 01 减1 为0 01
-	  var baseX = new Date("2018-12-01");//这里月份要正常输入
+	  var base = +new Date(2019, 2, 01);//月份减1的 正常是 01 01 减1 为0 01
+	  var baseX = new Date("2019-03-01");//这里月份要正常输入
 	  var oneDay = 24 * 3600 * 1000;
 	  var date = [];
 	  var dateArray=[];
