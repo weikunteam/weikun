@@ -11,8 +11,11 @@
 		<where>
 		userType=1 and
 		delState=0
-            <if test="name!=null">and uPhone like "%"#{name}"%" </if>
+            <if test="condition.uPhone!=null and condition.uPhone!=''">and uPhone like "%"#{condition.uPhone}"%" </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateStart)">and registerTime &gt;= #{condition.applyDateStart}  </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateEnd)">and registerTime &lt;= #{condition.applyDateEnd}  </if> 
         </where>
+        ORDER BY registerTime DESC
 	</select>
       <!-- 作者：czk -->
       <!-- 说明：带条件、分页查询客户信息 -->
@@ -23,8 +26,11 @@
 		<where>
 		userType=1 and
 		delState=0
-            <if test="name!=null">and uPhone like "%"#{name}"%" </if>
+            <if test="condition.uPhone!=null and condition.uPhone!=''">and uPhone like "%"#{condition.uPhone}"%" </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateStart)">and registerTime &gt;= #{condition.applyDateStart}  </if>
+            <if test="@com.great.util.Ognl@isNotEmpty(condition.applyDateEnd)">and registerTime &lt;= #{condition.applyDateEnd}  </if> 
         </where>
+        ORDER BY registerTime DESC
 		limit #{queryInitCount}  , #{limit}
 	</select>
 	

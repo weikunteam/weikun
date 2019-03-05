@@ -104,7 +104,7 @@ $(function () {
 	});*/
 	//删除
 	$("#treeSelectBody").on('click', '.deleteBtn', function () {
-		var dataId=$(this).data('id');
+/*		var dataId=$(this).data('id');
 		console.log("删除的id---"+dataId);
 		//获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp 
 		var curWwwPath=window.document.location.href;  
@@ -141,7 +141,7 @@ $(function () {
 		html2+="<button type='button' class='btn btn-primary' id='deleteSave' onclick='deleterole("+dataId+")'>确认删除</button>";
 		$("#roleDeleteBody").empty().append(html);
 		$("#buttonBody2").empty().append(html2);
-		$('#roleDeleteModal').modal('show');
+		$('#roleDeleteModal').modal('show');*/
     });
 
 	//授权

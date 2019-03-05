@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.great.model.ConditionModel;
 import com.great.model.LayUITableResponseModel;
 import com.great.model.UserModel;
 import com.great.service.UserManagerService;
@@ -32,13 +34,13 @@ public class UserManagerController {
 	//获取客户数据列表
 	@RequestMapping(value="/getUserList.action",method= RequestMethod.GET)
 	@ResponseBody
-	public LayUITableResponseModel getUserList(String page,String limit,String name) {
-		System.out.println("name"+page);
-		System.out.println("name"+limit);
-		System.out.println("name"+name);
+	public LayUITableResponseModel getUserList(String page,String limit,ConditionModel condition) {
+		System.out.println("UPHONE"+condition.getuPhone());
+		System.out.println("STRAT"+condition.getApplyDateStart());
+		System.out.println("END"+condition.getApplyDateEnd());
 		int queryInitCount=(Integer.valueOf(page).intValue()-1)*Integer.valueOf(limit).intValue();
-		ArrayList<UserModel> userList=userManagerService.getUserList(queryInitCount, Integer.valueOf(limit).intValue(),name);
-		int userCount= Integer.valueOf(userManagerService.getUserCount(name)).intValue();
+		ArrayList<UserModel> userList=userManagerService.getUserList(queryInitCount, Integer.valueOf(limit).intValue(),condition);
+		int userCount= Integer.valueOf(userManagerService.getUserCount(condition)).intValue();
 		LayUITableResponseModel layUITableResponseModel=new LayUITableResponseModel(0,"ms",userCount,userList);
 		return layUITableResponseModel;
 	}

@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.great.dao.UserManagerDao;
+import com.great.model.ConditionModel;
 import com.great.model.ResponseApi;
 import com.great.model.UserModel;
 
@@ -19,17 +20,17 @@ public class UserManagerService {
 	@Resource
 	private ResponseApi responseApi;
 	
-	public ArrayList<UserModel> getUserList(int queryInitCount,int limit,String name) {
+	public ArrayList<UserModel> getUserList(int queryInitCount,int limit,ConditionModel condition) {
 		
-		ArrayList <UserModel> userList = userManagerDao.getUserList(queryInitCount, limit,name);
+		ArrayList <UserModel> userList = userManagerDao.getUserList(queryInitCount, limit,condition);
 		if (null!=userList && 0!=userList.size()) {
 			return userList;
 		}else {
 			return null;
 		}
 }
-	public String getUserCount(String name) {
-		String userCount=userManagerDao.getUserCount(name);
+	public String getUserCount(ConditionModel condition) {
+		String userCount=userManagerDao.getUserCount(condition);
 		if(null!=userCount && !"".equals(userCount)) {
 			return userCount;
 		}else {

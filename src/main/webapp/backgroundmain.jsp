@@ -11,11 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <title>H+ 后台主题UI框架 - 主页</title>
-
-    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
-
+    <title>中天商务后台管理系统</title>
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -37,7 +33,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
+                           <!--  <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span> -->
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                <span class="block m-t-xs" style="font-size: 20px;"><strong class="font-bold">${backGroundUser.userName}</strong></span>
@@ -49,7 +45,7 @@
                                 </span>
                                 </span>
                             </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+<!--                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a class="J_menuItem" href="form_avatar.html">修改头像</a>
                                 </li>
                                 <li><a class="J_menuItem" href="profile.html">个人资料</a>
@@ -61,7 +57,7 @@
                                 <li class="divider"></li>
                                 <li><a href="backlogin.jsp">安全退出</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <div class="logo-element">H+
                         
@@ -100,7 +96,7 @@
                 	</c:if>
                 </c:forEach>
                     
-                    <li>
+ <%--                    <li>
 					    <a class="J_menuItem"  href="<%=path%>/usermanager.jsp">
 					    <i class="fa fa-columns"></i> 
 					    <span class="nav-label">=============</span>
@@ -119,9 +115,9 @@
 					    <i class="fa fa-columns"></i> 
 					    <span class="nav-label">业务员管理</span>
 					    </a>
-					</li>
+					</li> --%>
 					
-				<li>
+<%-- 				<li>
 				        <a href="#">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">贷款业务管理</span>
@@ -135,7 +131,7 @@
 							<a class="J_menuItem" href="index_v1.html" data-index="0">建行科技金融</a>
 						</li>
 					</ul>
-				</li>
+				</li> --%>
 			 </ul>
 <!-- 				<li>
                         <a href="#">
@@ -579,7 +575,7 @@
                 <a href="<%=path%>backlogin.jsp" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
              <div class="row J_mainContent" id="content-main">
-                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v148b2.html?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="" frameborder="0" data-id="index_v1.html" seamless></iframe>
             </div>
               <div class="footer">
                 <div class="pull-right">&copy; 2014-2015 <a href="" target="_blank">author:chenzekun </a></div>

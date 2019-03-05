@@ -12,12 +12,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>H+ 后台主题UI框架 - 登录</title>
-<meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-<meta name="description"
-	content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
-<title>layui</title>
+<title>中天商务后台登录</title>
 <!-- layUI 所需组件-->
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -36,16 +32,20 @@
 <script src="layui.js" charset="utf-8"></script>
 </head>
 
-<body class="gray-bg">
+<body class="gray-bg" style="text-align:center;">
 
     <div class="middle-box text-center loginscreen  animated fadeInDown">
         <div>
             <div>
 
-                <h1 class="logo-name">H+</h1>
-
+                <h1 class="logo-name" style="color:red;">發</h1>
+				<br>
+				<br>
+				<br>
             </div>
-            <h3>欢迎使用 H+</h3>
+            <h3 style="font-size: 30px;">欢迎使用</h3>
+            <h3 style="font-size: 30px;">中天商务后台管理系统</h3>
+            <br>
 <!-- 				<form class="layui-form layui-form-pane1" id="form1" name="form1"
 		style="display: none;"> -->
             <form class="layui-form m-t"  id="backLoginForm" name="backLoginForm"  action="<%=path%>backLogin/BackLogin.action" method="post">
@@ -56,11 +56,11 @@
                 <div class="form-group">
                     <input type="password"  id="uBackGroundPsw"  name="uBackGroundPsw"  class="form-control" placeholder="密码" required="" lay-verify="required">
                 </div>
-                <a href="<%=path%>systemAction/getRoleList.action">555</a>
+               <%--  <a href="<%=path%>systemAction/getRoleList.action">555</a> --%>
                 <button lay-submit=""   id="backLogin" lay-filter="backLogin" class="layui-btn  layui-btn-submit block full-width m-b">登 录</button>
 					<!-- class="layui-btn  layui-btn-submit "  -->
 <!-- class="btn layui-btn  layui-btn-submit  block full-width m-b" -->
-                <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+               <!--  <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a> -->
                 </p>
             </form>
         </div>

@@ -118,7 +118,7 @@
 	<script id="toolbarDemo" type="text/html">
 			<div class="layui-btn-container">
 				<div>
-				<button class="layui-btn" id="addUser" style="margin-top: 10px;><label style="font-weight: bold;font-size: 12px;">添加单条数据<label/></button>
+				<button class="layui-btn" id="addUser" style="margin-top: 10px;><label style="font-weight: bold;font-size: 12px;">添加后台人员<label/></button>
 				</div>
 				<span style="float:left;margin-top: 10px;">
 						<label style="font-weight: bold;font-size: 15px;">搜索名字：<label/>

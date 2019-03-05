@@ -14,7 +14,10 @@ public class ConditionModel {
 	private String busSpeed;
 	private String applyDateStart;
 	private String applyDateEnd;
-
+	
+	private String uPhone;
+	
+	
 	public ConditionModel() {
 		// TODO Auto-generated constructor stub
 	}
@@ -89,6 +92,14 @@ public class ConditionModel {
 
 	public void setApplyDateEnd(String applyDateEnd) {
 		this.applyDateEnd = applyDateEnd;
+	}
+
+	public String getuPhone() {
+		return uPhone;
+	}
+
+	public void setuPhone(String uPhone) {
+		this.uPhone = uPhone;
 	}
 
 }
