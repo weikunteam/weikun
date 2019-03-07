@@ -32,7 +32,7 @@ public class UserCenterController {
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
         Map<String, Object> map = userCenterService.getUser(userId);
         mv.addObject("people", map);
-        if(map.get("uRegRecommendPeople")!=null){
+        if (map.get("uRegRecommendPeople") != null) {
             mv.addObject("uRegRecommendPeople", userCenterService.getUser(map.get("uRegRecommendPeople").toString()));
         }
         mv.setViewName("userCenter");
@@ -322,16 +322,23 @@ public class UserCenterController {
 
     @RequestMapping(value = "/withdraw.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi withdraw(String id, String card, String name, String amount) {
-        userCenterService.insertWithdraw(id, card, name, amount);
-        return new ResponseApi("1", "提交成功");
+    public ResponseApi withdraw(String id, String card, String name, String amount, HttpServletRequest request) {
+        int money = Integer.parseInt(((Map<String, Object>) request.getSession().getAttribute("user")).get("uRecommendAmount").toString());
+        int inputMoney = Integer.parseInt(amount);
+        if (inputMoney < money) {
+            userCenterService.insertWithdraw(id, card, name, amount);
+            return new ResponseApi("1", "提交成功");
+        }else{
+            return new ResponseApi("2", "超出可提现金额");
+        }
+
     }
 
     @RequestMapping(value = "/gotoWithdrawList.action", method = RequestMethod.GET)
     public ModelAndView gotoWithdrawList(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<WithdrawModel> list = userCenterService.listWithdraw(userId,null);
+        List<WithdrawModel> list = userCenterService.listWithdraw(userId, null);
         for (WithdrawModel withdraw : list) {
             switch (withdraw.getWithdrawState()) {
                 case 0:
@@ -354,7 +361,7 @@ public class UserCenterController {
     @ResponseBody
     public ResponseApi searchWithdraw(HttpServletRequest request, String state) {
         String userId = ((Map<String, Object>) request.getSession().getAttribute("user")).get("userId").toString();
-        List<WithdrawModel> list = userCenterService.listWithdraw(userId,state);
+        List<WithdrawModel> list = userCenterService.listWithdraw(userId, state);
         for (WithdrawModel withdraw : list) {
             switch (withdraw.getWithdrawState()) {
                 case 0:
@@ -368,9 +375,8 @@ public class UserCenterController {
                     break;
             }
         }
-        return new ResponseApi("1", "搜索成功", list,null);
+        return new ResponseApi("1", "搜索成功", list, null);
     }
-
 
 
 }

@@ -2,9 +2,11 @@ package com.great.service;
 
 import com.great.dao.UserCenterDao;
 import com.great.dao.UserLoginDao;
+import com.great.enumerate.RedisKeyEnum;
 import com.great.model.WithdrawModel;
 import com.great.util.DateUtil;
 import com.great.util.SendCodeUtil;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,6 +19,8 @@ public class UserCenterService {
     private UserCenterDao userCenterDao;
     @Resource
     private UserLoginDao userLoginDao;
+    @Resource
+    private RedisTemplate<String,String> redisTemplate;
 
     public void updateUser(String userName, String age, String job, String userId) {
         userCenterDao.updateUser(userName, age, job, userId);
@@ -40,7 +44,8 @@ public class UserCenterService {
 
     public boolean updateTel(String uPhone, String code, String userId) {
         try {
-            if (SendCodeUtil.checkCode(uPhone, code)) {
+            String redisCode = redisTemplate.opsForValue().get(RedisKeyEnum.USER_CODE.key()+uPhone);
+            if (SendCodeUtil.checkCodeByAli(code,redisCode)) {
                 userCenterDao.updateUserTel(userId, uPhone);
                 return true;
             } else {

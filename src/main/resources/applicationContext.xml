@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
@@ -14,42 +15,66 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
-		
-	default-init-method="myinit" default-destroy-method="mydestroy"  default-lazy-init="true">
+
+       default-init-method="myinit" default-destroy-method="mydestroy" default-lazy-init="true">
+    <!-- 加载文件 -->
+    <context:property-placeholder location="classpath:redis.properties"/>
 
 
-	<!-- 配置数据库连接池 -->
-	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
-	destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://47.98.170.225:3306/weikun?useUnicode=true&amp;characterEncoding=utf8" />
-		<property name="username" value="weikun" />
-		<property name="password" value="weikun" />
-		 
-	</bean>
+    <!-- 配置数据库连接池 -->
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://47.98.170.225:3306/weikun?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="weikun"/>
+        <property name="password" value="weikun"/>
 
-	<!-- 配置SqlSessionFactoryBean-->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="myDataSource" />
-		<property name="mapperLocations" value="classpath:com/great/mapper/*.xml" />
-	</bean>
+    </bean>
+
+    <!-- 配置SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource"/>
+        <property name="mapperLocations" value="classpath:com/great/mapper/*.xml"/>
+    </bean>
 
 
+    <!-- 配置MapperScannerConfigurer -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="basePackage" value="com.great.dao"/>
+        <!--  <property name="annotationClass" value="org.great.annotation.MyBatisRepository" />
+     -->
+    </bean>
+    <!-- 开启组件扫描 -->
+    <context:component-scan base-package="com.great"/>
+    <!-- PECTJ注解 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- jedis 配置 -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
 
-	<!-- 配置MapperScannerConfigurer -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
- 		<property name="sqlSessionFactory" ref="sqlSessionFactory" /> 
-		<property name="basePackage" value="com.great.dao" />
-		<!--  <property name="annotationClass" value="org.great.annotation.MyBatisRepository" />
-	 -->
-	 </bean>
-	
+        <property name="minIdle" value="${redis.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis.maxWait}"/>
 
-	<!-- 开启组件扫描 -->
-	<context:component-scan base-package="com.great" />
-
-   <!-- PECTJ注解 -->
-   <aop:aspectj-autoproxy proxy-target-class="true" />
-	
-
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+    </bean>
+    <!-- redis服务器中心 -->
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="poolConfig" ref="poolConfig"/>
+        <property name="port" value="${redis.port}"/>
+        <property name="hostName" value="${redis.host}"/>
+        <property name="password" value="${redis.pass}"/>
+        <property name="timeout" value="${redis.timeout}"/>
+    </bean>
+    <!-- redis操作模板，面向对象的模板 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <!-- 如果不配置Serializer，那么存储的时候只能使用String，如果用对象类型存储，那么会提示错误 -->
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+        </property>
+    </bean>
 </beans>

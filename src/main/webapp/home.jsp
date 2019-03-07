@@ -123,12 +123,12 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>50000</h2>
+                                <h2>500000</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
-                                <h4>即刻到账</h4>
-                                <h5>千元日费用0.1元</h5>
+                                <h4>1-2个工作日放款</h4>
+                                <h5>万元日利率2.8元</h5>
                             </div>
                             <div class="aui-text-two">
                                 <a href="${path}xinyidaiHandle.jsp" class="btn btn-info"
@@ -149,12 +149,12 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>50000</h2>
+                                <h2>400000</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
-                                <h4>即刻到账</h4>
-                                <h5>千元日费用0.1元</h5>
+                                <h4>2-3个工作日放款</h4>
+                                <h5>万元日利率3.3元</h5>
                             </div>
                             <div class="aui-text-two">
                                 <a href="${path}xingyeHandle.jsp" class="btn btn-info"
@@ -170,17 +170,17 @@
                                 <img src="${path}images/zhongyin.png" alt="">
                             </div>
                             <div class="aui-flex-box">
-                                <h3><font size="4px">中行消费金融</font></h3>
+                                <h3><font size="4px">中银消费金融</font></h3>
                             </div>
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>50000</h2>
+                                <h2>400000</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
-                                <h4>即刻到账</h4>
-                                <h5>千元日费用0.1元</h5>
+                                <h4>2-3个工作日放款</h4>
+                                <h5>万元日利率3.3元</h5>
                             </div>
                             <div class="aui-text-two">
                                 <a href="${path}zhonghangHandle.jsp" class="btn btn-info"
@@ -201,12 +201,12 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>50000</h2>
+                                <h2>200000</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
-                                <h4>即刻到账</h4>
-                                <h5>千元日费用0.1元</h5>
+                                <h4>2-3个工作日访客量</h4>
+                                <h5>万元日利率3.3元</h5>
                             </div>
                             <div class="aui-text-two">
                                 <a href="${path}haierHandle.jsp" class="btn btn-info"
@@ -228,12 +228,12 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>50000</h2>
+                                <h2>1-20万</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
-                                <h4>即刻到账</h4>
-                                <h5>千元日费用0.1元</h5>
+                                <h4>当天放款</h4>
+                                <h5>万元日利率3-5.2元</h5>
                             </div>
                             <div class="aui-text-two">
                                 <a href="${path}smallamount.jsp" class="btn btn-info"

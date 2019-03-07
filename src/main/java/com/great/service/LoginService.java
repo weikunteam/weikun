@@ -6,9 +6,12 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
+import com.great.enumerate.RedisKeyEnum;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.ParseException;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 
@@ -23,6 +26,8 @@ public class LoginService {
 	private UserLoginDao userLoginDao;
 	@Resource
 	private ResponseApi responseApi;
+	@Resource
+	private RedisTemplate<String, String> redisTemplate;
 	
 	public ResponseApi login(String tel,String pwd,HttpServletRequest request) {
 		
@@ -46,7 +51,8 @@ public class LoginService {
 	public ResponseApi register(String tel,String pwd,String code,String recommendCode) {
 		
 		try {
-			if (SendCodeUtil.checkCode(tel, code)) {
+			String redisCode = redisTemplate.opsForValue().get(RedisKeyEnum.USER_CODE.key()+tel);
+			if (SendCodeUtil.checkCodeByAli(code,redisCode)) {
 				String date = DateUtil.getDateTime();
 				String selfCode = Long.toHexString(Long.parseLong(tel));
 				String salt = PasswordUtil.getNextSalt();
@@ -65,7 +71,9 @@ public class LoginService {
 	}
 	public void sendCode(String mobile) {
 		try {
-			SendCodeUtil.getCode(mobile);
+//			SendCodeUtil.getCode(mobile);
+			String code = SendCodeUtil.sendByAli(mobile);
+			redisTemplate.opsForValue().set(RedisKeyEnum.USER_CODE.key()+mobile, code);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
