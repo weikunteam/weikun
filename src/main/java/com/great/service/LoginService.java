@@ -2,6 +2,7 @@ package com.great.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -74,6 +75,7 @@ public class LoginService {
 //			SendCodeUtil.getCode(mobile);
 			String code = SendCodeUtil.sendByAli(mobile);
 			redisTemplate.opsForValue().set(RedisKeyEnum.USER_CODE.key()+mobile, code);
+			redisTemplate.expire(RedisKeyEnum.USER_CODE.key()+mobile, 10, TimeUnit.MINUTES);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

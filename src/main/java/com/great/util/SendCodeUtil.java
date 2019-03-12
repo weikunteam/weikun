@@ -246,7 +246,9 @@ public class SendCodeUtil {
     }
 
     public static boolean checkCodeByAli(String code,String redisCode) {
-        if (redisCode.equals(code)) {
+        if (redisCode == null){
+            return false;
+        }else  if (redisCode.equals(code)) {
             return true;
         }
         return false;
