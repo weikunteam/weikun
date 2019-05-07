@@ -17,6 +17,7 @@
 <script src="${path}js/bootstrap.js"></script>
 <script src="${path}js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="${path}js/jquery.qrcode.min.js"></script>
 <style type="text/css">
 #topImg{
 display:none;
@@ -29,7 +30,18 @@ filter:alpha(Opacity=80);
 -moz-opacity:0.5;
 opacity: 0.6;
 }
-
+#qrCodeImg{
+    display:none;
+    position:absolute;
+    z-index:2;
+    width:100%;
+    height:100%;
+    background:#000;
+    filter:alpha(Opacity=80);
+    -moz-opacity:0.8;
+    opacity: 0.8;
+    text-align:center;
+}
 .text-with-hr {
     text-align: center;
     position: relative;
@@ -65,6 +77,9 @@ background-color:#FFFACD;
 <div id="topImg">
 <img  src="${path}img/share.jpg" style="width:100%;"  ></img>
 </div>
+<div id="qrCodeImg">
+<img  src="" style="margin-top: 35em"  ></img>
+</div>
 <div class="form-group">
 <img src="${path}img/money.jpg"  style="width:100%;"></img>
 </div>
@@ -79,6 +94,7 @@ background-color:#FFFACD;
                 </div>
                 <div class="form-group">  
       			<a href="#" class="btn btn-info shareBtn" style="padding-top:1%;padding-bottom:1%;" id="shareBtn">分享</a>
+                <a href="#" class="btn btn-info shareBtn" style="padding-top:1%;padding-bottom:1%;" id="qrCodeBtn">二维码</a>
       			</div>
                 <div class="text-with-hr">
     			<span><font size="3" color="#CDC9C9">使用规则</font></span>
@@ -111,7 +127,19 @@ background-color:#FFFACD;
 </div>
 
 </body>
+<script type="text/javascript">
+    jQuery("#qrCodeImg").qrcode({
+    width:200,
+    height:200,
+    render:"canvas", //设置渲染方式 table canvas
+    typeNumber : -1, //计算模式
+    correctLevel : 0,//纠错等级
+    background :"#ffffff",//背景颜色
+    foreground :"#000000",//前景颜色
+    text: location.href.split('#')[0]
+    });
 
+</script>
 <script type="text/javascript">
 	$(function(){
 		$.ajax({
@@ -141,8 +169,8 @@ background-color:#FFFACD;
 		wx.ready(function () {
 			//分享到朋友
 			wx.onMenuShareAppMessage({
-	    	    title: '中天商务', // 分享标题
-	    	    desc: '测试分享功能', // 分享描述
+				title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
+				desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
 	    	    link: location.href.split('#')[0], // 分享链接
 	    	    imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
@@ -157,8 +185,8 @@ background-color:#FFFACD;
 			});
 			//分享到QQ
 			wx.onMenuShareQQ({
-				title: '中天商务', // 分享标题
-				desc: '测试分享功能', // 分享描述
+				title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
+				desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
 				link: location.href.split('#')[0], // 分享链接
 				imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', //  分享图标
 				success: function () {
@@ -171,8 +199,8 @@ background-color:#FFFACD;
 				}
 			});
 			wx.onMenuShareTimeline({
-	    	    title: '中天商务', // 分享标题
-	    	    desc: '测试分享功能', // 分享描述
+				title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
+				desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
 	    	    link: location.href.split('#')[0], // 分享链接
 	    	    imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
@@ -199,6 +227,12 @@ background-color:#FFFACD;
 		$("#topImg").on("click",function(){
 			$("#topImg").css("display","none");
 		});
+        $("#qrCodeBtn").on("click",function(){
+            $("#qrCodeImg").css("display","block");
+        });
+        $("#qrCodeImg").on("click",function(){
+            $("#qrCodeImg").css("display","none");
+        });
 	});
 </script>
 </html>

@@ -268,11 +268,11 @@
                             </div>
                             <div class="aui-flex-box">
                                 <h4>极速批卡</h4>
-                                <h5>成功核卡返现2%</h5>
+                                <h5>优惠活动多</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="javascript:void(0)" class="btn btn-info"
-                                   style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                                <a href="https://ecentre.spdbccc.com.cn/creditcard/indexActivity.htm?data=F1903140917419481902" class="btn btn-info"
+                                   style="padding-top:0px;padding-bottom:0px;">申请</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
                             </div>
@@ -289,16 +289,16 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>55%</h2>
+                                <h2>75%</h2>
                                 <p>通过率</p>
                             </div>
                             <div class="aui-flex-box">
                                 <h4>极速批卡</h4>
-                                <h5>成功核卡返现2%</h5>
+                                <h5>优惠活动多</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="javascript:void(0)" class="btn btn-info"
-                                   style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                                <a href="https://wm.cib.com.cn/html/webapp/fast-issue/parnter.html?id=47a702006ee44dcfa1f94ded0fa345ba&from=groupmessage&isappinstalled=0" class="btn btn-info"
+                                   style="padding-top:0px;padding-bottom:0px;">申请</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
                             </div>
@@ -315,16 +315,16 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>45%</h2>
+                                <h2>85%</h2>
                                 <p>通过率</p>
                             </div>
                             <div class="aui-flex-box">
                                 <h4>极速批卡</h4>
-                                <h5>成功核卡返现2%</h5>
+                                <h5>优惠活动多</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="javascript:void(0)" class="btn btn-info"
-                                   style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                                <a href="https://creditcard.cmbc.com.cn/wsv2/?scene=0&clicktime=1552527146&from=groupmessage&isappinstalled=0" class="btn btn-info"
+                                   style="padding-top:0px;padding-bottom:0px;">申请</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
                             </div>
@@ -341,16 +341,16 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>55%</h2>
+                                <h2>85%</h2>
                                 <p>通过率</p>
                             </div>
                             <div class="aui-flex-box">
                                 <h4>极速批卡</h4>
-                                <h5>成功核卡返现2%</h5>
+                                <h5>优惠活动多</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="javascript:void(0)" class="btn btn-info"
-                                   style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                                <a href="https://bank-static.pingan.com.cn/creditcard/life/marketing/WsRecommendCardM2/WsRecommendCardM2.html?recommendChineseName=%E5%BE%90%E8%B4%B5%E7%9A%87&recommendPhone=18750679966&MGMAD=https%3A%2F%2Fbank-static.pingan.com.cn%2Fca%2Fccssa%2FLkpg%2Fhtml%2F681843f6e94e4a3fb96b0133af47e177.html%3FlinkId%3D681843f6e94e4a3fb96b0133af47e177&rec_no=&rec_type=&media_source=&channel_source=12&source=kdapp&outerSource=mgm4-201712&activity_Id=V0978&activity_FlowId=m_C0MbvpQvYy4K84NL9966&SSLSOURCE=BROP-CMP" class="btn btn-info"
+                                   style="padding-top:0px;padding-bottom:0px;">申请</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
                             </div>
@@ -367,16 +367,16 @@
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>15%</h2>
+                                <h2>75%</h2>
                                 <p>通过率</p>
                             </div>
                             <div class="aui-flex-box">
                                 <h4>极速批卡</h4>
-                                <h5>成功核卡返现2%</h5>
+                                <h5>优惠活动多</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="javascript:void(0)" class="btn btn-info"
-                                   style="padding-top:0px;padding-bottom:0px;">咨询</a>
+                                <a href="https://creditcard.ecitic.com/m/tjbk/card_list.html?uid=TJ43811925&sid=SJWXTJBK8" class="btn btn-info"
+                                   style="padding-top:0px;padding-bottom:0px;">申请</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
                             </div>
@@ -622,8 +622,8 @@
         wx.ready(function () {
             //分享到朋友
             wx.onMenuShareAppMessage({
-                title: '中天商务', // 分享标题
-                desc: '测试分享功能', // 分享描述
+                title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
+                desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
                 link: location.href.split('#')[0], // 分享链接
                 imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
                 type: 'link', // 分享类型,music、video或link，不填默认为link
@@ -638,8 +638,8 @@
             });
             //分享到QQ
             wx.onMenuShareQQ({
-                title: '中天商务', // 分享标题
-                desc: '测试分享功能', // 分享描述
+                title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
+                desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
                 link: location.href.split('#')[0], // 分享链接
                 imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', //  分享图标
                 success: function () {
@@ -652,8 +652,8 @@
                 }
             });
             wx.onMenuShareTimeline({
-                title: '中天商务', // 分享标题
-                desc: '测试分享功能', // 分享描述
+                title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
+                desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
                 link: location.href.split('#')[0], // 分享链接
                 imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
                 type: 'link', // 分享类型,music、video或link，不填默认为link

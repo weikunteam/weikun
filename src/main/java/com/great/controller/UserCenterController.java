@@ -6,6 +6,8 @@ import com.great.model.WithdrawModel;
 import com.great.service.LoginService;
 import com.great.service.UserCenterService;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ValueConstants;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.util.List;
@@ -25,7 +28,7 @@ public class UserCenterController {
     @Resource
     private UserCenterService userCenterService;
 
-
+    private static Logger logger = LoggerFactory.getLogger(UserCenterController.class);
     @RequestMapping(value = "/gotoUserCenter.action", method = RequestMethod.GET)
     public ModelAndView gotoUserCenter(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
@@ -60,7 +63,12 @@ public class UserCenterController {
     public ModelAndView logout(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         request.getSession().invalidate();
+        Cookie [] cookies = request.getCookies();
+        for (Cookie cookie:cookies){
+            cookie.setMaxAge(0);//清除cookie
+        }
         mv.setViewName("index");
+        logger.info("用户{}退出", request.getSession().getAttribute("user"));
         return mv;
     }
 

@@ -1,6 +1,7 @@
 package com.great.util;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +18,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null){
+
+            for (Cookie cookie : cookies){
+                if (cookie.getName().equals("tel")){
+                    Map<String, Object> map = userLoginDao.getUser(cookie.getValue());//通过cookie的tel获得user对象
+                    request.getSession().setAttribute("user", map);
+                }
+            }
+        }
         Object object = request.getSession().getAttribute("user");
         String code = request.getParameter("code");
         if (object == null) {
