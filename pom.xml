@@ -25,11 +25,11 @@
 			<version>7.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-war-plugin</artifactId>
-			<version>3.0.0</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.maven.plugins</groupId>-->
+			<!--<artifactId>maven-war-plugin</artifactId>-->
+			<!--<version>3.0.0</version>-->
+		<!--</dependency>-->
  
 		<dependency>
 			<groupId>junit</groupId>
@@ -384,36 +384,36 @@
 			  </includes>
 		  </resource>-->
 	  </resources>
-	  <plugins>
-		  <plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-war-plugin</artifactId>
-			  <configuration>
-				  <!-- 对丢失web.xml检测机制进行忽略， Dynamic Web Module 3.0 工程时代不需要web.xml文件注册相关内容的，所以工程默认不生成web.xml。-->
-				  <failOnMissingWebXml>false</failOnMissingWebXml>
-			  </configuration>
-		  </plugin>
+	  <!--<plugins>-->
+		  <!--<plugin>-->
+			  <!--<groupId>org.apache.maven.plugins</groupId>-->
+			  <!--<artifactId>maven-war-plugin</artifactId>-->
+			  <!--<configuration>-->
+				  <!--&lt;!&ndash; 对丢失web.xml检测机制进行忽略， Dynamic Web Module 3.0 工程时代不需要web.xml文件注册相关内容的，所以工程默认不生成web.xml。&ndash;&gt;-->
+				  <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+			  <!--</configuration>-->
+		  <!--</plugin>-->
 
-		  <plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-compiler-plugin</artifactId>
-			  <version>3.7.0</version>
-			  <executions>
-				  <execution>
-					  <id>default-compile</id>
-					  <phase>compile</phase>
-					  <goals>
-						  <goal>compile</goal>
-					  </goals>
-				  </execution>
-			  </executions>
-			  <configuration>
-				  <!-- 使用jdk1版本时使用该配置，如果要使用jdk1.8，则下面2行要修改为1.8 -->
-				  <source>1.8</source>
-				  <target>1.8</target>
-				  <encoding>UTF-8</encoding>
-			  </configuration>
-		  </plugin>
-	  </plugins>
+		  <!--<plugin>-->
+			  <!--<groupId>org.apache.maven.plugins</groupId>-->
+			  <!--<artifactId>maven-compiler-plugin</artifactId>-->
+			  <!--<version>3.7.0</version>-->
+			  <!--<executions>-->
+				  <!--<execution>-->
+					  <!--<id>default-compile</id>-->
+					  <!--<phase>compile</phase>-->
+					  <!--<goals>-->
+						  <!--<goal>compile</goal>-->
+					  <!--</goals>-->
+				  <!--</execution>-->
+			  <!--</executions>-->
+			  <!--<configuration>-->
+				  <!--&lt;!&ndash; 使用jdk1版本时使用该配置，如果要使用jdk1.8，则下面2行要修改为1.8 &ndash;&gt;-->
+				  <!--<source>1.8</source>-->
+				  <!--<target>1.8</target>-->
+				  <!--<encoding>UTF-8</encoding>-->
+			  <!--</configuration>-->
+		  <!--</plugin>-->
+	  <!--</plugins>-->
   </build>
 </project>
