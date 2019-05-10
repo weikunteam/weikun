@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.great.dao.UserLoginDao;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import java.util.Map;
@@ -14,6 +16,8 @@ import java.util.Map;
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Resource
     private UserLoginDao userLoginDao;
+
+    private static Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request,
@@ -23,6 +27,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
             for (Cookie cookie : cookies){
                 if (cookie.getName().equals("tel")){
+                    logger.info("用户{}通过cookie获得session", cookie.getValue());
                     Map<String, Object> map = userLoginDao.getUser(cookie.getValue());//通过cookie的tel获得user对象
                     request.getSession().setAttribute("user", map);
                 }
