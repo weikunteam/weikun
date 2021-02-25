@@ -1,24 +1,19 @@
 package com.great.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import javax.annotation.Resource;
-import javax.ejb.ConcurrentAccessTimeoutException;
-import javax.servlet.http.HttpServletRequest;
-
 import com.great.dao.ShareDao;
-import com.sun.javafx.collections.MappingChange;
+import com.great.util.PasswordUtil;
+import com.great.util.ShareUtil;
+import com.great.util.SignUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.great.util.PasswordUtil;
-import com.great.util.ShareUtil;
-import com.great.util.SignUtil;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 @Controller
 @RequestMapping("/share")
 public class ShareController {

@@ -1,44 +1,40 @@
 package com.great.service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import com.great.dao.UserLoginDao;
+import com.great.enumerate.RedisKeyEnum;
+import com.great.model.ResponseApi;
+import com.great.util.DateUtil;
+import com.great.util.PasswordUtil;
+import com.great.util.SendCodeUtil;
+import com.great.util.ShareUtil;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.http.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.great.enumerate.RedisKeyEnum;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.ParseException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Service;
-
-
-import com.great.dao.UserLoginDao;
-import com.great.model.ResponseApi;
-import com.great.util.DateUtil;
-import com.great.util.PasswordUtil;
-import com.great.util.SendCodeUtil;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class LoginService {
     @Resource
     private UserLoginDao userLoginDao;
     @Resource
-    private ResponseApi responseApi;
-    @Resource
     private RedisTemplate<String, String> redisTemplate;
+    @Resource
+    private AmqpTemplate amqpTemplate;
 
     private static Logger log = LoggerFactory.getLogger(LoginService.class);
     public ResponseApi login(String tel, String pwd, HttpServletRequest request, HttpServletResponse response) {
-
-
+        ResponseApi responseApi = new ResponseApi();
         Map<String, Object> map = userLoginDao.getUser(tel);
         if (map != null) {
             pwd = DigestUtils.sha1Hex(pwd + map.get("salt"));
@@ -53,6 +49,7 @@ public class LoginService {
                 responseApi.setResponseApi("2", "密码错误");
             }
         } else {
+            log.info("用户:{}手机号未注册",tel);
             responseApi.setResponseApi("3", "手机号未注册");
         }
 
@@ -62,6 +59,7 @@ public class LoginService {
 
     public ResponseApi register(String tel, String pwd, String code, String recommendCode) {
 
+        ResponseApi responseApi = new ResponseApi();
         try {
             String redisCode = redisTemplate.opsForValue().get(RedisKeyEnum.USER_CODE.key() + tel);
             if (SendCodeUtil.checkCodeByAli(code, redisCode)) {
@@ -72,6 +70,11 @@ public class LoginService {
                 String recommendPeople = userLoginDao.getRecommendpeople(recommendCode);
                 userLoginDao.addUser(tel, pwd, date, selfCode, salt, recommendPeople);
                 responseApi.setResponseApi("2", "注册成功");
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("token", ShareUtil.getaccessToken());
+                params.put("tel",tel);
+                params.put("registerTime",date);
+                amqpTemplate.convertAndSend("sendMessage",params);
             } else {
                 responseApi.setResponseApi("3", "验证码不正确");
             }

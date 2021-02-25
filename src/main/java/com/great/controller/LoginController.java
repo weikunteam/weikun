@@ -1,9 +1,8 @@
 package com.great.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.great.model.ResponseApi;
+import com.great.service.GetOpenIdService;
+import com.great.service.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import com.great.model.ResponseApi;
-import com.great.service.LoginService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/login")
@@ -23,6 +22,8 @@ public class LoginController {
     private LoginService loginService;
     @Resource
     private ResponseApi responseApi;
+    @Resource
+    private GetOpenIdService getOpenIdService;
 
     final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 
@@ -63,12 +64,21 @@ public class LoginController {
 
     @RequestMapping(value = "/checkRepeat.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi checkRepea(String tel) {
+    public ResponseApi checkRepeat(String tel) {
         if (loginService.checkRepeat(tel)) {
             responseApi.setResponseApi("2", "手机号已注册");
         } else {
+            logger.info("手机号未注册:{}",tel);
             responseApi.setResponseApi("1", "手机号未注册");
         }
         return responseApi;
+    }
+
+    @RequestMapping("/getOpenId")
+    @ResponseBody
+    public void getOpenId(String code, HttpServletResponse response){
+        getOpenIdService.dealRespRedirect(response,getOpenIdService.wxCodeUrl(code));
+
+
     }
 }
