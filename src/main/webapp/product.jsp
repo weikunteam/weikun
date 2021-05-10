@@ -12,6 +12,8 @@
     <link rel='stylesheet' href='${path}css/login1.css'>
     <link rel='stylesheet' href='${path}css/toastr.min.css'>
     <link href="${path}css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${path}css/cardstyle.css" rel="stylesheet" type="text/css"/>
+    <link href="${path}css/introductionstyle.css" rel="stylesheet" type="text/css"/>
     <script src="${path}js/jQuery.js"></script>
     <script src="${path}js/toastr.min.js"></script>
     <script src="${path}js/bootstrap.js"></script>
@@ -73,11 +75,11 @@
     </div>
 
 </div>
-
-<div class="form-group" style="position: absolute;top: 100px;">
-    <img src="${path}img/pinganQrcode.jpg"  style="width:100%;"></img>
+<div class="aui-show-box">
+    <div class="form-group" style="position: absolute;top:100px;">
+        <img src="${imgPath}"  style="width:100%;"></img>
+    </div>
 </div>
-
 </body>
 <script type="text/javascript">
 </script>

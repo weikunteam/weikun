@@ -1,16 +1,14 @@
 package com.great.service;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 import com.great.dao.BackUserManagerDao;
 import com.great.model.ResponseApi;
 import com.great.model.RoleModel;
 import com.great.model.UserModel;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class BackUserManagerService {
@@ -110,4 +108,5 @@ public class BackUserManagerService {
 	public UserModel queryBackUserByAccount(String uBackGroundAccount) {
 		return backUserManagerDao.queryBackUserByAccount(uBackGroundAccount);
 	}
+
 }

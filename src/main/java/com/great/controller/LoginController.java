@@ -35,10 +35,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register.action", method = RequestMethod.GET)
-    public ModelAndView register() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("register");
-        return mv;
+    public void register(HttpServletResponse response,String recommendCode) {
+//        ModelAndView mv = new ModelAndView();
+//        mv.setViewName("register");
+//        return mv;
+        logger.info("register recommendCode:{}",recommendCode);
+        getOpenIdService.dealRespRedirect(response,getOpenIdService.wxAuthorizeUrl(recommendCode));
     }
 
     @RequestMapping(value = "/login.action", method = RequestMethod.POST)
@@ -48,11 +50,18 @@ public class LoginController {
         return loginService.login(tel, pwd, request, response);
     }
 
+    @RequestMapping(value = "/codeLogin.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi codeLogin(String tel,String code, HttpServletRequest request, HttpServletResponse response) {
+        logger.info("用户验证码登录 tel={}",tel);
+        return loginService.codeLogin(tel, code, request, response);
+    }
+
     @RequestMapping(value = "/register.action", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseApi register(String tel, String pwd, String code, String recommend) {
-
-        return loginService.register(tel, pwd, code, recommend);
+    public ResponseApi register(String tel, String pwd, String code, String recommend, String weChatOpenId) {
+        logger.info("用户注册,tel:{},pwd:{},code:{},recommend:{},openId:{}",tel,pwd,code,recommend,weChatOpenId);
+        return loginService.register(tel, pwd, code, recommend, weChatOpenId);
 
     }
 
@@ -74,11 +83,22 @@ public class LoginController {
         return responseApi;
     }
 
-    @RequestMapping("/getOpenId")
-    @ResponseBody
-    public void getOpenId(String code, HttpServletResponse response){
-        getOpenIdService.dealRespRedirect(response,getOpenIdService.wxCodeUrl(code));
-
-
+    @RequestMapping("/getOpenId.action")
+    public ModelAndView getOpenId(String code,String recommendCode){
+        String openId = getOpenIdService.getOpenId(code);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("openId",openId);
+//        mv.addObject("recommendCode",recommendCode);
+        logger.info("recommendCode:{}",recommendCode);
+        mv.setViewName("register");
+        logger.info("model:{}",mv.getModel().toString());
+        return mv;
     }
+
+    @RequestMapping(value = "/resetPassword.action", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseApi resetPassword(String tel, String pwd, String code){
+        return loginService.resetPassword(tel,pwd,code);
+    }
+
 }

@@ -11,7 +11,7 @@
     <rabbit:connection-factory id="rabbitmqConnectionFactory" host="101.37.38.190" username="cww" password="vv23884327" port="5672"/>
     <rabbit:admin connection-factory="rabbitmqConnectionFactory"/>
     <!-- spring template声明-->
-    <rabbit:template exchange="register" id="amqpTemplate" connection-factory="rabbitmqConnectionFactory" message-converter="jsonMessageConverter" />
+    <rabbit:template exchange="topExchange" id="amqpTemplate" connection-factory="rabbitmqConnectionFactory" message-converter="jsonMessageConverter" />
     <!-- 消息对象json转换类 -->
     <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
     <!--
@@ -26,9 +26,9 @@
     rabbit:binding：设置消息queue匹配的key
      -->
     <!-- 交换机定义 -->
-    <rabbit:topic-exchange name="register" durable="true" auto-delete="false" id="register">
+    <rabbit:topic-exchange name="topExchange" durable="true" auto-delete="false" id="topExchange">
         <rabbit:bindings>
-            <rabbit:binding queue="sendMessage" pattern="top.sendMessage"/>
+            <rabbit:binding queue="sendMessage" pattern="top.sendMessage.*"/>
         </rabbit:bindings>
     </rabbit:topic-exchange>
     <!--

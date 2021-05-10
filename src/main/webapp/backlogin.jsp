@@ -30,6 +30,9 @@
 <link href="css/otherCSS.css" rel="stylesheet">
 <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
 <script src="layui.js" charset="utf-8"></script>
+    <script>
+        console.log("<%=path%>");
+    </script>
 </head>
 
 <body class="gray-bg" style="text-align:center;">
@@ -38,7 +41,7 @@
         <div>
             <div>
 
-                <h1 class="logo-name" style="color:red;">發</h1>
+<%--                <h1 class="logo-name" style="color:red;">發</h1>--%>
 				<br>
 				<br>
 				<br>
@@ -69,11 +72,11 @@
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
     <script>
+        console.log("<%=path%>");
     layui.use(['layer','form'],function(){
         var form=layui.form;
         var layer=layui.layer;
         $=layui.jquery;
-
              form.verify({
             	 uBackGroundAccount: function(value){
 						var code=0;

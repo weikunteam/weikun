@@ -22,10 +22,14 @@
 	
 	<insert id="addUser">
 	insert into
-	  TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt,uRegRecommendPeople,userType)
+	  TB_USER (uPhone,uPsw,registerTime,uRecommendCode,salt,uRegRecommendPeople,userType,openId)
 	 values
-	        (#{tel},#{psw},#{date},#{selfCode},#{salt},#{recommendPeople},'1')
+	        (#{tel},#{psw},#{date},#{selfCode},#{salt},#{recommendPeople},'1',#{openId})
 	</insert>
+
+    <update id="updatePwd">
+        update TB_USER set uPsw = #{psw},salt = #{salt} where uPhone = #{tel}
+    </update>
 
 	<select id="getRecommendpeople" resultType="string">
 		select userId from TB_USER where uRecommendCode = #{code}
@@ -44,6 +48,7 @@
 			age,
 			job,
 			userType,
+			openId,
 			(select count(*) from TB_USER where uRegRecommendPeople = #{userId}) AS studentNum
 		from TB_USER
 		where

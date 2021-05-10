@@ -4,6 +4,7 @@ $("#register").click(function(){
 	var confirmPwd = $("#inputPassword4").val();
 	var code = $("#code").val();
 	var recommend = $("#recommend").val();
+	var weChatOpenId = $("#openId").val();
 	var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
 	var pswReg = /^[a-zA-Z][a-zA-Z0-9]{5,11}$/;
 	if(!tel){
@@ -42,7 +43,8 @@ $("#register").click(function(){
 	    	tel:tel,
 	    	pwd:pwd,
 	    	code:code,
-	    	recommend:recommend
+	    	recommend:recommend,
+            weChatOpenId:weChatOpenId
 	    },
 	    success:function(data){
 	          if(data.code == '2'){

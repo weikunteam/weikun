@@ -1,28 +1,28 @@
 package com.great.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import com.great.model.LayUITableResponseModel;
 import com.great.model.RoleModel;
 import com.great.model.TreeNodeModel;
 import com.great.model.UserModel;
 import com.great.service.BackUserManagerService;
+import com.great.service.ProductionService;
+import com.great.util.UploadUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import sun.reflect.generics.tree.Tree;
-import sun.tools.jar.resources.jar;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/backUserManager")
@@ -30,6 +30,10 @@ public class BackUserManagerController {
 
 	@Resource
 	private BackUserManagerService backUserManagerService;
+	@Resource
+    private ProductionService productionService;
+
+	private static final Logger logger = LoggerFactory.getLogger(BackUserManagerController.class);
 	
 	//获取客户数据列表
 	@RequestMapping(value="/getBackUserList.action",method= RequestMethod.GET)
@@ -72,6 +76,43 @@ public class BackUserManagerController {
 		}
 		return responseMap;
 	}
+
+    @RequestMapping("/upload.action")
+    @ResponseBody
+    public Map<String,Object> uploadImage(@RequestParam("file") MultipartFile file,String userId,String productionNo) {
+	    System.out.println("userId:"+userId+"productionNo:"+productionNo);
+        logger.info("userId:{},productionNo:{}",userId,productionNo);
+        logger.info("test out");
+        Map<String,Object> map  = new HashMap<String, Object>();
+        String uploadDir = "/usr/img/getImg";
+//        String uploadDir = "/Users/chenweiwei";
+        try {
+            // 图片路径
+            String imgUrl = null;
+            //上传
+            String filename = UploadUtils.upload(file, uploadDir, file.getOriginalFilename());
+            if (filename != null) {
+                imgUrl = "http://101.37.38.190:8010/" + "getImg/" + filename;
+            }
+            String img = productionService.getImg(productionNo,userId);
+            if (StringUtils.isEmpty(img)){
+                productionService.saveImg(productionNo,userId,imgUrl);
+            }else {
+                productionService.updateImg(productionNo,userId,imgUrl);
+            }
+            map.put("code",0);
+            map.put("msg","上传成功");
+            map.put("data",imgUrl);
+            return map;
+        } catch (Exception e) {
+            logger.error("upload error:{}",e);
+            e.printStackTrace();
+            map.put("code",500);
+            map.put("msg","上传失败");
+            map.put("data",null);
+            return map;
+        }
+    }
 	
 	//重置密码
 	@RequestMapping(value="/editBackUserInfo.action",method= RequestMethod.POST)

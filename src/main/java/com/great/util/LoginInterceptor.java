@@ -1,16 +1,15 @@
 package com.great.util;
 
-import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.great.dao.UserLoginDao;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
@@ -23,6 +22,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
         Cookie[] cookies = request.getCookies();
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, String[]> set:request.getParameterMap().entrySet()){
+            sb.append(set.getKey());
+            sb.append(":");
+            sb.append(set.getValue()[0]);
+            sb.append(",");
+        }
+        logger.info("进入login拦截器,request:{}",sb.toString());
+        logger.info("请求路径:{}",request.getRequestURL().toString());
         if (cookies != null){
 
             for (Cookie cookie : cookies){
@@ -34,10 +42,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             }
         }
         Object object = request.getSession().getAttribute("user");
-        String code = request.getParameter("code");
+        String code = request.getParameter("recommendCode");
         if (object == null) {
             if (StringUtils.isNotBlank(code)) {
-                response.sendRedirect(request.getContextPath() + "/login/register.action?code=" + code);
+                String url = request.getContextPath() + "/login/register.action?recommendCode=" + code;
+                logger.info("重定向结果:{}",url);
+                response.sendRedirect(url);
                 return false;
             }
             String isUserCenter = request.getParameter("isUserCenter");

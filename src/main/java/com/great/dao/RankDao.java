@@ -7,5 +7,5 @@ import java.util.Map;
 
 @Repository
 public interface RankDao {
-    public List<Map<String,Object>> listRank();
+    List<Map<String,Object>> listRank();
 }

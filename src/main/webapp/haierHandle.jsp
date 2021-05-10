@@ -7,7 +7,7 @@
 	<!--BootStrap设计的页面支持响应式的 -->
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
-	<title>海尔玖康</title>
+	<title>平安车抵贷</title>
 	<link rel='stylesheet' href='${path}css/bootstrap.min.css'>
 	<link rel='stylesheet' href='${path}css/bootstrap-select.css'>
 	<link rel='stylesheet' href='${path}css/form.css'>
@@ -359,7 +359,8 @@
 			},
 			success:function(data){
 				if(data.code == '1'){
-					window.location.href = "${path}home/gotoHome.action";
+					<%--window.location.href = "${path}home/gotoHome.action";--%>
+                    window.location.href = "${path}production/showQrcode.action?productionNo=PINGAN_CHEDIDAI";
 				}else if(data.code == '2'){
 					toastr.error(data.msg);
 				}else if(data.code == '3'){

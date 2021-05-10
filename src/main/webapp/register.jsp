@@ -29,13 +29,15 @@
     <div class="row">
         <div class="col-xs-12">
             <form class="form-horizontal">
+                <!-- openid的值 -->
+                <input type="hidden" id="openId" value="${openId}"/>
                 <!-- <span class="heading">用户注册</span> -->
                 <div class="form-group">
                     <input type="text" class="form-control" id="inputTel" placeholder="请输入手机号">
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="form-group help">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码(字母开头的6~12为字母数字组合)">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码(字母开头的6~12位组合)">
                     <i class="fa fa-lock"></i>
                     <!-- <a href="#" class="fa fa-question-circle"></a> -->
                 </div>
@@ -52,7 +54,7 @@
                     </div>                                                                
                 </div>                                                                                                                                                           
                 <div class="form-group">
-                    <input type="text" class="form-control" id="recommend" placeholder="推荐码(选填)" style="width:60%;" value="${param.code}">
+                    <input type="text" class="form-control" id="recommend" placeholder="推荐码(选填)" style="width:60%;" value="${param.recommendCode}">
                    <!--  <i class="fa fa-lock"></i>  -->                   
                 </div>
                 <div class="form-group">

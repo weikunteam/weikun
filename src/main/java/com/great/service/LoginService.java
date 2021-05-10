@@ -14,11 +14,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -57,7 +59,31 @@ public class LoginService {
         return responseApi;
     }
 
-    public ResponseApi register(String tel, String pwd, String code, String recommendCode) {
+    public ResponseApi codeLogin(String tel,String code, HttpServletRequest request, HttpServletResponse response) {
+        ResponseApi responseApi = new ResponseApi();
+        Map<String, Object> map = userLoginDao.getUser(tel);
+        if (map != null) {
+            String redisCode = redisTemplate.opsForValue().get(RedisKeyEnum.USER_CODE.key() + tel);
+            if (StringUtils.hasText(code) && code.equals(redisCode)) {
+                request.getSession().setAttribute("user", map);
+                responseApi.setResponseApi("1", "登录成功");
+                Cookie telCookie = new Cookie("tel",tel);
+                telCookie.setMaxAge(3600*24*7);
+                log.info("用户{}存入cookie", tel);
+                response.addCookie(telCookie);
+            } else {
+                responseApi.setResponseApi("2", "验证码错误");
+            }
+        } else {
+            log.info("用户:{}手机号未注册",tel);
+            responseApi.setResponseApi("3", "手机号未注册");
+        }
+
+
+        return responseApi;
+    }
+
+    public ResponseApi register(String tel, String pwd, String code, String recommendCode, String openId) {
 
         ResponseApi responseApi = new ResponseApi();
         try {
@@ -68,18 +94,45 @@ public class LoginService {
                 String salt = PasswordUtil.getNextSalt();
                 pwd = DigestUtils.sha1Hex(pwd + salt);
                 String recommendPeople = userLoginDao.getRecommendpeople(recommendCode);
-                userLoginDao.addUser(tel, pwd, date, selfCode, salt, recommendPeople);
+                log.info("注册保存数据,tel:{},pwd:{},date:{},selfCode:{},salt:{},recommendPeople:{},openId:{}",
+                        tel,pwd,date,selfCode,salt,recommendPeople,openId);
+                userLoginDao.addUser(tel, pwd, date, selfCode, salt, recommendPeople, openId);
                 responseApi.setResponseApi("2", "注册成功");
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("token", ShareUtil.getaccessToken());
-                params.put("tel",tel);
-                params.put("registerTime",date);
-                amqpTemplate.convertAndSend("sendMessage",params);
+                //获取推荐人openId，如果有的话
+                if (StringUtils.hasText(recommendPeople)){
+                    String recommendOpenId = userLoginDao.getUserById(recommendPeople).get("openId").toString();
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("token", ShareUtil.getaccessToken());
+                    params.put("tel",tel);
+                    params.put("registerTime",date);
+                    params.put("openId",recommendOpenId);
+                    log.info("发送mq消息:{}",params.toString());
+                    amqpTemplate.convertAndSend("top.sendMessage.register",params);
+                }
             } else {
                 responseApi.setResponseApi("3", "验证码不正确");
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return responseApi;
+    }
+
+    public ResponseApi resetPassword(String tel,String pwd,String code){
+        ResponseApi responseApi = new ResponseApi();
+        try {
+            String redisCode = redisTemplate.opsForValue().get(RedisKeyEnum.USER_CODE.key() + tel);
+            if (SendCodeUtil.checkCodeByAli(code, redisCode)){
+                String salt = PasswordUtil.getNextSalt();
+                pwd = DigestUtils.sha1Hex(pwd + salt);
+                log.info("用户:{}密码重置，重置密码为:{}",tel,pwd);
+                userLoginDao.updatePwd(tel,pwd,salt);
+                responseApi.setResponseApi("2", "重置成功");
+            }else {
+                responseApi.setResponseApi("3", "验证码不正确");
+            }
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return responseApi;

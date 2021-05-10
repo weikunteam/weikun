@@ -12,6 +12,7 @@
 
     <link rel='stylesheet' href='${path}css/bootstrap.css'>
     <link rel='stylesheet' href='${path}css/toastr.min.css'>
+    <link rel='stylesheet' href='${path}css/login1.css'>
     <link href="${path}css/font-awesome.min.css" rel="stylesheet"/>
     <link href="${path}css/cardstyle.css" rel="stylesheet" type="text/css"/>
     <link href="${path}css/introductionstyle.css" rel="stylesheet" type="text/css"/>
@@ -89,17 +90,20 @@
 <div class="col-xs-12"> -->
 <div class="form-group">
     <ul id="myTab" class="nav nav-pills" role="tablist" style="text-align:center;">
-        <li class="active" style="width:24.5%;"><a href="#bulletin" role="tab" data-toggle="pill">
+        <li class="active" style="width:32.8%;"><a href="#bulletin" role="tab" data-toggle="pill">
             <small>贷款</small>
         </a></li>
-        <li style="width:24.5%"><a href="#rule" role="tab" data-toggle="pill">
+        <li style="width:32.8%"><a href="#rule" role="tab" data-toggle="pill">
             <small>信用卡</small>
         </a></li>
-        <li style="width:24.5%"><a href="#rank" role="tab" data-toggle="pill" id="rankList">
-            <small>明星经理</small>
-        </a></li>
-        <li style="width:24.5%"><a href="#introduction" role="tab" data-toggle="pill">
-            <small>公司简介</small>
+<%--        <li style="width:24.5%"><a href="#rank" role="tab" data-toggle="pill" id="rankList">--%>
+<%--            <small>明星经理</small>--%>
+<%--        </a></li>--%>
+<%--        <li style="width:24.5%"><a href="#introduction" role="tab" data-toggle="pill">--%>
+<%--            <small>公司简介</small>--%>
+<%--        </a></li>--%>
+        <li style="width:32.8%"><a href="#recommend" role="tab" data-toggle="pill">
+            <small>推荐邀请</small>
         </a></li>
     </ul>
 </div>
@@ -131,7 +135,7 @@
                                 <h5>万元日利率2.8元</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="${path}xinyidaiHandle.jsp" class="btn btn-info"
+                                <a href="https://omo.aiyouyi.cn/cp?cid=4410" class="btn btn-info"
                                    style="padding-top:0px;padding-bottom:0px;">咨询</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
@@ -157,7 +161,7 @@
                                 <h5>万元日利率3.3元</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="${path}xingyeHandle.jsp" class="btn btn-info"
+                                <a href="https://omo.aiyouyi.cn/cp?cid=4410" class="btn btn-info"
                                    style="padding-top:0px;padding-bottom:0px;">咨询</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
@@ -167,15 +171,15 @@
                     <div class="aui-show-box">
                         <div class="aui-flex">
                             <div class="aui-sml-img">
-                                <img src="${path}images/zhongyin.png" alt="">
+                                <img src="${path}images/pingan.png" alt="">
                             </div>
                             <div class="aui-flex-box">
-                                <h3><font size="4px">中银消费金融</font></h3>
+                                <h3><font size="4px">平安普惠</font></h3>
                             </div>
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>400000</h2>
+                                <h2>500000</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
@@ -183,7 +187,7 @@
                                 <h5>万元日利率3.3元</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="${path}zhonghangHandle.jsp" class="btn btn-info"
+                                <a href="https://omo.aiyouyi.cn/cp?cid=4410" class="btn btn-info"
                                    style="padding-top:0px;padding-bottom:0px;">咨询</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
@@ -193,15 +197,15 @@
                     <div class="aui-show-box">
                         <div class="aui-flex">
                             <div class="aui-sml-img">
-                                <img src="${path}images/haier.png" alt="">
+                                <img src="${path}images/pingan.png" alt="">
                             </div>
                             <div class="aui-flex-box">
-                                <h3><font size="4px">海尔-玖康</font></h3>
+                                <h3><font size="4px">平安车抵贷</font></h3>
                             </div>
                         </div>
                         <div class="aui-flex">
                             <div class="aui-text-one">
-                                <h2>200000</h2>
+                                <h2>750000</h2>
                                 <p>可贷额度(元)</p>
                             </div>
                             <div class="aui-flex-box">
@@ -209,34 +213,7 @@
                                 <h5>万元日利率3.3元</h5>
                             </div>
                             <div class="aui-text-two">
-                                <a href="${path}haierHandle.jsp" class="btn btn-info"
-                                   style="padding-top:0px;padding-bottom:0px;">咨询</a>
-                                <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
-                                   id="shareBtn">分享</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="aui-show-box">
-                        <div class="aui-flex">
-                            <div class="aui-sml-img">
-                                <img src="${path}images/smallamount.png" alt="">
-                            </div>
-                            <div class="aui-flex-box">
-                                <h3><font size="4px">小额贷款</font></h3>
-                            </div>
-                        </div>
-                        <div class="aui-flex">
-                            <div class="aui-text-one">
-                                <h2>1-20万</h2>
-                                <p>可贷额度(元)</p>
-                            </div>
-                            <div class="aui-flex-box">
-                                <h4>当天放款</h4>
-                                <h5>万元日利率3-5.2元</h5>
-                            </div>
-                            <div class="aui-text-two">
-                                <a href="${path}smallamount.jsp" class="btn btn-info"
+                                <a href="https://omo.aiyouyi.cn/cp?cid=4410" class="btn btn-info"
                                    style="padding-top:0px;padding-bottom:0px;">咨询</a>
                                 <a href="#" class="btn btn-info shareBtn" style="padding-top:0px;padding-bottom:0px;"
                                    id="shareBtn">分享</a>
@@ -554,6 +531,47 @@
             </section>
         </section>
     </div>
+    <div class="tab-pane fade" id="recommend">
+        <section class="aui-flexView">
+            <%--<header class="aui-navBar aui-navBar-fixed">
+                &lt;%&ndash;<a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-return"></i>
+                </a>&ndash;%&gt;
+                <div class="aui-center">
+                    <span class="aui-center-title" style="font-size: 15px"><strong>本周之星</strong></span>
+                </div>
+                &lt;%&ndash;<a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-sys"></i>
+                </a>&ndash;%&gt;
+            </header>--%>
+            <section class="aui-scrollView">
+                <div class="aui-tab" data-ydui-tab>
+                    <div class="tab-panel">
+                        <div class="tab-panel-item tab-active" id="recommendShow">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <form class="form-horizontal">
+<%--                                            <span class="heading"></span>--%>
+                                            <img src="${path}img/recommend_back.jpg" alt="">
+                                            <p>赶紧招募代理成员加入你的团队</p>
+                                            <p>快去邀请，拿下属于你的代理业绩提成吧！</p>
+                                            <div class="form-group">
+                                                <div class="form-inline">
+                                                    <button type="button" class="btn btn-default" id="recommendBtn" style="margin-top: 60px">推荐好友注册</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
     <!--<div class="tab-pane fade" id="welfare">公益内容面板</div> -->
 </div>
 
@@ -625,7 +643,7 @@
                 title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
                 desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
                 link: location.href.split('#')[0], // 分享链接
-                imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
+                imgUrl: 'http://www.zhongtianshangwu.top/OfficialAccounts/img/b1.png', // 分享图标
                 type: 'link', // 分享类型,music、video或link，不填默认为link
                 success: function () {
                     /*  toastr.error("分享成功");	 */
@@ -641,7 +659,7 @@
                 title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
                 desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
                 link: location.href.split('#')[0], // 分享链接
-                imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', //  分享图标
+                imgUrl: 'http://www.zhongtianshangwu.top/OfficialAccounts/img/b1.png', //  分享图标
                 success: function () {
                     // 用户确认分享后执行的回调函数
                     $("#topImg").css("display", "none");
@@ -706,5 +724,9 @@
             }
         });
     });
+
+    $("#recommendBtn").click(function(){
+        window.location.href = "${path}share/recommend.action?isRecommend=1";
+    })
 </script>
 </html>

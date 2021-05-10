@@ -172,7 +172,7 @@ background-color:#FFFACD;
 				title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
 				desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
 	    	    link: location.href.split('#')[0], // 分享链接
-	    	    imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
+	    	    imgUrl: 'http://www.zhongtianshangwu.top/OfficialAccounts/img/b1.png', // 分享图标
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
 	    	    success: function () { 
 	    	       /*  toastr.error("分享成功");	 */
@@ -188,7 +188,7 @@ background-color:#FFFACD;
 				title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
 				desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
 				link: location.href.split('#')[0], // 分享链接
-				imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', //  分享图标
+				imgUrl: 'http://www.zhongtianshangwu.top/OfficialAccounts/img/b1.png', //  分享图标
 				success: function () {
 					// 用户确认分享后执行的回调函数
 					$("#topImg").css("display","none");
@@ -202,7 +202,7 @@ background-color:#FFFACD;
 				title: '中天商务邀您加入“赏金猎人计划”', // 分享标题
 				desc: '推荐身边客户咨询贷款，拿高额佣金', // 分享描述
 	    	    link: location.href.split('#')[0], // 分享链接
-	    	    imgUrl: 'http://www.zhongtianbusiness.com/OfficialAccounts/img/b1.png', // 分享图标
+	    	    imgUrl: 'http://www.zhongtianshangwu.top/OfficialAccounts/img/b1.png', // 分享图标
 	    	    type: 'link', // 分享类型,music、video或link，不填默认为link
 	    	    success: function () { 
 	    	       /*  toastr.error("分享成功");	 */

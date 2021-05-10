@@ -113,6 +113,46 @@
 			</div>
 		</div>
 	</form>
+<%--    上传图片表单--%>
+    <form class="layui-form layui-form-pane1" id="uploadForm" name="uploadForm"
+          style="display: none;">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"
+                       style="width: 150px; font-weight: bold;"><span style="color:red;font-weight: bold;">*&nbsp;&nbsp;&nbsp;</span>选择绑定产品：</label>
+                <div class="layui-input-inline">
+                    <select name="addProduct" id="addProduct" lay-search="" lay-verify="selectProduct" lay-filter="search_type" >
+                        <option value='PINGAN_XINYIDAI'>平安新一贷</option>
+                        <option value='PINGAN_PUHUI'>平安普惠</option>
+                        <option value='PINGAN_CHEDIDAI'>平安车抵贷</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br />
+        <label class="layui-form-label">上传二维码</label>
+        <div class="layui-input-inline uploadHeadImage">
+            <div class="layui-upload-drag" id="headImg">
+                <i class="layui-icon"></i>
+                <p>点击上传图片，或将图片拖拽到此处</p>
+            </div>
+        </div>
+<%--        <div class="layui-input-inline">--%>
+<%--            <div class="layui-upload-list">--%>
+<%--                <img class="layui-upload-img headImage" src="http://t.cn/RCzsdCq" id="demo1" style="width: 100px;">--%>
+<%--                <p id="demoText"></p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+        <br>
+        <br>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn  layui-btn-submit" id="loadBtn" onclick="return false">确定</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="cancelLoad">关闭</button>
+            </div>
+        </div>
+        <input type="hidden" id="imgUserId" value=""/>
+    </form>
 	<!-- <table class="layui-hide" id="test"></table> -->
 	<!-- layUI javascrip部分 -->
 	<script id="toolbarDemo" type="text/html">
@@ -137,7 +177,7 @@
 						<button class="layui-btn" id="searchBtn" data-type="reload" style="margin-top: 10px;margin-left:10px;width:112px;">
 							<label style="font-weight: bold;font-size: 12px;">搜索<label/>
 						</button>
-				</span>
+                </span>
 			</div>
 			<br/>
 			<br/>
@@ -150,9 +190,16 @@
 			<a class="layui-btn layui-btn-xs" lay-event="edit">重置密码</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 			<a class="layui-btn layui-btn-xs" style="background-color: #1E9FFF" lay-event="distribute">分配组员</a>
-	{{# }if(d.roleModel.roleId !=3 ){ }}
+	{{# }if(d.roleModel.roleId ==4 ){ }}
 			<a class="layui-btn layui-btn-xs" lay-event="edit">重置密码</a>
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <button type="button" class="layui-btn upload" id="upload">
+        <i class="layui-icon">&#xe67c;</i>绑定二维码
+    </button>
+
+    {{# }if(d.roleModel.roleId !=3 && d.roleModel.roleId !=4 ){ }}
+    <a class="layui-btn layui-btn-xs" lay-event="edit">重置密码</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     {{#  } }}
 
 	</script>
@@ -164,6 +211,7 @@
     <span>{{d.roleModel.roleName}}</span>
 	{{#  } }}
 	</script>
+
 	<script>
 		
 			layui.use('table', function() {
@@ -232,7 +280,7 @@
 								layui.form.render('select');        
 								}    
 							});
-						
+
 						$('th').css({'font-weight' : 'bold','font-size':'20px'});//'background-color' : '#008B8B','color' : '#fff',
 						layer.close(loadingPage);
 					},
@@ -262,7 +310,7 @@
 					if (obj.event === 'del') {
 			                layer.confirm('真的删除行么', function (index) {
 								console.log(obj);
-<%-- 			                    $.ajax({
+ 			                    $.ajax({
 			                        url: "<%=path%>salesManManager/deleteSalesManInfo.action",
 			                        type: "POST",
 			                        data: {deleteSalesManId:obj.data.userId},
@@ -272,7 +320,7 @@
 			                            if (returnCode == 200) {
 			                                //删除这一行
 			                                obj.del();
-			                                $(".layui-laypage-btn").click(); 
+			                                $(".layui-laypage-btn").click();
 			                                //关闭弹框
 			                                layer.close(index);
 			                                layer.msg("删除成功", {icon: 6});
@@ -280,7 +328,7 @@
 			                                layer.msg("删除失败", {icon: 5});
 			                            }
 			                        }
-			                    }); --%>
+			                    });
 			                    return false;
 			                });
 			                
@@ -384,6 +432,7 @@
 				  table.on('row(test)', function(obj){
 					var flag=0;
 				    var data = obj.data;
+				    $("#imgUserId").val(obj.data.userId);
 				    //$(this).attr("isClick","1");   
 				    var trDataShowList=$(".layui-table-main").children("table").children('tbody').children('tr');
 				    var trFixedRList=$(".layui-table-fixed-r").children("div").eq(1).children("table").children('tbody').children('tr');
@@ -472,8 +521,11 @@
 				$('body').on('click','#cancelAdd',function(){
 					console.log("取消");
                     layer.closeAll();//关闭所有的弹出层
-				}); 
-				$('body').on('click','#cancelDistribute',function(){
+				});
+                $('body').on('click','#cancelLoad',function(){
+                    layer.closeAll();//关闭所有的弹出层
+                });
+                $('body').on('click','#cancelDistribute',function(){
 					console.log("取消");
                     layer.closeAll();//关闭所有的弹出层
 				}); 
@@ -532,9 +584,66 @@
 	 			              return false;
 	 			           })
 					
-				}); 
-				
-				$('body').on('input propertychange','#validateTel',function(){
+				});
+
+                $('body').on('click','.upload',function(){
+                    console.log("点击 → 图片上传");
+                    document.getElementById("uploadForm").reset();
+                    // $("#validateResultInfo").empty();
+                    //添加单条数据   弹出层
+                    layer.open({
+                        title:'上传二维码',
+                        type:1,
+                        skin: 'layui-layer-molv',
+                        shade: 0.8,
+                        area:['800px','500px'],
+                        content:$("#uploadForm")
+                    });
+                    <%--form.on('submit(demo12)', function(massage) {--%>
+                    <%--    console.log("提交了！");--%>
+                    <%--    $.ajax({--%>
+                    <%--        url:'<%=path%>backUserManager/addBackUserInfo.action',--%>
+                    <%--        type:'POST',--%>
+                    <%--        data:{--%>
+                    <%--            roleId:massage.field.addRole,--%>
+                    <%--            userName:massage.field.addUserName,--%>
+                    <%--            uPhone:massage.field.validateTel,--%>
+                    <%--            uBackGroundAccount:massage.field.addUBackGroundAccount,--%>
+                    <%--            uBackGroundPsw:massage.field.addUBackGroundPsw--%>
+                    <%--        },--%>
+                    <%--        success:function (msg) {--%>
+                    <%--            var returnCode = msg.returnCode;//取得返回数据（Sting类型的字符串）的信息进行取值判断--%>
+                    <%--            if(returnCode==200){--%>
+                    <%--                layer.closeAll('loading');--%>
+                    <%--                layer.load(2);--%>
+                    <%--                layer.msg("添加客户信息成功", {icon: 6});--%>
+                    <%--                setTimeout(function(){--%>
+                    <%--                    layer.closeAll();//关闭所有的弹出层--%>
+                    <%--                }, 1000);--%>
+                    <%--                //重载 到第一页--%>
+                    <%--                table.reload('test', {--%>
+                    <%--                    page : {--%>
+                    <%--                        curr:1--%>
+                    <%--                    },--%>
+                    <%--                    where : {--%>
+                    <%--                        //name : demoReload //向后台传递的参数--%>
+                    <%--                    },--%>
+                    <%--                    url : '<%=path%>backUserManager/getBackUserList.action'//后台做模糊搜索接口路径--%>
+                    <%--                    ,--%>
+                    <%--                    method : 'get'--%>
+                    <%--                });--%>
+                    <%--            }else{--%>
+                    <%--                layer.msg("添加失败", {icon: 5});--%>
+                    <%--            }--%>
+                    <%--        }--%>
+                    <%--    })--%>
+                    <%--    return false;--%>
+                    <%--})--%>
+
+                });
+
+
+                $('body').on('input propertychange','#validateTel',function(){
 					console.log("失去焦点验证---");
 		            $.ajax({
 		                type: "get",
@@ -593,6 +702,12 @@
 	 					       return '必须选择角色/职位！';
 	 					     }//"^[1[34578]\d{9}]+$"	
 					},
+                    selectProduct:function(value){
+                        if(value=="" ){
+
+                            return '必须选择产品！';
+                        }//"^[1[34578]\d{9}]+$"
+                    },
 					validateUBackGroundAccount:function(value){
 						var code=0;
 			            $.ajax({
@@ -636,12 +751,59 @@
     ];
 </script>
 	<!-- H+ javascrip部分 -->
-	<script src="js/jquery.min.js?v=2.1.4"></script>
+<%--	<script src="js/jquery.min.js?v=2.1.4"></script>--%>
 	<script src="js/bootstrap.min.js?v=3.3.6"></script>
 	<script src="js/plugins/echarts/echarts-all.js"></script>
 	<script src="js/content.min.js?v=1.0.0"></script>
 	<script src="js/demo/echarts-demo.min.js"></script>
 	<script type="text/javascript"
 		src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script type="application/javascript">
+    layui.use('upload', function () {
+        var layer = layui.layer;
+        var upload = layui.upload;
+        var $ = layui.jquery;
+
+        upload.render({
+            elem: '#headImg',
+            url: '<%=path%>backUserManager/upload.action',
+            auto: false,//不自动上传
+            bindAction: '#loadBtn', //上传绑定到按钮
+            //上传前的回调
+            // before: function (obj) {
+            // //预读本地文件示例，不支持ie8
+            // obj.preview(function (index, file, result) {
+            //     $('#demo1').attr('src', result); //图片链接（base64）
+            // });
+            // },
+            //选择文件后的回调
+            // choose: function (obj) {
+            //     obj.preview(function (index, file, result) {
+            //         $('#demo2').append('<img width="300px" src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+            //     })
+            // },
+            data: {
+                userId: function () {
+                    return $('#imgUserId').val();
+                },
+                productionNo: function () {
+                    return $('#addProduct').val();
+                }
+            },
+            //操作成功的回调
+            done: function (res, index, upload) {
+                if (res.code == 0){
+                    layer.msg("上传成功!", {icon: 6});
+                } else {
+                    layer.msg("上传失败！", {icon: 5});
+                }
+            },
+            //上传错误回调
+            error: function (index, upload) {
+                layer.msg("上传失败！", {icon: 5});
+            }
+        });
+    })
+</script>
 </body>
 </html>

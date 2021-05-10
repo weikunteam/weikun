@@ -1,13 +1,6 @@
 package com.great.util;
 
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-
+import com.alibaba.fastjson.JSON;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
@@ -15,7 +8,6 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
@@ -24,18 +16,19 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.alibaba.fastjson.JSON;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 public class SendCodeUtil {
 
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(SendCodeUtil.class);
     private static final String
             SERVER_URL = "https://api.netease.im/sms/sendcode.action";
     //网易云信分配的账号，请替换你在管理后台应用下申请的Appkey
@@ -185,6 +178,7 @@ public class SendCodeUtil {
         String jsonResult = EntityUtils.toString(response.getEntity(), "utf-8");
         String resultCode = JSON.parseObject(jsonResult).getString("code");
         System.out.println(jsonResult);
+        LOGGER.info("send code request:{}",jsonResult);
         if (resultCode.equals("200")) {
             return true;
         }
@@ -203,7 +197,6 @@ public class SendCodeUtil {
             stringBuffer.append(r);
         }
         String string = stringBuffer.toString();
-        int i = Integer.parseInt(string);
 //        System.out.println(i);
 
         //初始化ascClient需要的几个参数
@@ -229,7 +222,7 @@ public class SendCodeUtil {
         request.setTemplateCode("SMS_159625534");
         //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
         //友情提示:如果JSON中需要带换行符,请参照标准的JSON协议对换行符的要求,比如短信内容中包含\r\n的情况在JSON中需要表示成\\r\\n,否则会导致JSON在服务端解析失败
-        request.setTemplateParam("{\"code\":\"" + i + "\"}");
+        request.setTemplateParam("{\"code\":\"" + string + "\"}");
         //可选-上行短信扩展码(扩展码字段控制在7位或以下，无特殊需求用户请忽略此字段)
         //request.setSmsUpExtendCode("90997");
         //可选:outId为提供给业务方扩展字段,最终在短信回执消息中将此值带回给调用者
@@ -239,8 +232,10 @@ public class SendCodeUtil {
 //        if (sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
 //            return true;
 //        }
+
         System.out.println(sendSmsResponse.getMessage());
         System.out.println(sendSmsResponse.getCode());
+        LOGGER.info("send code response:{}",sendSmsResponse.getCode()+sendSmsResponse.getMessage());
         return string;
 
     }

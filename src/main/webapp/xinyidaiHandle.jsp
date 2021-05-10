@@ -370,8 +370,9 @@ $("#submit").click(function(){
 	    },
 	    success:function(data){
 	          if(data.code == '1'){	        	 
-	        		  window.location.href = "${path}home/gotoHome.action"; 	        	         	  
-	          }else if(data.code == '2'){
+	        		  <%--window.location.href = "${path}home/gotoHome.action"; 	        	         	  --%>
+                  window.location.href = "${path}production/showQrcode.action?productionNo=PINGAN_XINYIDAI";
+              }else if(data.code == '2'){
 	        	  toastr.error(data.msg);
 	          }else if(data.code == '3'){
 	        	  toastr.error(data.msg);

@@ -50,7 +50,11 @@
             </form>
         </div>
     </div>
+    <p style="text-align: center"><a href="${path}resetPassword.jsp" style="text-decoration:none;color: #00b4ef">忘记密码>></a></p>
+    <p style="text-align: center"><a href="${path}codeLogin.jsp" style="text-decoration:none;color: #00b4ef">验证码登录>></a></p>
 </div>
+
+
 </body>
 
 <script type="text/javascript">

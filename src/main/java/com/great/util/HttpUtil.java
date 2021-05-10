@@ -63,6 +63,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet get = new HttpGet(url);
         try {
+            LOGGER.info("http get request:{}",url);
             HttpResponse response = httpClient.execute(get);
             String res = EntityUtils.toString(response.getEntity());
             LOGGER.info("http get response:{}",res);

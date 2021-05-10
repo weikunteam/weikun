@@ -60,7 +60,7 @@ public class ShareController {
 	public ModelAndView recommend(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> map = (Map<String, Object>) request.getSession().getAttribute("user");
-		mv.setViewName("redirect:/share/gotoShare.action?code="+map.get("uRecommendCode"));
+		mv.setViewName("redirect:/share/gotoShare.action?recommendCode="+map.get("uRecommendCode"));
 		return mv;
 	}
 	
